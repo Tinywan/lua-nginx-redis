@@ -10,8 +10,8 @@
     ```
 *  根据外面传过来的IDList 做“集合去重”的lua脚本逻辑：     
      ```
-        local key=KEYS[1]
-        local list=redis.call("lrange",key,0,-1);
+        local key=KEYS[1]  
+        local list=redis.call("lrange",key,0,-1);   
         return list;
      ```
       
