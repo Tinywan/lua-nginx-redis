@@ -31,14 +31,14 @@
          return  result;
      ```
 *  redis.call() 与 redis.pcall()的区别  
-   >他们唯一的区别是当redis命令执行结果返回错误时
-   >>redis.call()将返回给调用者一个错误.
-   >>redis.pcall()会将捕获的错误以Lua表的形式返回.
+   > 他们唯一的区别是当redis命令执行结果返回错误时
+   >> redis.call()将返回给调用者一个错误.
+   >> redis.pcall()会将捕获的错误以Lua表的形式返回.
    >>redis.call() 和 redis.pcall() 两个函数的参数可以是任意的 Redis 命令
-   >>>
-   >>>   ```
-   >>>   > eval "return redis.call('set',KEYS[1],'bar')" 1 foo
-   >>>  OK
-   >>>  ```   
+    
+    ```
+        > eval "return redis.call('set',KEYS[1],'bar')" 1 foo
+        OK
+    ```   
 
     
