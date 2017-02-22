@@ -1,4 +1,4 @@
-![image](https://github.com/Tinywan/PHP_Experience/blob/master/Public/Common/static/images/ffmpeg.png)
+![image](https://github.com/Tinywan/Lua/blob/master/Images/lua.jpg)
 ## Redis脚本用法
 ### 基本用法
 *  通过lua脚本获取指定的key的List中的所有数据 
