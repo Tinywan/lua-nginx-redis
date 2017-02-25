@@ -1,5 +1,6 @@
 ## Redis执行Lua脚本示例
 ### Lua 基本语法
+---
 *   Hello, Lua!
 
     > 我们的第一个Redis Lua 脚本仅仅返回一个字符串，而不会去与redis 以任何有意义的方式交互   
@@ -18,7 +19,19 @@
 
     > 运行这段代码会打印"Hello,world!", EVAL在第一个参数是我们的lua脚本， 这我们用cat命令从文件中读取我们的脚本内容。第二个参数是这个脚本需要访问的Redis 的键的数字号。我们简单的 “Hello Script" 不会访问任何键，所以我们使用0
     
-### 基本用法
+### Lua知识
+---
+##### 基本语法
++ redis.call() 与 redis.pcall()的区别
+    1.  他们唯一的区别是当redis命令执行结果返回错误时
+    2.  redis.call()将返回给调用者一个错误.
+    3.  redis.pcall()会将捕获的错误以Lua表的形式返回.
+    4.  redis.call() 和 redis.pcall() 两个函数的参数可以是任意的 Redis 命令
+
++ Lua网络编程
+
+### Redis执行Lua脚本基本用法
+---
 *  基本语法   
     ```
     EVAL script numkeys key [key ...] arg [arg ...]
@@ -48,15 +61,5 @@
          
          return  result;
      ```
-*  redis.call() 与 redis.pcall()的区别  
-   > 他们唯一的区别是当redis命令执行结果返回错误时
-   >> redis.call()将返回给调用者一个错误.
-   >> redis.pcall()会将捕获的错误以Lua表的形式返回.
-   >>redis.call() 和 redis.pcall() 两个函数的参数可以是任意的 Redis 命令
-    
-    ```
-        > eval "return redis.call('set',KEYS[1],'bar')" 1 foo
-        OK
-    ```   
 
     
