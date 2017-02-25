@@ -1,5 +1,11 @@
 ![image](https://github.com/Tinywan/Lua/blob/master/Images/lua.jpg)
 ## Redis脚本用法
+### Lua 基本语法
+*   Hello, Lua!
+    ```
+    #!/usr/bin/lua
+    print("Hello World!");
+    ```
 ### 基本用法
 *  基本语法   
     ```
