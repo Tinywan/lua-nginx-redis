@@ -23,10 +23,10 @@
 ---
 ##### 基本语法
 + redis.call() 与 redis.pcall()的区别
-    1.  他们唯一的区别是当redis命令执行结果返回错误时
-    2.  redis.call()将返回给调用者一个错误.
-    3.  redis.pcall()会将捕获的错误以Lua表的形式返回.
-    4.  redis.call() 和 redis.pcall() 两个函数的参数可以是任意的 Redis 命令
+    1. 他们唯一的区别是当redis命令执行结果返回错误时
+    2. redis.call()将返回给调用者一个错误.
+    3. redis.pcall()会将捕获的错误以Lua表的形式返回.
+    4. redis.call() 和 redis.pcall() 两个函数的参数可以是任意的 Redis 命令
 
 + Lua网络编程
 
