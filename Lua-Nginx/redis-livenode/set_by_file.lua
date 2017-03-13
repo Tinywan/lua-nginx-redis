@@ -16,6 +16,16 @@ if not ok then
         return err
 end
 
+-- 权限验证
+local res,err = redis_instance:auth('tinywanredis')
+if not res then
+    ngx.say("failed to authenticate: ", err)
+    return
+end
+
+--数据库选择 
+redis_instance:select(1)
+
 --调用API获取数据  
 local resp, err = redis_instance:hget("liveNodeRedis:"..stream_a,'liveNode')
 if not resp then
@@ -28,7 +38,7 @@ if resp == ngx.null then
     ngx.say("this is not redis_data")  --比如默认值  
     return nil
 end
--- 赋值给ngx 变量为当前Redis查询结果
 ngx.var.stream_id = resp
+-- ngx.say("reds get result : ", resp)
 
 
