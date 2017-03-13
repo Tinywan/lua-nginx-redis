@@ -1,6 +1,6 @@
 ## Redis、Lua、Nginx好玩
 * 解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
-> [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
+    - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
 
 ## Redis执行Lua脚本示例
 ### Lua 基本语法
