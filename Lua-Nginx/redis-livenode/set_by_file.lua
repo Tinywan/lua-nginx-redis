@@ -7,8 +7,8 @@ local redis_instance = redis:new();
 --设置后续操作的超时（以毫秒为单位）保护，包括connect方法
 redis_instance:set_timeout(1000)
 --建立连接
-local ip = '127.0.0.1'
-local port = 6379
+local ip = '121.41.88.209'
+local port = 63789
 --尝试连接到redis服务器正在侦听的远程主机和端口
 local ok,err = redis_instance:connect(ip,port)
 if not ok then
@@ -17,17 +17,17 @@ if not ok then
 end
 
 -- 权限验证
-local res,err = redis_instance:auth('tinywanredis')
+local res,err = redis_instance:auth('tinywanredisamaistream')
 if not res then
     ngx.say("failed to authenticate: ", err)
     return
 end
 
 --数据库选择 
-redis_instance:select(1)
+redis_instance:select(2)
 
 --调用API获取数据  
-local resp, err = redis_instance:hget("liveNodeRedis:"..stream_a,'liveNode')
+local resp, err = redis_instance:hget("StreamLiveNodeInnerIp:"..stream_a,'livenode')
 if not resp then
     ngx.say("get msg error : ", err)
     return err
