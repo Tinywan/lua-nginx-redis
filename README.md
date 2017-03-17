@@ -8,8 +8,12 @@
     * Lua进阶    
 * [Lua脚本开发Nginx](#text)
     * 普通文本
-    * 单行文本
+    * 单行文本2
 * [Lua脚本运行Redis](#line)
+
+* [PHP脚本运行Redis](#line)
+    * PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件
+    * 单行文本1
 
 * [链接](#link) 
 
