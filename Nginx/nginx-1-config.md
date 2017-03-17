@@ -1,24 +1,5 @@
 
-## <a name="index"/>目录
-* [Lua网络编程基础知识](#title)
-    * Lua基础
-    * Lua进阶
-* [Nginx开发从入门到精通](#line)
-    * Lua基础
-    * Lua进阶    
-* [Lua脚本开发Nginx](#text)
-    * 普通文本
-    * 单行文本2
-* [Lua脚本运行Redis](#line)
-
-* [PHP脚本运行Redis](#line)
-    * PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件
-    * 单行文本1
-
-* [链接](#link) 
-
-
-### Nginx 陷阱和常见错误（一下为正确或者推荐配置）
+## Nginx 陷阱和常见错误（一下为正确或者推荐配置）
 ---
 *  把 root 放在 location 区块外  
     ```
