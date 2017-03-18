@@ -91,3 +91,23 @@
 /usr/local/nginx -1.5.1/sbin/nginx -s reload
 ```
 C:\Program Files\Git\bin
+
+#### nginx root&alias文件路径配置
+nginx指定文件路径有两种方式root和alias，这两者的用法区别，使用方法总结了下，方便大家在应用过程中，快速响应。root与alias主要区别在于nginx如何解释location后面的uri，这会使两者分别以不同的方式将请求映射到服务器文件上。
+
+```
+location /abc/ {
+    alias /home/html/def/;
+}
+```
+alias会把location后面配置的路径丢弃掉，把当前匹配到的目录指向到指定的目录。如果一个请求的URI是/abc/a.ttlsa.com/favicon.jgp时，web服务器将会返回服务器上的/home/html/def/a.ttlsa.com/favicon.jgp的文件。
+
+###### alias注意要点
+
+> 1.使用alias时，目录名后面一定要加”/”`。
+
+> 2.alias可以指定任何名称。 
+
+> 3.alias在使用正则匹配时，必须捕捉要匹配的内容并在指定的内容处使用。 
+
+> 4.alias只能位于location块中
