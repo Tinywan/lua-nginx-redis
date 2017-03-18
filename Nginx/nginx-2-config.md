@@ -50,3 +50,4 @@
 ```
 
 #### Nginx 编译以及参数详解
+C:\Program Files\Git\bin
