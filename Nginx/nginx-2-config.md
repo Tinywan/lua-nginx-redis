@@ -8,13 +8,13 @@
 # yum -y install gcc wget gcc-c++ automake autoconf libtool libxml2-devel libxslt-devel perl-devel perl-ExtUtils-Embed pcre-devel openssl-devel
 # cd /usr/local/src/nginx-1.10.2
 # ./configure \
---prefix=/usr/local/nginx \      指向安装目录
---sbin-path=/usr/sbin/nginx \       指向（执行）程序文件（nginx）
---conf-path=/etc/nginx/nginx.conf \     指向配置文件（nginx.conf）
---error-log-path=/var/log/nginx/error.log \     指向错误日志目录
+--prefix=/usr/local/nginx \                                 指向安装目录
+--sbin-path=/usr/sbin/nginx \                               指向（执行）程序文件（nginx）
+--conf-path=/etc/nginx/nginx.conf \                         指向配置文件（nginx.conf）
+--error-log-path=/var/log/nginx/error.log \                 指向错误日志目录
 --http-log-path=/var/log/nginx/access.log \
---pid-path=/var/run/nginx.pid \
---lock-path=/var/run/nginx.lock \
+--pid-path=/var/run/nginx.pid \                             指向pid文件（nginx.pid）
+--lock-path=/var/run/nginx.lock \                           指向lock文件（nginx.lock）（安装文件锁定，防止安装文件被别人利用，或自己误操作。）
 --http-client-body-temp-path=/var/tmp/nginx/client \
 --http-proxy-temp-path=/var/tmp/nginx/proxy \
 --http-fastcgi-temp-path=/var/tmp/nginx/fcgi \
