@@ -4,7 +4,7 @@
     * Lua基础
     * Lua进阶
 * [Nginx开发从入门到精通](#line)
-    * Lua基础
+    * [Nginx 编译安装以及参数详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
     * Lua进阶    
 * [Lua脚本开发Nginx](#text)
     * 普通文本
