@@ -10,19 +10,36 @@
     + **第一章   初探**
         - [x] [Nginx的历史](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
     * **第二章   安装部署**
-        - [ ] C33
+        - [ ] 测试一
         - [ ] C213
     * **第三章   Nginx初探**
+        - [ ] 测试一
     * **第四章   Nginx初探**
+        - [ ] 测试一
     * **第五章   Nginx初探**
+        - [ ] 测试一
     * **第六章   Nginx初探**
+        - [ ] 测试一
     * **第七章   Nginx初探**
         - [x] [正向代理和反向代理的概念](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-        - [x] [正向代理和反向代理的概念](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-        - [] [正向代理和反向代理的概念](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-    * 第八章   Nginx初探
-    * 第九章   Nginx初探
-    * 第十章   Nginx初探       
+        - [x] [正向代理服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+        - [x] [反向代理的服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+        - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+            - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+            - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+        * **HTTP负载均衡**
+            - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+            - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+            - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+        * **TCP负载均衡**    
+            - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+            - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)        
+    * **第八章   Nginx初探**
+        - [ ] 测试一
+    * **第九章   Nginx初探**
+        - [ ] 测试一
+    * **第十章   Nginx初探**  
+        - [ ] 测试一     
 + [Lua脚本开发Nginx](#text)
     * 普通文本
     * 单行文本2
