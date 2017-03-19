@@ -8,20 +8,23 @@
     * Lua进阶    
 * [Nginx高性能WEB服务器详解](#line)
     + 第一章   初探
-        + Nginx 的历史
-    * 第一章   安装部署
+        - [] [Nginx的历史](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+    * 第二章   安装部署
         - [x] C1
         - [x] C22
         - [ ] C33
         - [ ] C213
-    * 第一章   Nginx初探
-    * 第一章   Nginx初探
-    * 第一章   Nginx初探
-    * 第一章   Nginx初探
-    * 第一章   Nginx初探
-    * 第一章   Nginx初探
-    * 第一章   Nginx初探
-    * 第一章   Nginx初探       
+    * 第三章   Nginx初探
+    * 第四章   Nginx初探
+    * 第五章   Nginx初探
+    * 第六章   Nginx初探
+    * 第七章   Nginx初探
+        - [x] [正向代理和反向代理的概念](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+        - [x] [正向代理和反向代理的概念](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+        - [] [正向代理和反向代理的概念](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+    * 第八章   Nginx初探
+    * 第九章   Nginx初探
+    * 第十章   Nginx初探       
 + [Lua脚本开发Nginx](#text)
     * 普通文本
     * 单行文本2
