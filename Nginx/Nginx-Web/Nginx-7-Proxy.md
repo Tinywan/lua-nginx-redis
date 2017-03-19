@@ -3,108 +3,151 @@
 ---
 *  配置实例一：对所有请求实现一般轮询规则的负载均衡  
     ```
-    upstream live_node {
-        server 127.0.0.1:8089;
-        server 127.0.0.1:8088;
-    }
-    server {
-        listen 80;
-        server_name  localhost;
-        location / {
-　　　　　　　　proxy_pass http://live_node;
-        }
-    }
-    server {
-        listen 8088;
-        server_name  localhost;
-        location / {
-            root   /usr/local/nginx/html2;
-            index  index.html index.htm;
-        }
-    }
-    server {
-        listen 8089;
-        server_name  localhost;
-        location / {
-            root   /usr/local/nginx/html3;
-            index  index.html index.htm;
-        }
-    } 
-    ```
-*  简单的使用“ index ”指令一次就够了。只需要把它放到 http {} 区块里面，下面的就会继承这个配置 
-    
-    ```
-        http {
-            index index.php index.htm index.html;
+       http {
+
+            upstream live_node {                        # 配置后端服务器组
+                server 127.0.0.1:8089;
+                server 127.0.0.1:8088;
+            }
+
             server {
-                server_name www.example.com;
+                listen 80;
+                server_name  localhost;
                 location / {
-                    # [...]
+                    proxy_pass http://live_node;
+                    proxy_set_header Host $host;         # 保留客户端的真实信息
                 }
             }
+
+            server {                    # 配置虚拟服务器8088
+                listen 8088;
+                server_name  localhost;
+                location / {
+                    root   /usr/local/nginx/html2;      
+                    index  index.html index.htm;
+                }
+            }
+
+            server {                    # 配置虚拟服务器8089
+                listen 8089;
+                server_name  localhost;
+                location / {
+                    root   /usr/local/nginx/html3;
+                    index  index.html index.htm;
+                }
+            }
+        }
+    ```
+*  配置实例二：对所有请求实现加权轮询规则负载均衡  
+    ```
+       http {
+
+            upstream live_node {                        # 配置后端服务器组
+                server 127.0.0.1:8089 weight=5;         # 这个处理客户端请求会多些 
+                server 127.0.0.1:8088 weight=1;         # 默认 weight = 1
+            }
+
             server {
-                server_name example.com;
+                listen 80;
+                server_name  localhost;
                 location / {
-                    # [...]
+                    proxy_pass http://live_node;
+                    proxy_set_header Host $host;         # 保留客户端的真实信息
                 }
-                location /foo {
-                    # [...]
+            }
+
+            server {                    # 配置虚拟服务器8088
+                listen 8088;
+                server_name  localhost;
+                location / {
+                    root   /usr/local/nginx/html2;      
+                    index  index.html index.htm;
+                }
+            }
+
+            server {                    # 配置虚拟服务器8089
+                listen 8089;
+                server_name  localhost;
+                location / {
+                    root   /usr/local/nginx/html3;
+                    index  index.html index.htm;
                 }
             }
         }
+    ``` 
+*  配置实例三：对特定资源实现负载均衡  
     ```
-*  不要使用 if 判断 Server Name  
-    > 不推荐
+       http {
 
-     ```
-      server {
-            server_name example.com *.example.com;
-                if ($host ~* ^www\.(.+)) {
-                    set $raw_domain $1;
-                    rewrite ^/(.*)$ $raw_domain/$1 permanent;
+            upstream videobackend {                     # 配置后端服务器组视频代理
+                server 127.0.0.1:8088;         
+                server 127.0.0.1:8089;        
+            }
+
+            upstream filebackend {                      # 配置后端服务器组文件代理
+                server 127.0.0.1:8888;        
+                server 127.0.0.1:8889;        
+            }
+
+            server {
+                listen 80;
+                server_name  localhost;
+                location /video/ {
+                    proxy_pass http://videobackend;      # 视频代理
+                    proxy_set_header Host $host;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;         
                 }
-                # [...]
+
+                location /file/ {
+                    proxy_pass http://filebackend;       # 文件代理
+                    proxy_set_header Host $host;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;         
+                }
+            }
+
+            server {                    # 配置虚拟服务器8088
+                listen 8088;
+                server_name  localhost;
+                location /video {
+                     alias   /usr/local/nginx/html2;
+                }
+            }
+
+            server {                    # 配置虚拟服务器8089
+                listen 8089;
+                server_name  localhost;
+                location /video {
+                     alias   /usr/local/nginx/html3;
+                }
+            }
+
+            server {                    # 文件虚拟服务器1
+                listen 8888;
+                server_name  localhost;
+                location /file {
+                    alias   /usr/local/nginx/html4;
+                }
+            }
+
+            server {                    # 文件虚拟服务器2
+                listen 8889;
+                server_name  localhost;
+                location /file {
+                    alias   /usr/local/nginx/html5;
+                }
             }
         }
-     ```
-     > 推荐配置
+    ```    
+   > 访问方式：`http://127.0.0.1/video/demo.txt`
+   >>输出：`this is video HTML2 demo2 8088`   
+   >>输出：`this is video HTML3 demo3 8089`
 
-     ```
-      server {
-            server_name www.example.com;
-            return 301 $scheme://example.com$request_uri;
-      }
-      server {
-            server_name example.com;
-            # [...]
-      }
-     ```
-*   使用主机名来解析地址
+   > 访问方式：`http://127.0.0.1/file/demo.txt`   
+   >>输出：`this is file HTML4 demo4 8888`   
+   >>输出：`this is file HTML4 demo5 8889`
 
-    > 不推荐配置
-
-    ```
-    upstream {
-        server http://someserver;
-    }
-
-    server {
-        listen myhostname:80;
-        # [...]
-    }
-    ```
-
-    > 推荐配置
-
-    ```
-    upstream {
-        server http://10.48.41.12;
-    }
-
-    server {
-        listen 127.0.0.16:80;
-        # [...]
-    }
-    ```
-*   [更多信息](https://moonbingbing.gitbooks.io/openresty-best-practices/content/ngx/pitfalls_and_common_mistakes.html)    
+   >测数文件：`demo.txt` 
+   >>`echo "this is video HTML2 demo2 8088" > ./html2/demo.txt`
     
