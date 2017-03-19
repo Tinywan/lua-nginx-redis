@@ -7,20 +7,20 @@
     * [Nginx 编译安装以及参数详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
     * Lua进阶    
 + **Nginx高性能WEB服务器详解**
-    + **第一章   初探**
+    + 第一章   初探
         - [x] [Nginx的历史](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-    + **第二章   安装部署**
+    + 第二章   安装部署
         - [ ] 测试一
         - [ ] C213
-    * **第三章   Nginx初探**
+    * 第三章   Nginx初探
         - [ ] 测试一
-    * **第四章   Nginx初探**
+    * 第四章   Nginx初探
         - [ ] 测试一
-    * **第五章   Nginx初探**
+    * 第五章   Nginx初探
         - [ ] 测试一
-    * **第六章   Nginx初探**
+    * 第六章   Nginx初探
         - [ ] 测试一
-    * **第七章   Nginx服务器的代理服务**
+    * 第七章   Nginx服务器的代理服务**
         - [ ] [正向代理和反向代理的概念](#title)
         - [ ] [正向代理服务](#title)
         - [ ] [反向代理的服务](#title)
@@ -29,13 +29,13 @@
                 - [x] [负载均衡五个配置实例](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy.md)
             * TCP负载均衡   
                 - [ ] [负载均衡](#title)      
-    * **第八章   Nginx初探**
+    * 第八章   Nginx初探
         - [ ] 测试一
-    * **第九章   Nginx初探**
+    * 第九章   Nginx初探
         - [ ] 测试一
-    * **第十章   Nginx初探**  
+    * 第十章   Nginx初探
         - [ ] 测试一     
-+ **Lua脚本开发Nginx**
++ Lua脚本开发Nginx
     * 普通文本
     * 单行文本2
 * [Lua脚本运行Redis](#line)
