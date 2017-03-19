@@ -1,7 +1,7 @@
 
-## Nginx服务器的代理服务
+#### Nginx服务器的代理服务
 ---
-*  配置实例一：对所有请求实现一般轮询规则的负载均衡  
+* **配置实例一：对所有请求实现一般轮询规则的负载均衡**  
     ```
        http {
 
@@ -38,7 +38,7 @@
             }
         }
     ```
-*  配置实例二：对所有请求实现加权轮询规则负载均衡  
+*  **配置实例二：对所有请求实现加权轮询规则负载均衡**  
     ```
        http {
 
@@ -75,7 +75,7 @@
             }
         }
     ``` 
-*  配置实例三：对特定资源实现负载均衡  
+*  **配置实例三：对特定资源实现负载均衡** 
     ```
        http {
 
@@ -151,3 +151,71 @@
    >测数文件：`demo.txt` 
    >>`echo "this is video HTML2 demo2 8088" > ./html2/demo.txt`
     
+*  **配置实例四：不同的域名实现负载均衡**  
+    ```
+       http {
+
+            upstream frontend {                     # 配置后端服务器组视频代理
+                server 127.0.0.1:8088;         
+                server 127.0.0.1:8089;        
+            }
+
+            upstream backend {                      # 配置后端服务器组文件代理
+                server 127.0.0.1:8888;        
+                server 127.0.0.1:8889;        
+            }
+
+            server {
+                listen 80;
+                server_name  www.frontend.com;
+                location /video/ {
+                    proxy_pass http://frontend;      # 前台域名代理
+                    proxy_set_header Host $host;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;         
+                }
+            }
+
+            server {
+                listen 8088;
+                server_name  www.backend.com;
+                location /video/ {
+                    proxy_pass http://backend;      # 后台域名代理
+                    proxy_set_header Host $host;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;         
+                }
+            }
+
+        }
+    ``` 
+*  **配置实例五：实现带有URL重写的负载均衡**  
+    ```
+       http {
+
+            upstream backend {                      # 配置后端服务器组
+                server 127.0.0.1:8888;        
+                server 127.0.0.1:8889;        
+            }
+
+            server {
+                listen 80;
+                server_name  www.backend.com;
+                index  index.html index.htm;
+                location /file/ {
+                    rewrite ^(/file/.*)/media/(.*)\.*$ $1/mp3/$2.mp3 last;        
+                }
+
+                location / {
+                    proxy_pass http://frontend;      # 前台域名代理
+                    proxy_set_header Host $host;      
+                }
+            }
+
+        }
+    ``` 
+    
+   >客户端请求URL为：`http://www.backend.com/file/download/media/1.mp3`   
+   >[1]：虚拟主机` location /file/ `块将该URL进行重写为:`http://www.backend.com/file/download/media/mp3/1.mp3`      
+   >[2]：新的URL再有  ` location / `块转发转发到后端的backend服务器组中实现负载均衡    
+   >[3]: 这样就可以实现URL重写的负载均衡            
