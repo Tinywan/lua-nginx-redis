@@ -7,13 +7,13 @@
     * [Nginx 编译安装以及参数详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
     * Lua进阶    
 * [Nginx高性能WEB服务器详解](#line)
-    + 第一章   Nginx初探
-        + Nginx初探
-        + Nginx初探
-        + Nginx初探
-        + Nginx初探
-        + Nginx初探
-    * 第一章   Nginx初探
+    + 第一章   初探
+        + Nginx 的历史
+    * 第一章   安装部署
+        - [x] C1
+        - [x] C22
+        - [ ] C33
+        - [ ] C213
     * 第一章   Nginx初探
     * 第一章   Nginx初探
     * 第一章   Nginx初探
