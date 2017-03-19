@@ -1,12 +1,12 @@
 
 ## <a name="index"/>目录
-+ **[Lua网络编程基础知识](#title)**
++ **Lua网络编程基础知识**
     * Lua基础
     * Lua进阶
-+ **[Nginx开发从入门到精通](#line)**
++ **Nginx开发从入门到精通**
     * [Nginx 编译安装以及参数详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
     * Lua进阶    
-+ **[Nginx高性能WEB服务器详解](#line)**
++ **Nginx高性能WEB服务器详解**
     + **第一章   初探**
         - [x] [Nginx的历史](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
     + **第二章   安装部署**
@@ -38,7 +38,7 @@
         - [ ] 测试一
     * **第十章   Nginx初探**  
         - [ ] 测试一     
-+ **[Lua脚本开发Nginx](#text)**
++ **Lua脚本开发Nginx**
     * 普通文本
     * 单行文本2
 * [Lua脚本运行Redis](#line)
