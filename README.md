@@ -21,17 +21,14 @@
     * **第六章   Nginx初探**
         - [ ] 测试一
     * **第七章   Nginx服务器的代理服务**
-        - [x] [正向代理和反向代理的概念](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-        - [x] [正向代理服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-        - [x] [反向代理的服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+        - [ ] [正向代理和反向代理的概念](#title)
+        - [ ] [正向代理服务](#title)
+        - [ ] [反向代理的服务](#title)
         * 负载均衡
-            * **HTTP负载均衡**
-                - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-                - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-                - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-            * **TCP负载均衡**    
-                - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-                - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)        
+            * HTTP负载均衡
+                - [x] [负载均衡五个配置实例](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy.md)
+            * TCP负载均衡   
+                - [ ] [负载均衡](#title)      
     * **第八章   Nginx初探**
         - [ ] 测试一
     * **第九章   Nginx初探**
