@@ -41,7 +41,7 @@
 * [Lua脚本运行Redis](#line)
 
 * [PHP脚本运行Redis](#line)
-    * PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件
+    * [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)
     * 单行文本1
 
 * [链接](#link) 
