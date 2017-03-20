@@ -8,13 +8,15 @@
             upstream live_node {                        # 配置后端服务器组
                 server 127.0.0.1:8089;
                 server 127.0.0.1:8088;
+                keepalive 32;
+                hash $request_uri consistent;
             }
 
             server {
                 listen 80;
                 server_name  localhost;
                 location / {
-                    proxy_pass http://live_node;
+                    proxy_pass http://live_node;         # 注意：proxy_pass后面的路径不带uri时，其会将location的uri传递给后端主机
                     proxy_set_header Host $host;         # 保留客户端的真实信息
                 }
             }
@@ -38,6 +40,16 @@
             }
         }
     ```
+   > 参数：`keepalive connections;`
+   >>补充：`由于短连接消耗前端代理服务器的资源现象严重,因此会将一部分连接定义为长连接以节省资源`   
+   >>FUN：`#为每个worker进程保留的空闲的长连接数量`  
+   >>FUN：`#定义nginx与后端服务器的保持连接的数量` 
+
+   > 参数：`hash $request_uri consistent;`    
+   >>FUN：`#[consistent]; 使用一致性哈希算法, 建议开启此项`     
+   >>FUN：`#基于指定的key的hash表来实现对请求的调度，此处的key可以直接文本、变量或二者的组合；`     
+   >>FUN：`#将请求分类，同一类请求将发往同一个upstream server；`          
+
 *  **配置实例二：对所有请求实现加权轮询规则负载均衡**  
     ```
        http {
@@ -51,7 +63,8 @@
                 listen 80;
                 server_name  localhost;
                 location / {
-                    proxy_pass http://live_node;
+                    #proxy_pass http://new_uri/;         # 注意：proxy_pass后面的路径是一个uri时，其会将location的uri替换为proxy_pass的uri
+                    proxy_pass http://live_node;         
                     proxy_set_header Host $host;         # 保留客户端的真实信息
                 }
             }
@@ -75,6 +88,7 @@
             }
         }
     ``` 
+
 *  **配置实例三：对特定资源实现负载均衡** 
     ```
        http {
@@ -95,7 +109,7 @@
                 location /video/ {
                     proxy_pass http://videobackend;      # 视频代理
                     proxy_set_header Host $host;
-                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Real-IP $remote_addr;        #  proxy_set_header field value; 设定发往后端主机的请求报文的请求首部的值
                     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;         
                 }
 
