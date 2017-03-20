@@ -8,6 +8,8 @@
             upstream live_node {                        # 配置后端服务器组
                 server 127.0.0.1:8089;
                 server 127.0.0.1:8088;
+                keepalive 32;
+                hash $request_uri consistent;
             }
 
             server {
@@ -38,6 +40,16 @@
             }
         }
     ```
+   > 参数：`keepalive connections;`
+   >>补充：`由于短连接消耗前端代理服务器的资源现象严重,因此会将一部分连接定义为长连接以节省资源`   
+   >>FUN：`#为每个worker进程保留的空闲的长连接数量`  
+   >>FUN：`#定义nginx与后端服务器的保持连接的数量` 
+
+   > 参数：`hash $request_uri consistent;`    
+   >>FUN：`#[consistent]; 使用一致性哈希算法, 建议开启此项`     
+   >>FUN：`#基于指定的key的hash表来实现对请求的调度，此处的key可以直接文本、变量或二者的组合；`     
+   >>FUN：`#将请求分类，同一类请求将发往同一个upstream server；`          
+
 *  **配置实例二：对所有请求实现加权轮询规则负载均衡**  
     ```
        http {
@@ -76,6 +88,7 @@
             }
         }
     ``` 
+
 *  **配置实例三：对特定资源实现负载均衡** 
     ```
        http {
