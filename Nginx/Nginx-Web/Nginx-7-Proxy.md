@@ -14,7 +14,7 @@
                 listen 80;
                 server_name  localhost;
                 location / {
-                    proxy_pass http://live_node;
+                    proxy_pass http://live_node;         # 注意：proxy_pass后面的路径不带uri时，其会将location的uri传递给后端主机
                     proxy_set_header Host $host;         # 保留客户端的真实信息
                 }
             }
@@ -51,7 +51,8 @@
                 listen 80;
                 server_name  localhost;
                 location / {
-                    proxy_pass http://live_node;
+                    #proxy_pass http://new_uri/;         # 注意：proxy_pass后面的路径是一个uri时，其会将location的uri替换为proxy_pass的uri
+                    proxy_pass http://live_node;         
                     proxy_set_header Host $host;         # 保留客户端的真实信息
                 }
             }
@@ -95,7 +96,7 @@
                 location /video/ {
                     proxy_pass http://videobackend;      # 视频代理
                     proxy_set_header Host $host;
-                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Real-IP $remote_addr;        #  proxy_set_header field value; 设定发往后端主机的请求报文的请求首部的值
                     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;         
                 }
 
