@@ -24,6 +24,7 @@
         - [ ] [正向代理和反向代理的概念](#title)
         - [ ] [正向代理服务](#title)
         - [ ] [反向代理的服务](#title)
+        - [x] [Nginx日志服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-Log.md)
         * 负载均衡
             * HTTP负载均衡
                 - [x] [负载均衡五个配置实例](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy.md)
