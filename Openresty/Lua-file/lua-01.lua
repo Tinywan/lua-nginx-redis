@@ -8,10 +8,10 @@ return _M
 
 --[[
     location /lua_file {
-                default_type 'text/html';  -- 设置该行，则在浏览器就可以访问了
-                lua_code_cache off;     --  关闭缓存
+                default_type 'text/html';                           -- 设置该行，则在浏览器就可以访问了
+                lua_code_cache off;                                 -- 关闭缓存
                 content_by_lua_block {
-                        local mydata = require "../Lua/lua-01"
+                        local mydata = require "../Lua/lua-01"      -- 注意这个路径 conf/nginx.conf 为相对路径的
                          ngx.say(mydata.get_age("dog"))
                 }
          }
