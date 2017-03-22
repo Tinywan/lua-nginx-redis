@@ -1,4 +1,8 @@
 
+## 常用看着学习
+
++   [解决向github提交代码不用输入帐号密码](#githubpush)
+
 ## <a name="index"/>目录
 + **Lua网络编程基础知识**
     * Lua基础
@@ -117,7 +121,7 @@
          
          return  result;
      ```
-### 解决向github提交代码不用输入帐号密码   
+### <a name="githubpush"/> 解决向github提交代码不用输入帐号密码   
 *   在命令行输入以下命令
     ```
     git config --global credential.helper store
