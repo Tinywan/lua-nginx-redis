@@ -1,4 +1,6 @@
+
 <?php
+//创建一个测试密码
 $count = 0;
 sleep(10);
 while (true) {
