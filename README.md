@@ -1,7 +1,7 @@
 
-## 常用看着学习
+## 开发过程记录
 
-+   [解决向github提交代码不用输入帐号密码](#githubpush)
++   [解决 Visual Studio Code 向github提交代码不用输入帐号密码](#githubpush)
 
 ## <a name="index"/>目录
 + **Lua网络编程基础知识**
