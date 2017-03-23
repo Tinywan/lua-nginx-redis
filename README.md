@@ -121,7 +121,7 @@
          
          return  result;
      ```
-### <a name="githubpush"/> 解决向github提交代码不用输入帐号密码   
+### <a name="githubpush"/> 解决 Visual Studio Code 向github提交代码不用输入帐号密码   
 *   在命令行输入以下命令
     ```
     git config --global credential.helper store

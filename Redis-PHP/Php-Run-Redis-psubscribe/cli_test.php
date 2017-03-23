@@ -1,6 +1,6 @@
 
 <?php
-//创建一个测试密码
+//解决向github提交代码不用输入帐号密码
 $count = 0;
 sleep(10);
 while (true) {
