@@ -4,6 +4,7 @@
 +   [解决 Visual Studio Code 向github提交代码不用输入帐号密码](#githubpush)
 
 ## <a name="index"/>目录
++ [**agentzh的Nginx教程（版本2016.07.21）**](https://openresty.org/download/agentzh-nginx-tutorials-en.html#00-foreword01)
 + **Lua网络编程基础知识**
     * Lua基础
     * Lua进阶
