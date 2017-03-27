@@ -35,6 +35,8 @@
 
 	> 概述：URL_Stream负载均衡服务器根据转发策略分发到后端多台  ECS URL_Stream流媒体服务器
 
+	> 为了剔流（禁止推流）限制，这里记得要把该 URL_Stream后端服务器 外网IP写入到Redis数据库（DROP_URL:{$name}）中去，可以实现剔流操作
+
 *	六、URL_Stream后端服务器分发到LiveNodeSLB负载均衡
 	
 	> 流程：
