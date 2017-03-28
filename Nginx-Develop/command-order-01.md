@@ -24,3 +24,5 @@
     echo $a;
     ```
     + 两个命令 设置在执行阶段`rewrite`，两个命令 回声在随后阶段执行`content`。不同阶段的命令无法执行。
+    
++   Lua 脚本变量 ` ngx.var.remote_addr` =  Nginx的的内建变量 ` $REMOTE_ADDR`    
