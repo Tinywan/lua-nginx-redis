@@ -2,6 +2,7 @@
 ## 开发过程记录
 
 +   [解决 Visual Studio Code 向github提交代码不用输入帐号密码](#githubpush)
++   phase的意义：就是几个MR的一个集合，不定数目的MR job视为一个phase。一个请求经过nginx处理的过程中，会经过一系列的阶段（phases）
 
 ## <a name="index"/>目录
 + [**agentzh的Nginx教程（版本2016.07.21）**](https://openresty.org/download/agentzh-nginx-tutorials-en.html#00-foreword01)
