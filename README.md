@@ -1,4 +1,5 @@
 
+![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Nginx-Phase.png)
 ## 开发过程记录
 
 +   [解决 Visual Studio Code 向github提交代码不用输入帐号密码](#githubpush)
