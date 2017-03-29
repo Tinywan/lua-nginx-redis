@@ -16,13 +16,101 @@
     | NGX_HTTP_TRY_FILES_PHASE     |    HttpLogModuel / access_log |日志模块处理阶段|
 
 +   各个phase说明
-    +   post read phase
-        > nginx读取并解析完请求头之后就进入了post_read 阶段，它位于uri被重写之前，这个阶段允许nginx改变请求头中ip地址的值，相关模块HttpRealIpModule
+    +   (1) post read phase
+        > `post-read ` 属于 `rewrite`阶段
+
+        > `post-read` 支持Nginx模块的钩子
+
+        > 内置模块 `ngx_realip` 把它的处理程序`post-read`分阶段挂起，强制重写请求的原始地址作为特定请求头的值
+
+        ```
+        server {
+            listen 8080;
+
+            set_real_ip_from 127.0.0.1;
+            real_ip_header   X-My-IP;
+
+            location /test {
+                set $addr $remote_addr;
+                echo "from: $addr";
+            }
+        }
+        ```
+
+        > 该配置告诉Nginx强制将每个请求的原始地址重写127.0.0.1为请求头的值X-My-IP。同时它使用内置变量 `$remote_addr`来输出请求的原始地址
+
+        ```
+        $ curl -H 'X-My-IP: 1.2.3.4' localhost:8080/test
+        from: 1.2.3.4
+        ```
+        > curl 参数 -H ：自定义头信息传递给服务器
+
+        > 该选项X-My-IP: 1.2.3.4在请求中包含一个额外的HTTP头
+
+        > 测试结果
+        ```
+        $ curl localhost:8080/test
+        from: 127.0.0.1
+
+        $ curl -H 'X-My-IP: abc' localhost:8080/test
+        from: 127.0.0.1
+        ``
 
     +   server_rewrite phase
-        > 这个阶段主要进行初始化全局变量，或者server级别的重写。如果把重写指令放到 server 中，那么就进入了server rewrite 阶段。（重写指令见rewrite phase）   
+
+        > 这个阶段主要进行初始化全局变量，或者server级别的重写。如果把重写指令放到 server 中，那么就进入了server rewrite 阶段。（重写指令见rewrite phase）  
+
+        > ( 1 ) `server-rewrite ` 阶段运行时间早于 `rewrite` 阶段
+
+        ```
+        location /tinywan {
+                    set $bbb "$aaa, world";
+                    echo $bbb;
+        }
+        set $aaa "HELLO";
+        ``` 
+
+        > `set $a hello` 声明被放在`server`指令中，所以它运行在`server-rewrite`阶段
+
+        > 因此 `set $b "$a, world'" `，在location指令中执行 `set ` 指令后，它将获得正确的`$a`值
+
+        > 执行结果
+
+        ```
+        # curl http://127.0.0.2:8008/tinywan
+        HELLO, world
+        ```
+        > ( 2 ) `post-read` 阶段阶段运行时间早于 `server-rewrite` 阶段执行
+
+        ```
+        server {
+            listen 8080;
+
+            set $addr $remote_addr;
+
+            set_real_ip_from 127.0.0.1;
+            real_ip_header   X-Real-IP;
+
+            location /test {
+                echo "from: $addr";
+            }
+        }
+        ```
+
+        >  ( 3 ) `ngx_realip` 阶段阶段运行时间早于 `server 的 set 指令` 阶段执行
+
+        ```
+        $ curl -H 'X-Real-IP: 1.2.3.4' localhost:8080/test
+        from: 1.2.3.4
+        ```
+
+        > 服务器指令中的命令集始终比模块ngx_realip晚，
+
+        > ( 4 ) `server-rewrite` 阶段阶段运行时间早于 `find-config` 阶段执行
 
     +   find config phase
+        > ( 5 ) `find-config` 阶段阶段运行时间早于 `rewrite` 阶段执行
+        
         > 这个阶段使用重写之后的uri来查找对应的location，值得注意的是该阶段可能会被执行多次，因为也可能有location级别的重写指令。这个阶段并不支持 Nginx 模块注册处理程序，而是由 Nginx 核心来完成当前请求与 location 配置块之间的配对工作
     
     +   rewrite phase：
@@ -59,4 +147,9 @@
         > 一般会在一次请求中被调用多次, 因为这是实现基于 HTTP 1.1 chunked 编码的所谓“流式输出”的,该阶段不能运行Output API、Control API、Subrequest API、Cosocket API
 
     +   log_by_lua 
-        > 该阶段总是运行在请求结束的时候，用于请求的后续操作，如在共享内存中进行统计数据,如果要高精确的数据统计，应该使用body_filter_by_lua                                
+        > 该阶段总是运行在请求结束的时候，用于请求的后续操作，如在共享内存中进行统计数据,如果要高精确的数据统计，应该使用body_filter_by_lua 
+
++   --with-http_realip_module 模块
+    +   set_real_ip_from   192.168.1.0/24;     指定接收来自哪个前端发送的 IP head 可以是单个IP或者IP段
+    +   set_real_ip_from   192.168.2.1;  
+    +   real_ip_header     X-Real-IP;         IP head  的对应参数，默认即可。                                     
