@@ -1,5 +1,7 @@
-## Nginx配置文件
+### Nginx配置Rtmp支持Hls的直播和点播功能
+>[参考网址：https://www.vultr.com/docs/setup-nginx-on-ubuntu-to-stream-live-hls-video](https://www.vultr.com/docs/setup-nginx-on-ubuntu-to-stream-live-hls-video)
 
+>配置信息
 ```
 worker_processes  1;
 error_log  logs/error.log debug;
