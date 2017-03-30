@@ -8,11 +8,15 @@
 sudo ./configure --prefix=/opt/openresty 
 --with-luajit 
 --without-http_redis2_module 
+--with-http_stub_status_module
+--with-http_realip_module
 --with-http_iconv_module 
 --with-stream 
 --with-stream_ssl_module 
 --with-http_ssl_module 
 --add-module=../stream-lua-nginx-module
+--add-module=../nginx-rtmp-module-1.1.11/
+
 ```
 +   默认安装的模块为
 ```
