@@ -41,3 +41,16 @@ sudo ./configure --prefix=/opt/openresty
 --with-http_ssl_module 
 --add-module=/home/tinywan/openresty-1.11.2.1/../stream-lua-nginx-module
 ```
+
+#### Nginx.conf 配置选项详解
++   `--with-http_realip_module` 选项
+    > 通过这个模块允许我们改变客户端请求头中客户端IP地址值(例如，X-Real-IP 或 X-Forwarded-For)   
+
+    > 配置示例
+         
+    ```
+    set_real_ip_from   192.168.1.0/24;
+    set_real_ip_from   192.168.2.1;
+    real_ip_header     X-Real-IP;
+    ```
+    > [--with-http_realip_module 选项（后台Nginx服务器记录原始客户端的IP地址 ）](http://blog.csdn.net/cscrazybing/article/details/50789234)
