@@ -140,7 +140,7 @@ http {
     $clientid = $_GET['clientid'];                    
     $streamName = $_GET['name'];                               
     ```  
-+   on_record_done (on_record_done http://example.com/recorded;) 
++   on_record_done (on_record_done http://my-ip/api/recordDone;) 
     + 返回参数参考
     ```
     'app' => string 'live' (length=4)
@@ -150,9 +150,29 @@ http {
     'pageurl' => string '' (length=0)
     'addr' => string '10.117.46.123' (length=13)
     'clientid' => string '1' (length=1)
-    'call' => string 'record_done' (length=11)
-    'recorder' => string 'rec1' (length=4)
-    'name' => string '4001482801281' (length=13)
-    'path' => string '/data/recorded_flvs/4001482801281-1482801335.flv'         -- 录像路径                      
+    'call' => string 'record_done' (length=11)                              -- 录像事件状态
+    'recorder' => string 'rec1' (length=4)                                  -- 录像模块名称
+    'name' => string '123456' (length=13)                                   -- 推流名称
+    'path' => string '/home/tinywan/video_recordings/123456-1482801335.flv' -- 录像路径                      
     ```              
+    + RTMP配置信息
+    ```
+    rtmp {
+        server {
+            listen 1935;
+            ping 30s;
+            notify_method get;
+            application live {
+                live on;
+                on_record_done http://my-ip/api/recordDone;                    -- 以上配置在这里个回调里面的地址
+                recorder rec1 {
+                        record all manual;
+                        record_unique on;
+                        record_notify on;
+                        record_path /data/recorded_flvs;
+                        exec_record_done /home/www/bin/rtmpRecordedNotify.sh $name $path $filename $basename $dirname;
+            }
+        }
+    }
+    ```
     
