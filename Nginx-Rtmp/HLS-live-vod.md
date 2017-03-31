@@ -158,7 +158,7 @@ http {
     'name' => string '123456' (length=13)                                   -- 推流名称
     'path' => string '/home/tinywan/video_recordings/123456-1482801335.flv' -- 录像路径                      
     ```              
-    + RTMP配置信息
+    + RTMP配置信息，在这里，定义了一个录像模块，这样的话不会自动录像
     ```
     rtmp {
         server {
