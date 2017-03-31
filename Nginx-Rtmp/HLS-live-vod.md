@@ -119,6 +119,7 @@ http {
     ```
 ## 回调信息
 +   on_publish 
+    + 上下文：rtmp, server, application
     + 返回参数参考
     ```
     $action = $_GET['call'];                    --  publish
@@ -130,6 +131,7 @@ http {
     $streamName = $_GET['name'];                --  stream123            
     ```    
 +   on_publish_done 
+    + 上下文：rtmp, server, application
     + 返回参数参考
     ```
     $action = $_GET['call'];                    --  on_publish_done
@@ -141,6 +143,7 @@ http {
     $streamName = $_GET['name'];                               
     ```  
 +   on_record_done (on_record_done http://my-ip/api/recordDone;) 
+    + 上下文：rtmp, server, application, recorder
     + 返回参数参考
     ```
     'app' => string 'live' (length=4)
@@ -148,7 +151,7 @@ http {
     'swfurl' => string '' (length=0)
     'tcurl' => string 'rtmp://10.117.19.148:1935/live' (length=30)
     'pageurl' => string '' (length=0)
-    'addr' => string '10.117.46.123' (length=13)
+    'addr' => string '192.168.18.151/' (length=13)
     'clientid' => string '1' (length=1)
     'call' => string 'record_done' (length=11)                              -- 录像事件状态
     'recorder' => string 'rec1' (length=4)                                  -- 录像模块名称
@@ -175,4 +178,18 @@ http {
         }
     }
     ```
+
++   on_connect 
+    + 上下文：rtmp, server
+    + 返回参数参考
+    ```
+        'app' => string 'live' (length=4)
+        'flashver' => string '' (length=0)
+        'swfurl' => string '' (length=0)
+        'tcurl' => string 'rtmp://192.168.18.151/live' (length=25)
+        'pageurl' => string '' (length=0)
+        'addr' => string '10.117.64.209' (length=13)
+        'epoch' => string '582057759' (length=9)
+        'call' => string 'connect' (length=7)                              
+    ```      
     
