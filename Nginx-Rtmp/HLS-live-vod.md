@@ -12,18 +12,22 @@ rtmp {
     server {
         listen 1935;
         allow play all;
+        notify_method get;     
 
         #creates our "live" full-resolution HLS videostream from our incoming encoder stream and tells where to put the HLS video manifest and video fragments
         application live {
             allow play all;
             live on;
+            on_publish http://example.com/openapi/on_publish_done;   # 设置开始推流的回调
             record all;
-            record_path /video_recordings;
+            record_path /home/tinywan/video_recordings;
             record_unique on;
+            on_record_done http://example.com/recorded; # 设置录像结束的回调
             hls on;
             hls_nested on;
             hls_path /HLS/live;
             hls_fragment 10s;
+            on_publish_done http://example.com/on_publish_done;  # 设置开始推流的回调
 
             #creates the downsampled or "trans-rated" mobile video stream as a 400kbps, 480x360 sized video
             exec ffmpeg -i rtmp://192.168.254.178:1935/$app/$name -acodec copy -c:v libx264 -preset veryfast -profile:v baseline -vsync cfr -s 480x360 -b:v 400k maxrate 400k -bufsize 400k -threads 0 -r 30 -f flv rtmp://192.168.254.178:1935/mobile/$;
@@ -35,13 +39,13 @@ rtmp {
             live on;
             hls on;
             hls_nested on;
-            hls_path /HLS/mobile;
+            hls_path /home/tinywan/HLS/mobile;
             hls_fragment 10s;
         }
 
         #allows you to play your recordings of your live streams using a URL like "rtmp://my-ip:1935/vod/filename.flv"
         application vod {
-            play /video_recordings;
+            play /home/tinywan/video_recordings;
         }
     }
 }
@@ -60,7 +64,7 @@ http {
             types {
                 application/vnd.apple.mpegurl m3u8;
             }
-            alias /HLS/live;
+            alias /home/tinywan/HLS/live;
             add_header Cache-Control no-cache;
         }
 
@@ -69,7 +73,7 @@ http {
             types {
                 application/vnd.apple.mpegurl m3u8;
             }
-            alias /HLS/mobile;
+            alias /home/tinywan/HLS/mobile;
             add_header Cache-Control no-cache;
         }   
 
@@ -113,4 +117,42 @@ http {
     274 274 108 
     Reading: 0 Writing: 1 Waiting: 0 
     ```
+## 回调信息
++   on_publish 
+    + 返回参数参考
+    ```
+    $action = $_GET['call'];                    --  publish
+    $appName = $_GET['app'];                    --  live
+    $swfurl = $_GET['swfurl'];                  --  http://123213.com/lib/jwplayer/jwplayer.flash.swf
+    $tcurl = $_GET['tcurl'];                    --  rtmp://11.26.11.11/live/
+    $ip = $_GET['addr'];                        --  客户端IP地址
+    $clientid = $_GET['clientid'];              --  871696
+    $streamName = $_GET['name'];                --  stream123            
+    ```    
++   on_publish_done 
+    + 返回参数参考
+    ```
+    $action = $_GET['call'];                    --  on_publish_done
+    $appName = $_GET['app'];                    
+    $swfurl = $_GET['swfurl'];                   
+    $tcurl = $_GET['tcurl'];                    
+    $ip = $_GET['addr'];                   
+    $clientid = $_GET['clientid'];                    
+    $streamName = $_GET['name'];                               
+    ```  
++   on_record_done (on_record_done http://example.com/recorded;) 
+    + 返回参数参考
+    ```
+    'app' => string 'live' (length=4)
+    'flashver' => string 'FMLE/3.0 (compatible; Lavf56.3.' (length=31)
+    'swfurl' => string '' (length=0)
+    'tcurl' => string 'rtmp://10.117.19.148:1935/live' (length=30)
+    'pageurl' => string '' (length=0)
+    'addr' => string '10.117.46.123' (length=13)
+    'clientid' => string '1' (length=1)
+    'call' => string 'record_done' (length=11)
+    'recorder' => string 'rec1' (length=4)
+    'name' => string '4001482801281' (length=13)
+    'path' => string '/data/recorded_flvs/4001482801281-1482801335.flv'         -- 录像路径                      
+    ```              
     
