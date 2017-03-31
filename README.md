@@ -14,6 +14,8 @@
     + [默认配置信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
     + 测试中...
   
++ **Redis基础知识**
+    + [Redis 简易安装教程](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md)
 + **Lua网络编程基础知识**
     * Lua基础
     * Lua进阶
