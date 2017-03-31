@@ -56,7 +56,7 @@
             * HTTP负载均衡
                 - [x] [负载均衡五个配置实例](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy.md)
             * TCP负载均衡   
-                - [ ] [负载均衡](#title)      
+                - [ ] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-8-tcp-Proxy.md)      
     * 第八章   Nginx初探
         - [ ] 测试一
     * 第九章   Nginx初探
