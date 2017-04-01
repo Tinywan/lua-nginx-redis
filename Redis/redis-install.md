@@ -55,8 +55,7 @@
     tinywan   43730  0.0  0.0  15984  1060 pts/4    S+   09:11   0:00 grep --color=auto redis
     ```
 
-#### 四、执行redis-cli启动Redis 客户端
-
++ 4、redis-cli启动
     ```
     tinywan@tinywan:/usr/local/redis/etc$ redis-cli -h 127.0.0.1 -p 63790
     127.0.0.1:63790> set name tinywan
