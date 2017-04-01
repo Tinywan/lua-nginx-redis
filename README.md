@@ -1,4 +1,4 @@
-
+ 
 ![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Nginx-Phase.png)
 ## 开发过程记录
 
@@ -38,6 +38,7 @@
         - [x] [Nginx的历史](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
     + 第二章   安装部署
         - [ ] 测试一
+        - [X] [服务器基础配置命令](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-basic-config.md)
         - [ ] C213
     * 第三章   Nginx初探
         - [ ] 测试一
