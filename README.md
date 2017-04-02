@@ -34,21 +34,21 @@
         - [ ] [nginx变量使用方法详解笔记(4)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-04.md)    
         - [ ] [nginx变量使用方法详解笔记(5)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-05.md)   
 + **Nginx高性能WEB服务器详解**
-    + 第一章   初探
+    + 第一章   **Nginx服务器初探**
         - [x] [Nginx的历史](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-    + 第二章   安装部署
+    + 第二章   **Nginx服务器安装部署**
         - [ ] 测试一
         - [X] [服务器基础配置命令](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-basic-config.md)
         - [ ] C213
-    * 第三章   架构初探
+    * 第三章   **Nginx服务器架构初探**
         - [ ] 测试一
-    * 第四章   高级配置
+    * 第四章   **Nginx服务器高级配置**
         - [ ] 测试一
-    * 第五章   Gzip压缩
+    * 第五章   **Nginx服务器Gzip压缩**
         - [ ] 测试一
-    * 第六章   Rewrite 功能
+    * 第六章   **Nginx服务器Rewrite 功能**
         - [ ] 测试一
-    * 第七章   代理服务**
+    * 第七章   **Nginx服务器的代理服务**
         - [ ] [正向代理和反向代理的概念](#title)
         - [ ] [正向代理服务](#title)
         - [ ] [反向代理的服务](#title)
@@ -58,11 +58,11 @@
                 - [x] [负载均衡五个配置实例](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy.md)
             * TCP负载均衡   
                 - [ ] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-8-tcp-Proxy.md)      
-    * 第八章   Nginx初探
+    * 第八章   **Nginx服务器缓存机制**
         - [ ] 测试一
-    * 第九章   Nginx初探
+    * 第九章   Nginx初探1
         - [ ] 测试一
-    * 第十章   Nginx初探
+    * 第十章   Nginx初探1
         - [ ] 测试一     
 + Lua脚本开发Nginx
     * 普通文本
