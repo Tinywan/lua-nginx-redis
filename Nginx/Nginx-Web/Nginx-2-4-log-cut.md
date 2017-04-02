@@ -39,5 +39,36 @@
         + 重启方式二：`/usr/local/nginx/sbin/nginx -s reload`
             > `-s ` 参数包含四个命令分别是 `stop/quit/reopen/reload` (发送信号到主进程：停止，退出，重新打开，重新加载)
 
+     + 发送 kill -USR1 信号给Nginx 主进程号，让Nginx 生成一个新的日志文件 `/usr/local/nginx/logs/access.log`        
+     + Shell 脚本  
+     ```
+        #!/bin/bash
+        # ==============================================================================
+        # chmod u+x /opt/nginx/cut_nginx_log.sh
+        # crontab -e
+        # 0 0 * * * /home/tinywan/bin/cut_nginx_log.sh > /home/tinywan/bin/cut_nginx_log.log 2>&1
+        # ==============================================================================
+
+        LOGS_PATH="/usr/local/nginx/logs"
+        YEAR=$(date -d "yesterday" "+%Y")
+        MONTH=$(date -d "yesterday" "+%m")
+        DATE=$(date -d "yesterday" "+%Y%m%d_%H%M%S")
+        echo "YEAR : ${YEAR} MONTH : ${MONTH} DATE :${DATE} " 
+        NGINX_PID="/var/run/nginx.pid"
+        # -r 检测文件是否可读，如果是，则返回 true。
+        if [ -r ${NGINX_PID} ]; then
+            mkdir -p "${LOGS_PATH}/${YEAR}/${MONTH}"
+            mv "${LOGS_PATH}/access.log" "${LOGS_PATH}/${YEAR}/${MONTH}/access_${DATE}.log"
+            kill -USR1 $(cat "/var/run/nginx.pid")
+            sleep 1
+            gzip "${LOGS_PATH}/${YEAR}/${MONTH}/access_${DATE}.log"
+            echo 'Nginx Success'
+        else
+            echo "Nginx might be down"
+        fi
+        exit 1
+     ```
+
+
 
           
