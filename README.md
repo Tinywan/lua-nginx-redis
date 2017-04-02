@@ -40,15 +40,15 @@
         - [ ] 测试一
         - [X] [服务器基础配置命令](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-basic-config.md)
         - [ ] C213
-    * 第三章   Nginx初探
+    * 第三章   架构初探
         - [ ] 测试一
-    * 第四章   Nginx初探
+    * 第四章   高级配置
         - [ ] 测试一
-    * 第五章   Nginx初探
+    * 第五章   Gzip压缩
         - [ ] 测试一
-    * 第六章   Nginx初探
+    * 第六章   Rewrite 功能
         - [ ] 测试一
-    * 第七章   Nginx服务器的代理服务**
+    * 第七章   代理服务**
         - [ ] [正向代理和反向代理的概念](#title)
         - [ ] [正向代理服务](#title)
         - [ ] [反向代理的服务](#title)
