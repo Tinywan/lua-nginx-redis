@@ -193,9 +193,11 @@
         php_value[session.save_path] = /var/lib/php/session
     ``     
 + php-fpm开机自动启动Shell脚本
-    + [php-fpm开机自动启动Shell脚本](http://www.jb51.net/article/68153.htm)
+    + [php-fpm开机自动启动Shell脚本](http://www.jb51.net/article/58796.htm)
     + 在当前目录`(/home/tinywan)`新建一个`php-fpm.sh`文件，粘贴一下测试成功代码
     + 复制到开机就默认开启的服务脚本：`sudo cp php-fpm.sh  /etc/init.d/php-fpm`
+    + 给予权限：`sudo chmod +x /etc/init.d/nginx`
+    + [安装sysv-rc-conf管理服务](http://blog.csdn.net/gatieme/article/details/45251389)
     + 测试成功代码
     ```
     #! /bin/sh
