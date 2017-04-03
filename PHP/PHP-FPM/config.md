@@ -7,11 +7,11 @@
     |--Nginx--|----nginx_pelican.conf      	        配置文件（静态HTML版本，适合Pelican、HEXO等）
     |         |----nginx      			服务控制脚本
     |
-    |         |----php.ini      			-- php运行核心配置文件
-    |         |----php-fpm      			-- 服务控制脚本
+    |         |----php.ini      			-- php运行核心配置文件，文件所在目录：/opt/php-7.0.9/etc/
+    |         |----php-fpm      			-- 服务控制脚本，文件所在目录：/opt/php-7.0.9/sbin/
     |---PHP---|
-    |         |----php-fpm.conf      		-- 是 **php-fpm** 进程服务的配置文件
-    |		  |----www.conf      	        -- 是 php-fpm 进程服务的扩展配置文件
+    |         |----php-fpm.conf      		-- 是 **php-fpm** 进程服务的配置文件，文件所在目录：/opt/php-7.0.9/etc/
+    |		  |----www.conf      	        -- 是 php-fpm 进程服务的扩展配置文件，文件所在目录：/opt/php-7.0.9/etc/php-fpm.d/
     |
     |         |----my.cnf      			配置文件
     |--MySql--|
@@ -22,6 +22,19 @@
     |--README.md
     ```
 + PHP
+    + 启动：`sudo /opt/php-7.0.9/sbin/php-fpm `
+    + 重启：
+        ```
+        sudo kill -QUIT `cat /opt/php-7.0.9/var/run/php-fpm.pid`
+        ```
+    + 停止：
+        ```
+        sudo kill -QUIT `cat /opt/php-7.0.9/var/run/php-fpm.pid`
+
+        sudo kill -9 `cat /opt/php-7.0.9/var/run/php-fpm.pid`
+        ```        
+    + php-fpm 主进程pid：`cat /opt/php-7.0.9/var/run/php-fpm.pid `
+    + php-fpm 错误日志文件：`cat /opt/php-7.0.9/var/log/php-fpm.log `
     + php-fpm 的启动参数
     ```
         #测试php-fpm配置
