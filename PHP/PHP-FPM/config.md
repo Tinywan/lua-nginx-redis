@@ -1,11 +1,11 @@
-## 第三方士大夫
+## PHP7中php.ini、php-fpm和www.conf的配置
 + 配置文件详解
     ```
     |Project_dir
     |
-    |         |----nginx.conf      			配置文件（PHP版本，适合WordPress、Typecho等）
-    |--Nginx--|----nginx_pelican.conf      	        配置文件（静态HTML版本，适合Pelican、HEXO等）
-    |         |----nginx      			服务控制脚本
+    |         |----nginx.conf      			-- 配置文件（PHP版本，适合WordPress、Typecho等）
+    |--Nginx--|----nginx_pelican.conf      	        -- 配置文件（静态HTML版本，适合Pelican、HEXO等）
+    |         |----nginx      			-- 服务控制脚本
     |
     |         |----php.ini      			-- php运行核心配置文件，文件所在目录：/opt/php-7.0.9/etc/
     |         |----php-fpm      			-- 服务控制脚本，文件所在目录：/opt/php-7.0.9/sbin/
@@ -13,11 +13,11 @@
     |         |----php-fpm.conf      		-- 是 **php-fpm** 进程服务的配置文件，文件所在目录：/opt/php-7.0.9/etc/
     |		  |----www.conf      	        -- 是 php-fpm 进程服务的扩展配置文件，文件所在目录：/opt/php-7.0.9/etc/php-fpm.d/
     |
-    |         |----my.cnf      			配置文件
+    |         |----my.cnf      			-- 配置文件
     |--MySql--|
-    |         |----mysqld      			服务控制脚本
+    |         |----mysqld      			-- 服务控制脚本
     |
-    |--nginx_log_backup.sh      			每天切割Nginx服务产生的日志文件
+    |--nginx_log_backup.sh      			-- 每天切割Nginx服务产生的日志文件
     |
     |--README.md
     ```
@@ -191,6 +191,145 @@
         ######设置php的session目录（所属用户和用户组都是nginx）
         php_value[session.save_handler] = files
         php_value[session.save_path] = /var/lib/php/session
-    ``       
+    ``     
++ php-fpm开机自动启动Shell脚本
+    + [php-fpm开机自动启动Shell脚本](http://www.jb51.net/article/68153.htm)
+    + 在当前目录`(/home/tinywan)`新建一个`php-fpm.sh`文件，粘贴一下测试成功代码
+    + 复制到开机就默认开启的服务脚本：`sudo cp php-fpm.sh  /etc/init.d/php-fpm`
+    + 测试成功代码
+    ```
+    #! /bin/sh
+    ### BEGIN INIT INFO
+    # Provides:     php-fpm
+    # Required-Start:  $remote_fs $network
+    # Required-Stop:   $remote_fs $network
+    # Default-Start:   2 3 4 5
+    # Default-Stop:   0 1 6
+    # Short-Description: starts php-fpm
+    # Description:    starts the PHP FastCGI Process Manager daemon
+    ### END INIT INFO
 
+    prefix=/opt/php-7.0.9    # 只需要修改这里就可以里，这里是编译路径
+    exec_prefix=${prefix}
 
+    php_fpm_BIN=${exec_prefix}/sbin/php-fpm
+    php_fpm_CONF=${prefix}/etc/php-fpm.conf
+    php_fpm_PID=${prefix}/var/run/php-fpm.pid
+
+    php_opts="--fpm-config $php_fpm_CONF --pid $php_fpm_PID"
+
+    wait_for_pid () {
+        try=0
+
+        while test $try -lt 35 ; do
+
+            case "$1" in
+                'created')
+                if [ -f "$2" ] ; then
+                    try=''
+                    break
+                fi
+                ;;
+
+                'removed')
+                if [ ! -f "$2" ] ; then
+                    try=''
+                    break
+                fi
+                ;;
+            esac
+
+            echo -n .
+            try=`expr $try + 1`
+            sleep 1
+
+        done
+
+    }
+    case "$1" in
+        start)
+            echo -n "Starting php-fpm ... "
+
+            $php_fpm_BIN --daemonize $php_opts
+
+            if [ "$?" != 0 ] ; then
+                echo " failed"
+                exit 1
+            fi
+
+            wait_for_pid created $php_fpm_PID
+
+            if [ -n "$try" ] ; then
+                echo " failed"
+                exit 1
+            else
+                echo "[OK]"
+            fi
+        ;;
+
+        stop)
+            echo -n "Gracefully shutting down php-fpm "
+
+            if [ ! -r $php_fpm_PID ] ; then
+                echo "warning, no pid file found - php-fpm is not running ?"
+                exit 1
+            fi
+
+            kill -QUIT `cat $php_fpm_PID`
+
+            wait_for_pid removed $php_fpm_PID
+
+            if [ -n "$try" ] ; then
+                echo " failed. Use force-quit"
+                exit 1
+            else
+                echo "[OK]"
+            fi
+        ;;
+        
+        force-quit)
+            echo -n "Terminating php-fpm "
+
+            if [ ! -r $php_fpm_PID ] ; then
+                echo "warning, no pid file found - php-fpm is not running ?"
+                exit 1
+            fi
+
+            kill -TERM `cat $php_fpm_PID`
+
+            wait_for_pid removed $php_fpm_PID
+
+            if [ -n "$try" ] ; then
+                echo " failed"
+                exit 1
+            else
+                echo " [OK]"
+            fi
+        ;;
+
+        restart)
+            $0 stop
+            $0 start
+        ;;
+
+        reload)
+
+            echo -n "Reload service php-fpm "
+
+            if [ ! -r $php_fpm_PID ] ; then
+                echo "warning, no pid file found - php-fpm is not running ?"
+                exit 1
+            fi
+
+            kill -USR2 `cat $php_fpm_PID`
+
+            echo "[OK]"
+        ;;
+
+        *)
+            echo "Usage: $0 {start|stop|force-quit|restart|reload}"
+            exit 1
+        ;;
+
+    esac
+```      
