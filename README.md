@@ -10,7 +10,7 @@
 + [**agentzh的Nginx教程（版本2016.07.21）**](https://openresty.org/download/agentzh-nginx-tutorials-en.html#00-foreword01)
 + [**Nginx的11个Phases**](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-phases.md)
 + [**Nginx配置Rtmp支持Hls的直播和点播功能**](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod.md)
-+ [**Nginx 陷阱和常见错误（以下为正确或者推荐配置）**]https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-1-config.md)
++ [**Nginx 陷阱和常见错误**](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-1-config.md)
 + [**Openresty**]
     + [默认配置信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
     + 测试中...
