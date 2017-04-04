@@ -151,8 +151,8 @@
          
          return  result;
      ```
-### <a name="githubpush"/> 解决 Visual Studio Code 向github提交代码不用输入帐号密码   
-*   在命令行输入以下命令
+### <a name="githubpush"/> 13.解决 Visual Studio Code 向github提交代码不用输入帐号密码    
++   在命令行输入以下命令
     ```
     git config --global credential.helper store
     ```
@@ -163,11 +163,11 @@
     [credential]
     helper = store
     ```
-*   push 代码
++   push 代码
 
     > push你的代码 (git push), 这时会让你输入用户名和密码, 这一步输入的用户名密码会被记住, 下次再push代码时就不用输入用户名密码!这一步会在用户目录下生成文件.git-credential记录用户名密码的信息。
 
-*   Markdown 的超级链接技术
++   Markdown 的超级链接技术
 
     > 【1】需要链接的地址：
 
@@ -182,6 +182,34 @@
         ```
         
     > 通过【1】和【2】可以很完美的实现一个连接哦！
+
+### Lua 脚本
++   [1] Lua 实现简单封装
+    >man.lua   
+
+    ```
+        local _name = "Tinywan"
+        local man = {}
+
+        function man.GetName()
+            return _name
+        end
+
+        function man.SetName(name)
+            _name = name    
+        end
+
+        return man 
+    ```
+
+    >测试封装,test.lua   
+
+    ```
+        local man = require('man')
+        print("The man name is "..man.GetName())
+        man.SetName("Phalcon")
+        print("The man name is "..man.GetName())
+    ```
 
 
 
