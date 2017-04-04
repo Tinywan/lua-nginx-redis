@@ -78,6 +78,15 @@
     * 单行文本1
 
 + **openresty**
+    - [x] luajit 执行文件默认安装路径：`/opt/openresty/luajit/bin/luajit`,这样我们直接可以这样运行一个Lua文件：`luajit test.lua `
+        > 案例：   
+        
+        ```
+        tinywan@tinywan:~/Lua$ luajit test.lua    
+        The man name is Tinywan            
+        The man name is Phalcon
+        ```
+
     - [x] 第一章   与location 配合 使用
     - [ ] 第一章   获取 uri 参数
 
