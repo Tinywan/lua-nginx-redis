@@ -77,7 +77,7 @@
     * [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)
     * 单行文本1
 
-+ **openresty**
++ **openresty 学习**
     +   luajit 执行文件默认安装路径：`/opt/openresty/luajit/bin/luajit`,这样我们直接可以这样运行一个Lua文件：`luajit test.lua `
         + luajit 运行测试案例：   
         ```
@@ -85,7 +85,7 @@
         The man name is Tinywan            
         The man name is Phalcon
         ```
-    + [X] lua-resty-redis
+    + lua-resty-redis 扩展
         + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";`
         + **Lua脚本实现一个CDN的反向代理功能(智能查找CDN节点)**
             + nginx.conf 配置信息
@@ -115,7 +115,7 @@
             + [Lua脚本proxy_pass_cdn.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/proxy_pass_cdn.lua)
             + [lua-nginx-module 贡献代码](https://github.com/openresty/lua-nginx-module/issues/275)
 
-    + [X] lua-resty-websocket
+    +  lua-resty-websocket 扩展
         + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-websocket/lib/?.lua;;";`
         + **Lua脚本实现一个websocket连接(测试成功,可上线)**
             + nginx.conf 配置信息
