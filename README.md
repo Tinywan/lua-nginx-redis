@@ -78,17 +78,39 @@
     * 单行文本1
 
 + **openresty**
-    - [x] luajit 执行文件默认安装路径：`/opt/openresty/luajit/bin/luajit`,这样我们直接可以这样运行一个Lua文件：`luajit test.lua `
-        > 案例：   
-        
+    +   luajit 执行文件默认安装路径：`/opt/openresty/luajit/bin/luajit`,这样我们直接可以这样运行一个Lua文件：`luajit test.lua `
+        + luajit 运行测试案例：   
         ```
         tinywan@tinywan:~/Lua$ luajit test.lua    
         The man name is Tinywan            
         The man name is Phalcon
         ```
-
-    - [x] 第一章   与location 配合 使用
-    - [ ] 第一章   获取 uri 参数
+    + [X] lua-resty-redis
+        + 代码引入：`lua_package_path "/usr/local/nginx/lua/lua-resty-redis/lib/?.lua;;";`
+        + 地方
+    + [X] lua-resty-websocket
+        + 代码引入：`lua_package_path "/usr/local/nginx/lua/lua-resty-websocket/lib/?.lua;;";`
+        + 通过Lua脚本实现一个websocket连接(测试成功,可上线)
+            + nginx.conf 配置信息
+            ```
+            http {
+                    lua_package_path "/usr/local/nginx/lua/lua-resty-websocket/lib/?.lua;;";
+                    server {
+                        listen 80;
+                        server_name  localhost;
+                        location /ws {
+                            lua_socket_log_errors off;
+                            lua_check_client_abort on;
+                            lua_code_cache off; # 建议测试的时候最好关闭缓存
+                            content_by_lua_file /opt/openresty/nginx/conf/Lua/websocket.lua;
+                        }
+                    }
+            }
+            ```
+            + WebSockets服务器代码
+            + websockets.html
+            + 然后打开启用了WebSocket支持的浏览器，然后打开以下url：
+            [websockt-lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/websocket_lua01.png) 
 
 ## Redis、Lua、Nginx一起工作事迹
 * 解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决

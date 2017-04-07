@@ -71,8 +71,9 @@
 -–with-libatomic=               指向libatomic_ops安装目录 
 -–with-openssl=                 指向openssl安装目录 
 -–with-openssl-opt              在编译时为openssl设置附加参数 
--–with-debug                    启用debug日志
+--with-debug                    启用debug日志
 --with-stream_ssl_module
+--add-module=/home/tinywan/nchan-1.1.3/
 # make && make install
 # mkdir -pv /var/tmp/nginx/client
 ```
