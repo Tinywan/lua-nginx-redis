@@ -107,8 +107,8 @@
                     }
             }
             ```
-            + [WebSockets服务器代码]()
-            + [websockets.html客户端代码]()
+            + [WebSockets服务器代码](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-websocket/websocket.lua)
+            + [websockets.html客户端代码](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-websocket/websocket.html)
             + 然后打开启用了WebSocket支持的浏览器，然后打开以下url：   
 
             ![websockt-lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/websocket_lua01.png) 
