@@ -86,15 +86,15 @@
         The man name is Phalcon
         ```
     + [X] lua-resty-redis
-        + 代码引入：`lua_package_path "/usr/local/nginx/lua/lua-resty-redis/lib/?.lua;;";`
+        + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";`
         + 地方
     + [X] lua-resty-websocket
-        + 代码引入：`lua_package_path "/usr/local/nginx/lua/lua-resty-websocket/lib/?.lua;;";`
+        + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-websocket/lib/?.lua;;";`
         + 通过Lua脚本实现一个websocket连接(测试成功,可上线)
             + nginx.conf 配置信息
             ```
             http {
-                    lua_package_path "/usr/local/nginx/lua/lua-resty-websocket/lib/?.lua;;";
+                    lua_package_path "/opt/openresty/nginx/lua/lua-resty-websocket/lib/?.lua;;";
                     server {
                         listen 80;
                         server_name  localhost;
@@ -108,7 +108,7 @@
             }
             ```
             + [WebSockets服务器代码](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-websocket/websocket.lua)
-            + [websockets.html客户端代码](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-websocket/websocket.html)
+            + [websockets.html客户端代码,代码路径：/usr/local/openresty/nginx/html](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-websocket/websocket.html)
             + 然后打开启用了WebSocket支持的浏览器，然后打开以下url：   
 
             ![websockt-lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/websocket_lua01.png) 
