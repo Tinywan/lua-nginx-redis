@@ -87,10 +87,37 @@
         ```
     + [X] lua-resty-redis
         + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";`
-        + 地方
+        + **Lua脚本实现一个CDN的反向代理功能(智能查找CDN节点)**
+            + nginx.conf 配置信息
+            ```
+            http {
+                    lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";
+                    server {
+                        listen 80;
+                        server_name  localhost;
+                        location ~ \/.+\/.+\.(m3u8|ts) {
+                                if ($uri ~ \/([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)(|-).*\.(m3u8|ts)) {
+                                        set $app_name $1;
+                                        set $a $2;
+                                }
+                                set $stream_id "";
+                                default_type 'text/html';
+                                rewrite_by_lua_file  /opt/openresty/nginx/lua/proxy_pass_cdn.lua;
+                                proxy_connect_timeout       10;
+                                proxy_send_timeout          30;
+                                proxy_read_timeout          30;
+                                proxy_pass                  $stream_id;
+                        }
+
+                    }
+            }
+            ```
+            + [Lua脚本proxy_pass_cdn.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/proxy_pass_cdn.lua)
+            + [lua-nginx-module 贡献代码](https://github.com/openresty/lua-nginx-module/issues/275)
+
     + [X] lua-resty-websocket
         + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-websocket/lib/?.lua;;";`
-        + 通过Lua脚本实现一个websocket连接(测试成功,可上线)
+        + **Lua脚本实现一个websocket连接(测试成功,可上线)**
             + nginx.conf 配置信息
             ```
             http {
@@ -107,7 +134,7 @@
                     }
             }
             ```
-            + [WebSockets服务器代码](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-websocket/websocket.lua)
+            + [WebSockets服务器Lua脚本websocket.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-websocket/websocket.lua)
             + [websockets.html客户端代码,代码路径：/usr/local/openresty/nginx/html](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-websocket/websocket.html)
             + 然后打开启用了WebSocket支持的浏览器，然后打开以下url：   
 
