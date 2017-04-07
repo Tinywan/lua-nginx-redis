@@ -107,10 +107,11 @@
                     }
             }
             ```
-            + WebSockets服务器代码
-            + websockets.html
-            + 然后打开启用了WebSocket支持的浏览器，然后打开以下url：
-            [websockt-lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/websocket_lua01.png) 
+            + [WebSockets服务器代码]()
+            + [websockets.html客户端代码]()
+            + 然后打开启用了WebSocket支持的浏览器，然后打开以下url：   
+
+            ![websockt-lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/websocket_lua01.png) 
 
 ## Redis、Lua、Nginx一起工作事迹
 * 解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
