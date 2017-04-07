@@ -123,7 +123,7 @@
             http {
                     lua_package_path "/opt/openresty/nginx/lua/lua-resty-websocket/lib/?.lua;;";
                     server {
-                        listen 80;
+                        listen 80 so_keepalive=2s:2s:8;  #为了防止半开TCP连接，最好在Nginx监听配置指令中启用TCP keepalive：
                         server_name  localhost;
                         location /ws {
                             lua_socket_log_errors off;
