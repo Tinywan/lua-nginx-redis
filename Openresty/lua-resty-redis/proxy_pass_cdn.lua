@@ -59,3 +59,4 @@ end
 ngx.var.stream_id = resp
 close_redis(redis_instance)
 -- ngx.say("reds get result : ", resp)
+-- help doc http://jinnianshilongnian.iteye.com/blog/2187328
