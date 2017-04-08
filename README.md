@@ -139,6 +139,29 @@
             + 然后打开启用了WebSocket支持的浏览器，然后打开以下url：   
 
             ![websockt-lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/websocket_lua01.png) 
+    +  lua-cjson 扩展   
+        + 基本用法
+            + nginx.conf
+            ```
+            location /cjson {
+                    content_by_lua_block {
+                            local cjson = require "cjson"
+
+                            local json = cjson.encode({
+                                    foo = "bar",
+                                    some_object = {},
+                                    some_array = cjson.empty_array
+                            })
+                            ngx.say(json)
+                    }
+            }
+            ```  
+            + curl 请求
+            ```
+            root@tinywan:/opt/openresty/nginx/conf# curl http://127.0.0.1/cjson
+            {"some_object":{"tel":13669313112,"age":24},"name":"tinywan","some_array":[]}
+            ```       
+        + [lua对象到字符串、字符串到lua对象](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-cjson/cjson-str-obj.lua)            
 
 ## Redis、Lua、Nginx一起工作事迹
 * 解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决

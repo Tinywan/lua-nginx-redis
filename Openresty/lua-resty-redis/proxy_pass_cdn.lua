@@ -1,3 +1,21 @@
+local function close_redis(redis_instance)  
+    if not redis_instance then  
+        return  
+    end  
+    -- local ok, err = redis_instance:close()  
+    -- if not ok then  
+    --     ngx.say("close redis error : ", err)  
+    -- end 
+
+    --释放连接(连接池实现)  
+    local pool_max_idle_time = 10000 --毫秒  
+    local pool_size = 100 --连接池大小  
+    local ok, err = redis_instance:set_keepalive(pool_max_idle_time, pool_size)  
+    if not ok then  
+        ngx.say("set keepalive error : ", err)  
+    end   
+end 
+
 -- 接受Nginx传递进来的参数$1 也就是SteamName
 local stream_a = ngx.var.a
 
@@ -39,4 +57,5 @@ if resp == ngx.null then
     return nil
 end
 ngx.var.stream_id = resp
+close_redis(redis_instance)
 -- ngx.say("reds get result : ", resp)

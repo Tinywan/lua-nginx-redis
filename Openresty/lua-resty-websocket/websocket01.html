@@ -1,0 +1,107 @@
+<html>
+
+<head>
+  <script>
+    var ws = null;
+    function connect() {
+      if (ws !== null) return log('already connected');
+      ws = new WebSocket('ws://127.0.0.1/s/');
+      ws.onopen = function () {
+        log('connected');
+      };
+      ws.onerror = function (error) {
+        log(error);
+      };
+      ws.onmessage = function (e) {
+        log('recv: ' + e.data);
+      };
+      ws.onclose = function () {
+        log('disconnected');
+        ws = null;
+      };
+      return false;
+    }
+    function disconnect() {
+      if (ws === null) return log('already disconnected');
+      ws.close();
+      return false;
+    }
+    function send() {
+      if (ws === null) return log('please connect first');
+      var text = document.getElementById('text').value;
+      document.getElementById('text').value = "";
+      log('send: ' + text);
+      ws.send(text);
+      return false;
+    }
+    function log(text) {
+      var li = document.createElement('li');
+      li.appendChild(document.createTextNode(text));
+      document.getElementById('log').appendChild(li);
+      return false;
+    }
+  </script>
+</head>
+
+<body>
+  <form onsubmit="return send();">
+    <button type="button" onclick="return connect();">
+      Connect
+    </button>
+    <button type="button" onclick="return disconnect();">
+      Disconnect
+    </button>
+    <input id="text" type="text">
+    <button type="submit">Send</button>
+  </form>
+  <ol id="log"></ol>
+</body>
+
+</html>
+<script type="text/javascript">
+var ws = null;
+function WebSocketConn() {
+  if (ws != null && ws.readyState == 1) {
+    log("已经在线"); return
+  }
+  if ("WebSocket" in window) { // Let us open a web socket 
+    ws = new WebSocket("ws://localhost:8008/sredis");
+    ws.onopen = function () { 
+      log('成功进入聊天室'); 
+    };
+    ws.onmessage = function (event) { 
+      log(event.data) 
+    };
+    ws.onclose = function () {
+      // websocket is closed. 
+      log("已经和服务器断开");
+    };
+    ws.onerror = function (event) {
+      console.log("error " + event.data);
+    };
+  } else { 
+    // The browser doesn't support WebSocket 
+    alert("WebSocket NOT supported by your Browser!");
+  }
+} function SendMsg() {
+  if (ws != null && ws.readyState == 1) {
+    var msg = document.getElementById('msgtext').value;
+    ws.send(msg);
+  } else {
+    log('请先进入聊天室');
+  }
+} function WebSocketClose() {
+  if (ws != null && ws.readyState == 1) {
+    ws.close();
+    log("发送断开服务器请求");
+  } else {
+    log("当前没有连接服务器")
+  }
+} function log(text) {
+  var li = document.createElement('li');
+  li.appendChild(document.createTextNode(text));
+  document.getElementById('log').appendChild(li);
+  return false;
+}
+
+</script>
