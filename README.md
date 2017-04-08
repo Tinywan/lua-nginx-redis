@@ -12,10 +12,6 @@
 + [**Nginx配置Rtmp支持Hls的直播和点播功能**](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod.md)
 + [**Nginx 陷阱和常见错误**](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-1-config.md)
 + [**PHP7中php.ini/php-fpm/www.conf的配置,Nginx和PHP-FPM的开机自动启动脚本**](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/PHP/PHP-FPM/config.md)
-+ **Openresty学习**
-    + [默认配置信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
-    + 测试中...
-  
 + **Redis基础知识**
     + [Redis 简易安装教程](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md)
 + **Lua网络编程基础知识**
@@ -78,6 +74,23 @@
     * 单行文本1
 
 + **openresty 学习**
+    +   [默认配置信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
+    +   开发入门
+        + 参数总结
+          + Lua脚本接受Nginx变量：
+          > [1] 间接获取：`var = ngx.var `，如接受Nginx的变量` $a = 9`,则`lua_a = ngx.var.a -- lua_a = 9`   
+          > [2] 直接获取：`var = ngx.var `，如接受Nginx的location的第二个变量890,` http://127.0.0.1/lua_request/123/890 `,则`lua_2 = ngx.var[2] -- lua_2 = 890`    
+
+          + Lua脚本接受Nginx头部header：
+          > [1] 返回一个包含所有当前请求标头的Lua表：`local headers = ngx.req.get_headers()`      
+          > [2] 获取单个Host：`headers["Host"] 或者 ngx.req.get_headers()["Host"] `     
+          > [3] 获取单个user-agent：`headers["user-agent"] 或者 headers.user_agent 或者 ngx.req.get_headers()['user-agent'] `    
+
+          + Lua获取Get请求uri参数
+
+        + [接收请求:获取如请求参数、请求头、Body体等信息]()
+        + [接收请求:输出响应需要进行响应状态码、响应头和响应内容体的输出]()
+
     +   luajit 执行文件默认安装路径：`/opt/openresty/luajit/bin/luajit`,这样我们直接可以这样运行一个Lua文件：`luajit test.lua `
         + luajit 运行测试案例：   
         ```
