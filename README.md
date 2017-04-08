@@ -78,15 +78,25 @@
     +   开发入门
         + 参数总结
           + Lua脚本接受Nginx变量：
-          > [1] 间接获取：`var = ngx.var `，如接受Nginx的变量` $a = 9`,则`lua_a = ngx.var.a -- lua_a = 9`   
-          > [2] 直接获取：`var = ngx.var `，如接受Nginx的location的第二个变量890,` http://127.0.0.1/lua_request/123/890 `,则`lua_2 = ngx.var[2] -- lua_2 = 890`    
+            > [1] 间接获取：`var = ngx.var `，如接受Nginx的变量` $a = 9`,则`lua_a = ngx.var.a --lua_a = 9`   
+            > [2] 直接获取：`var = ngx.var `，如接受Nginx的location的第二个变量890,` http://127.0.0.1/lua_request/123/890 `,则`lua_2 = ngx.var[2] --lua_2 = 890`    
 
-          + Lua脚本接受Nginx头部header：
-          > [1] 返回一个包含所有当前请求标头的Lua表：`local headers = ngx.req.get_headers()`      
-          > [2] 获取单个Host：`headers["Host"] 或者 ngx.req.get_headers()["Host"] `     
-          > [3] 获取单个user-agent：`headers["user-agent"] 或者 headers.user_agent 或者 ngx.req.get_headers()['user-agent'] `    
+          + Lua 脚本接受 Nginx 头部 header：
+            > [1] 返回一个包含所有当前请求标头的Lua表：`local headers = ngx.req.get_headers()`      
+            > [2] 获取单个Host：`headers["Host"] 或者 ngx.req.get_headers()["Host"] `     
+            > [3] 获取单个user-agent：`headers["user-agent"] 或者 headers.user_agent 或者 ngx.req.get_headers()['user-agent'] `    
 
-          + Lua获取Get请求uri参数
+          + Lua Get 获取请求uri参数
+            > linux curl Get方式提交数据语法：`curl -G -d "name=value&name2=value2" https://github.com/Tinywan `  
+            > 返回一个包含所有当前请求URL查询参数的Lua表：`local get_args = ngx.req.get_uri_args()`   
+            > 请求案例：`curl -G -d "name=Tinywan&age=24" http://127.0.0.1/lua_request/123/789`      
+            > Lua Get 方式获取提交的name参数的值：`get_args['name'] 或者 ngx.req.get_uri_args()['name']`
+
+          + Lua Post 获取请求uri参数
+            > linux curl Post方式提交数据语法：`curl -G -d "name=value&name2=value2" https://github.com/Tinywan `  
+            > 返回一个包含所有当前请求URL查询参数的Lua表：`local get_args = ngx.req.get_uri_args()`   
+            > 请求案例：`curl -G -d "name=Tinywan&age=24" http://127.0.0.1/lua_request/123/789`      
+            > Lua Get 方式获取提交的name参数的值：`get_args['name'] 或者 ngx.req.get_uri_args()['name']`   
 
         + [接收请求:获取如请求参数、请求头、Body体等信息]()
         + [接收请求:输出响应需要进行响应状态码、响应头和响应内容体的输出]()
