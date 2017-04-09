@@ -184,7 +184,9 @@
         + **Lua脚本结合 Nginx+Lua+Local Redis+Mysql服务器缓存**
             + Nginx+Lua+Local Redis+Mysql集群架构   
             ![Nginx+Lua+Local Redis+Mysql](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Nginx+Lua+Local_Redis+Mysql.png)    
-            + [Lua脚本proxy_pass_cdn.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/proxy_pass_cdn.lua)
+            + [Lua脚本：Nginx+Lua+Redis+Mysql.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/Nginx+Lua+Redis+Mysql.lua)
+            + [Nginx.conf配置文件：Nginx+Lua+Redis+Mysql.conf](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/Nginx+Lua+Local Redis+Mysql.conf)
+            
     +  lua-resty-websocket 扩展
         + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-websocket/lib/?.lua;;";`
         + **Lua脚本实现一个websocket连接(测试成功,可上线)**
