@@ -46,7 +46,14 @@
     * 第五章   Gzip压缩
         - [ ] 测试一
     * 第六章   Rewrite 功能
-        - [ ] 测试一
+        - [x] Rewrite 常用全局变量,请求案例： `curl -G -d "name=Tinywan&age=24" http://127.0.0.1/rewrite_var/1192/index.m3u8`
+
+            | 名字 | 描述          |
+            | ------------- | ----------- |
+            | Help      | ~~Display the~~ help window.|
+            | Close     | _Closes_ a window     |
+
+        - [x] Rewrite 常用全局变量2313
     * 第七章   代理服务
         - [ ] [正向代理和反向代理的概念](#title)
         - [ ] [正向代理服务](#title)
@@ -84,22 +91,34 @@
           + Lua 脚本接受 Nginx 头部 header：
             > [1] 返回一个包含所有当前请求标头的Lua表：`local headers = ngx.req.get_headers()`      
             > [2] 获取单个Host：`headers["Host"] 或者 ngx.req.get_headers()["Host"] `     
-            > [3] 获取单个user-agent：`headers["user-agent"] 或者 headers.user_agent 或者 ngx.req.get_headers()['user-agent'] `    
+            > [3] 获取单个user-agent：
+            >>[01]`headers["user-agent"]`      
+            >>[02]`headers.user_agent `  
+            >>[03]`ngx.req.get_headers()['user-agent']  `     
 
           + Lua 脚本 Get 获取请求uri参数
             > linux curl Get方式提交数据语法：`curl -G -d "name=value&name2=value2" https://github.com/Tinywan `  
             > 返回一个包含所有当前请求URL查询参数的Lua表：`local get_args = ngx.req.get_uri_args()`   
             > 请求案例：`curl -G -d "name=Tinywan&age=24" http://127.0.0.1/lua_request/123/789`      
-            > Lua Get 方式获取提交的name参数的值：`get_args['name'] 或者 ngx.req.get_uri_args()['name']`
+            > Lua Get 方式获取提交的name参数的值：`get_args['name'] 或者 ngx.req.get_uri_args()['name']`   
+            >>[01]`get_args['name']`      
+            >>[02]`ngx.req.get_uri_args()['name']`    
 
           + Lua 脚本 Post 获取请求uri参数
             > linux curl Post方式提交数据语法：
-            >> [1] `curl -d "name=value&name2=value2" https://github.com/Tinywan `     
-            >> [2] `curl -d a=b&c=d&txt@/tmp/txt https://github.com/Tinywan `     
+            >> [01] `curl -d "name=value&name2=value2" https://github.com/Tinywan `     
+            >> [02] `curl -d a=b&c=d&txt@/tmp/txt https://github.com/Tinywan `     
 
             > 返回一个包含所有当前请求URL查询参数的Lua表：`local post_args = ngx.req.get_post_args()`      
             > 请求案例：`curl -G -d "name=Tinywan&age=24" http://127.0.0.1/lua_request/123/789`      
-            > Lua Post 方式获取提交的name参数的值：`post_args['name'] 或者 ngx.req.get_post_args()['name']`   
+            > Lua Post 方式获取提交的name参数的值：
+            >>[01]`post_args['name']`   
+            >>[02]`ngx.req.get_post_args()['name']` 
+
+          + Lua 脚本请求的http协议版本：`ngx.req.http_version()`
+          + Lua 脚本请求方法：`ngx.req.get_method()`
+          + Lua 脚本原始的请求头内容：`ngx.req.raw_header()`
+          + Lua 脚本请求的body内容体：`ngx.req.get_body_data()`
 
         + [接收请求:获取如请求参数、请求头、Body体等信息]()
         + [接收请求:输出响应需要进行响应状态码、响应头和响应内容体的输出]()
