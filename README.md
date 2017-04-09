@@ -154,7 +154,7 @@
         ```
     + lua-resty-redis 扩展
         + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";`
-        + **Lua脚本实现一个CDN的反向代理功能(智能查找CDN节点)**
+        + **Lua脚本实现一个CDN的反向代理功能(智能查找CDN节点)(测试成功,可上线)**
             + nginx.conf 配置信息
             ```
             http {
