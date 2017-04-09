@@ -65,12 +65,12 @@
             | $remote_addr      |  127.0.0.1 |客户端的IP地址 |
             | $remote_port      | 33516 |客户端端口|
             | $remote_user      | 0 | 已经经过Auth Basic Module验证的用户名|
-            | $request_filename      |  /opt/openresty/nginx/html/rewrite_var/1192/index.m3u8 |当前请求的文件路径，由root或alias指令与URI请求生成 |
+            | $request_filename      |  /opt/openresty/nginx/html/rewrite_var/1192/index.m3u8 |当前请求的文件路径 |
             | $request_uri      |  /rewrite_var/1192/index.m3u8?name=Tinywan&age=24  |包含请求参数的原始URI，不包含主机名 |
             | $query_string      |  name=Tinywan&age=24   | 与$args相同|
             | $scheme      |  http |HTTP方法（如http，https |
             | $server_protocol      |  HTTP/1.1  |请求使用的协议，通常是HTTP/1.0或HTTP/1.1 |
-            | $server_addr      |  127.0.0.1  |服务器地址，在完成一次系统调用后可以确定这个值 |
+            | $server_addr      |  127.0.0.1  |服务器地址 |
             | $server_name      | localhost  | 服务器名称|
             | $server_port      | 80  |请求到达服务器的端口号 |
             | $uri      | /rewrite_var/1192/index.m3u8  | 不带请求参数的当前URI|
@@ -181,7 +181,10 @@
             ```
             + [Lua脚本proxy_pass_cdn.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/proxy_pass_cdn.lua)
             + [lua-nginx-module 贡献代码](https://github.com/openresty/lua-nginx-module/issues/275)
-
+        + **Lua脚本结合 Nginx+Lua+Local Redis+Mysql服务器缓存**
+            + Nginx+Lua+Local Redis+Mysql集群架构   
+            ![Nginx+Lua+Local Redis+Mysql](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Nginx+Lua+Local_Redis+Mysql.png)    
+            + [Lua脚本proxy_pass_cdn.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/proxy_pass_cdn.lua)
     +  lua-resty-websocket 扩展
         + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-websocket/lib/?.lua;;";`
         + **Lua脚本实现一个websocket连接(测试成功,可上线)**
