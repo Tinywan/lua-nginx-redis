@@ -46,12 +46,34 @@
     * 第五章   Gzip压缩
         - [ ] 测试一
     * 第六章   Rewrite 功能
-        - [x] Rewrite 常用全局变量,请求案例： `curl -G -d "name=Tinywan&age=24" http://127.0.0.1/rewrite_var/1192/index.m3u8`
+        - [x] Rewrite 常用全局变量
+            > 请求案例： `curl -G -d "name=Tinywan&age=24" http://127.0.0.1/rewrite_var/1192/index.m3u8`    
 
-            | 名字 | 描述          |
-            | ------------- | ----------- |
-            | Help      | ~~Display the~~ help window.|
-            | Close     | _Closes_ a window     |
+            | 变量 | 值          |描述 |
+            | --------- | ----------- |----------- |
+            | $args      | name=Tinywan&age=24 |存放URL 请求的指令 |
+            | $content_length      | 0 | 请求头中的Content-length字段|
+            | $content_type      | 0 |请求头中的Content-Type字段 |
+            | $document_root      | /opt/openresty/nginx/html | 当前请求在root指令中指定的值 |
+            | $document_uri      | /rewrite_var/1192/index.m3u8 | 与$uri相同 |
+            | $host      | 127.0.0.1 |请求主机头字段，否则为服务器名称 |
+            | $http_user_agent      | curl/7.47.0 | 客户端agent信息|
+            | $http_cookie      | 0 | COOKIE变量的值|
+            | $limit_rate      | 0 | 限制连接速率|
+            | $request_body_file      | null | 客户端请求主体信息的临时文件名|
+            | $request_method      | GET | 客户端请求的动作，通常为GET或POST |
+            | $remote_addr      |  127.0.0.1 |客户端的IP地址 |
+            | $remote_port      | 33516 |客户端端口|
+            | $remote_user      | 0 | 已经经过Auth Basic Module验证的用户名|
+            | $request_filename      |  /opt/openresty/nginx/html/rewrite_var/1192/index.m3u8 |当前请求的文件路径，由root或alias指令与URI请求生成 |
+            | $request_uri      |  /rewrite_var/1192/index.m3u8?name=Tinywan&age=24  |包含请求参数的原始URI，不包含主机名 |
+            | $query_string      |  name=Tinywan&age=24   | 与$args相同|
+            | $scheme      |  http |HTTP方法（如http，https |
+            | $server_protocol      |  HTTP/1.1  |请求使用的协议，通常是HTTP/1.0或HTTP/1.1 |
+            | $server_addr      |  127.0.0.1  |服务器地址，在完成一次系统调用后可以确定这个值 |
+            | $server_name      | localhost  | 服务器名称|
+            | $server_port      | 80  |请求到达服务器的端口号 |
+            | $uri      | /rewrite_var/1192/index.m3u8  | 不带请求参数的当前URI|
 
         - [x] Rewrite 常用全局变量2313
     * 第七章   代理服务
