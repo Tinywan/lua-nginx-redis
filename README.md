@@ -367,5 +367,14 @@
         print("The man name is "..man.GetName())
     ```
 
+### Linux 命令
++ find 命令
+    + 查找超出7天前的flv的文件进行删除：`find ./ -mindepth 1 -maxdepth 3 -type f -name "*.flv" -mmin +10080 | xargs rm -rf `
+        + `-type f` 按类型查找
+        + `-mmin +10080` 7天之前的文件
+        + xargs与-exec功能类似,` find ~ -type f | xargs ls -l `
+        + -r 就是向下递归，不管有多少级目录，一并删除
+        + -f 就是直接强行删除，不作任何提示的意思    
+
 
 

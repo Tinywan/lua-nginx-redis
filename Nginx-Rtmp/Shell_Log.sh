@@ -9,7 +9,6 @@
 		[3] debug===>Blue色(34m)： debug
         [3]date:2016-11-04 10:23:10 [date '+%Y-%m-%d %H:%M:%S']
 tinywan
-
 PATH=/usr/local/bin:/usr/bin:/bin
 YM=`date +%Y%m`
 FLOG=/home/tinywan/bin/recorded_${YM}.log
@@ -123,7 +122,11 @@ mkdir -p ${DIR_NAME}/${BASE_NAME}
 /usr/bin/ffmpeg -i ${FULL_NAME} -flags +global_header -f segment -segment_time 3 -segment_format mpegts -segment_list ${DIR_NAME}/${BASE_NAME}/index.m3u8 -c:a copy -c:v copy -bsf:v h264_mp4toannexb -map 0 ${DIR_NAME}/${BASE_NAME}/%5d.ts
 
 LOG info "slice OK"
-#LOG warn "${TIME}"
+
+# 查找超出7天后的flv的文件进行删除
+cd ${DIR_NAME}
+find ./ -mindepth 1 -maxdepth 3 -type f -name "*.flv" -mmin +10080 | xargs rm -rf
+
 exit 1
 
 
