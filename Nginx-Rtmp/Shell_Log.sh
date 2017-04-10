@@ -108,7 +108,7 @@ FILE_TIME=`stat -c "%Y" ${FULL_NAME}`
 LOG debug "Video: FILE_NAME=${FILE_NAME}, DURATION=${DURATION}, FILESIZE=${FILE_SIZE},FILETIME=${FILE_TIME}"
 
 #recorded done rallback
-URL="http://sewise.amai8.com/openapi/recordDone?streamName=${STREAM_NAME}&baseName=${BASE_NAME}&duration=${DURATION}&fileSize=${FILE_SIZE}&fileTime=${FILE_TIME}" 
+URL="http://localhost/recordDone?streamName=${STREAM_NAME}&baseName=${BASE_NAME}&duration=${DURATION}&fileSize=${FILE_SIZE}&fileTime=${FILE_TIME}" 
 RESULT=$(curl ${URL} 2>/dev/null)
 
 if [ "${RESULT}" != "200" ]; then
