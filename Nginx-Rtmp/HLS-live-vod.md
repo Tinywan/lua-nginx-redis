@@ -192,4 +192,29 @@ http {
         'epoch' => string '582057759' (length=9)
         'call' => string 'connect' (length=7)                              
     ```      
-    
+
++   实际案例 (Web页面和Mobile手机流转换)      
+    ```
+        rtmp {
+            server {
+                listen 1935;   
+                application live {
+                    live on;
+                    exec ffmpeg -i rtmp://localhost/live/$name -acodec copy -c:v libx264 -preset veryfast -profile:v baseline -vsync cfr -s 480x360 -b:v 400k -bufsize 400k -threads 0 -r 30 -f flv rtmp://localhost/mobile/$name;
+                }
+
+                application mobile {
+                    allow play all;
+                    live on;
+                    hls on;
+                    hls_nested on;
+                    hls_path /home/tinywan/HLS/mobile;
+                    hls_fragment 10s;
+                }
+            }
+        }
+    ```
+
+>实际案例 2
+
+>实际案例 3    
