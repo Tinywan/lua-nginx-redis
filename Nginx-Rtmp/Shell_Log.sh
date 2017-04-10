@@ -123,7 +123,7 @@ mkdir -p ${DIR_NAME}/${BASE_NAME}
 
 LOG info "slice OK"
 
-# 查找超出7天后的flv的文件进行删除
+# 查找超出7天前的flv的文件进行删除
 cd ${DIR_NAME}
 find ./ -mindepth 1 -maxdepth 3 -type f -name "*.flv" -mmin +10080 | xargs rm -rf
 
