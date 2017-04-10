@@ -369,14 +369,17 @@
 
 ### Linux 命令
 + find 命令
-    + 查找超出7天前的flv的文件进行删除：`find ./ -mindepth 1 -maxdepth 3 -type f -name "*.flv" -mmin +10080 | xargs rm -rf `
+    + 查找超出7天前的flv的文件进行删除：
+        + `find ./ -mindepth 1 -maxdepth 3 -type f -name "*.flv" -mmin +10080 | xargs rm -rf `
         + `-type f` 按类型查找
         + `-mmin +10080` 7天之前的文件
         + xargs与-exec功能类似,` find ~ -type f | xargs ls -l `
         + -r 就是向下递归，不管有多少级目录，一并删除
         + -f 就是直接强行删除，不作任何提示的意思
-    + 查找当前目录下.p文件中，最近30分钟内修改过的文件：`find . -name '*.p' -type f -mmin -30`   
-    + 查找当前目录下.phtml文件中，最近30分钟内修改过的文件，的详细情况加上ls：`find . -name '*.phtml' -type f -mmin -30 -ls`  
+    + 查找当前目录下.p文件中，最近30分钟内修改过的文件：
+        + `find . -name '*.p' -type f -mmin -30`   
+    + 查找当前目录下.phtml文件中，最近30分钟内修改过的文件，的详细情况加上ls：
+        + `find . -name '*.phtml' -type f -mmin -30 -ls`  
     + 查找当前目录下，最近1天内修改过的常规文件：`find . -type f -mtime -1`  
     + 查找当前目录下，最近1天前（2天内）修改过的常规文件：`find . -type f -mtime +1`            
 
