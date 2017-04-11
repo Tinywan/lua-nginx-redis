@@ -34,10 +34,24 @@ if not ok then
         return err
 end
 
--- 权限验证
-local res,err = redis_instance:auth('pass_tinywan')
-if not res then
-    ngx.say("failed to authenticate: ", err)
+-- -- 权限验证
+-- local res,err = redis_instance:auth('pass_tinywan')
+-- if not res then
+--     ngx.say("failed to authenticate: ", err)
+--     return
+-- end
+
+-- 权限验证 请注意这里 auth 的调用过程
+local count
+count, err = redis_instance:get_reused_times()
+if 0 == count then
+    ok, err = redis_instance:auth("password")
+    if not ok then
+        ngx.say("failed to auth: ", err)
+        return
+    end
+elseif err then
+    ngx.say("failed to get reused times: ", err)
     return
 end
 
