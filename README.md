@@ -43,10 +43,11 @@
     * 第三章   架构初探
         - [ ] 测试一
     * 第四章   高级配置
+        - [x] [Perl 正则表达式参考](http://www.runoob.com/perl/perl-regular-expressions.html)
         - [x] 正则表达式 (Regular expression) 匹配location
             - [1]   `location ~* \.(gif|jpg|jpeg)$ { }`：匹配所有以 gif,jpg或jpeg 结尾的请求
             - [2]   `location ~ /documents/Abc { }`：匹配任何以 /documents/ 开头的地址，匹配符合以后，还要继续往下搜索
-            - [3] 目录匹配：
+            - [3] **目录匹配：**
                 1. 可以匹配静态文件目录`(static/lib)`
                 1. HLS直播目录`(/home/HLS/stream123/index.m3u8)`   
                 1. HLS/MP4/FLV点播视频目录`(/home/HLS/stream123.m3u8)`   
@@ -58,7 +59,7 @@
                     }
                     ```
 
-            - [4] 后缀匹配：
+            - **[4] 后缀匹配：**
                 1. 可以后缀文件名`gif|jpg|jpeg|png|css|js|ico|m3u8|ts`
                 1. TS 文件匹配`http://127.0.0.1/live/stream123/11.ts`
                 1. M3U8 文件匹配`http://127.0.0.1/live/stream123/index.m3u8`
@@ -70,7 +71,7 @@
                     }
                     ```    
 
-        - [ ] Nginx重写规则指南 Regular expression
+        - [x] [nginx配置location总结及rewrite规则写法](http://seanlook.com/2015/05/17/nginx-location-rewrite/)
     * 第五章   Gzip压缩
         - [ ] 测试一
     * 第六章   Rewrite 功能
