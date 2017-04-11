@@ -43,7 +43,34 @@
     * 第三章   架构初探
         - [ ] 测试一
     * 第四章   高级配置
-        - [ ] Nginx重写规则指南
+        - [x] 正则表达式 (Regular expression) 匹配location
+            - [1]   `location ~* \.(gif|jpg|jpeg)$ { }`：匹配所有以 gif,jpg或jpeg 结尾的请求
+            - [2]   `location ~ /documents/Abc { }`：匹配任何以 /documents/ 开头的地址，匹配符合以后，还要继续往下搜索
+            - [3] 目录匹配：
+                1. 可以匹配静态文件目录`(static/lib)`
+                1. HLS直播目录`(/home/HLS/stream123/index.m3u8)`   
+                1. HLS/MP4/FLV点播视频目录`(/home/HLS/stream123.m3u8)`   
+                1. 匹配URL地址：`http://127.0.0.1/live/stream123/index.m3u8` 
+                1. nginx.conf 配置信息 
+                    ```
+                    location ^~ /live/ {
+                                    root /home/tinywan/HLS/;
+                    }
+                    ```
+
+            - [4] 后缀匹配：
+                1. 可以后缀文件名`gif|jpg|jpeg|png|css|js|ico|m3u8|ts`
+                1. TS 文件匹配`http://127.0.0.1/live/stream123/11.ts`
+                1. M3U8 文件匹配`http://127.0.0.1/live/stream123/index.m3u8`
+                1. 匹配URL地址：`http://127.0.0.1/hls/123.m3u8` 
+                1. nginx.conf 配置信息  
+                    ```
+                    location ~* \.(gif|jpg|jpeg|png|css|js|ico|m3u8|ts)$ {
+                            root /home/tinywan/HLS/;
+                    }
+                    ```    
+
+        - [ ] Nginx重写规则指南 Regular expression
     * 第五章   Gzip压缩
         - [ ] 测试一
     * 第六章   Rewrite 功能
@@ -234,7 +261,7 @@
                  listen 8088;
                  server_name  127.0.0.1:8088;
                  location /live {
-                    add_header Cache-Control no-cache;
+                    add_header  Cache-Control no-cache;
                     add_header 'Access-Control-Allow-Origin' '*' always;
                     add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
                     add_header 'Access-Control-Allow-Headers' 'Range';
@@ -249,7 +276,7 @@
 
             ```
             + CURL请求地址：`http://192.168.18.143/live/tinywan123/index.m3u8`
-            + Lua 脚本
+            + [Lua 脚本](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/Hls-Line-Number-Total.lua)
 
     +  lua-resty-websocket 扩展
         + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-websocket/lib/?.lua;;";`
