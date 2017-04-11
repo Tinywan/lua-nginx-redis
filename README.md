@@ -76,7 +76,32 @@
             | $server_port      | 80  |请求到达服务器的端口号 |
             | $uri      | /rewrite_var/1192/index.m3u8  | 不带请求参数的当前URI|
 
-        - [x] Rewrite 常用全局变量2313
+        - [x] Rewrite 正则匹配` uri `参数接收
+            > 请求案例：`curl http://192.168.18.143/live/tinywan123/index.m3u8`
+            > Nginx.conf配置文件   
+            ```
+            location ~* ^/live/(\w+)/(\D+)\.(m3u8|ts)$ {
+                set $num $2;
+                set $arg1 $1;
+                echo "args === ${arg1}";
+                echo "1==$1 2==$2 3==$3";
+                echo "Total_numbser :: $num";
+                echo "URI $uri";
+            }
+
+            ```
+            > 输出结果
+            ```
+               args === tinywan123
+               $1==tinywan123 $2==index $3==m3u8
+               Total_numbser :: index
+               URI /live/tinywan123/index.m3u8
+               Total_numbser :: 
+            ``` 
+            > $1 为正则匹配多个英文字母或数字的字符串 `(\w+)`   
+              $2 为正则匹配多个非数字 `(\D+)`    
+              $3 为正则匹配的第一个值 `(m3u8|ts)`  
+              `.` 需要用转义字符转义`\.`    
     * 第七章   代理服务
         - [ ] [正向代理和反向代理的概念](#title)
         - [ ] [正向代理服务](#title)
