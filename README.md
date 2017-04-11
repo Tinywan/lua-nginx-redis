@@ -69,7 +69,14 @@
                     location ~* \.(gif|jpg|jpeg|png|css|js|ico|m3u8|ts)$ {
                             root /home/tinywan/HLS/;
                     }
-                    ```    
+                    ```
+             - **[5]HSL直播目录匹配实际案例（请测试上线）** 
+                1. 可以后缀文件名`http://127.0.0.1/live/stream123/index.m3u8`
+                ```
+                location ^~ /live/ {
+                        root /home/tinywan/HLS/;
+                }
+                ```          
 
         - [x] [nginx配置location总结及rewrite规则写法](http://seanlook.com/2015/05/17/nginx-location-rewrite/)
     * 第五章   Gzip压缩
