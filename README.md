@@ -213,6 +213,43 @@
             + [Lua脚本Nginx+Lua+Redis+Mysql.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/Nginx+Lua+Redis+Mysql.lua)
             + [Nginx.conf配置文件Nginx+Lua+Redis+Mysql.conf](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/Nginx+Lua+Redis+Mysql.conf)
             + [HELP](http://jinnianshilongnian.iteye.com/blog/2188113)
+        + **Lua脚本结合 Redis 统计直播流播放次数、链接次数等等信息**
+            + nginx.conf 
+            ```
+            server {            # 配置虚拟服务器80
+                 listen 80;
+                 server_name  127.0.0.1:8088;
+                 location ~* /live/(\w+)/ {
+                        set $total_numbers "";
+                        set $stream_name $1;
+                        lua_code_cache off;
+                        rewrite_by_lua_file /opt/openresty/nginx/conf/Lua/total_numbers.lua;
+                        proxy_pass                  http://127.0.0.1:8088;
+                  }
+            }      
+            ```
+            + 代理服务器
+            ``` 
+             server {            # 配置虚拟服务器8088
+                 listen 8088;
+                 server_name  127.0.0.1:8088;
+                 location /live {
+                    add_header Cache-Control no-cache;
+                    add_header 'Access-Control-Allow-Origin' '*' always;
+                    add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+                    add_header 'Access-Control-Allow-Headers' 'Range';
+                    types{
+                        application/dash+xml mpd;
+                        application/vnd.apple.mpegurl m3u8;
+                        video/mp2t ts;
+                    }
+                 alias /home/tinywan/HLS/live/;
+                }
+              }
+
+            ```
+            + CURL请求地址：`http://192.168.18.143/live/tinywan123/index.m3u8`
+            + Lua 脚本
 
     +  lua-resty-websocket 扩展
         + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-websocket/lib/?.lua;;";`
