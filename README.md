@@ -259,6 +259,8 @@
         The man name is Tinywan            
         The man name is Phalcon
         ```
+    +   [Lua require 相对路径(一个文件引入另外一个文件的Function),已经解决](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
+
     + lua-resty-redis 扩展
         + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";`
         + **Lua脚本实现一个CDN的反向代理功能(智能查找CDN节点)(测试成功,可上线)**
