@@ -1,3 +1,4 @@
+![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/nginx-hls-locations.png)
 ### Lua require 相对路径
 + [Lua require 相对路径 博客园详解](http://www.cnblogs.com/smallboat/p/5552407.html)
 + 亲自试验总结
