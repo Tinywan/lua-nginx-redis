@@ -259,7 +259,7 @@
         The man name is Tinywan            
         The man name is Phalcon
         ```
-    +   [Lua require 相对路径(一个文件引入另外一个文件的Function),已经解决](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
+    +   [Lua require 相对路径(一个文件引入另外一个文件的Function),已经解决](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-common-package/lua-require.md)
 
     + lua-resty-redis 扩展
         + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";`
