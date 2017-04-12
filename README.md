@@ -43,6 +43,12 @@
     * 第三章   架构初探
         - [ ] 测试一
     * 第四章   高级配置
+        - [x] 基本语法：location [=|~|~*|^~] /uri/ { … }   
+             1. `= `：严格匹配。如果这个查询匹配，那么将停止搜索并立即处理此请求。
+             1. `~ `：为区分大小写匹配(可用正则表达式) 
+             1. `!~ `：为区分大小写不匹配
+             1. `!~*`：为不区分大小写不匹配
+             1. ` ^~ `：如果把这个前缀用于一个常规字符串,那么告诉nginx 如果路径匹配那么不测试正则表达式    
         - [x] [Perl 正则表达式参考](http://www.runoob.com/perl/perl-regular-expressions.html)
         - [x] 正则表达式 (Regular expression) 匹配location
             - [1]   `location ~* \.(gif|jpg|jpeg)$ { }`：匹配所有以 gif,jpg或jpeg 结尾的请求
@@ -54,13 +60,14 @@
                 1. 匹配URL地址：`http://127.0.0.1/live/stream123/index.m3u8` 
                 1. nginx.conf 配置信息 
                     ```
-                    location ^~ /live/ {
+                    location ^~ /live/ {  # 匹配任何已 /live/ 开头的任何查询并且停止搜索。任何正则表达式将不会被测试
                                     root /home/tinywan/HLS/;
                     }
                     ```
+                
 
             - **[4] 后缀匹配：**
-                1. 可以后缀文件名`gif|jpg|jpeg|png|css|js|ico|m3u8|ts`
+                1. 匹配任何后缀文件名`gif|jpg|jpeg|png|css|js|ico|m3u8|ts` 结尾的请求
                 1. TS 文件匹配`http://127.0.0.1/live/stream123/11.ts`
                 1. M3U8 文件匹配`http://127.0.0.1/live/stream123/index.m3u8`
                 1. 匹配URL地址：`http://127.0.0.1/hls/123.m3u8` 
