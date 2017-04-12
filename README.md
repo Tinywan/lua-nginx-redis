@@ -18,6 +18,8 @@
 + **Lua网络编程基础知识**
     * Lua基础
     * Lua进阶
++ **流媒体视频直播、点播**
+    + [HLS视频直播和点播的Nginx的Location的配置信息]()     
 + **Nginx开发从入门到精通**
     + [Nginx 编译安装以及参数详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
     + NGINX变量详解

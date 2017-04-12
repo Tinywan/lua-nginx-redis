@@ -16,6 +16,8 @@ sudo ./configure --prefix=/opt/openresty
 --with-http_ssl_module 
 --add-module=../stream-lua-nginx-module
 --add-module=../nginx-rtmp-module-1.1.11/
+--add-module=../nginx_mod_h264_streaming-2.2.7/
+--add-module=../lua-resty-upstream-healthcheck/
 
 ```
 +   默认安装的模块为
