@@ -14,9 +14,14 @@
 + [**shell脚本实现分日志级别记录日志**](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/Shell_Log.sh)
 + **Redis基础知识**
     + [Redis 简易安装教程](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md)
-+ **Lua网络编程基础知识**
-    * Lua基础
-    * Lua进阶
++ **Lua基础知识**
+    + 控制结构
+        + [if-elseif-end 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/if-else-example.lua)
+        + [for 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/for-example.lua)
+        + [Lua 只有一个容器，那就是table](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/container-table.lua)
+    + [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
+    + [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
+    + [Lua 实现简单封装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/function1.lua)
 + **流媒体视频直播、点播**
     + [Nginx配置Rtmp支持Hls的直播和点播功能](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod.md)
     + [HLS视频直播和点播的Nginx的Location的配置信息(成功)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod-locatiuon-config.md)     
