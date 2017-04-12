@@ -60,12 +60,11 @@
                 1. 匹配URL地址：`http://127.0.0.1/live/stream123/index.m3u8` 
                 1. nginx.conf 配置信息 
                     ```
-                    location ^~ /live/ {  # 匹配任何已 /live/ 开头的任何查询并且停止搜索。任何正则表达式将不会被测试
+                    # 匹配任何以/live/ 开头的任何查询并且停止搜索。任何正则表达式将不会被测试
+                    location ^~ /live/ {  
                                     root /home/tinywan/HLS/;
                     }
                     ```
-                
-
             - **[4] 后缀匹配：**
                 1. 匹配任何后缀文件名`gif|jpg|jpeg|png|css|js|ico|m3u8|ts` 结尾的请求
                 1. TS 文件匹配`http://127.0.0.1/live/stream123/11.ts`
