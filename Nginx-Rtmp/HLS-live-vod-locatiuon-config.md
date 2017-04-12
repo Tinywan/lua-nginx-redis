@@ -43,7 +43,7 @@
                 alias /home/tinywan/video_recordings/;
             }
 
-    }
+        }
     }
     ```
 + 直播
@@ -56,4 +56,6 @@
 + 回顾
     +  HLS回顾地址： `http://192.168.18.143/video_recordings/tinywan123-149179459020170410112310/index.m3u8`   
     +  MP4回顾地址： `http://192.168.18.143/video_recordings/tinywan123-149179459020170410112310.mp4`    
-+ 
++ 流媒体信息
+    + 在线人数：`http://192.168.18.143/nclients?app=live&name=stream123456`
+    + RTMP流基本信息：`http://192.168.18.143/stat`
