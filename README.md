@@ -193,6 +193,25 @@
 + **openresty 学习**
     +   [默认配置信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
     +   开发入门
+        + Nginx与Lua的整体目录关系
+            ```
+            .
+            ├── conf
+            │   ├── nginx.conf
+            ├── logs
+            │   ├── error.log
+            │   └── nginx.pid
+            ├── lua
+            │   ├── access_check.lua
+            │   ├── addition.lua
+            │   ├── subtraction.lua
+            │   ├── multiplication.lua
+            │   ├── division.lua
+            │   └── comm
+            │       └── param.lua
+            └── sbin
+                └── nginx
+            ```
         + 参数总结
           + Lua脚本接受Nginx变量：
             > [1] 间接获取：`var = ngx.var `，如接受Nginx的变量` $a = 9`,则`lua_a = ngx.var.a --lua_a = 9`   
