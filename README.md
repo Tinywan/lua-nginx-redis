@@ -429,7 +429,6 @@
                     application/vnd.apple.mpegurl m3u8;
                     video/mp2t ts;
                 }
-    
                 if ( $uri ~ \.m3u8 ) {
                     lua_code_cache off;
                     access_by_lua_file /opt/openresty/nginx/lua/access.lua;
