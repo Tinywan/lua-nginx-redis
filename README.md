@@ -413,7 +413,36 @@
             <html><body>Session started. <a href=/test>Check if it is working</a>!</body></html>
             OpenResty Fan Tinywan Anonymous
             ```   
-                        
+    +   Lua 权限验证
+        + Lua 一个HLS的简单地址访问权限验证
+            + Nginx.conf 配置
+            ``` 
+            location ^~ /live/ {
+                add_header Cache-Control no-cache;
+                add_header 'Access-Control-Allow-Origin' '*' always;
+                add_header 'Access-Control-Allow-Credentials' 'true';
+                add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+                add_header 'Access-Control-Allow-Headers' 'Range';
+    
+                types{
+                    application/dash+xml mpd;
+                    application/vnd.apple.mpegurl m3u8;
+                    video/mp2t ts;
+                }
+    
+                if ( $uri ~ \.m3u8 ) {
+                    lua_code_cache off;
+                    access_by_lua_file /opt/openresty/nginx/lua/access.lua;
+                }
+                root /home/tinywan/HLS;
+             }
+            ```    
+            + access.lua 文件内容
+             ``` 
+             if ngx.req.get_uri_args()["wsSecret"] ~= "e65e6a01cf26523e206d5bb0e2a8a95a" then  
+                return ngx.exit(403)  
+             end
+             ```                    
 
 ## Redis、Lua、Nginx一起工作事迹
 * 解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决

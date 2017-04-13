@@ -19,8 +19,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="162">
-                <caret line="375" column="8" lean-forward="true" selection-start-line="375" selection-start-column="8" selection-end-line="375" selection-end-column="28" />
+              <first_editor relative-caret-position="198">
+                <caret line="416" column="10" lean-forward="true" selection-start-line="416" selection-start-column="10" selection-end-line="416" selection-end-column="30" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -113,12 +113,20 @@
       <option name="presentableId" value="Default" />
       <updated>1491962114906</updated>
       <workItem from="1491962125078" duration="71000" />
-      <workItem from="1492054641743" duration="721000" />
+      <workItem from="1492054641743" duration="1710000" />
     </task>
+    <task id="LOCAL-00001" summary="OpenResty 引用第三方 resty 库 lua-resty-session 扩展">
+      <created>1492055386915</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1492055386915</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="792000" />
+    <option name="totallyTimeSpent" value="1781000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
@@ -149,6 +157,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="OpenResty 引用第三方 resty 库 lua-resty-session 扩展" />
+    <option name="LAST_COMMIT_MESSAGE" value="OpenResty 引用第三方 resty 库 lua-resty-session 扩展" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
@@ -157,8 +169,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="162">
-            <caret line="375" column="8" lean-forward="true" selection-start-line="375" selection-start-column="8" selection-end-line="375" selection-end-column="28" />
+          <first_editor relative-caret-position="198">
+            <caret line="416" column="10" lean-forward="true" selection-start-line="416" selection-start-column="10" selection-end-line="416" selection-end-column="30" />
             <folding />
           </first_editor>
           <second_editor />
