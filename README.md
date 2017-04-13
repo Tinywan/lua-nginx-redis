@@ -43,10 +43,85 @@
     + 第一章   初探
         - [x] [Nginx的历史](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
     + 第二章   安装部署
-        - [X] [基于域名、IP的虚拟主机配置](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-all-config.md)
-        - [X] [完整、标准配置实际示列](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-basic-config.md)
-        - [X] [日志文件配置与切割](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-log-cut.md)
-        - [ ] C213
+        - [x] [基于域名、IP的虚拟主机配置](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-all-config.md)
+        - [x] [完整、标准配置实际示列](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-basic-config.md)
+        - [x] [日志文件配置与切割](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-log-cut.md)
+        - [x] alias 和 root 在location 下的应用
+            - 通过alias 实现别名功能
+                ``` 
+                location /live {  
+                    alias /home/tinywan/HLS/;
+                }
+                ```
+            - curl 请求结果
+                ``` 
+               tinywan@tinywan:~/HLS$ cat index.html 
+               alias /home/tinywan/HLS/index.html
+               tinywan@tinywan:~/HLS$ curl http://127.0.0.1/live/index.html
+               alias /home/tinywan/HLS/index.html
+                ```
+            - 结论：
+                1. cul 请求 `/live/index.html`,那么Nginx将会在服务器上查找`/home/tinywan/HLS/index.html` 文件
+                1. 请求的`url` 中的`location`后面的部分会被追加到`alias `指定的目录后面，而`location`后面的`/live`路径将会别自动抛弃 
+            - 类似案例[2]：
+                - config配置信息
+                    ``` 
+                     location ~ ^/live/(.*)$ {  
+                          alias /home/tinywan/HLS/$1;
+                     }
+                    ```
+                - curl 请求结果
+                    ``` 
+                    tinywan@tinywan:~/HLS$ pwd
+                    /home/tinywan/HLS
+                    tinywan@tinywan:~/HLS$ cat txt.txt 
+                    txt file
+                    tinywan@tinywan:~/HLS$ curl http://127.0.0.1/live/txt.txt
+                    txt file
+                    ```
+                -  如果url请求`/live/txt.txt`那么Nginx将会在服务器上查找`/home/tinywan/HLS/txt.txt` 文件   
+            - **与root 功能的差别**：
+                - config配置信息，注意：一下的`alias` 换成 `root `
+                    ``` 
+                     location ~ ^/live/(.*)$ {  
+                          root /home/tinywan/HLS/$1;
+                     }
+                    ```
+                - curl 请求结果
+                    ``` 
+                   tinywan@tinywan:~/HLS$ curl http://127.0.0.1/live/txt.txt
+                   <html>
+                   <head><title>404 Not Found</title></head>
+                   <body bgcolor="white">
+                   <center><h1>404 Not Found</h1></center>
+                   <hr><center>openresty/1.11.2.1</center>
+                   </body>
+                   </html>
+                    ```
+                -  日志文件信息(打开Nginx的rewrite日志:rewrite_log on;)：
+                   ``` 
+                   /home/tinywan/HLS/txt.txt/live/txt.txt
+                   ```   
+                - **二者的区别**
+                    1. `alias` 指定的目录是当前目录
+                    1. `root`  指定的是根目录
+                    1. 一般建议的`location /`中通过`root`命令配置目录，其他目录匹配的位置使用`alias`命令   
+            - 案例[3]：
+                - config配置信息
+                    ``` 
+                     location ~ ^/live/(\w+)/(.*) {
+                         alias /home/tinywan/HLS/live/$1/$2;
+                     }
+                    ```
+                - curl 请求结果
+                    ``` 
+                    tinywan@tinywan:~/HLS/live/stream123$ pwd
+                    /home/tinywan/HLS/live/stream123
+                    tinywan@tinywan:~/HLS/live/stream123$ cat index.m3u8 
+                    12312312312
+                    tinywan@tinywan:~/HLS/live/stream123$ curl "http://127.0.0.1/live/stream123/index.m3u8?token=1234&api=009132"
+                    12312312312
+                    ```         
     * 第三章   架构初探
         - [ ] 测试一
     * 第四章   高级配置
