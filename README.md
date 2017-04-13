@@ -216,7 +216,6 @@
           + Lua脚本接受Nginx变量：
             > [1] 间接获取：`var = ngx.var `，如接受Nginx的变量` $a = 9`,则`lua_a = ngx.var.a --lua_a = 9`   
             > [2] 直接获取：`var = ngx.var `，如接受Nginx的location的第二个变量890,` http://127.0.0.1/lua_request/123/890 `,则`lua_2 = ngx.var[2] --lua_2 = 890`    
-
           + Lua 脚本接受 Nginx 头部 header：
             > [1] 返回一个包含所有当前请求标头的Lua表：`local headers = ngx.req.get_headers()`      
             > [2] 获取单个Host：`headers["Host"] 或者 ngx.req.get_headers()["Host"] `     
@@ -224,7 +223,6 @@
             >>[01]`headers["user-agent"]`      
             >>[02]`headers.user_agent `  
             >>[03]`ngx.req.get_headers()['user-agent']  `     
-
           + Lua 脚本 Get 获取请求uri参数
             > linux curl Get方式提交数据语法：`curl -G -d "name=value&name2=value2" https://github.com/Tinywan `  
             > 返回一个包含所有当前请求URL查询参数的Lua表：`local get_args = ngx.req.get_uri_args()`   
@@ -232,26 +230,21 @@
             > Lua Get 方式获取提交的name参数的值：`get_args['name'] 或者 ngx.req.get_uri_args()['name']`   
             >>[01]`get_args['name']`      
             >>[02]`ngx.req.get_uri_args()['name']`    
-
           + Lua 脚本 Post 获取请求uri参数
             > linux curl Post方式提交数据语法：
             >> [01] `curl -d "name=value&name2=value2" https://github.com/Tinywan `     
             >> [02] `curl -d a=b&c=d&txt@/tmp/txt https://github.com/Tinywan `     
-
             > 返回一个包含所有当前请求URL查询参数的Lua表：`local post_args = ngx.req.get_post_args()`      
             > 请求案例：`curl -G -d "name=Tinywan&age=24" http://127.0.0.1/lua_request/123/789`      
             > Lua Post 方式获取提交的name参数的值：
             >>[01]`post_args['name']`   
             >>[02]`ngx.req.get_post_args()['name']` 
-
           + Lua 脚本请求的http协议版本：`ngx.req.http_version()`
           + Lua 脚本请求方法：`ngx.req.get_method()`
           + Lua 脚本原始的请求头内容：`ngx.req.raw_header()`
           + Lua 脚本请求的body内容体：`ngx.req.get_body_data()`
-
         + [接收请求:获取如请求参数、请求头、Body体等信息]()
-        + [接收请求:输出响应需要进行响应状态码、响应头和响应内容体的输出]()
-
+        + [接收请求:输出响应需要进行响应状态码、响应头和响应内容体的输出](
     +   luajit 执行文件默认安装路径：`/opt/openresty/luajit/bin/luajit`,这样我们直接可以这样运行一个Lua文件：`luajit test.lua `
         + luajit 运行测试案例：   
         ```
@@ -260,10 +253,9 @@
         The man name is Phalcon
         ```
     +   [Lua require 相对路径(一个文件引入另外一个文件的Function),已经解决](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-common-package/lua-require.md)
-
-    + lua-resty-redis 扩展
-        + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";`
-        + **Lua脚本实现一个CDN的反向代理功能(智能查找CDN节点)(测试成功,可上线)**
+    +   lua-resty-redis 扩展
+        + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";`   
+        + **Lua脚本实现一个CDN的反向代理功能(智能查找CDN节点)(测试成功,可上线)**    
             + nginx.conf 配置信息
             ```
             http {
@@ -290,7 +282,7 @@
             ```
             + [Lua脚本proxy_pass_cdn.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/proxy_pass_cdn.lua)
             + [lua-nginx-module 贡献代码](https://github.com/openresty/lua-nginx-module/issues/275)
-        + **Lua脚本结合 Nginx+Lua+Local Redis+Mysql服务器缓存**
+    + **Lua脚本结合 Nginx+Lua+Local Redis+Mysql服务器缓存**
             + Nginx+Lua+Local Redis+Mysql集群架构   
             ![Nginx+Lua+Local Redis+Mysql](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Nginx+Lua+Local_Redis+Mysql.png)    
             + [Lua脚本Nginx+Lua+Redis+Mysql.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/Nginx+Lua+Redis+Mysql.lua)
@@ -380,7 +372,48 @@
             root@tinywan:/opt/openresty/nginx/conf# curl http://127.0.0.1/cjson
             {"some_object":{"tel":13669313112,"age":24},"name":"tinywan","some_array":[]}
             ```       
-        + [lua对象到字符串、字符串到lua对象](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-cjson/cjson-str-obj.lua)            
+        + [lua对象到字符串、字符串到lua对象](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-cjson/cjson-str-obj.lua) 
+    +   lua-resty-session 扩展  
+        + OpenResty 引用第三方 resty 库非常简单，只需要将相应的文件拷贝到 resty 目录下即可
+        + 我服务器OpenResty 的 resty 路径：`/opt/openresty/lualib/resty`
+        + 下载第三方 resty 库：git clone lua-resty-session 文件路径以及内容：
+            ``` 
+            tinywan@tinywan:/opt/openresty/nginx/lua/lua-resty-session/lib/resty$ ls
+            session  session.lua
+            ```
+        + 特别注意：这里拷贝的时候要要把session文件和session.lua 文件同时吧、拷贝过去，否则会报错误：
+            ``` 
+            	/opt/openresty/lualib/resty/session.lua:34: in function 'prequire'
+            	/opt/openresty/lualib/resty/session.lua:211: in function 'new'
+            	/opt/openresty/lualib/resty/session.lua:257: in function 'open'
+            	/opt/openresty/lualib/resty/session.lua:320: in function 'start'
+            ```
+        +  拷贝完毕后`/opt/openresty/lualib/resty` OpenResty 引用第三方 resty 的所有库文件
+          ``` 
+          tinywan@tinywan:/opt/openresty/lualib/resty$ ls
+          aes.lua  core.lua  http_headers.lua  lock.lua  lrucache.lua  memcached.lua  random.lua  session      sha1.lua    sha256.lua  sha512.lua  string.lua  upstream
+          core     dns       http.lua          lrucache  md5.lua       mysql.lua      redis.lua   session.lua  sha224.lua  sha384.lua  sha.lua     upload.lua  websocket
+          ```
+        + 基本用法
+          ``` 
+           location /start {
+                  content_by_lua_block {
+                      local session = require "resty.session".start()
+                      session.data.name = "OpenResty Fan Tinywan"
+                      session:save()
+                      ngx.say("<html><body>Session started. ",
+                              "<a href=/test>Check if it is working</a>!</body></html>")
+                      ngx.say(session.data.name,"Anonymous")
+                  }
+            }
+          ```
+        + curl 请求
+            ```
+            tinywan@tinywan:/opt/openresty/nginx/conf$ curl http://192.168.18.143/start
+            <html><body>Session started. <a href=/test>Check if it is working</a>!</body></html>
+            OpenResty Fan Tinywan Anonymous
+            ```   
+                        
 
 ## Redis、Lua、Nginx一起工作事迹
 * 解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
