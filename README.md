@@ -272,18 +272,18 @@
             ```
             .
             ├── conf
-            │   ├── nginx.conf
+            │   ├── nginx.conf                  -- Nginx 配置文件
             ├── logs
-            │   ├── error.log
+            │   ├── error.log                   -- Nginx 错误日子
             │   └── nginx.pid
             ├── lua
-            │   ├── access_check.lua
-            │   ├── addition.lua
-            │   ├── subtraction.lua
-            │   ├── multiplication.lua
-            │   ├── division.lua
-            │   └── comm
-            │       └── param.lua
+            │   ├── access_check.lua            -- 权限验证文件
+            │   ├── business_redis.lua          -- 业务 Redis 处理文件
+            │   ├── business_redis.lua          -- 业务 Redis 处理文件
+            │   ├── ...
+            │   └── resty                       -- 存放Lua 的所有公共、封装好的库
+            │       └── redis_iresty.lua        -- Redis 接口的二次封装
+            │       └── param.lua               -- 参数过滤库
             └── sbin
                 └── nginx
             ```
@@ -327,7 +327,7 @@
         The man name is Tinywan            
         The man name is Phalcon
         ```
-    +   [Lua require 相对路径(一个文件引入另外一个文件的Function),已经解决](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-common-package/lua-require.md)
+    +   [Lua require 绝对和相对路径问题(一个文件引入另外一个文件的Function),已经解决](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-common-package/lua-require.md)
     +   lua-resty-redis 扩展
         + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";`   
         + **Lua脚本实现一个CDN的反向代理功能(智能查找CDN节点)(测试成功,可上线)**    

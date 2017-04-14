@@ -1,7 +1,12 @@
 ![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/nginx-hls-locations.png)
 ### Lua require 相对路径
 + [Lua require 相对路径 博客园详解](http://www.cnblogs.com/smallboat/p/5552407.html)
-+ 亲自试验总结
++ 相对路径总结
+    + **当前目录** ：`/opt/openresty/nginx/conf/Lua`
+        + 注意:如果在当前没有了，以下的代码运行是没有问题的
+        + 就是所有的lua脚本代码全部写在Lua文件夹下面去
+        + 拼接路径：`package.path = package.path ..';..\\?.lua';`
+        + require 直接这样应用就是`Lua.functions`
     + 目录结构
     ```
     root@tinywan:/opt/openresty/nginx/conf/Lua# pwd
@@ -54,4 +59,48 @@
         root@tinywan:/opt/openresty/nginx/conf/Lua# curl '127.0.0.1:80/api'
         Hello
         102
-        ```           
+        ```
++ 绝对路径总结
+    + 目录结果：`/opt/openresty/nginx/lua/resty`
+    + 包路径：`package.path = package.path ..'/opt/openresty/nginx/lua/resty/?.lua;/opt/openresty/lualib/?.lua';`                                   
+    + 加载绝对路径的Redis的二次封装库,redis_iresty.lua文件：
+      ``` 
+        package.path = package.path ..'/opt/openresty/nginx/lua/resty/?.lua;/opt/openresty/lualib/?.lua';
+        local redis_c = require "resty.redis"
+        local ok, new_tab = pcall(require, "table.new")
+        if not ok or type(new_tab) ~= "function" then
+            new_tab = function (narr, nrec) return {} end
+        end
+      ```   
+    + Redis的二次封装库的应用，test_redis2.lua文件：
+      ``` 
+        package.path = '/opt/openresty/nginx/lua/?.lua;';
+        local redis = require("resty.redis_iresty")
+        local red = redis:new()
+        local ok, err = red:set("Redis1999", "Redis is an animal 1999")
+        if not ok then
+            ngx.say("failed to set dog: ", err)
+            return
+        end
+      ```                                  
+    + nginx.conf 配置文件(注意以下的目录路径和上面的不一样)
+        ```
+        location /api {
+            lua_code_cache off;
+            content_by_lua_file /opt/openresty/nginx/lua/test_redis2.lua;
+        }
+        ```  
+    + CURL 请求结果
+        ```
+        root@tinywan:/opt/openresty/nginx/conf/Lua# curl '127.0.0.1:80/api'
+        Hello
+        102
+        ```      
+     + Redis 数据库结果
+        ```
+        127.0.0.1:6379> keys *
+        1) "dog"
+        2) "Redis2222222222"
+        3) "Redis1999"
+        ```                                
+                   
