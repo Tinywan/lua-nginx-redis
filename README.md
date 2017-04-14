@@ -517,7 +517,29 @@
                 return ngx.exit(403)  
              end
              ```                    
-
+    +  lua-resty-string 扩展   
+        + MD5加密的简单基本用法 md5.lua
+            ```
+            local resty_md5 = require "resty.md5"
+            local md5 = resty_md5:new()
+            if not md5 then
+                ngx.say("failed to create md5 object")
+                return
+            end
+        
+            local ok = md5:update("hello")
+            if not ok then
+                ngx.say("failed to add data")
+                return
+            end
+        
+            local digest = md5:final()
+        
+            -- ngx.say("md5",digest)                ---注意:这样直接输出是乱码
+            local str = require "resty.string"
+            ngx.say("md5: ", str.to_hex(digest))    ---注意:必须通过字符串转码方可打印输出
+                -- yield "md5: 5d41402abc4b2a76b9719d911017c592"
+            ```  
 ## Redis、Lua、Nginx一起工作事迹
 * 解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
     - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)

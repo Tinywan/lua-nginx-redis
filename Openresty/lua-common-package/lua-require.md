@@ -1,5 +1,24 @@
 ![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/nginx-hls-locations.png)
-### Lua require 相对路径
+### 整体目录
++ 整体目录
+    ```
+    .
+    ├── conf
+    │   ├── nginx.conf                  -- Nginx 配置文件
+    ├── logs
+    │   ├── error.log                   -- Nginx 错误日子
+    │   └── nginx.pid
+    ├── lua
+    │   ├── access_check.lua            -- 权限验证文件
+    │   ├── business_redis.lua          -- 业务 Redis 处理文件
+    │   ├── redis.lua                   -- 直接使用Lua的redis以及别的函数库
+    │   ├── ...
+    │   └── resty                       -- 存放Lua 的所有公共、封装好的库
+    │       └── redis_iresty.lua        -- Redis 接口的二次封装
+    │       └── param.lua               -- 参数过滤库
+    └── sbin
+        └── nginx
+    ```
 + [Lua require 相对路径 博客园详解](http://www.cnblogs.com/smallboat/p/5552407.html)
 + 相对路径总结
     + **当前目录** ：`/opt/openresty/nginx/conf/Lua`
