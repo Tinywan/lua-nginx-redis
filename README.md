@@ -279,7 +279,7 @@
             ├── lua
             │   ├── m3u8_redis_access.lua       -- M3U8地址权限验证文件
             │   ├── business_redis.lua          -- 业务 Redis 处理文件
-            │   ├── business_redis.lua          -- 业务 Redis 处理文件
+            │   ├── http-lua-test.lua           -- http lua demo
             │   ├── ...
             │   └── resty                       -- 存放Lua 的所有公共、封装好的库目录
             │       └── redis_iresty.lua        -- Redis 接口的二次封装
@@ -540,6 +540,31 @@
             ngx.say("md5: ", str.to_hex(digest))    ---注意:必须通过字符串转码方可打印输出
                 -- yield "md5: 5d41402abc4b2a76b9719d911017c592"
             ```  
+    +  lua-resty-http 扩展 （ngx_lua的HTTP客户端cosocket驱动程序）  
+        + 简单测试：http-lua-test.lua
+            ```
+            local http = require("resty.http")   
+            local httpc = http.new()  
+            local resp, err = httpc:request_uri("http://s.taobao.com", {  
+                method = "GET",  
+                path = "/search?q=hello",  
+                headers = {  
+                    ["User-Agent"] = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.111 Safari/537.36"  
+                }  
+            })  
+            if not resp then  
+                ngx.say("request error :", err)  
+                return  
+            end    
+            ngx.status = resp.status   
+            for k, v in pairs(resp.headers) do  
+                if k ~= "Transfer-Encoding" and k ~= "Connection" then  
+                    ngx.header[k] = v  
+                end  
+            end  
+            ngx.say(resp.body)  
+            httpc:close() 
+            ```          
 ## Redis、Lua、Nginx一起工作事迹
 * 解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
     - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
