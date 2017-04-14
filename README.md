@@ -277,11 +277,11 @@
             │   ├── error.log                   -- Nginx 错误日子
             │   └── nginx.pid
             ├── lua
-            │   ├── access_check.lua            -- 权限验证文件
+            │   ├── m3u8_redis_access.lua       -- M3U8地址权限验证文件
             │   ├── business_redis.lua          -- 业务 Redis 处理文件
             │   ├── business_redis.lua          -- 业务 Redis 处理文件
             │   ├── ...
-            │   └── resty                       -- 存放Lua 的所有公共、封装好的库
+            │   └── resty                       -- 存放Lua 的所有公共、封装好的库目录
             │       └── redis_iresty.lua        -- Redis 接口的二次封装
             │       └── param.lua               -- 参数过滤库
             └── sbin

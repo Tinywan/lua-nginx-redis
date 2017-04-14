@@ -93,7 +93,7 @@
       ```   
     + Redis的二次封装库的应用，test_redis2.lua文件：
       ``` 
-        package.path = '/opt/openresty/nginx/lua/?.lua;';
+        package.path = '/opt/openresty/nginx/lua/?.lua;' -- 注意：这个最好是修改掉最好
         local redis = require("resty.redis_iresty")
         local red = redis:new()
         local ok, err = red:set("Redis1999", "Redis is an animal 1999")
