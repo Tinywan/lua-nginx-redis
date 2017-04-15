@@ -541,7 +541,7 @@
                 -- yield "md5: 5d41402abc4b2a76b9719d911017c592"
             ```  
     +  lua-resty-http 扩展 （ngx_lua的HTTP客户端cosocket驱动程序）
-        + [简单测试：lua-http-test.lua]((https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-http/lua-http-test.lua))         
+        + [简单测试：lua-http-test.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-http/lua-http-test.lua)         
     +  lua-resty-mysql 扩展 
         + [简单测试：lua-msyql-test.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-mysql/lua-msyql-test.lua)          
 ## Redis、Lua、Nginx一起工作事迹
