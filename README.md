@@ -529,45 +529,21 @@
                 ngx.say("failed to create md5 object")
                 return
             end
-        
             local ok = md5:update("hello")
             if not ok then
                 ngx.say("failed to add data")
                 return
             end
-        
             local digest = md5:final()
-        
             -- ngx.say("md5",digest)                ---注意:这样直接输出是乱码
             local str = require "resty.string"
             ngx.say("md5: ", str.to_hex(digest))    ---注意:必须通过字符串转码方可打印输出
                 -- yield "md5: 5d41402abc4b2a76b9719d911017c592"
             ```  
-    +  lua-resty-http 扩展 （ngx_lua的HTTP客户端cosocket驱动程序）  
-        + 简单测试：http-lua-test.lua
-            ```
-            local http = require("resty.http")   
-            local httpc = http.new()  
-            local resp, err = httpc:request_uri("http://s.taobao.com", {  
-                method = "GET",  
-                path = "/search?q=hello",  
-                headers = {  
-                    ["User-Agent"] = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.111 Safari/537.36"  
-                }  
-            })  
-            if not resp then  
-                ngx.say("request error :", err)  
-                return  
-            end    
-            ngx.status = resp.status   
-            for k, v in pairs(resp.headers) do  
-                if k ~= "Transfer-Encoding" and k ~= "Connection" then  
-                    ngx.header[k] = v  
-                end  
-            end  
-            ngx.say(resp.body)  
-            httpc:close() 
-            ```          
+    +  lua-resty-http 扩展 （ngx_lua的HTTP客户端cosocket驱动程序）
+        + [简单测试：lua-http-test.lua]((https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-http/lua-http-test.lua))         
+    +  lua-resty-mysql 扩展 
+        + [简单测试：lua-msyql-test.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-mysql/lua-msyql-test.lua)          
 ## Redis、Lua、Nginx一起工作事迹
 * 解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
     - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
