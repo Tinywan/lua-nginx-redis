@@ -18,8 +18,8 @@
 
         keepalive_timeout  65;
            
-        lua_shared_dict _G 1m;  # 声明一个ngx多进程全局共享内存区域，_G 作为基于shm的Lua字典的存储空间ngx.shared.<name>   
-        lua_shared_dict TCP 1m;  # 声明一个ngx多进程全局共享内存区域，_G 作为基于shm的Lua字典的存储空间ngx.shared.<name>   
+        #lua_shared_dict _G 1m;  # 声明一个ngx多进程全局共享内存区域，_G 作为基于shm的Lua字典的存储空间ngx.shared.<name>   
+        lua_shared_dict upstreams 1m;  # 声明一个ngx多进程全局共享内存区域，_G 作为基于shm的Lua字典的存储空间ngx.shared.<name>   
         upstream default_upstream {                        # 配置后端服务器组
                     server 127.0.0.1:8081;
                     server 127.0.0.1:8082;
@@ -56,7 +56,7 @@
             
             location / {
                 set_by_lua_block $my_upstream {
-                    local ups = ngx.shared._G:get(ngx.var.http_host)
+                    local ups = ngx.shared.upstreams:get(ngx.var.http_host)
                     if ups ~= nil then
                         ngx.log(ngx.ERR, "get [", ups,"] from ngx.shared")
                         return ups
@@ -131,3 +131,4 @@
         root@tinywan:# curl http://127.0.0.1/_switch_upstream?upstream=default_upstream
         127.0.0.1 change upstream from lua_upstream to default_upstream    
         ```
++ HELP:[http://chattool.sinaapp.com/?p=2372](http://chattool.sinaapp.com/?p=2372)
