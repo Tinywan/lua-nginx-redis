@@ -17,8 +17,9 @@
         sendfile        on;
 
         keepalive_timeout  65;
-        
-        lua_shared_dict _G 1m;  # ngx多进程全局共享内存，保存upstream值   
+           
+        lua_shared_dict _G 1m;  # 声明一个ngx多进程全局共享内存区域，_G 作为基于shm的Lua字典的存储空间ngx.shared.<name>   
+        lua_shared_dict TCP 1m;  # 声明一个ngx多进程全局共享内存区域，_G 作为基于shm的Lua字典的存储空间ngx.shared.<name>   
         upstream default_upstream {                        # 配置后端服务器组
                     server 127.0.0.1:8081;
                     server 127.0.0.1:8082;
@@ -37,29 +38,31 @@
             error_log   logs/80.error.log error;
 
             location = /_switch_upstream {
-                    content_by_lua_block{
-                            local ups = ngx.req.get_uri_args()["upstream"]
-                            if ups == nil then
-                                ngx.say("usage: curl /_switch_upstream?upstream=unix:/path-to-sock-file")
-                                return
-                            end
-                            local host = ngx.var.http_host
-                            local ups_src = ngx.shared._G:get(host)
-                            ngx.log(ngx.WARN, host, " change upstream from ", ups_src, " to ", ups)
-                            ngx.shared._G:set(host,  ups)
-                            ngx.say(host, " change upstream from ", ups_src, " to ", ups)
-                    }
+                 content_by_lua_block{
+                        local ups = ngx.req.get_uri_args()["upstream"]
+                        if ups == nil or ups == "" then
+                            ngx.say("upstream is nil 1")
+                            return nil
+                        end
+                        local host = ngx.var.http_host
+                        local upstreams = ngx.shared.upstreams
+                        local ups_src = upstreams:get(host)
+                        ngx.say("Current upstream is :",ups_src)
+                        ngx.log(ngx.WARN, host, " change upstream from ", ups_src, " to ", ups)
+                        local succ, err, forcible = upstreams:set(host,  ups)
+                        ngx.say(host, " change upstream from ", ups_src, " to ", ups)
+                }
             }
             
             location / {
-                set_by_lua $my_upstream '
-                local ups = ngx.shared._G:get(ngx.var.http_host)
-                if ups ~= nil then
-                    ngx.log(ngx.ERR, "get [", ups,"] from ngx.shared")
-                    return ups
-                end
-                return "default_upstream"
-                ';
+                set_by_lua_block $my_upstream {
+                    local ups = ngx.shared._G:get(ngx.var.http_host)
+                    if ups ~= nil then
+                        ngx.log(ngx.ERR, "get [", ups,"] from ngx.shared")
+                        return ups
+                    end
+                    return "default_upstream"
+                }
 
                 proxy_next_upstream off;
                 proxy_set_header    X-Real-IP           $remote_addr;
@@ -125,6 +128,6 @@
         ```
     + `lua_upstream` 切换（还原`default_upstream`）到 `default_upstream`
         ``` 
-        root@tinywan:# curl http://127.0.0.1/_switch_upstream?upstream=lua_upstream
-        127.0.0.1 change upstream from default_upstream to lua_upstream    
+        root@tinywan:# curl http://127.0.0.1/_switch_upstream?upstream=default_upstream
+        127.0.0.1 change upstream from lua_upstream to default_upstream    
         ```
