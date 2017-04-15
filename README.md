@@ -361,12 +361,12 @@
             + [Lua脚本proxy_pass_cdn.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/proxy_pass_cdn.lua)
             + [lua-nginx-module 贡献代码](https://github.com/openresty/lua-nginx-module/issues/275)
             
-    + **Lua脚本结合 Nginx+Lua+Local Redis+Mysql服务器缓存**
-            + Nginx+Lua+Local Redis+Mysql集群架构   
-            + ![Nginx+Lua+Local Redis+Mysql](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Nginx+Lua+Local_Redis+Mysql.png)       
-            + [Lua脚本Nginx+Lua+Redis+Mysql.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/Nginx+Lua+Redis+Mysql.lua)   
-            + [Nginx.conf配置文件Nginx+Lua+Redis+Mysql.conf](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/Nginx+Lua+Redis+Mysql.conf)   
-            + [HELP](http://jinnianshilongnian.iteye.com/blog/2188113)
+    + **Lua脚本结合 Nginx+Lua+Local Redis+Mysql服务器缓存**   
+        + Nginx+Lua+Local Redis+Mysql集群架构   
+        + ![Nginx+Lua+Local Redis+Mysql](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Nginx+Lua+Local_Redis+Mysql.png)       
+        + [Lua脚本Nginx+Lua+Redis+Mysql.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/Nginx+Lua+Redis+Mysql.lua)   
+        + [Nginx.conf配置文件Nginx+Lua+Redis+Mysql.conf](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/Nginx+Lua+Redis+Mysql.conf)   
+        + [HELP](http://jinnianshilongnian.iteye.com/blog/2188113)
             
         + **Lua脚本结合 Redis 统计直播流播放次数、链接次数等等信息**
             + nginx.conf 
