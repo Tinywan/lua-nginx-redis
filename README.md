@@ -694,6 +694,8 @@
               5) "HOST_NAME"
               6) "baidu"
            ```
+           + 注意：`lua_get_redis.lua WEB , 0 2` 之间的空格，不然会提示错误
+           + 错误：`(error) ERR Error running script command arguments must be strings or integers`
     +   通过lua脚本获取指定的key的List中的所有数据 
         ```
         local key=KEYS[1]
