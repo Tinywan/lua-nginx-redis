@@ -267,16 +267,16 @@
       $3 为正则匹配的第一个值 `(m3u8|ts)`  
       `.` 需要用转义字符转义`\.`    
 #### <a name="Nginx_Web7_knowledge"/>  第七章   代理服务
-+   +   [正向代理和反向代理的概念](#title)
-+   +   [正向代理服务](#title)
-+   +   [反向代理的服务](#title)
-+   +   [Nginx日志服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-Log.md)
-+   +   负载均衡
-    +   HTTP负载均衡
-        - [x] [简单的负载平衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy-1.md)
-        - [x] [负载均衡五个配置实例](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy.md)
-        - [x] [Openresty-Lua动态修改upstream后端服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/openresty-nginx-lua-Proxy.md)
-    +   TCP负载均衡   
++   [正向代理和反向代理的概念](#title)
++   [正向代理服务](#title)
++   [反向代理的服务](#title)
++   [Nginx日志服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-Log.md)
++   负载均衡
++   HTTP负载均衡
+    - [x] [简单的负载平衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy-1.md)
+    - [x] [负载均衡五个配置实例](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy.md)
+    - [x] [Openresty-Lua动态修改upstream后端服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/openresty-nginx-lua-Proxy.md)
++   TCP负载均衡   
         - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-8-tcp-Proxy.md)      
 #### <a name="Nginx_Web8_knowledge"/>  第八章   缓存机制
 +   测试一
