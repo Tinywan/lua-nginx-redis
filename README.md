@@ -681,7 +681,7 @@
             3) "ip"
             4) "192.168.1.200"
             ```
-        +  Lua脚本
+        +  Lua脚本,lua_get_redis.lua 文件
            ``` 
            -- 获取键值/参数
            local key,offset,limit = KEYS[1], ARGV[1], ARGV[2]
@@ -731,6 +731,59 @@
            ```
            + 注意：`lua_get_redis.lua WEB , 0 2` 之间的空格，不然会提示错误
            + 错误：`(error) ERR Error running script command arguments must be strings or integers`
+    +   Ngx_lua 写入Redis数据，通过CURL请求
+        + curl_get_redis.lua 文件内容
+            ``` 
+            local json = require("cjson")
+            local redis = require("resty.redis")
+            local red = redis:new()
+            
+            red:set_timeout(1000)
+            
+            local ip = "127.0.0.1"
+            local port = 6379
+            local ok, err = red:connect(ip, port)
+            if not ok then
+                    ngx.say("connect to redis error : ", err)
+                    return ngx.exit(500)
+            end
+            
+            local key = ngx.var[1]
+            local new_timer = ngx.localtime()   -- 本地时间：2017-04-16 15:56:59
+            local value = key.."::"..new_timer
+            local ok , err = red:set(key,value)
+            if not ok then
+               ngx.say("failed to set "..key, err)
+               return
+            end
+            ngx.say("set result: ", ok)
+            
+            local res, err = red:get(key)
+            if not res then
+                    ngx.say("get from redis error : ", err)
+                    return
+            end
+            if res == ngx.null then
+                    ngx.say(key.."not found.")
+                    return
+            end
+            red:close()
+            ngx.say("Success get Redis Data",json.encode({content=res}))
+            ```
+        + nginx.conf
+            ``` 
+            location ~* /curl_insert_redis/(\w+)$ {
+                default_type 'text/html';
+                lua_code_cache off;
+                content_by_lua_file /opt/openresty/nginx/conf/Lua/curl_get_redis.lua;
+            }
+            ```
+        + curl 和浏览器请求结果（查询Redis数据库，数据已经插入成功）
+           ``` 
+              root@tinywan:# curl http://127.0.0.1/curl_insert_redis/Tinywan1227
+              set result: OK
+              Success get Redis Data{"content":"Tinywan1227::2017-04-16 15:57:56"}
+           ```
     +   通过lua脚本获取指定的key的List中的所有数据 
         ```
         local key=KEYS[1]
