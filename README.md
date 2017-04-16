@@ -32,10 +32,7 @@
     +   [lua-resty-http 扩展 ](#Openresty_resty-http) 
     +   [lua-resty-mysql 扩展](#Openresty_resty-mysql) 
 +   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
-+   [Nginx基础知识](#Nginx_base_knowledge) 
-+   [Nginx基础知识](#Nginx_base_knowledge) 
-+   [Nginx基础知识](#Nginx_base_knowledge) 
-+   [Nginx基础知识](#Nginx_base_knowledge) 
++   [Redis执行Lua脚本基本用法](#Redis_Run_Lua) 
 ### <a name="Nginx_base_knowledge"/>  Nginx基础知识
 +   [NGINX 所有 Modules](https://www.nginx.com/resources/wiki/modules/)
 +   [agentzh的Nginx教程（版本2016.07.21）](https://openresty.org/download/agentzh-nginx-tutorials-en.html#00-foreword01)
@@ -572,8 +569,8 @@
 * 解决2
 * 解决3    
 
-### Redis执行Lua脚本示例
-### Lua 基本语法
+### Redis执行Lua脚本
+#### Lua 基本语法
 ---
 +   Hello, Lua!
 
@@ -593,9 +590,6 @@
 
     > 运行这段代码会打印"Hello,world!", EVAL在第一个参数是我们的lua脚本， 这我们用cat命令从文件中读取我们的脚本内容。第二个参数是这个脚本需要访问的Redis 的键的数字号。我们简单的 “Hello Script" 不会访问任何键，所以我们使用0
     
-### Lua知识
----
-#### 基本语法
 +   redis.call() 与 redis.pcall()的区别
 
     * 他们唯一的区别是当redis命令执行结果返回错误时
@@ -627,10 +621,8 @@
             print("The man name is "..man.GetName())
             man.SetName("Phalcon")
             print("The man name is "..man.GetName())
-        ```
-
-
-### Redis执行Lua脚本基本用法
+        ```  
+#### <a name="Redis_Run_Lua"/>   Redis执行Lua脚本基本用法
 +   EVAL命令格式
     +   基本语法 
         ```
