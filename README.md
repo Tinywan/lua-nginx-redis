@@ -13,180 +13,180 @@
 ### [**PHP7中php.ini/php-fpm/www.conf的配置,Nginx和PHP-FPM的开机自动启动脚本**](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/PHP/PHP-FPM/config.md)
 ### [**shell脚本实现分日志级别记录日志**](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/Shell_Log.sh)
 ### **Redis基础知识**
-    + [Redis 简易安装教程](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md)
++ [Redis 简易安装教程](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md)+ [Redis 简易安装教程](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md)
 ### **Shell脚本**
     + [编写快速安全Bash脚本的建议](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Shell/write-shell-suggestions.md)    
 ### **Lua基础知识**
-    + 控制结构
-        + [if-elseif-end 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/if-else-example.lua)
-        + [for 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/for-example.lua)
-        + [Lua 只有一个容器，那就是table](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/container-table.lua)
-    + [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
-    + [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
-    + [Lua 实现简单封装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/function1.lua)
++ 控制结构
+    + [if-elseif-end 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/if-else-example.lua)
+    + [for 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/for-example.lua)
+    + [Lua 只有一个容器，那就是table](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/container-table.lua)
++ [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
++ [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
++ [Lua 实现简单封装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/function1.lua)
 ### **流媒体视频直播、点播**
-    + [Nginx配置Rtmp支持Hls的直播和点播功能](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod.md)
-    + [HLS视频直播和点播的Nginx的Location的配置信息(成功)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod-locatiuon-config.md)     
++ [Nginx配置Rtmp支持Hls的直播和点播功能](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod.md)
++ [HLS视频直播和点播的Nginx的Location的配置信息(成功)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod-locatiuon-config.md)     
 ### **Nginx开发从入门到精通**
-    + [Nginx 编译安装以及参数详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-    + NGINX变量详解
-        - [x] [nginx变量使用方法详解笔记(1)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/notes-1.md)
-        - [x] [nginx变量使用方法详解笔记(2)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/notes-2.md)
-        - [ ] [nginx变量使用方法详解笔记(3)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-        - [ ] [nginx变量使用方法详解笔记(4)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)    
-        - [ ] [nginx变量使用方法详解笔记(5)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-    + Nginx指令执行顺序
-        - [x] [Nginx指令执行命令（01）](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-01.md)
-        - [x] [nginx变量使用方法详解笔记(2)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-02.md)
-        - [ ] [nginx变量使用方法详解笔记(3)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-03.md)
-        - [ ] [nginx变量使用方法详解笔记(4)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-04.md)    
-        - [ ] [nginx变量使用方法详解笔记(5)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-05.md)   
++ [Nginx 编译安装以及参数详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
++ NGINX变量详解
+    - [x] [nginx变量使用方法详解笔记(1)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/notes-1.md)
+    - [x] [nginx变量使用方法详解笔记(2)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/notes-2.md)
+    - [ ] [nginx变量使用方法详解笔记(3)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+    - [ ] [nginx变量使用方法详解笔记(4)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)    
+    - [ ] [nginx变量使用方法详解笔记(5)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
++ Nginx指令执行顺序
+    - [x] [Nginx指令执行命令（01）](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-01.md)
+    - [x] [nginx变量使用方法详解笔记(2)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-02.md)
+    - [ ] [nginx变量使用方法详解笔记(3)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-03.md)
+    - [ ] [nginx变量使用方法详解笔记(4)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-04.md)    
+    - [ ] [nginx变量使用方法详解笔记(5)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-05.md)   
 ### **Nginx高性能WEB服务器详解**
-    + 第一章   初探
-        - [x] [Nginx的历史](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
-    + 第二章   安装部署
-        - [x] [基于域名、IP的虚拟主机配置](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-all-config.md)
-        - [x] [完整、标准配置实际示列](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-basic-config.md)
-        - [x] [日志文件配置与切割](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-log-cut.md)
-        - [x] alias 和 root 在location 下的应用
-            - 通过alias 实现别名功能
-                ``` 
-                location /live {  
-                    alias /home/tinywan/HLS/;
++ 第一章   初探
+    - [x] [Nginx的历史](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
++ 第二章   安装部署
+    - [x] [基于域名、IP的虚拟主机配置](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-all-config.md)
+    - [x] [完整、标准配置实际示列](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-basic-config.md)
+    - [x] [日志文件配置与切割](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-log-cut.md)
+    - [x] alias 和 root 在location 下的应用
+       - 通过alias 实现别名功能
+           ``` 
+           location /live {  
+               alias /home/tinywan/HLS/;
+           }
+           ```
+       - curl 请求结果
+           ``` 
+          tinywan@tinywan:~/HLS$ cat index.html 
+          alias /home/tinywan/HLS/index.html
+          tinywan@tinywan:~/HLS$ curl http://127.0.0.1/live/index.html
+          alias /home/tinywan/HLS/index.html
+           ```
+       - 结论：
+           1. cul 请求 `/live/index.html`,那么Nginx将会在服务器上查找`/home/tinywan/HLS/index.html` 文件
+           1. 请求的`url` 中的`location`后面的部分会被追加到`alias `指定的目录后面，而`location`后面的`/live`路径将会别自动抛弃 
+       - 类似案例[2]：
+           - config配置信息
+               ``` 
+                location ~ ^/live/(.*)$ {  
+                     alias /home/tinywan/HLS/$1;
                 }
-                ```
-            - curl 请求结果
-                ``` 
-               tinywan@tinywan:~/HLS$ cat index.html 
-               alias /home/tinywan/HLS/index.html
-               tinywan@tinywan:~/HLS$ curl http://127.0.0.1/live/index.html
-               alias /home/tinywan/HLS/index.html
-                ```
-            - 结论：
-                1. cul 请求 `/live/index.html`,那么Nginx将会在服务器上查找`/home/tinywan/HLS/index.html` 文件
-                1. 请求的`url` 中的`location`后面的部分会被追加到`alias `指定的目录后面，而`location`后面的`/live`路径将会别自动抛弃 
-            - 类似案例[2]：
-                - config配置信息
-                    ``` 
-                     location ~ ^/live/(.*)$ {  
-                          alias /home/tinywan/HLS/$1;
-                     }
-                    ```
-                - curl 请求结果
-                    ``` 
-                    tinywan@tinywan:~/HLS$ pwd
-                    /home/tinywan/HLS
-                    tinywan@tinywan:~/HLS$ cat txt.txt 
-                    txt file
-                    tinywan@tinywan:~/HLS$ curl http://127.0.0.1/live/txt.txt
-                    txt file
-                    ```
-                -  如果url请求`/live/txt.txt`那么Nginx将会在服务器上查找`/home/tinywan/HLS/txt.txt` 文件   
-            - **与root 功能的差别**：
-                - config配置信息，注意：一下的`alias` 换成 `root `
-                    ``` 
-                     location ~ ^/live/(.*)$ {  
-                          root /home/tinywan/HLS/$1;
-                     }
-                    ```
-                - curl 请求结果
-                    ``` 
-                   tinywan@tinywan:~/HLS$ curl http://127.0.0.1/live/txt.txt
-                   <html>
-                   <head><title>404 Not Found</title></head>
-                   <body bgcolor="white">
-                   <center><h1>404 Not Found</h1></center>
-                   <hr><center>openresty/1.11.2.1</center>
-                   </body>
-                   </html>
-                    ```
-                -  日志文件信息(打开Nginx的rewrite日志:rewrite_log on;)：
-                   ``` 
-                   /home/tinywan/HLS/txt.txt/live/txt.txt
-                   ```   
-                - **二者的区别**
-                    1. `alias` 指定的目录是当前目录
-                    1. `root`  指定的是根目录
+               ```
+           - curl 请求结果
+               ``` 
+               tinywan@tinywan:~/HLS$ pwd
+               /home/tinywan/HLS
+               tinywan@tinywan:~/HLS$ cat txt.txt 
+               txt file
+               tinywan@tinywan:~/HLS$ curl http://127.0.0.1/live/txt.txt
+               txt file
+               ```
+           -  如果url请求`/live/txt.txt`那么Nginx将会在服务器上查找`/home/tinywan/HLS/txt.txt` 文件   
+       - **与root 功能的差别**：
+           - config配置信息，注意：一下的`alias` 换成 `root `
+               ``` 
+                location ~ ^/live/(.*)$ {  
+                     root /home/tinywan/HLS/$1;
+                }
+               ```
+           - curl 请求结果
+               ``` 
+              tinywan@tinywan:~/HLS$ curl http://127.0.0.1/live/txt.txt
+              <html>
+              <head><title>404 Not Found</title></head>
+              <body bgcolor="white">
+              <center><h1>404 Not Found</h1></center>
+              <hr><center>openresty/1.11.2.1</center>
+              </body>
+              </html>
+               ```
+           -  日志文件信息(打开Nginx的rewrite日志:rewrite_log on;)：
+              ``` 
+              /home/tinywan/HLS/txt.txt/live/txt.txt
+              ```   
+           - **二者的区别**
+               1. `alias` 指定的目录是当前目录
+               1. `root`  指定的是根目录
                     1. 一般建议的`location /`中通过`root`命令配置目录，其他目录匹配的位置使用`alias`命令   
-            - 案例[3]：
-                - config配置信息
-                    ``` 
-                     location ~ ^/live/(\w+)/(.*) {
-                         alias /home/tinywan/HLS/live/$1/$2;
-                     }
-                    ```
-                - curl 请求结果
-                    ``` 
-                    tinywan@tinywan:~/HLS/live/stream123$ pwd
-                    /home/tinywan/HLS/live/stream123
-                    tinywan@tinywan:~/HLS/live/stream123$ cat index.m3u8 
-                    12312312312
-                    tinywan@tinywan:~/HLS/live/stream123$ curl "http://127.0.0.1/live/stream123/index.m3u8?token=1234&api=009132"
-                    12312312312
-                    ```         
-    * 第三章   架构初探
-        - [ ] 测试一
-    * 第四章   高级配置
-        - [x] 基本语法：location [=|~|~*|^~] /uri/ { … }   
-             1. `= `：严格匹配。如果这个查询匹配，那么将停止搜索并立即处理此请求。
-             1. `~ `：为区分大小写匹配(可用正则表达式) 
-             1. `!~ `：为区分大小写不匹配
-             1. `!~*`：为不区分大小写不匹配
-             1. ` ^~ `：如果把这个前缀用于一个常规字符串,那么告诉nginx 如果路径匹配那么不测试正则表达式    
-        - [x] [Perl 正则表达式参考](http://www.runoob.com/perl/perl-regular-expressions.html)
-        - [x] 正则中需要转义的特殊字符小结
-             - [1] ` $`     匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 ‘\n' 或 ‘\r'。要匹配 $ 字符本身，请使用 \$。   
-             - [2] ` ( )`   标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 和。   
-             - [3] ` * `    匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 \*。   
-             - [4] ` +`     匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 \+。   
-             - [5] `  . `   匹配除换行符 \n之外的任何单字符。要匹配 .，请使用 \。  
-             - [6] ` [ ]`   标记一个中括号表达式的开始。要匹配 [，请使用 \[。   
-             - [7] ` ?  `   匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 \?。   
-             - [8] ` \ `    将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n' 匹配字符 ‘n'。'\n' 匹配换行符。序列 ‘\\' 匹配 “\”，而 ‘\(' 则匹配 “(”。  
-             - [9] `  ^  `  匹配输入字符串的开始位置，除非在方括号表达式中使用，此时它表示不接受该字符集合。要匹配 ^ 字符本身，请使用 \^。
-             - [10] ` { }`   标记限定符表达式的开始。要匹配 {，请使用 \{。
-             - [11] ` |  `   指明两项之间的一个选择。要匹配 |，请使用 \|。
+       - 案例[3]：
+          - config配置信息
+              ``` 
+               location ~ ^/live/(\w+)/(.*) {
+                   alias /home/tinywan/HLS/live/$1/$2;
+               }
+              ```
+          - curl 请求结果
+              ``` 
+              tinywan@tinywan:~/HLS/live/stream123$ pwd
+              /home/tinywan/HLS/live/stream123
+              tinywan@tinywan:~/HLS/live/stream123$ cat index.m3u8 
+              12312312312
+              tinywan@tinywan:~/HLS/live/stream123$ curl "http://127.0.0.1/live/stream123/index.m3u8?token=1234&api=009132"
+              12312312312
+              ```         
++   第三章   架构初探
+    - [ ] 测试一
++   第四章   高级配置
+    - [x] 基本语法：location [=|~|~*|^~] /uri/ { … }   
+         1. `= `：严格匹配。如果这个查询匹配，那么将停止搜索并立即处理此请求。
+         1. `~ `：为区分大小写匹配(可用正则表达式) 
+         1. `!~ `：为区分大小写不匹配
+         1. `!~*`：为不区分大小写不匹配
+         1. ` ^~ `：如果把这个前缀用于一个常规字符串,那么告诉nginx 如果路径匹配那么不测试正则表达式    
+    - [x] [Perl 正则表达式参考](http://www.runoob.com/perl/perl-regular-expressions.html)
+    - [x] 正则中需要转义的特殊字符小结
+         - [1] ` $`     匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 ‘\n' 或 ‘\r'。要匹配 $ 字符本身，请使用 \$。   
+         - [2] ` ( )`   标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 和。   
+         - [3] ` * `    匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 \*。   
+         - [4] ` +`     匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 \+。   
+         - [5] `  . `   匹配除换行符 \n之外的任何单字符。要匹配 .，请使用 \。  
+         - [6] ` [ ]`   标记一个中括号表达式的开始。要匹配 [，请使用 \[。   
+         - [7] ` ?  `   匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 \?。   
+         - [8] ` \ `    将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n' 匹配字符 ‘n'。'\n' 匹配换行符。序列 ‘\\' 匹配 “\”，而 ‘\(' 则匹配 “(”。  
+         - [9] `  ^  `  匹配输入字符串的开始位置，除非在方括号表达式中使用，此时它表示不接受该字符集合。要匹配 ^ 字符本身，请使用 \^。
+         - [10] ` { }`   标记限定符表达式的开始。要匹配 {，请使用 \{。
+         - [11] ` |  `   指明两项之间的一个选择。要匹配 |，请使用 \|。
 
-        - [x] 正则表达式 (Regular expression) 匹配location
-            - [1]   `location ~* \.(gif|jpg|jpeg)$ { }`：匹配所有以 gif,jpg或jpeg 结尾的请求
-            - [2]   `location ~ /documents/Abc { }`：匹配任何以 /documents/ 开头的地址，匹配符合以后，还要继续往下搜索
-            - [3] **目录匹配：**
-                1. 可以匹配静态文件目录`(static/lib)`
-                1. HLS直播目录`(/home/HLS/stream123/index.m3u8)`   
-                1. HLS/MP4/FLV点播视频目录`(/home/HLS/stream123.m3u8)`   
-                1. 匹配URL地址：`http://127.0.0.1/live/stream123/index.m3u8` 
-                1. nginx.conf 配置信息 
-                    ```
-                    # 匹配任何以/live/ 开头的任何查询并且停止搜索。任何正则表达式将不会被测试
-                    location ^~ /live/ {  
-                                    root /home/tinywan/HLS/;
-                    }
-                    # 以上匹配成功后的组合：/home/tinywan/HLS/live/....
-                    ```
-            - **[4] 后缀匹配：**
-                1. 匹配任何后缀文件名`gif|jpg|jpeg|png|css|js|ico|m3u8|ts` 结尾的请求
-                1. TS 文件匹配`http://127.0.0.1/live/stream123/11.ts`
-                1. M3U8 文件匹配`http://127.0.0.1/live/stream123/index.m3u8`
-                1. 匹配URL地址：`http://127.0.0.1/hls/123.m3u8` 
-                1. nginx.conf 配置信息  
-                    ```
-                    location ~* \.(gif|jpg|jpeg|png|css|js|ico|m3u8|ts)$ {
-                            root /home/tinywan/HLS/;
-                    }
-                    ```
-             - **[5]HSL直播目录匹配实际案例（请测试上线）** 
-                1. 可以后缀文件名`http://127.0.0.1/live/stream123/index.m3u8`
+    - [x] 正则表达式 (Regular expression) 匹配location
+        - [1]   `location ~* \.(gif|jpg|jpeg)$ { }`：匹配所有以 gif,jpg或jpeg 结尾的请求
+        - [2]   `location ~ /documents/Abc { }`：匹配任何以 /documents/ 开头的地址，匹配符合以后，还要继续往下搜索
+        - [3] **目录匹配：**
+            1. 可以匹配静态文件目录`(static/lib)`
+            1. HLS直播目录`(/home/HLS/stream123/index.m3u8)`   
+            1. HLS/MP4/FLV点播视频目录`(/home/HLS/stream123.m3u8)`   
+            1. 匹配URL地址：`http://127.0.0.1/live/stream123/index.m3u8` 
+            1. nginx.conf 配置信息 
                 ```
-                location ^~ /live/ {
+                # 匹配任何以/live/ 开头的任何查询并且停止搜索。任何正则表达式将不会被测试
+                location ^~ /live/ {  
+                                root /home/tinywan/HLS/;
+                }
+                # 以上匹配成功后的组合：/home/tinywan/HLS/live/....
+                ```
+        - **[4] 后缀匹配：**
+            1. 匹配任何后缀文件名`gif|jpg|jpeg|png|css|js|ico|m3u8|ts` 结尾的请求
+            1. TS 文件匹配`http://127.0.0.1/live/stream123/11.ts`
+            1. M3U8 文件匹配`http://127.0.0.1/live/stream123/index.m3u8`
+            1. 匹配URL地址：`http://127.0.0.1/hls/123.m3u8` 
+            1. nginx.conf 配置信息  
+                ```
+                location ~* \.(gif|jpg|jpeg|png|css|js|ico|m3u8|ts)$ {
                         root /home/tinywan/HLS/;
                 }
-                ```          
+                ```
+         - **[5]HSL直播目录匹配实际案例（请测试上线）** 
+            1. 可以后缀文件名`http://127.0.0.1/live/stream123/index.m3u8`
+            ```
+            location ^~ /live/ {
+                    root /home/tinywan/HLS/;
+            }
+            ```          
 
-        - [x] [nginx配置location总结及rewrite规则写法](http://seanlook.com/2015/05/17/nginx-location-rewrite/)
-    * 第五章   Gzip压缩
-        - [ ] 测试一
-    * 第六章   Rewrite 功能
-        - [x] Rewrite 常用全局变量
+    - [x] [nginx配置location总结及rewrite规则写法](http://seanlook.com/2015/05/17/nginx-location-rewrite/)
++   第五章   Gzip压缩
+    - [ ] 测试一
++   第六章   Rewrite 功能
+    - [x] Rewrite 常用全局变量
             > 请求案例： `curl -G -d "name=Tinywan&age=24" http://127.0.0.1/rewrite_var/1192/index.m3u8`    
 
             | 变量 | 值          |描述 |
@@ -215,7 +215,7 @@
             | $server_port      | 80  |请求到达服务器的端口号 |
             | $uri      | /rewrite_var/1192/index.m3u8  | 不带请求参数的当前URI|
 
-        - [x] Rewrite 正则匹配` uri `参数接收
+    - [x] Rewrite 正则匹配` uri `参数接收
             > 请求案例：`curl http://192.168.18.143/live/tinywan123/index.m3u8`
             > Nginx.conf配置文件   
             ```
@@ -241,24 +241,24 @@
               $2 为正则匹配多个非数字 `(\D+)`    
               $3 为正则匹配的第一个值 `(m3u8|ts)`  
               `.` 需要用转义字符转义`\.`    
-    * 第七章   代理服务
-        - [ ] [正向代理和反向代理的概念](#title)
-        - [ ] [正向代理服务](#title)
-        - [ ] [反向代理的服务](#title)
-        - [x] [Nginx日志服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-Log.md)
-        * 负载均衡
-            * HTTP负载均衡
-                - [x] [简单的负载平衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy-1.md)
-                - [x] [负载均衡五个配置实例](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy.md)
-                - [x] [Openresty-Lua动态修改upstream后端服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/openresty-nginx-lua-Proxy.md)
-            * TCP负载均衡   
-                - [ ] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-8-tcp-Proxy.md)      
-    * 第八章   缓存机制
-        - [ ] 测试一
-    * 第九章   Nginx初探1
-        - [ ] 测试一
-    * 第十章   Nginx初探1
-        - [ ] 测试一     
++   第七章   代理服务
+    - [ ] [正向代理和反向代理的概念](#title)
+    - [ ] [正向代理服务](#title)
+    - [ ] [反向代理的服务](#title)
+    - [x] [Nginx日志服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-Log.md)
+    - [x] 负载均衡
+        * HTTP负载均衡
+            - [x] [简单的负载平衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy-1.md)
+            - [x] [负载均衡五个配置实例](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy.md)
+            - [x] [Openresty-Lua动态修改upstream后端服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/openresty-nginx-lua-Proxy.md)
+        * TCP负载均衡   
+            - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-8-tcp-Proxy.md)      
++   第八章   缓存机制
+    - [ ] 测试一
++   第九章   Nginx初探1
+    - [ ] 测试一
++   第十章   Nginx初探1
+    - [ ] 测试一     
 ### Lua脚本开发Nginx
     * 普通文本
     * 单行文本2
