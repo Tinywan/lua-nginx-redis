@@ -212,7 +212,8 @@
 #### <a name="Nginx_Web6_knowledge"/>   第六章   Rewrite 功能
 +   Rewrite 常用全局变量
     +   请求案例： `curl -G -d "name=Tinywan&age=24" http://127.0.0.1/rewrite_var/1192/index.m3u8`    
-    +   输出结果：   
+    +   接受结果：
+    
     | 变量 | 值          |描述 |
     | --------- | ----------- |----------- |
     | $args      | name=Tinywan&age=24 |存放URL 请求的指令 |
