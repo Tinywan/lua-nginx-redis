@@ -4,19 +4,29 @@
 +   [解决 Visual Studio Code 向github提交代码不用输入帐号密码](#githubpush)
 +   phase的意义：就是几个MR的一个集合，不定数目的MR job视为一个phase。一个请求经过nginx处理的过程中，会经过一系列的阶段（phases）
 ## <a name="index"/>目录
-### Core
++   [Nginx基础知识](#Nginx_base_knowledge) 
++   [Redis基础知识](#Redis_base_knowledge) 
++   [PHP脚本](#PHP_base_knowledge) 
++   [Shell脚本](#Shell_base_knowledge) 
++   [Lua基础知识](#Lua_base_knowledge) 
++   [Nginx基础知识](#Nginx_base_knowledge) 
++   [Nginx基础知识](#Nginx_base_knowledge) 
++   [Nginx基础知识](#Nginx_base_knowledge) 
++   [Nginx基础知识](#Nginx_base_knowledge) 
+### <a name="Nginx_base_knowledge"/>  Nginx基础知识
 +   [NGINX 所有 Modules](https://www.nginx.com/resources/wiki/modules/)
 +   [agentzh的Nginx教程（版本2016.07.21）](https://openresty.org/download/agentzh-nginx-tutorials-en.html#00-foreword01)
 +   [Nginx的11个Phases](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-phases.md)
 +   [Nginx 陷阱和常见错误](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-1-config.md)
-+   [PHP7中php.ini/php-fpm/www.conf的配置,Nginx和PHP-FPM的开机自动启动脚本](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/PHP/PHP-FPM/config.md)
 
-### Redis基础知识
-+ [Redis 简易安装教程](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md)
-### Shell脚本
+### <a name="Redis_base_knowledge"/>    Redis基础知识
++   [Redis 简易安装教程](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md)
+### <a name="PHP_base_knowledge"/>    PHP脚本
++   [PHP7中php.ini/php-fpm/www.conf的配置,Nginx和PHP-FPM的开机自动启动脚本](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/PHP/PHP-FPM/config.md)
+### <a name="Shell_base_knowledge"/>  Shell脚本
 +   [编写快速安全Bash脚本的建议](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Shell/write-shell-suggestions.md) 
 +   [shell脚本实现分日志级别记录日志](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/Shell_Log.sh)   
-### Lua基础知识
+### <a name="Lua_base_knowledge"/>  Lua基础知识
 + 控制结构
     + [if-elseif-end 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/if-else-example.lua)
     + [for 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/for-example.lua)
@@ -24,11 +34,11 @@
 + [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
 + [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
 + [Lua 实现简单封装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/function1.lua)
-### 流媒体视频直播、点播
+### <a name="PHP_base_knowledge"/>  流媒体视频直播、点播
 + [Nginx配置Rtmp支持Hls的直播和点播功能](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod.md)
 + [HLS视频直播和点播的Nginx的Location的配置信息(成功)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod-locatiuon-config.md)     
  
-### Nginx高性能WEB服务器详解
+### <a name="PHP_base_knowledge"/>  Nginx高性能WEB服务器详解
 ####    第一章   初探
 + [Nginx 编译安装以及参数详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
 + NGINX变量详解
@@ -563,17 +573,42 @@
     
 ### Lua知识
 ---
-##### 基本语法
+#### 基本语法
 +   redis.call() 与 redis.pcall()的区别
 
     * 他们唯一的区别是当redis命令执行结果返回错误时
     * redis.call()将返回给调用者一个错误.
     * redis.pcall()会将捕获的错误以Lua表的形式返回.
     *  redis.call() 和 redis.pcall() 两个函数的参数可以是任意的 Redis 命令
++   Lua网络编程    
+#### Lua 脚本
++   Lua 实现简单封装
+    +   man.lua
+        ```
+            local _name = "Tinywan"
+            local man = {}
+    
+            function man.GetName()
+                return _name
+            end
+    
+            function man.SetName(name)
+                _name = name    
+            end
+    
+            return man 
+        ```
+    +   测试封装,test.lua   
 
-+   Lua网络编程
+        ```
+            local man = require('man')
+            print("The man name is "..man.GetName())
+            man.SetName("Phalcon")
+            print("The man name is "..man.GetName())
+        ```
 
-#### Redis执行Lua脚本基本用法
+
+### Redis执行Lua脚本基本用法
 +   EVAL命令格式
     +   基本语法 
         ```
@@ -706,7 +741,7 @@
              end
              return  result;
          ```
-#### <a name="githubpush"/> 13.解决 Visual Studio Code 向github提交代码不用输入帐号密码    
+### <a name="githubpush"/> Visual Studio Code 向github提交代码不用输入帐号密码    
 +   在命令行输入以下命令
         ```
         git config --global credential.helper store
@@ -738,32 +773,7 @@
         
     > 通过【1】和【2】可以很完美的实现一个连接哦！
 
-### Lua 脚本
-+   Lua 实现简单封装
-    +   man.lua
-        ```
-            local _name = "Tinywan"
-            local man = {}
-    
-            function man.GetName()
-                return _name
-            end
-    
-            function man.SetName(name)
-                _name = name    
-            end
-    
-            return man 
-        ```
-    +   测试封装,test.lua   
-
-        ```
-            local man = require('man')
-            print("The man name is "..man.GetName())
-            man.SetName("Phalcon")
-            print("The man name is "..man.GetName())
-        ```
-### Linux 命令
+## Linux 命令
 + find 命令
     + 查找超出7天前的flv的文件进行删除：
         + `find ./ -mindepth 1 -maxdepth 3 -type f -name "*.flv" -mmin +10080 | xargs rm -rf `
