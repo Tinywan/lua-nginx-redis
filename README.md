@@ -33,6 +33,7 @@
     +   [lua-resty-mysql 扩展](#Openresty_resty-mysql) 
 +   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
 +   [Redis执行Lua脚本基本用法](#Redis_Run_Lua) 
++   [Ngx_lua 写入Redis数据，通过CURL请求](#Ngx_lua_write_Redis) 
 ### <a name="Nginx_base_knowledge"/>  Nginx基础知识
 +   [NGINX 所有 Modules](https://www.nginx.com/resources/wiki/modules/)
 +   [agentzh的Nginx教程（版本2016.07.21）](https://openresty.org/download/agentzh-nginx-tutorials-en.html#00-foreword01)
@@ -731,7 +732,8 @@
            ```
            + 注意：`lua_get_redis.lua WEB , 0 2` 之间的空格，不然会提示错误
            + 错误：`(error) ERR Error running script command arguments must be strings or integers`
-    +   Ngx_lua 写入Redis数据，通过CURL请求
+    +   <a name="Ngx_lua_write_Redis"/>  Ngx_lua 写入Redis数据，通过CURL请求 
+    +   <a name="Ngx_lua_write_Redis"/>  Ngx_lua 写入Redis数据，通过CURL请求 
         + curl_get_redis.lua 文件内容
             ``` 
             local json = require("cjson")
