@@ -9,6 +9,29 @@
 +   [PHP脚本](#PHP_base_knowledge) 
 +   [Shell脚本](#Shell_base_knowledge) 
 +   [Lua基础知识](#Lua_base_knowledge) 
++   [流媒体视频直播、点播](#live_base_knowledge) 
++   [Nginx高性能WEB服务器详解](#Nginx_Web_knowledge) 
+    +   [第一章   初探 ](#Nginx_Web1_knowledge) 
+    +   [第二章   安装部署](#Nginx_Web2_knowledge) 
+    +   [第三章   架构初探 ](#Nginx_Web3_knowledge) 
+    +   [第四章   高级配置 ](#Nginx_Web4_knowledge) 
+    +   [第五章   Gzip压缩](#Nginx_Web5_knowledge) 
+    +   [第六章   Rewrite 功能](#Nginx_Web6_knowledge) 
+    +   [第七章   代理服务 ](#Nginx_Web7_knowledge) 
+    +   [第八章   缓存机制 ](#Nginx_Web8_knowledge) 
++   [PHP脚本运行Redis](#PHP_Run_Redis) 
++   [Openresty 学习](#Openresty_web_knowledge) 
+    +   [安装](#Openresty_install_knowledge) 
+    +   [默认配置信息](#Openresty_config_knowledge) 
+    +   [luajit 执行文件默认安装路径](#Openresty_web_knowledge) 
+    +   [lua-resty-redis 扩展](#Openresty_resty-redis) 
+    +   [lua-resty-websocket 扩展](#Openresty_resty-websocket) 
+    +   [lua-cjson 扩展](#Openresty_resty-cjson) 
+    +   [Lua 权限验证](#Openresty_resty-access) 
+    +   [lua-resty-string 扩展](#Openresty_resty-string) 
+    +   [lua-resty-http 扩展 ](#Openresty_resty-http) 
+    +   [lua-resty-mysql 扩展](#Openresty_resty-mysql) 
++   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
 +   [Nginx基础知识](#Nginx_base_knowledge) 
 +   [Nginx基础知识](#Nginx_base_knowledge) 
 +   [Nginx基础知识](#Nginx_base_knowledge) 
@@ -34,12 +57,12 @@
 + [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
 + [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
 + [Lua 实现简单封装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/function1.lua)
-### <a name="PHP_base_knowledge"/>  流媒体视频直播、点播
+### <a name="live_base_knowledge"/>  流媒体视频直播、点播
 + [Nginx配置Rtmp支持Hls的直播和点播功能](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod.md)
 + [HLS视频直播和点播的Nginx的Location的配置信息(成功)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod-locatiuon-config.md)     
  
-### <a name="PHP_base_knowledge"/>  Nginx高性能WEB服务器详解
-####    第一章   初探
+### <a name="Nginx_Web_knowledge"/>  Nginx高性能WEB服务器详解
+#### <a name="Nginx_Web1_knowledge"/>  第一章   初探
 + [Nginx 编译安装以及参数详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
 + NGINX变量详解
     - [x] [nginx变量使用方法详解笔记(1)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/notes-1.md)
@@ -47,7 +70,7 @@
     - [x] [nginx变量使用方法详解笔记(3)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
 + Nginx指令执行顺序
     - [x] [Nginx指令执行命令（01）](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-01.md)
-####    第二章   安装部署
+#### <a name="Nginx_Web2_knowledge"/>  第二章   安装部署
 - [x] [基于域名、IP的虚拟主机配置](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-all-config.md)
 - [x] [完整、标准配置实际示列](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-basic-config.md)
 - [x] [日志文件配置与切割](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-log-cut.md)
@@ -127,9 +150,9 @@
           tinywan@tinywan:~/HLS/live/stream123$ curl "http://127.0.0.1/live/stream123/index.m3u8?token=1234&api=009132"
           12312312312
           ```         
-####    第三章   架构初探
+#### <a name="Nginx_Web3_knowledge"/>  第三章   架构初探
 - [ ] 测试一
-####    第四章   高级配置
+#### <a name="Nginx_Web4_knowledge"/>  第四章   高级配置
 - [x] 基本语法：location [=|~|~*|^~] /uri/ { … }   
      1. `= `：严格匹配。如果这个查询匹配，那么将停止搜索并立即处理此请求。
      1. `~ `：为区分大小写匹配(可用正则表达式) 
@@ -186,9 +209,9 @@
         ```          
 
 - [x] [nginx配置location总结及rewrite规则写法](http://seanlook.com/2015/05/17/nginx-location-rewrite/)
-####    第五章   Gzip压缩
+#### <a name="Nginx_Web5_knowledge"/>  第五章   Gzip压缩
 - [ ] 测试一
-####    第六章   Rewrite 功能
+#### <a name="Nginx_Web6_knowledge"/>   第六章   Rewrite 功能
 - [x] Rewrite 常用全局变量
         > 请求案例： `curl -G -d "name=Tinywan&age=24" http://127.0.0.1/rewrite_var/1192/index.m3u8`    
 
@@ -244,7 +267,7 @@
       $2 为正则匹配多个非数字 `(\D+)`    
       $3 为正则匹配的第一个值 `(m3u8|ts)`  
       `.` 需要用转义字符转义`\.`    
-####    第七章   代理服务
+#### <a name="Nginx_Web7_knowledge"/>  第七章   代理服务
 - [ ] [正向代理和反向代理的概念](#title)
 - [ ] [正向代理服务](#title)
 - [ ] [反向代理的服务](#title)
@@ -256,18 +279,17 @@
         - [x] [Openresty-Lua动态修改upstream后端服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/openresty-nginx-lua-Proxy.md)
     +   TCP负载均衡   
         - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-8-tcp-Proxy.md)      
-####    第八章   缓存机制
+#### <a name="Nginx_Web8_knowledge"/>  第八章   缓存机制
 +   测试一
-####    第九章   Nginx初探1
+#### <a name="Nginx_Web9_knowledge"/>  第九章   Nginx初探1
 +   测试一
-####    第十章   Nginx初探1
+#### <a name="Nginx_Web10_knowledge"/>  第十章   Nginx初探1
 +   测试一     
-### [Lua脚本运行Redis](#line)
-+   test1
-### [PHP脚本运行Redis](#line)
+### <a name="PHP_Run_Redis"/>  PHP脚本运行Redis]
 +   [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)
 +   单行文本1
-### Openresty 学习
+### <a name="Openresty_web_knowledge"/>  Openresty 学习
++   [安装信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
 +   [默认配置信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
 +   开发入门
     + Nginx与Lua的整体目录关系
