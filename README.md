@@ -150,14 +150,14 @@
 #### <a name="Nginx_Web3_knowledge"/>  第三章   架构初探
 - [ ] 测试一
 #### <a name="Nginx_Web4_knowledge"/>  第四章   高级配置
-- [x] 基本语法：location [=|~|~*|^~] /uri/ { … }   
++   基本语法：location [=|~|~*|^~] /uri/ { … }   
      1. `= `：严格匹配。如果这个查询匹配，那么将停止搜索并立即处理此请求。
      1. `~ `：为区分大小写匹配(可用正则表达式) 
      1. `!~ `：为区分大小写不匹配
      1. `!~*`：为不区分大小写不匹配
      1. ` ^~ `：如果把这个前缀用于一个常规字符串,那么告诉nginx 如果路径匹配那么不测试正则表达式    
-- [x] [Perl 正则表达式参考](http://www.runoob.com/perl/perl-regular-expressions.html)
-- [x] 正则中需要转义的特殊字符小结
++   [Perl 正则表达式参考](http://www.runoob.com/perl/perl-regular-expressions.html)
++   正则中需要转义的特殊字符小结
      - [1] ` $`     匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 ‘\n' 或 ‘\r'。要匹配 $ 字符本身，请使用 \$。   
      - [2] ` ( )`   标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 和。   
      - [3] ` * `    匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 \*。   
@@ -170,7 +170,7 @@
      - [10] ` { }`   标记限定符表达式的开始。要匹配 {，请使用 \{。
      - [11] ` |  `   指明两项之间的一个选择。要匹配 |，请使用 \|。
 
-- [x] 正则表达式 (Regular expression) 匹配location
++   正则表达式 (Regular expression) 匹配location
     - [1]   `location ~* \.(gif|jpg|jpeg)$ { }`：匹配所有以 gif,jpg或jpeg 结尾的请求
     - [2]   `location ~ /documents/Abc { }`：匹配任何以 /documents/ 开头的地址，匹配符合以后，还要继续往下搜索
     - [3] **目录匹配：**
@@ -186,7 +186,7 @@
             }
             # 以上匹配成功后的组合：/home/tinywan/HLS/live/....
             ```
-- [x] 后缀匹配
++   后缀匹配
     1. 匹配任何后缀文件名`gif|jpg|jpeg|png|css|js|ico|m3u8|ts` 结尾的请求
     1. TS 文件匹配`http://127.0.0.1/live/stream123/11.ts`
     1. M3U8 文件匹配`http://127.0.0.1/live/stream123/index.m3u8`
@@ -197,7 +197,7 @@
                 root /home/tinywan/HLS/;
         }
         ```
-- [x] HSL直播目录匹配实际案例（请测试上线）        
++   HSL直播目录匹配实际案例（请测试上线）        
     1. 可以后缀文件名：`http://127.0.0.1/live/stream123/index.m3u8`
         ```
         location ^~ /live/ {
@@ -205,11 +205,11 @@
         }
         ```          
 
-- [x] [nginx配置location总结及rewrite规则写法](http://seanlook.com/2015/05/17/nginx-location-rewrite/)
++   [nginx配置location总结及rewrite规则写法](http://seanlook.com/2015/05/17/nginx-location-rewrite/)
 #### <a name="Nginx_Web5_knowledge"/>  第五章   Gzip压缩
-- [ ] 测试一
++   测试一
 #### <a name="Nginx_Web6_knowledge"/>   第六章   Rewrite 功能
-- [x] Rewrite 常用全局变量
++   Rewrite 常用全局变量
         > 请求案例： `curl -G -d "name=Tinywan&age=24" http://127.0.0.1/rewrite_var/1192/index.m3u8`    
 
         | 变量 | 值          |描述 |
@@ -238,7 +238,7 @@
         | $server_port      | 80  |请求到达服务器的端口号 |
         | $uri      | /rewrite_var/1192/index.m3u8  | 不带请求参数的当前URI|
 
-- [x] Rewrite 正则匹配` uri `参数接收
++   Rewrite 正则匹配` uri `参数接收
     1.  请求案例：`curl http://192.168.18.143/live/tinywan123/index.m3u8`   
     2.  Nginx.conf配置文件       
         ```
@@ -265,11 +265,11 @@
       $3 为正则匹配的第一个值 `(m3u8|ts)`  
       `.` 需要用转义字符转义`\.`    
 #### <a name="Nginx_Web7_knowledge"/>  第七章   代理服务
-- [ ] [正向代理和反向代理的概念](#title)
-- [ ] [正向代理服务](#title)
-- [ ] [反向代理的服务](#title)
-- [x] [Nginx日志服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-Log.md)
-- [x] 负载均衡
++   +   [正向代理和反向代理的概念](#title)
++   +   [正向代理服务](#title)
++   +   [反向代理的服务](#title)
++   +   [Nginx日志服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-Log.md)
++   +   负载均衡
     +   HTTP负载均衡
         - [x] [简单的负载平衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy-1.md)
         - [x] [负载均衡五个配置实例](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy.md)
@@ -564,11 +564,10 @@
 +  lua-resty-mysql 扩展 
     + [简单测试：lua-msyql-test.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-mysql/lua-msyql-test.lua)          
 ### Redis、Lua、Nginx一起工作事迹
-* 解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
-    - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
-* 解决2
-* 解决3    
-
++   解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
++     - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
++   解决2
++   解决3    
 ### Redis执行Lua脚本
 #### Lua 基本语法
 ---
