@@ -733,7 +733,6 @@
            + 注意：`lua_get_redis.lua WEB , 0 2` 之间的空格，不然会提示错误
            + 错误：`(error) ERR Error running script command arguments must be strings or integers`
     +   <a name="Ngx_lua_write_Redis"/>  Ngx_lua 写入Redis数据，通过CURL请求 
-    +   <a name="Ngx_lua_write_Redis"/>  Ngx_lua 写入Redis数据，通过CURL请求 
         + curl_get_redis.lua 文件内容
             ``` 
             local json = require("cjson")
