@@ -240,11 +240,10 @@
     | $server_port      | 80  |请求到达服务器的端口号 |
     | $uri      | /rewrite_var/1192/index.m3u8  | 不带请求参数的当前URI|
     
-    + uri 介绍 **(Nginx的URI是相对的UR)**
+    + uri 介绍 **(Nginx中的URI是相对的URI)**
         + URL：`https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/config.md`
         + 绝对URI:`https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/config.md`
         + 相对URI:`/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/config.md`
-        + 简要关系图：
         ![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/URI-URL-Image.jpg)
         
 +   Rewrite 正则匹配` uri `参数接收
