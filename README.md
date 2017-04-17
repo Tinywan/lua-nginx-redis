@@ -287,8 +287,8 @@
 ### <a name="PHP_Run_Redis"/>  PHP脚本运行Redis]
 +   [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)
 +   单行文本1
-### <a name="Openresty_web_knowledge"/>  Openresty 学习
-+   [安装信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
+### <a name="Openresty_web_knowledge"/>  Openresty 学习  
++   <a name="Openresty_install_knowledge"/>[安装信息](http://www.cnblogs.com/tinywan/p/6647587.html)
 +   [默认配置信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
 +   开发入门
     + Nginx与Lua的整体目录关系
