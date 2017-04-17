@@ -294,8 +294,8 @@
 ### <a name="PHP_Run_Redis"/>  PHP脚本运行Redis]
 +   [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)
 +   单行文本1
-### <a name="Openresty_web_knowledge"/>  Openresty 学习
-+   [安装信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
+### <a name="Openresty_web_knowledge"/>  Openresty 学习  
++   <a name="Openresty_install_knowledge"/>[安装信息](http://www.cnblogs.com/tinywan/p/6647587.html)
 +   [默认配置信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
 +   开发入门
     + Nginx与Lua的整体目录关系
@@ -358,7 +358,7 @@
         The man name is Phalcon
         ```
 +   [Lua require 绝对和相对路径问题(一个文件引入另外一个文件的Function),已经解决](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-common-package/lua-require.md)
-+   lua-resty-redis 扩展
++   lua-resty-redis 扩展 (是openresty下操作redis的模块)
     + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";`   
     + Lua脚本实现一个CDN的反向代理功能(智能查找CDN节点)(测试成功,可上线)    
         + nginx.conf 配置信息
@@ -572,6 +572,8 @@
     + [简单测试：lua-http-test.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-http/lua-http-test.lua)         
 +  lua-resty-mysql 扩展 
     + [简单测试：lua-msyql-test.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-mysql/lua-msyql-test.lua)          
++  srcache-nginx-module 扩展 ([nginx下的一个缓存模块](https://github.com/openresty/srcache-nginx-module))
+    + [openresty–redis–srcache缓存的应用](http://www.xtgxiso.com/openresty-redis-srcache-nginx-module%e7%bc%93%e5%ad%98%e7%9a%84%e5%ba%94%e7%94%a8/)
 ### Redis、Lua、Nginx一起工作事迹
 +   解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
 +     - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
