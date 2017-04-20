@@ -5,6 +5,7 @@
 +   phase的意义：就是几个MR的一个集合，不定数目的MR job视为一个phase。一个请求经过nginx处理的过程中，会经过一系列的阶段（phases）
 ## <a name="index"/>目录
 +   [Nginx基础知识](#Nginx_base_knowledge) 
++   [Linux基础知识](#Linux_base_knowledge) 
 +   [Redis基础知识](#Redis_base_knowledge) 
 +   [PHP脚本](#PHP_base_knowledge) 
 +   [Shell脚本](#Shell_base_knowledge) 
@@ -31,6 +32,7 @@
     +   [lua-resty-string 扩展](#Openresty_resty-string) 
     +   [lua-resty-http 扩展 ](#Openresty_resty-http) 
     +   [lua-resty-mysql 扩展](#Openresty_resty-mysql) 
+    +   [openresty扫描代码全局变量](#Openresty_all-var) 
 +   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
 +   [Redis执行Lua脚本基本用法](#Redis_Run_Lua) 
 +   [Ngx_lua 写入Redis数据，通过CURL请求](#Ngx_lua_write_Redis) 
@@ -573,6 +575,14 @@
     + [简单测试：lua-msyql-test.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-mysql/lua-msyql-test.lua)          
 +  srcache-nginx-module 扩展 ([nginx下的一个缓存模块](https://github.com/openresty/srcache-nginx-module))
     + [openresty–redis–srcache缓存的应用](http://www.xtgxiso.com/openresty-redis-srcache-nginx-module%e7%bc%93%e5%ad%98%e7%9a%84%e5%ba%94%e7%94%a8/)
++  openresty扫描代码全局变量
+    +   在OpenResty中需要避免全局变量的使用，为此春哥写了一个perl工具，可以扫描openresty lua代码的全局变量
+    +   [https://github.com/openresty/openresty-devel-utils/blob/master/lua-releng](https://github.com/openresty/openresty-devel-utils/blob/master/lua-releng) 
+    +   用法相当简单  
+        1. 将代码保存成lua-releng文件
+        2.  更改lua-releng的权限，chmod 777 lua-releng
+        3.  假设有一个源码文件为test.lua
+        4.  执行./lua-releng test.lua，则会扫描test.lua文件的全局变量，并在屏幕打印结果
 ### Redis、Lua、Nginx一起工作事迹
 +   解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
 +     - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
@@ -849,7 +859,9 @@
         
     > 通过【1】和【2】可以很完美的实现一个连接哦！
 
-## Linux 命令
+## <a name="Linux_base_knowledge"/> Linux 基础知识
++   检查网卡是否正确工作
+    1.  检查系统路由表信息是否正确
 + find 命令
     + 查找超出7天前的flv的文件进行删除：
         + `find ./ -mindepth 1 -maxdepth 3 -type f -name "*.flv" -mmin +10080 | xargs rm -rf `
