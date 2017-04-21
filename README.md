@@ -584,7 +584,7 @@
         2.  更改lua-releng的权限，chmod 777 lua-releng
         3.  假设有一个源码文件为test.lua
         4.  执行./lua-releng test.lua，则会扫描test.lua文件的全局变量，并在屏幕打印结果
-+   <a name="Redis_Run_Lua"/> Lua HTTP状态常量  
++   <a name="Openresty_http_status_constants"/> Lua HTTP状态常量  
  
     + 所有常量列表
         ```
