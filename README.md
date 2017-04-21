@@ -33,6 +33,7 @@
     +   [lua-resty-http 扩展 ](#Openresty_resty-http) 
     +   [lua-resty-mysql 扩展](#Openresty_resty-mysql) 
     +   [openresty扫描代码全局变量](#Openresty_all-var) 
+    +   [Lua HTTP状态常量](#Openresty_http_status_constants) 
 +   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
 +   [Redis执行Lua脚本基本用法](#Redis_Run_Lua) 
 +   [Ngx_lua 写入Redis数据，通过CURL请求](#Ngx_lua_write_Redis) 
@@ -583,6 +584,67 @@
         2.  更改lua-releng的权限，chmod 777 lua-releng
         3.  假设有一个源码文件为test.lua
         4.  执行./lua-releng test.lua，则会扫描test.lua文件的全局变量，并在屏幕打印结果
++   <a name="Redis_Run_Lua"/> Lua HTTP状态常量  
+ 
+    + 所有常量列表
+        ```
+       value = ngx.HTTP_CONTINUE (100) (first added in the v0.9.20 release)
+       value = ngx.HTTP_SWITCHING_PROTOCOLS (101) (first added in the v0.9.20 release)
+       value = ngx.HTTP_OK (200)
+       value = ngx.HTTP_CREATED (201)
+       value = ngx.HTTP_ACCEPTED (202) (first added in the v0.9.20 release)
+       value = ngx.HTTP_NO_CONTENT (204) (first added in the v0.9.20 release)
+       value = ngx.HTTP_PARTIAL_CONTENT (206) (first added in the v0.9.20 release)
+       value = ngx.HTTP_SPECIAL_RESPONSE (300)
+       value = ngx.HTTP_MOVED_PERMANENTLY (301)
+       value = ngx.HTTP_MOVED_TEMPORARILY (302)
+       value = ngx.HTTP_SEE_OTHER (303)
+       value = ngx.HTTP_NOT_MODIFIED (304)
+       value = ngx.HTTP_TEMPORARY_REDIRECT (307) (first added in the v0.9.20 release)
+       value = ngx.HTTP_BAD_REQUEST (400)
+       value = ngx.HTTP_UNAUTHORIZED (401)
+       value = ngx.HTTP_PAYMENT_REQUIRED (402) (first added in the v0.9.20 release)
+       value = ngx.HTTP_FORBIDDEN (403)
+       value = ngx.HTTP_NOT_FOUND (404)
+       value = ngx.HTTP_NOT_ALLOWED (405)
+       value = ngx.HTTP_NOT_ACCEPTABLE (406) (first added in the v0.9.20 release)
+       value = ngx.HTTP_REQUEST_TIMEOUT (408) (first added in the v0.9.20 release)
+       value = ngx.HTTP_CONFLICT (409) (first added in the v0.9.20 release)
+       value = ngx.HTTP_GONE (410)
+       value = ngx.HTTP_UPGRADE_REQUIRED (426) (first added in the v0.9.20 release)
+       value = ngx.HTTP_TOO_MANY_REQUESTS (429) (first added in the v0.9.20 release)
+       value = ngx.HTTP_CLOSE (444) (first added in the v0.9.20 release)
+       value = ngx.HTTP_ILLEGAL (451) (first added in the v0.9.20 release)
+       value = ngx.HTTP_INTERNAL_SERVER_ERROR (500)
+       value = ngx.HTTP_METHOD_NOT_IMPLEMENTED (501)
+       value = ngx.HTTP_BAD_GATEWAY (502) (first added in the v0.9.20 release)
+       value = ngx.HTTP_SERVICE_UNAVAILABLE (503)
+       value = ngx.HTTP_GATEWAY_TIMEOUT (504) (first added in the v0.3.1rc38 release)
+       value = ngx.HTTP_VERSION_NOT_SUPPORTED (505) (first added in the v0.9.20 release)
+       value = ngx.HTTP_INSUFFICIENT_STORAGE (507) (first added in the v0.9.20 release)
+        ```
+    + 案列使用,get_string_md5.lua：
+        ``` 
+        local args = ngx.req.get_uri_args()
+        local salt = args.salt
+        if not salt then
+                ngx.say(ngx.HTTP_BAD_REQUEST)
+        end
+        local string = ngx.md5(ngx.time()..salt)
+        ngx.say(string)
+        
+        ```
+    + curl 请求(-i 参数,输出时包括protocol头信息)：
+        ``` 
+        tinywan@tinywan:$ curl -i http://127.0.0.1/get_rand_string?salt=tinywan123
+        HTTP/1.1 200 OK
+        Server: openresty/1.11.2.1
+        Date: Fri, 21 Apr 2017 14:27:16 GMT
+        Content-Type: application/octet-stream
+        Transfer-Encoding: chunked
+        Connection: keep-alive
+        ```    
+    
 ### Redis、Lua、Nginx一起工作事迹
 +   解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
 +     - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
