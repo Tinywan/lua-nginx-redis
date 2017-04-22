@@ -586,75 +586,75 @@
         3.  假设有一个源码文件为test.lua
         4.  执行./lua-releng test.lua，则会扫描test.lua文件的全局变量，并在屏幕打印结果
 #### <a name="Openresty_http_status_constants"/> Lua HTTP状态常量  
- 
-    + 所有常量列表
-        ```Lua
-       value = ngx.HTTP_CONTINUE (100) (first added in the v0.9.20 release)
-       value = ngx.HTTP_SWITCHING_PROTOCOLS (101) (first added in the v0.9.20 release)
-       value = ngx.HTTP_OK (200)
-       value = ngx.HTTP_CREATED (201)
-       value = ngx.HTTP_ACCEPTED (202) (first added in the v0.9.20 release)
-       value = ngx.HTTP_NO_CONTENT (204) (first added in the v0.9.20 release)
-       value = ngx.HTTP_PARTIAL_CONTENT (206) (first added in the v0.9.20 release)
-       value = ngx.HTTP_SPECIAL_RESPONSE (300)
-       value = ngx.HTTP_MOVED_PERMANENTLY (301)
-       value = ngx.HTTP_MOVED_TEMPORARILY (302)
-       value = ngx.HTTP_SEE_OTHER (303)
-       value = ngx.HTTP_NOT_MODIFIED (304)
-       value = ngx.HTTP_TEMPORARY_REDIRECT (307) (first added in the v0.9.20 release)
-       value = ngx.HTTP_BAD_REQUEST (400)
-       value = ngx.HTTP_UNAUTHORIZED (401)
-       value = ngx.HTTP_PAYMENT_REQUIRED (402) (first added in the v0.9.20 release)
-       value = ngx.HTTP_FORBIDDEN (403)
-       value = ngx.HTTP_NOT_FOUND (404)
-       value = ngx.HTTP_NOT_ALLOWED (405)
-       value = ngx.HTTP_NOT_ACCEPTABLE (406) (first added in the v0.9.20 release)
-       value = ngx.HTTP_REQUEST_TIMEOUT (408) (first added in the v0.9.20 release)
-       value = ngx.HTTP_CONFLICT (409) (first added in the v0.9.20 release)
-       value = ngx.HTTP_GONE (410)
-       value = ngx.HTTP_UPGRADE_REQUIRED (426) (first added in the v0.9.20 release)
-       value = ngx.HTTP_TOO_MANY_REQUESTS (429) (first added in the v0.9.20 release)
-       value = ngx.HTTP_CLOSE (444) (first added in the v0.9.20 release)
-       value = ngx.HTTP_ILLEGAL (451) (first added in the v0.9.20 release)
-       value = ngx.HTTP_INTERNAL_SERVER_ERROR (500)
-       value = ngx.HTTP_METHOD_NOT_IMPLEMENTED (501)
-       value = ngx.HTTP_BAD_GATEWAY (502) (first added in the v0.9.20 release)
-       value = ngx.HTTP_SERVICE_UNAVAILABLE (503)
-       value = ngx.HTTP_GATEWAY_TIMEOUT (504) (first added in the v0.3.1rc38 release)
-       value = ngx.HTTP_VERSION_NOT_SUPPORTED (505) (first added in the v0.9.20 release)
-       value = ngx.HTTP_INSUFFICIENT_STORAGE (507) (first added in the v0.9.20 release)
-        ```
-    + 案列使用,get_string_md5.lua：
-        ```Lua 
-        local args = ngx.req.get_uri_args()
-        local salt = args.salt
-        if not salt then
-                ngx.say(ngx.HTTP_BAD_REQUEST)
-        end
-        local string = ngx.md5(ngx.time()..salt)
-        ngx.say(string)
-        
-        ```
-    + curl 请求(-i 参数,输出时包括protocol头信息)：
-        ```Bash 
-        tinywan@tinywan:$ curl -i http://127.0.0.1/get_rand_string?salt=tinywan123
-        HTTP/1.1 200 OK
-        Server: openresty/1.11.2.1
-        Date: Fri, 21 Apr 2017 14:27:16 GMT
-        Content-Type: application/octet-stream
-        Transfer-Encoding: chunked
-        Connection: keep-alive
-        ```    
++ 所有常量列表
+    ```Lua
+   value = ngx.HTTP_CONTINUE (100) (first added in the v0.9.20 release)
+   value = ngx.HTTP_SWITCHING_PROTOCOLS (101) (first added in the v0.9.20 release)
+   value = ngx.HTTP_OK (200)
+   value = ngx.HTTP_CREATED (201)
+   value = ngx.HTTP_ACCEPTED (202) (first added in the v0.9.20 release)
+   value = ngx.HTTP_NO_CONTENT (204) (first added in the v0.9.20 release)
+   value = ngx.HTTP_PARTIAL_CONTENT (206) (first added in the v0.9.20 release)
+   value = ngx.HTTP_SPECIAL_RESPONSE (300)
+   value = ngx.HTTP_MOVED_PERMANENTLY (301)
+   value = ngx.HTTP_MOVED_TEMPORARILY (302)
+   value = ngx.HTTP_SEE_OTHER (303)
+   value = ngx.HTTP_NOT_MODIFIED (304)
+   value = ngx.HTTP_TEMPORARY_REDIRECT (307) (first added in the v0.9.20 release)
+   value = ngx.HTTP_BAD_REQUEST (400)
+   value = ngx.HTTP_UNAUTHORIZED (401)
+   value = ngx.HTTP_PAYMENT_REQUIRED (402) (first added in the v0.9.20 release)
+   value = ngx.HTTP_FORBIDDEN (403)
+   value = ngx.HTTP_NOT_FOUND (404)
+   value = ngx.HTTP_NOT_ALLOWED (405)
+   value = ngx.HTTP_NOT_ACCEPTABLE (406) (first added in the v0.9.20 release)
+   value = ngx.HTTP_REQUEST_TIMEOUT (408) (first added in the v0.9.20 release)
+   value = ngx.HTTP_CONFLICT (409) (first added in the v0.9.20 release)
+   value = ngx.HTTP_GONE (410)
+   value = ngx.HTTP_UPGRADE_REQUIRED (426) (first added in the v0.9.20 release)
+   value = ngx.HTTP_TOO_MANY_REQUESTS (429) (first added in the v0.9.20 release)
+   value = ngx.HTTP_CLOSE (444) (first added in the v0.9.20 release)
+   value = ngx.HTTP_ILLEGAL (451) (first added in the v0.9.20 release)
+   value = ngx.HTTP_INTERNAL_SERVER_ERROR (500)
+   value = ngx.HTTP_METHOD_NOT_IMPLEMENTED (501)
+   value = ngx.HTTP_BAD_GATEWAY (502) (first added in the v0.9.20 release)
+   value = ngx.HTTP_SERVICE_UNAVAILABLE (503)
+   value = ngx.HTTP_GATEWAY_TIMEOUT (504) (first added in the v0.3.1rc38 release)
+   value = ngx.HTTP_VERSION_NOT_SUPPORTED (505) (first added in the v0.9.20 release)
+   value = ngx.HTTP_INSUFFICIENT_STORAGE (507) (first added in the v0.9.20 release)
+    ```
++ 案列使用,get_string_md5.lua：
+    ```Lua 
+    local args = ngx.req.get_uri_args()
+    local salt = args.salt
+    if not salt then
+            ngx.say(ngx.HTTP_BAD_REQUEST)
+    end
+    local string = ngx.md5(ngx.time()..salt)
+    ngx.say(string)
+    
+    ```
++ curl 请求(-i 参数,输出时包括protocol头信息)：
+    ```Bash 
+    tinywan@tinywan:$ curl -i http://127.0.0.1/get_rand_string?salt=tinywan123
+    HTTP/1.1 200 OK
+    Server: openresty/1.11.2.1
+    Date: Fri, 21 Apr 2017 14:27:16 GMT
+    Content-Type: application/octet-stream
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    ```    
 #### <a name="Openresty_ngx_api_used"/> ngx Lua APi 介绍使用
 +   ngx_lua_api_test.lua 
     ```Lua 
-    local json = require "cjson"
+    local json = require "cjson"    -- 引入cjson 扩展
     
+    -- 同步读取客户端请求正文，而不会阻止Nginx事件循环
     ngx.req.read_body()
     local args = ngx.req.get_post_args()
     
     if not args or not args.info then
-            ngx.say(ngx.HTTP_BAD_REQUEST)
+            ngx.say(ngx.HTTP_BAD_REQUEST)   -- ngx.HTTP_BAD_REQUEST (400)
     end
     
     local client_id = ngx.var.remote_addr
