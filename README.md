@@ -34,6 +34,7 @@
     +   [lua-resty-mysql 扩展](#Openresty_resty-mysql) 
     +   [openresty扫描代码全局变量](#Openresty_all-var) 
     +   [Lua HTTP状态常量](#Openresty_http_status_constants) 
+    +   [ngx Lua APi 介绍使用](#Openresty_ngx_api_used) 
 +   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
 +   [Redis执行Lua脚本基本用法](#Redis_Run_Lua) 
 +   [Ngx_lua 写入Redis数据，通过CURL请求](#Ngx_lua_write_Redis) 
@@ -360,35 +361,35 @@
         The man name is Phalcon
         ```
 +   [Lua require 绝对和相对路径问题(一个文件引入另外一个文件的Function),已经解决](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-common-package/lua-require.md)
-+   lua-resty-redis 扩展 (是openresty下操作redis的模块)
-    + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";`   
-    + Lua脚本实现一个CDN的反向代理功能(智能查找CDN节点)(测试成功,可上线)    
-        + nginx.conf 配置信息
-        ```Lua
-        http {
-                lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";
-                server {
-                    listen 80;
-                    server_name  localhost;
-                    location ~ \/.+\/.+\.(m3u8|ts) {
-                            if ($uri ~ \/([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)(|-).*\.(m3u8|ts)) {
-                                    set $app_name $1;
-                                    set $a $2;
-                            }
-                            set $stream_id "";
-                            default_type 'text/html';
-                            rewrite_by_lua_file  /opt/openresty/nginx/lua/proxy_pass_cdn.lua;
-                            proxy_connect_timeout       10;
-                            proxy_send_timeout          30;
-                            proxy_read_timeout          30;
-                            proxy_pass                  $stream_id;
-                    }
-
+#### <a name="Openresty_resty-redis"/> lua-resty-redis 扩展 (是openresty下操作redis的模块)
++ 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";`   
++ Lua脚本实现一个CDN的反向代理功能(智能查找CDN节点)(测试成功,可上线)    
+    + nginx.conf 配置信息
+    ```Lua
+    http {
+            lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";
+            server {
+                listen 80;
+                server_name  localhost;
+                location ~ \/.+\/.+\.(m3u8|ts) {
+                        if ($uri ~ \/([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)(|-).*\.(m3u8|ts)) {
+                                set $app_name $1;
+                                set $a $2;
+                        }
+                        set $stream_id "";
+                        default_type 'text/html';
+                        rewrite_by_lua_file  /opt/openresty/nginx/lua/proxy_pass_cdn.lua;
+                        proxy_connect_timeout       10;
+                        proxy_send_timeout          30;
+                        proxy_read_timeout          30;
+                        proxy_pass                  $stream_id;
                 }
-        }
-        ```
-        + [Lua脚本proxy_pass_cdn.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/proxy_pass_cdn.lua)
-        + [lua-nginx-module 贡献代码](https://github.com/openresty/lua-nginx-module/issues/275)
+
+            }
+    }
+    ```
+    + [Lua脚本proxy_pass_cdn.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/proxy_pass_cdn.lua)
+    + [lua-nginx-module 贡献代码](https://github.com/openresty/lua-nginx-module/issues/275)
         
 + Lua脚本结合 Nginx+Lua+Local Redis+Mysql服务器缓存  
     + Nginx+Lua+Local Redis+Mysql集群架构   
@@ -435,7 +436,7 @@
         + CURL请求地址：`http://192.168.18.143/live/tinywan123/index.m3u8`
         + [Lua 脚本](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/Hls-Line-Number-Total.lua)
 
-+  lua-resty-websocket 扩展
+#### <a name="Openresty_resty-websocket"/> lua-resty-websocket 扩展
     + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-websocket/lib/?.lua;;";`
     + **Lua脚本实现一个websocket连接(测试成功,可上线)**
         + nginx.conf 配置信息
@@ -458,7 +459,7 @@
         + [websockets.html客户端代码,代码路径：/usr/local/openresty/nginx/html](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-websocket/websocket.html)
         + 然后打开启用了WebSocket支持的浏览器，然后打开以下url：   
         ![websockt-lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/websocket_lua01.png) 
-+  lua-cjson 扩展   
+#### <a name="Openresty_resty-cjson"/> lua-cjson 扩展   
     + 基本用法
         + nginx.conf
             ```Lua
@@ -481,7 +482,7 @@
             {"some_object":{"tel":13669313112,"age":24},"name":"tinywan","some_array":[]}
             ```       
     + [lua对象到字符串、字符串到lua对象](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-cjson/cjson-str-obj.lua) 
-+   lua-resty-session 扩展  
+#### <a name="Openresty_resty-session"/> lua-resty-session 扩展  
     + OpenResty 引用第三方 resty 库非常简单，只需要将相应的文件拷贝到 resty 目录下即可
     + 我服务器OpenResty 的 resty 路径：`/opt/openresty/lualib/resty`
     + 下载第三方 resty 库：git clone lua-resty-session 文件路径以及内容：
@@ -521,7 +522,7 @@
         <html><body>Session started. <a href=/test>Check if it is working</a>!</body></html>
         OpenResty Fan Tinywan Anonymous
         ```   
-+   Lua 权限验证
+#### <a name="Openresty_ngx_api_used"/> Lua 权限验证
     + Lua 一个HLS的简单地址访问权限验证
         + Nginx.conf 配置
             ```Lua 
@@ -550,7 +551,7 @@
                 return ngx.exit(403)  
              end
              ```                    
-+  lua-resty-string 扩展   
+#### <a name="Openresty_resty-string"/> lua-resty-string 扩展   
     + MD5加密的简单基本用法 md5.lua
         ```Lua
         local resty_md5 = require "resty.md5"
@@ -570,13 +571,13 @@
         ngx.say("md5: ", str.to_hex(digest))    ---注意:必须通过字符串转码方可打印输出
             -- yield "md5: 5d41402abc4b2a76b9719d911017c592"
         ```  
-+  lua-resty-http 扩展 （ngx_lua的HTTP客户端cosocket驱动程序）
+#### <a name="Openresty_resty-http"/> lua-resty-http 扩展 （ngx_lua的HTTP客户端cosocket驱动程序）
     + [简单测试：lua-http-test.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-http/lua-http-test.lua)         
-+  lua-resty-mysql 扩展 
+#### <a name="Openresty_resty-mysql"/> lua-resty-mysql 扩展 
     + [简单测试：lua-msyql-test.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-mysql/lua-msyql-test.lua)          
-+  srcache-nginx-module 扩展 ([nginx下的一个缓存模块](https://github.com/openresty/srcache-nginx-module))
+#### <a name="Openresty_resty-srcache"/> srcache-nginx-module 扩展 ([nginx下的一个缓存模块](https://github.com/openresty/srcache-nginx-module))
     + [openresty–redis–srcache缓存的应用](http://www.xtgxiso.com/openresty-redis-srcache-nginx-module%e7%bc%93%e5%ad%98%e7%9a%84%e5%ba%94%e7%94%a8/)
-+  openresty扫描代码全局变量
+#### <a name="Openresty_ngx_api_used"/> openresty扫描代码全局变量
     +   在OpenResty中需要避免全局变量的使用，为此春哥写了一个perl工具，可以扫描openresty lua代码的全局变量
     +   [https://github.com/openresty/openresty-devel-utils/blob/master/lua-releng](https://github.com/openresty/openresty-devel-utils/blob/master/lua-releng) 
     +   用法相当简单  
@@ -584,7 +585,7 @@
         2.  更改lua-releng的权限，chmod 777 lua-releng
         3.  假设有一个源码文件为test.lua
         4.  执行./lua-releng test.lua，则会扫描test.lua文件的全局变量，并在屏幕打印结果
-+   <a name="Openresty_http_status_constants"/> Lua HTTP状态常量  
+#### <a name="Openresty_http_status_constants"/> Lua HTTP状态常量  
  
     + 所有常量列表
         ```Lua
@@ -644,7 +645,43 @@
         Transfer-Encoding: chunked
         Connection: keep-alive
         ```    
+#### <a name="Openresty_ngx_api_used"/> ngx Lua APi 介绍使用
++   ngx_lua_api_test.lua 
+    ```Lua 
+    local json = require "cjson"
     
+    ngx.req.read_body()
+    local args = ngx.req.get_post_args()
+    
+    if not args or not args.info then
+            ngx.say(ngx.HTTP_BAD_REQUEST)
+    end
+    
+    local client_id = ngx.var.remote_addr
+    local user_agent = ngx.req.get_headers()['user-agent'] or ""
+    local info = ngx.decode_base64(args.info)
+    
+    local response = {}
+    response.info = info
+    response.client_id = client_id
+    response.user_agent = user_agent
+    
+    ngx.say(json.encode(response))
+    
+    ```
++   CURL  Post 请求
+    ```Lua 
+    $ curl -i --data "info=b3ZlcmNvbWUud2FuQGdtYWlsLmNvbQ==" http://127.0.0.1/ngx_lua_api_test
+    HTTP/1.1 200 OK
+    Server: openresty/1.11.2.1
+    Date: Sat, 22 Apr 2017 01:22:07 GMT
+    Content-Type: application/octet-stream
+    Transfer-Encoding: chunked
+    Connection: keep-alive
+    
+    {"user_agent":"curl\/7.47.0","info":"overcome.wan@gmail.com","client_id":"127.0.0.1"}
+    
+    ```
 ### Redis、Lua、Nginx一起工作事迹
 +   解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
 +   - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
