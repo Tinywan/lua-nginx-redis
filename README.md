@@ -35,6 +35,7 @@
     +   [openresty扫描代码全局变量](#Openresty_all-var) 
     +   [Lua HTTP状态常量](#Openresty_http_status_constants) 
     +   [ngx Lua APi 介绍使用](#Openresty_ngx_api_used) 
+    +   [连接数据库](#Openresty_connent_redis) 
 +   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
 +   [Redis执行Lua脚本基本用法](#Redis_Run_Lua) 
 +   [Ngx_lua 写入Redis数据，通过CURL请求](#Ngx_lua_write_Redis) 
@@ -522,7 +523,7 @@
         <html><body>Session started. <a href=/test>Check if it is working</a>!</body></html>
         OpenResty Fan Tinywan Anonymous
         ```   
-#### <a name="Openresty_ngx_api_used"/> Lua 权限验证
+#### <a name="Openresty_ngx_api_auth"/> Lua 权限验证
     + Lua 一个HLS的简单地址访问权限验证
         + Nginx.conf 配置
             ```Lua 
@@ -577,7 +578,7 @@
     + [简单测试：lua-msyql-test.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-mysql/lua-msyql-test.lua)          
 #### <a name="Openresty_resty-srcache"/> srcache-nginx-module 扩展 ([nginx下的一个缓存模块](https://github.com/openresty/srcache-nginx-module))
     + [openresty–redis–srcache缓存的应用](http://www.xtgxiso.com/openresty-redis-srcache-nginx-module%e7%bc%93%e5%ad%98%e7%9a%84%e5%ba%94%e7%94%a8/)
-#### <a name="Openresty_ngx_api_used"/> openresty扫描代码全局变量
+#### <a name="Openresty_ngx_adddd"/> openresty扫描代码全局变量
     +   在OpenResty中需要避免全局变量的使用，为此春哥写了一个perl工具，可以扫描openresty lua代码的全局变量
     +   [https://github.com/openresty/openresty-devel-utils/blob/master/lua-releng](https://github.com/openresty/openresty-devel-utils/blob/master/lua-releng) 
     +   用法相当简单  
