@@ -646,7 +646,7 @@
     Connection: keep-alive
     ```    
 #### <a name="Openresty_ngx_api_used"/> ngx Lua APi 介绍使用
-+   强烈建议使用ngx Lua APi 接口`(非阻塞的)`，而不是Lua自身的API`(阻塞的)`
++   强烈建议使用ngx Lua APi 接口`(非阻塞的)`，而不是Lua自身的API`(阻塞的)`,Lua 自身API会阻塞掉的
 +   ngx_lua_api_test.lua 
     ```Lua 
     local json = require "cjson"    -- 引入cjson 扩展
