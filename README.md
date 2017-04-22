@@ -354,7 +354,7 @@
     + [接收请求:输出响应需要进行响应状态码、响应头和响应内容体的输出](
 +   luajit 执行文件默认安装路径：`/opt/openresty/luajit/bin/luajit`,这样我们直接可以这样运行一个Lua文件：`luajit test.lua `
     + luajit 运行测试案例：   
-        ```
+        ```Bash
         tinywan@tinywan:~/Lua$ luajit test.lua    
         The man name is Tinywan            
         The man name is Phalcon
@@ -476,7 +476,7 @@
             }
             ```  
         + curl 请求
-            ```
+            ```Bash
             root@tinywan:/opt/openresty/nginx/conf# curl http://127.0.0.1/cjson
             {"some_object":{"tel":13669313112,"age":24},"name":"tinywan","some_array":[]}
             ```       
@@ -485,19 +485,19 @@
     + OpenResty 引用第三方 resty 库非常简单，只需要将相应的文件拷贝到 resty 目录下即可
     + 我服务器OpenResty 的 resty 路径：`/opt/openresty/lualib/resty`
     + 下载第三方 resty 库：git clone lua-resty-session 文件路径以及内容：
-        ``` 
+        ```Bash 
         tinywan@tinywan:/opt/openresty/nginx/lua/lua-resty-session/lib/resty$ ls
         session  session.lua
         ```
     + 特别注意：这里拷贝的时候要要把session文件和session.lua 文件同时吧、拷贝过去，否则会报错误：
-        ``` 
+        ```Bash 
         /opt/openresty/lualib/resty/session.lua:34: in function 'prequire'
         /opt/openresty/lualib/resty/session.lua:211: in function 'new'
         /opt/openresty/lualib/resty/session.lua:257: in function 'open'
         /opt/openresty/lualib/resty/session.lua:320: in function 'start'
         ```
     +  拷贝完毕后`/opt/openresty/lualib/resty` OpenResty 引用第三方 resty 的所有库文件
-      ``` 
+      ```Bash 
       tinywan@tinywan:/opt/openresty/lualib/resty$ ls
       aes.lua  core.lua  http_headers.lua  lock.lua  lrucache.lua  memcached.lua  random.lua  session      sha1.lua    sha256.lua  sha512.lua  string.lua  upstream
       core     dns       http.lua          lrucache  md5.lua       mysql.lua      redis.lua   session.lua  sha224.lua  sha384.lua  sha.lua     upload.lua  websocket
@@ -516,7 +516,7 @@
         }
       ```
     + curl 请求
-        ```
+        ```Bash
         tinywan@tinywan:/opt/openresty/nginx/conf$ curl http://192.168.18.143/start
         <html><body>Session started. <a href=/test>Check if it is working</a>!</body></html>
         OpenResty Fan Tinywan Anonymous
@@ -545,7 +545,7 @@
              }
             ```    
         + access.lua 文件内容
-             ``` 
+             ```Lua 
              if ngx.req.get_uri_args()["wsSecret"] ~= "e65e6a01cf26523e206d5bb0e2a8a95a" then  
                 return ngx.exit(403)  
              end
@@ -635,7 +635,7 @@
         
         ```
     + curl 请求(-i 参数,输出时包括protocol头信息)：
-        ``` 
+        ```Bash 
         tinywan@tinywan:$ curl -i http://127.0.0.1/get_rand_string?salt=tinywan123
         HTTP/1.1 200 OK
         Server: openresty/1.11.2.1
@@ -647,7 +647,7 @@
     
 ### Redis、Lua、Nginx一起工作事迹
 +   解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
-+     - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
++   - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
 +   解决2
 +   解决3    
 ### Redis执行Lua脚本
@@ -657,14 +657,14 @@
 
     > 我们的第一个Redis Lua 脚本仅仅返回一个字符串，而不会去与redis 以任何有意义的方式交互   
 
-    ```
+    ```Lua
     local msg = "Hello, world!"
     return msg
     ```
 
     > 这是非常简单的，第一行代码定义了一个本地变量msg存储我们的信息， 第二行代码表示 从redis 服务端返回msg的值给客户端。 保存这个文件到Hello.lua，像这样去运行: 
     
-    ```
+    ```Bash
     www@iZ239kcyg8rZ:~/lua$ redis-cli EVAL "$(cat Hello.lua)" 0
     "Hello, world!"
     ```
