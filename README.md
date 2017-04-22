@@ -301,7 +301,7 @@
 +   [默认配置信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
 +   开发入门
     + Nginx与Lua的整体目录关系
-        ```
+        ```Lua
         .
         ├── conf
         │   ├── nginx.conf                  -- Nginx 配置文件
@@ -364,7 +364,7 @@
     + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";`   
     + Lua脚本实现一个CDN的反向代理功能(智能查找CDN节点)(测试成功,可上线)    
         + nginx.conf 配置信息
-        ```
+        ```Lua
         http {
                 lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";
                 server {
