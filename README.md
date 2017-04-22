@@ -252,7 +252,7 @@
 +   Rewrite 正则匹配` uri `参数接收
     1.  请求案例：`curl http://192.168.18.143/live/tinywan123/index.m3u8`   
     2.  Nginx.conf配置文件       
-        ```
+        ```Lua
         location ~* ^/live/(\w+)/(\D+)\.(m3u8|ts)$ {
             set $num $2;
             set $arg1 $1;
@@ -399,7 +399,7 @@
         
     + Lua脚本结合 Redis 统计直播流播放次数、链接次数等等信息
         + nginx.conf 
-            ```
+            ```Lua
             server {            # 配置虚拟服务器80
                  listen 80;
                  server_name  127.0.0.1:8088;
@@ -413,7 +413,7 @@
             }      
              ```
         + 代理服务器
-            ``` 
+            ```Lua 
              server {            # 配置虚拟服务器8088
                  listen 8088;
                  server_name  127.0.0.1:8088;
@@ -439,7 +439,7 @@
     + 代码引入：`lua_package_path "/opt/openresty/nginx/lua/lua-resty-websocket/lib/?.lua;;";`
     + **Lua脚本实现一个websocket连接(测试成功,可上线)**
         + nginx.conf 配置信息
-        ```
+        ```Lua
         http {
                 lua_package_path "/opt/openresty/nginx/lua/lua-resty-websocket/lib/?.lua;;";
                 server {
@@ -461,7 +461,7 @@
 +  lua-cjson 扩展   
     + 基本用法
         + nginx.conf
-            ```
+            ```Lua
             location /cjson {
                     content_by_lua_block {
                             local cjson = require "cjson"
@@ -491,10 +491,10 @@
         ```
     + 特别注意：这里拷贝的时候要要把session文件和session.lua 文件同时吧、拷贝过去，否则会报错误：
         ``` 
-            /opt/openresty/lualib/resty/session.lua:34: in function 'prequire'
-            /opt/openresty/lualib/resty/session.lua:211: in function 'new'
-            /opt/openresty/lualib/resty/session.lua:257: in function 'open'
-            /opt/openresty/lualib/resty/session.lua:320: in function 'start'
+        /opt/openresty/lualib/resty/session.lua:34: in function 'prequire'
+        /opt/openresty/lualib/resty/session.lua:211: in function 'new'
+        /opt/openresty/lualib/resty/session.lua:257: in function 'open'
+        /opt/openresty/lualib/resty/session.lua:320: in function 'start'
         ```
     +  拷贝完毕后`/opt/openresty/lualib/resty` OpenResty 引用第三方 resty 的所有库文件
       ``` 
@@ -503,7 +503,7 @@
       core     dns       http.lua          lrucache  md5.lua       mysql.lua      redis.lua   session.lua  sha224.lua  sha384.lua  sha.lua     upload.lua  websocket
       ```
     + 基本用法
-      ``` 
+      ```Lua 
        location /start {
               content_by_lua_block {
                   local session = require "resty.session".start()
@@ -524,7 +524,7 @@
 +   Lua 权限验证
     + Lua 一个HLS的简单地址访问权限验证
         + Nginx.conf 配置
-            ``` 
+            ```Lua 
             location ^~ /live/ {
                 add_header Cache-Control no-cache;
                 add_header 'Access-Control-Allow-Origin' '*' always;
@@ -587,7 +587,7 @@
 +   <a name="Openresty_http_status_constants"/> Lua HTTP状态常量  
  
     + 所有常量列表
-        ```
+        ```Lua
        value = ngx.HTTP_CONTINUE (100) (first added in the v0.9.20 release)
        value = ngx.HTTP_SWITCHING_PROTOCOLS (101) (first added in the v0.9.20 release)
        value = ngx.HTTP_OK (200)
@@ -624,7 +624,7 @@
        value = ngx.HTTP_INSUFFICIENT_STORAGE (507) (first added in the v0.9.20 release)
         ```
     + 案列使用,get_string_md5.lua：
-        ``` 
+        ```Lua 
         local args = ngx.req.get_uri_args()
         local salt = args.salt
         if not salt then
@@ -681,7 +681,7 @@
 #### Lua 脚本
 +   Lua 实现简单封装
     +   man.lua
-        ```
+        ```Lua
             local _name = "Tinywan"
             local man = {}
     
@@ -697,7 +697,7 @@
         ```
     +   测试封装,test.lua   
 
-        ```
+        ```Lua
             local man = require('man')
             print("The man name is "..man.GetName())
             man.SetName("Phalcon")
@@ -764,7 +764,7 @@
             4) "192.168.1.200"
             ```
         +  Lua脚本,lua_get_redis.lua 文件
-           ``` 
+           ```Lua 
            -- 获取键值/参数
            local key,offset,limit = KEYS[1], ARGV[1], ARGV[2]
            -- 通过ZRANGE获取键为key的有序集合元素，偏移量为offset，个数为limit，即所有WEB信息 
@@ -815,7 +815,7 @@
            + 错误：`(error) ERR Error running script command arguments must be strings or integers`
     +   <a name="Ngx_lua_write_Redis"/>  Ngx_lua 写入Redis数据，通过CURL请求 
         + curl_get_redis.lua 文件内容
-            ``` 
+            ```Lua 
             local json = require("cjson")
             local redis = require("resty.redis")
             local red = redis:new()
@@ -853,7 +853,7 @@
             ngx.say("Success get Redis Data",json.encode({content=res}))
             ```
         + nginx.conf
-            ``` 
+            ```Lua 
             location ~* /curl_insert_redis/(\w+)$ {
                 default_type 'text/html';
                 lua_code_cache off;
@@ -861,19 +861,19 @@
             }
             ```
         + curl 和浏览器请求结果（查询Redis数据库，数据已经插入成功）
-           ``` 
+           ```Lua 
               root@tinywan:# curl http://127.0.0.1/curl_insert_redis/Tinywan1227
               set result: OK
               Success get Redis Data{"content":"Tinywan1227::2017-04-16 15:57:56"}
            ```
     +   通过lua脚本获取指定的key的List中的所有数据 
-        ```
+        ```Lua
         local key=KEYS[1]
         local list=redis.call("lrange",key,0,-1);
         return list;
         ```
     +   根据外面传过来的IDList 做“集合去重”的lua脚本逻辑：     
-         ```
+         ```Lua
              local result={};
              local myperson=KEYS[1];
              local nums=ARGV[1];
