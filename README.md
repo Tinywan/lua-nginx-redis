@@ -552,7 +552,7 @@
              ```                    
 +  lua-resty-string 扩展   
     + MD5加密的简单基本用法 md5.lua
-        ```
+        ```Lua
         local resty_md5 = require "resty.md5"
         local md5 = resty_md5:new()
         if not md5 then
@@ -945,7 +945,10 @@
         +   此时外界就可以通过`ssh www@10.10.101.2`连接到服务器了    
 + find 命令
     + 查找超出7天前的flv的文件进行删除：
-        + `find ./ -mindepth 1 -maxdepth 3 -type f -name "*.flv" -mmin +10080 | xargs rm -rf `
+        + 命令：
+        ```Bash
+        find ./ -mindepth 1 -maxdepth 3 -type f -name "*.flv" -mmin +10080 | xargs rm -rf 
+        ```
         + `-type f` 按类型查找
         + `-mmin +10080` 7天之前的文件
         + xargs与-exec功能类似,` find ~ -type f | xargs ls -l `
