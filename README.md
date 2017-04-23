@@ -24,7 +24,7 @@
 +   [Openresty 学习](#Openresty_web_knowledge) 
     +   [安装](#Openresty_install_knowledge) 
     +   [默认配置信息](#Openresty_config_knowledge) 
-    +   [Lua require 绝对和相对路径问题(一个文件引入另外一个文件的Function),已经解决](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-common-package/lua-require.md)
+    +   [Lua require 绝对和相对路径(已经解决)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-common-package/lua-require.md)
     +   [luajit 执行文件默认安装路径](#Openresty_web_knowledge) 
     +   [lua-resty-redis 扩展](#Openresty_resty-redis) 
     +   [lua-resty-websocket 扩展](#Openresty_resty-websocket) 
