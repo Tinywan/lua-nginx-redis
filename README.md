@@ -159,10 +159,10 @@
 #### <a name="Nginx_Web4_knowledge"/>  第四章   高级配置
 +   基本语法：location [=|~|~*|^~] /uri/ { … }   
      1. `= `：严格匹配。如果这个查询匹配，那么将停止搜索并立即处理此请求。
-     1. `~ `：为区分大小写匹配(可用正则表达式) 
-     1. `!~ `：为区分大小写不匹配
-     1. `!~*`：为不区分大小写不匹配
-     1. ` ^~ `：如果把这个前缀用于一个常规字符串,那么告诉nginx 如果路径匹配那么不测试正则表达式    
+     2. `~ `：为区分大小写匹配(可用正则表达式) 
+     3. `!~ `：为区分大小写不匹配
+     4. `!~*`：为不区分大小写不匹配
+     5. ` ^~ `：如果把这个前缀用于一个常规字符串,那么告诉nginx 如果路径匹配那么不测试正则表达式    
 +   [Perl 正则表达式参考](http://www.runoob.com/perl/perl-regular-expressions.html)
 +   正则中需要转义的特殊字符小结
      - [1] ` $`     匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 ‘\n' 或 ‘\r'。要匹配 $ 字符本身，请使用 \$。   
@@ -182,10 +182,10 @@
     - [2]   `location ~ /documents/Abc { }`：匹配任何以 /documents/ 开头的地址，匹配符合以后，还要继续往下搜索
     - [3] **目录匹配：**
         1. 可以匹配静态文件目录`(static/lib)`
-        1. HLS直播目录`(/home/HLS/stream123/index.m3u8)`   
-        1. HLS/MP4/FLV点播视频目录`(/home/HLS/stream123.m3u8)`   
-        1. 匹配URL地址：`http://127.0.0.1/live/stream123/index.m3u8` 
-        1. nginx.conf 配置信息 
+        2. HLS直播目录`(/home/HLS/stream123/index.m3u8)`   
+        3. HLS/MP4/FLV点播视频目录`(/home/HLS/stream123.m3u8)`   
+        4. 匹配URL地址：`http://127.0.0.1/live/stream123/index.m3u8` 
+        5. nginx.conf 配置信息 
             ```
             # 匹配任何以/live/ 开头的任何查询并且停止搜索。任何正则表达式将不会被测试
             location ^~ /live/ {  
@@ -195,10 +195,10 @@
             ```
 +   后缀匹配
     1. 匹配任何后缀文件名`gif|jpg|jpeg|png|css|js|ico|m3u8|ts` 结尾的请求
-    1. TS 文件匹配`http://127.0.0.1/live/stream123/11.ts`
-    1. M3U8 文件匹配`http://127.0.0.1/live/stream123/index.m3u8`
-    1. 匹配URL地址：`http://127.0.0.1/hls/123.m3u8` 
-    1. nginx.conf 配置信息  
+    2. TS 文件匹配`http://127.0.0.1/live/stream123/11.ts`
+    3. M3U8 文件匹配`http://127.0.0.1/live/stream123/index.m3u8`
+    4. 匹配URL地址：`http://127.0.0.1/hls/123.m3u8` 
+    5. nginx.conf 配置信息  
         ```
         location ~* \.(gif|jpg|jpeg|png|css|js|ico|m3u8|ts)$ {
                 root /home/tinywan/HLS/;
@@ -304,7 +304,7 @@
 +   [默认配置信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
 +   开发入门
     + Nginx与Lua的整体目录关系
-        ```Lua
+        ```Bash
         .
         ├── conf
         │   ├── nginx.conf                  -- Nginx 配置文件
@@ -369,25 +369,25 @@
     + nginx.conf 配置信息
     ```Lua
     http {
-            lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";
-            server {
-                listen 80;
-                server_name  localhost;
-                location ~ \/.+\/.+\.(m3u8|ts) {
-                        if ($uri ~ \/([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)(|-).*\.(m3u8|ts)) {
-                                set $app_name $1;
-                                set $a $2;
-                        }
-                        set $stream_id "";
-                        default_type 'text/html';
-                        rewrite_by_lua_file  /opt/openresty/nginx/lua/proxy_pass_cdn.lua;
-                        proxy_connect_timeout       10;
-                        proxy_send_timeout          30;
-                        proxy_read_timeout          30;
-                        proxy_pass                  $stream_id;
+        lua_package_path "/opt/openresty/nginx/lua/lua-resty-redis/lib/?.lua;;";
+        server {
+            listen 80;
+            server_name  localhost;
+            location ~ \/.+\/.+\.(m3u8|ts) {
+                if ($uri ~ \/([a-zA-Z0-9]+)\/([a-zA-Z0-9]+)(|-).*\.(m3u8|ts)) {
+                        set $app_name $1;
+                        set $a $2;
                 }
-
+                set $stream_id "";
+                default_type 'text/html';
+                rewrite_by_lua_file  /opt/openresty/nginx/lua/proxy_pass_cdn.lua;
+                proxy_connect_timeout       10;
+                proxy_send_timeout          30;
+                proxy_read_timeout          30;
+                proxy_pass                  $stream_id;
             }
+
+        }
     }
     ```
     + [Lua脚本proxy_pass_cdn.lua](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-redis/proxy_pass_cdn.lua)
@@ -466,16 +466,15 @@
     + nginx.conf
         ```Lua
         location /cjson {
-                content_by_lua_block {
-                        local cjson = require "cjson"
-
-                        local json = cjson.encode({
-                                foo = "bar",
-                                some_object = {},
-                                some_array = cjson.empty_array
-                        })
-                        ngx.say(json)
-                }
+            content_by_lua_block {
+                local cjson = require "cjson"
+                local json = cjson.encode({
+                        foo = "bar",
+                        some_object = {},
+                        some_array = cjson.empty_array
+                })
+                ngx.say(json)
+            }
         }
         ```  
     + curl 请求
@@ -508,15 +507,15 @@
 + 基本用法
   ```Lua 
    location /start {
-          content_by_lua_block {
-              local session = require "resty.session".start()
-              session.data.name = "OpenResty Fan Tinywan"
-              session:save()
-              ngx.say("<html><body>Session started. ",
-                      "<a href=/test>Check if it is working</a>!</body></html>")
-              ngx.say(session.data.name,"Anonymous")
-          }
-    }
+      content_by_lua_block {
+          local session = require "resty.session".start()
+          session.data.name = "OpenResty Fan Tinywan"
+          session:save()
+          ngx.say("<html><body>Session started. ",
+                  "<a href=/test>Check if it is working</a>!</body></html>")
+          ngx.say(session.data.name,"Anonymous")
+      }
+   }
   ```
 + curl 请求
     ```Bash
