@@ -20,7 +20,7 @@
         └── nginx
     ```
 + [Lua require 相对路径 博客园详解](http://www.cnblogs.com/smallboat/p/5552407.html)
-+ 相对路径总结
++ 相对路径总结（相对于nginx安装目录）
     + **当前目录** ：`/opt/openresty/nginx/conf/Lua`
         + 注意:如果在当前没有了，以下的代码运行是没有问题的
         + 就是所有的lua脚本代码全部写在Lua文件夹下面去
@@ -70,7 +70,8 @@
         ```
         location /api {
             lua_code_cache off;
-            content_by_lua_file  /opt/openresty/nginx/conf/Lua/main.lua;
+            content_by_lua_file   /opt/openresty/nginx/conf/Lua/main.lua; # 绝对路径
+            #content_by_lua_file  conf/Lua/main.lua;         # 相对路径（相对于nginx安装目录）
         }
         ```  
     + CURL 请求结果
