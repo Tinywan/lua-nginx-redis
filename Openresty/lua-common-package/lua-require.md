@@ -146,10 +146,16 @@
     ```
 +   项目结构图
     ```Lua
+    tinywan@tinywan:~/Openresty_Protect$ pwd
+    /home/tinywan/Openresty_Protect
     tinywan@tinywan:~/Openresty_Protect$ tree -L 3
     .
     └── First_Protect
         ├── lua
+        │   ├── functions.lua
+        │   ├── get_redis_iresty.lua
+        │   ├── get_redis.lua
+        │   ├── main.lua
         │   └── test.lua
         ├── lualib
         │   ├── cjson.so
