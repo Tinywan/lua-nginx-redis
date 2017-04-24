@@ -38,7 +38,7 @@
     +   [ngx Lua APi 介绍使用](#Openresty_ngx_api_used) 
     +   [连接数据库](#Openresty_connent_redis) 
     +   [OpenResty缓存](#Openresty_connent_cache) 
-    +   [lua-resty-upstream-healthcheck 使用](#Openresty_lua-resty-upstream-healthcheck) 
+    +   [lua-resty-upstream-healthcheck 使用](#Openresty_lua_resty_upstream_healthcheck) 
 +   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
 +   [Redis执行Lua脚本基本用法](#Redis_Run_Lua) 
 +   [Ngx_lua 写入Redis数据，通过CURL请求](#Ngx_lua_write_Redis) 
@@ -690,7 +690,7 @@
     +   纯内存的操作，多个worker之间共享的(比如nginx开启10个Worker,则每个worker之间是共享该内存的)
     +   同一份数据在多个worker之间是共享的，只要存储一份数据就可以了
     +   锁的竞争（数据原子性）
-#### <a name="Openresty_lua-resty-upstream-healthcheck"/>  lua-resty-upstream-healthcheck 使用 
+#### <a name="Openresty_lua_resty_upstream_healthcheck"/> lua-resty-upstream-healthcheck使用 
 +   health.txt 在每个upstream 服务器组的root 目录下创建这个文件，目录结构如下所示
     ```Lua
     ├── html
