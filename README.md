@@ -38,6 +38,7 @@
     +   [ngx Lua APi 介绍使用](#Openresty_ngx_api_used) 
     +   [连接数据库](#Openresty_connent_redis) 
     +   [OpenResty缓存](#Openresty_connent_cache) 
+    +   [lua-resty-upstream-healthcheck 使用](#Openresty_lua-resty-upstream-healthcheck) 
 +   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
 +   [Redis执行Lua脚本基本用法](#Redis_Run_Lua) 
 +   [Ngx_lua 写入Redis数据，通过CURL请求](#Ngx_lua_write_Redis) 
@@ -689,6 +690,185 @@
     +   纯内存的操作，多个worker之间共享的(比如nginx开启10个Worker,则每个worker之间是共享该内存的)
     +   同一份数据在多个worker之间是共享的，只要存储一份数据就可以了
     +   锁的竞争（数据原子性）
+#### <a name="Openresty_lua-resty-upstream-healthcheck"/>  lua-resty-upstream-healthcheck 使用 
++   health.txt 在每个upstream 服务器组的root 目录下创建这个文件，目录结构如下所示
+    ```Lua
+    ├── html
+    │   ├── 50x.html
+    │   ├── index.html
+    │   ├── websocket001.html
+    │   └── websocket02.html
+    ├── html81
+    │   ├── 50x.html
+    │   ├── health.txt
+    │   └── index.html
+    ├── html82
+    │   ├── 50x.html
+    │   ├── health.txt
+    │   └── index.html
+    ├── html83
+    │   ├── 50x.html
+    │   ├── health.txt
+    │   └── index.html
+    ├── html84
+    │   ├── 50x.html
+    │   └── index.html
+    ```
++   nginx.conf
+    ```Lua
+    worker_processes  8;
+    
+    error_log  logs/error.log;
+    pid        logs/nginx.pid;
+    
+    events {
+        use epoll;
+        worker_connections  1024;
+    }
+    
+    http {
+        include       mime.types;
+        default_type  text/html;
+        #lua模块路径，其中”;;”表示默认搜索路径，默认到/usr/servers/nginx下找  
+        lua_package_path "/home/tinywan/Openresty_Protect/First_Protect/lualib/?.lua;;";  #lua 模块  
+        lua_package_cpath "/home/tinywan/Openresty_Protect/First_Protect/lualib/?.so;;";  #c模块  
+        include /home/tinywan/Openresty_Protect/First_Protect/nginx_first.conf;
+    }
+    
+    ```
++ nginx_first.conf
+    ```Lua
+    upstream tomcat {
+        server 127.0.0.1:8081;
+        server 127.0.0.1:8082;
+        server 127.0.0.1:8083;
+        server 127.0.0.1:8084 backup;
+    }
+    
+    lua_shared_dict healthcheck 1m;
+    
+    lua_socket_log_errors off;
+    
+    init_worker_by_lua_block {
+        local hc = require "resty.upstream.healthcheck"
+        local ok, err = hc.spawn_checker{
+                shm = "healthcheck",  -- defined by "lua_shared_dict"
+                upstream = "tomcat", -- defined by "upstream"
+                type = "http",
+    
+                http_req = "GET /health.txt HTTP/1.0\r\nHost: tomcat\r\n\r\n",
+                        -- raw HTTP request for checking
+    
+                interval = 2000,  -- run the check cycle every 2 sec
+                timeout = 1000,   -- 1 sec is the timeout for network operations
+                fall = 3,  -- # of successive failures before turning a peer down
+                rise = 2,  -- # of successive successes before turning a peer up
+                valid_statuses = {200, 302},  -- a list valid HTTP status code
+                concurrency = 10,  -- concurrency level for test requests
+            }
+    }
+    
+    server {
+        listen       80;
+        server_name  localhost;
+        
+        location / {
+            proxy_pass          http://tomcat;
+         }
+    
+       # status page for all the peers:
+        location /server/status {
+                access_log off;
+                allow 127.0.0.1;
+    
+                default_type text/plain;
+                content_by_lua_block {
+                    local hc = require "resty.upstream.healthcheck"
+                    ngx.say("Nginx Worker PID: ", ngx.worker.pid())
+                    ngx.print(hc.status_page())
+                }
+        }
+    
+        # status page for all the peers:
+        location /lua {
+            default_type 'text/html';
+            lua_code_cache off;
+            content_by_lua_file /home/tinywan/Openresty_Protect/First_Protect/lua/test.lua;
+        }
+        
+        location /lua_get_redis {
+            default_type 'text/html';
+            lua_code_cache off;
+            content_by_lua_file /home/tinywan/Openresty_Protect/First_Protect/lua/get_redis.lua;
+        }
+    
+        location /get_redis_iresty {
+            default_type 'text/html';
+            lua_code_cache off;
+            content_by_lua_file /home/tinywan/Openresty_Protect/First_Protect/lua/get_redis_iresty.lua;
+        }
+    
+        location /get_main {
+            default_type 'text/html';
+            lua_code_cache off;
+            content_by_lua_file /home/tinywan/Openresty_Protect/First_Protect/lua/main.lua;
+        }
+    
+    }
+    
+    server {
+        listen       8081;
+        server_name  localhost;
+    
+        location / {
+            root   html81;
+            index  index.html index.htm;
+        }
+    
+        location /health_status {
+    
+        }
+    }
+    
+    server {
+        listen       8082;
+        server_name  localhost;
+    
+        location / {
+            root   html82;
+            index  index.html index.htm;
+        }
+    
+        location /health_status {
+    
+        }
+    }
+    
+    server {
+        listen       8083;
+        server_name  localhost;
+    
+        location / {
+            root   html83;
+            index  index.html index.htm;
+        }
+    
+        location /health_status {
+    
+        }
+    }
+    
+    server {
+        listen       8084;
+        server_name  localhost;
+    
+        location / {
+            root   html84;
+            index  index.html index.htm;
+        }
+    }
+    
+    ```
 ### Redis、Lua、Nginx一起工作事迹
 +   解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
 +   - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
