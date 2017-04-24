@@ -1,12 +1,11 @@
 ## Redis 简易安装教程
 #### 一、安装编译
 + 下载、解压   		
-
-    ```
+    ```Bash
     wget http://download.redis.io/releases/redis-3.2.8.tar.gz
-    tar -zxvf redis-3.2.8.tar.gz 
+    tar -zxvf redis-3.2.8.tar.gz
+    cd  redis-3.2.8
     ```
-
 + make 编译
 
     + 编译完成之后，可以看到解压文件redis-3.0.7 中会有对应的src、conf等文件       
@@ -46,15 +45,11 @@
     /usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf
     ```
 + 3、检测运行端口	
-
     ```
     tinywan@tinywan:/usr/local/redis/etc$ ps -aux | grep redis
-
     tinywan   43725  0.1  0.3  38160  6272 ?        Ssl  09:11   0:00 /usr/local/redis/bin/redis-server *:63790
-    
     tinywan   43730  0.0  0.0  15984  1060 pts/4    S+   09:11   0:00 grep --color=auto redis
     ```
-
 + 4、redis-cli启动
     ```
     tinywan@tinywan:/usr/local/redis/etc$ redis-cli -h 127.0.0.1 -p 63790
