@@ -776,44 +776,17 @@
             proxy_pass          http://tomcat;
          }
     
-       # status page for all the peers:
         location /server/status {
-                access_log off;
-                allow 127.0.0.1;
-    
-                default_type text/plain;
-                content_by_lua_block {
-                    local hc = require "resty.upstream.healthcheck"
-                    ngx.say("Nginx Worker PID: ", ngx.worker.pid())
-                    ngx.print(hc.status_page())
-                }
+            access_log off;
+            allow 127.0.0.1;
+
+            default_type text/plain;
+            content_by_lua_block {
+                local hc = require "resty.upstream.healthcheck"
+                ngx.say("Nginx Worker PID: ", ngx.worker.pid())
+                ngx.print(hc.status_page())
+            }
         }
-    
-        # status page for all the peers:
-        location /lua {
-            default_type 'text/html';
-            lua_code_cache off;
-            content_by_lua_file /home/tinywan/Openresty_Protect/First_Protect/lua/test.lua;
-        }
-        
-        location /lua_get_redis {
-            default_type 'text/html';
-            lua_code_cache off;
-            content_by_lua_file /home/tinywan/Openresty_Protect/First_Protect/lua/get_redis.lua;
-        }
-    
-        location /get_redis_iresty {
-            default_type 'text/html';
-            lua_code_cache off;
-            content_by_lua_file /home/tinywan/Openresty_Protect/First_Protect/lua/get_redis_iresty.lua;
-        }
-    
-        location /get_main {
-            default_type 'text/html';
-            lua_code_cache off;
-            content_by_lua_file /home/tinywan/Openresty_Protect/First_Protect/lua/main.lua;
-        }
-    
     }
     
     server {
@@ -869,6 +842,8 @@
     }
     
     ```
++   状态查看,通过访问:`http://127.0.0.1/server/status`
+    ![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Openresty_lua-resty-upstream-healthcheck.png)
 ### Redis、Lua、Nginx一起工作事迹
 +   解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
 +   - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
