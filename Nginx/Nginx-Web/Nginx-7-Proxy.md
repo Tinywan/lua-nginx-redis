@@ -1,6 +1,17 @@
 
 #### Nginx服务器的HTTP代理服务
 ---
++    网络初始化之listen常见配置   
+       ```Lua 
+        listen 127.0.0.1:8000;
+        listen 127.0.0.1;
+        listen 8000;
+        listen *:8000;
+        listen localhost:8000;
+        listen [::]:8000;
+        listen [fe80::1];
+        listen unix:/var/run/nginx.sock;
+       ```
 * **配置实例一：对所有请求实现一般轮询规则的负载均衡**  
     ```
        http {
@@ -54,7 +65,7 @@
         `upstream sent too big header while reading response header from upstream` 
         +  [Nginx-proxy_buffer_size and fastcgi_buffer](http://blog.csdn.net/u010391029/article/details/50850210) 
         +  [http://wiki.nginx.org/NginxHttpProxyModule](http://wiki.nginx.org/NginxHttpProxyModule) 
-        +  [http://blog.sina.com.cn/s/blog_5dc960cd0100i4mt.html](http://blog.sina.com.cn/s/blog_5dc960cd0100i4mt.html) 
+        +  [http://blog.sina.com.cn/s/blog_5dc960cd0100i4mt.html](http://blog.sina.com.cn/s/blog_5dc960cd0100i4mt.html)      
    > 参数：`keepalive connections;`
    >>补充：`由于短连接消耗前端代理服务器的资源现象严重,因此会将一部分连接定义为长连接以节省资源`   
    >>FUN：`#为每个worker进程保留的空闲的长连接数量`  
