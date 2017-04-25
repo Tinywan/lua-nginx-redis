@@ -287,10 +287,12 @@
 +   [Nginx日志服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-Log.md)
 +   负载均衡
 +   HTTP负载均衡
+    - [x] [简单的负载平衡](http://nginx.org/en/docs/http/ngx_http_core_module.html?&_ga=1.179030369.49817296.1480411319#http)
     - [x] [简单的负载平衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy-1.md)
     - [x] [负载均衡五个配置实例](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-7-Proxy.md)
     - [x] [Openresty-Lua动态修改upstream后端服务](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/openresty-nginx-lua-Proxy.md)
 +   TCP负载均衡   
+        - [x] [Module ngx_stream_core_module](http://nginx.org/en/docs/stream/ngx_stream_core_module.html#stream)      
         - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-8-tcp-Proxy.md)      
 #### <a name="Nginx_Web8_knowledge"/>  第八章   缓存机制
 +   测试一

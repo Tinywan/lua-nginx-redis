@@ -18,6 +18,15 @@
                 location / {
                     proxy_pass http://live_node;         # 注意：proxy_pass后面的路径不带uri时，其会将location的uri传递给后端主机
                     proxy_set_header Host $host;         # 保留客户端的真实信息
+                    proxy_set_header Host $host:$server_port;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Real-PORT $remote_port;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                    
+                    proxy_redirect off;
+                    proxy_buffer_size  128k;
+                    proxy_buffers   32 32k;
+                    proxy_busy_buffers_size 128k;
                 }
             }
 
@@ -40,6 +49,12 @@
             }
         }
     ```
+   +    Nginx-proxy 详解文章链接
+        +  查看错误日志
+        `upstream sent too big header while reading response header from upstream` 
+        +  [Nginx-proxy_buffer_size and fastcgi_buffer](http://blog.csdn.net/u010391029/article/details/50850210) 
+        +  [http://wiki.nginx.org/NginxHttpProxyModule](http://wiki.nginx.org/NginxHttpProxyModule) 
+        +  [http://blog.sina.com.cn/s/blog_5dc960cd0100i4mt.html](http://blog.sina.com.cn/s/blog_5dc960cd0100i4mt.html) 
    > 参数：`keepalive connections;`
    >>补充：`由于短连接消耗前端代理服务器的资源现象严重,因此会将一部分连接定义为长连接以节省资源`   
    >>FUN：`#为每个worker进程保留的空闲的长连接数量`  
