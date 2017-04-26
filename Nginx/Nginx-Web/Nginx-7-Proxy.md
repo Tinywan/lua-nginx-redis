@@ -17,7 +17,8 @@
        http {
 
             upstream live_node {                        # 配置后端服务器组
-                server 127.0.0.1:8089;
+                #max_fails默认值为1,fail_timeout默认值为10s,max_fails=0表示不做检查
+                server 127.0.0.1:8089 weight=1 max_fails=1  fail_timeout=10s;   
                 server 127.0.0.1:8088;
                 keepalive 32;
                 hash $request_uri consistent;
