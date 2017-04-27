@@ -879,7 +879,7 @@
         }
     }
     ```
-+   [nginx 并发数问题思考：worker_connections,worker_processes](http://liuqunying.blog.51cto.com/3984207/1420556?utm_source=tuicool)
++   [nginx 并发数问题思考：worker_connections,worker_processes与 max clients](http://liuqunying.blog.51cto.com/3984207/1420556?utm_source=tuicool)
     +   从用户的角度，http 1.1协议下，由于浏览器默认使用两个并发连接,因此计算方法：
         1. nginx作为http服务器的时候：  
         `max_clients = worker_processes * worker_connections/2`
