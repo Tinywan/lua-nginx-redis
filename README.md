@@ -40,6 +40,7 @@
     +   [OpenResty缓存](#Openresty_connent_cache) 
     +   [lua-resty-upstream-healthcheck 使用](#Openresty_lua_resty_upstream_healthcheck) 
     +   [Openresty和Nginx_RTMP 模块共存问题](#Openresty_rtmp_share) 
+    +   [Openresty配置RTMP模块的多worker直播流](#Openresty_rtmp_more_worker) 
 +   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
 +   [Redis执行Lua脚本基本用法](#Redis_Run_Lua) 
 +   [Ngx_lua 写入Redis数据，通过CURL请求](#Ngx_lua_write_Redis) 
@@ -851,7 +852,49 @@
 +   RTMP 流的状态（stat.xsl）不生效Bug 问题
     -   1.  修改完nginx.conf 配置文件
     -   1.  ~~执行：`nginx -s reload` 会不起作用~~
-    -   2.  一定要执行以下命令：杀掉所有nginx进程`sudo killall nginx ` 重启即可`sbin/nignx` 
+    -   2.  一定要执行以下命令：杀掉所有nginx进程`sudo killall nginx ` 重启即可`sbin/nignx`
+#### <a name="Openresty_rtmp_more_worker"/> 配置RTMP模块的多worker直播流
++   配置文件,[Multi-worker live streaming官方文档](https://github.com/arut/nginx-rtmp-module/wiki/Directives#multi-worker-live-streaming)
+    ```Shell
+    user www www;
+    worker_processes  auto;
+    error_log  logs/error.log debug;
+    
+    pid /var/run/nginx.pid;
+    events {
+        use epoll;
+        worker_connections  1024;
+        multi_accept on;
+    }
+   
+    rtmp_auto_push on;
+    rtmp_auto_push_reconnect 1s;
+    rtmp_socket_dir /var/sock;
+    rtmp {
+        server {
+            listen 1935;
+            application live {
+                live on;
+            }
+        }
+    }
+    ```
++   [nginx 并发数问题思考：worker_connections,worker_processes](http://liuqunying.blog.51cto.com/3984207/1420556?utm_source=tuicool)
+    +   从用户的角度，http 1.1协议下，由于浏览器默认使用两个并发连接,因此计算方法：
+        1. nginx作为http服务器的时候：  
+        `max_clients = worker_processes * worker_connections/2`
+        1. nginx作为反向代理服务器的时候：  
+        `max_clients = worker_processes * worker_connections/4`
+    +   从一般建立连接的角度,客户并发连接为1：
+        1. nginx作为http服务器的时候：  
+        `max_clients = worker_processes * worker_connections`
+        1. nginx作为反向代理服务器的时候：  
+        `max_clients = worker_processes * worker_connections/2`    
+    +   nginx做反向代理时，和客户端之间保持一个连接，和后端服务器保持一个连接
+    +   clients与用户数  
+        同一时间的clients(客户端数)和用户数还是有区别的，当一个用户请求发送一个连接时这两个是相等的，但是当一个用户默认发送多个连接请求的时候，clients数就是用户数*默认发送的连接并发数了。    
+        
+        
 ### Redis、Lua、Nginx一起工作事迹
 +   解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
 +   - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
