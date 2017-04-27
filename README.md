@@ -39,6 +39,7 @@
     +   [连接数据库](#Openresty_connent_redis) 
     +   [OpenResty缓存](#Openresty_connent_cache) 
     +   [lua-resty-upstream-healthcheck 使用](#Openresty_lua_resty_upstream_healthcheck) 
+    +   [Openresty和Nginx_RTMP 模块共存问题](#Openresty_rtmp_share) 
 +   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
 +   [Redis执行Lua脚本基本用法](#Redis_Run_Lua) 
 +   [Ngx_lua 写入Redis数据，通过CURL请求](#Ngx_lua_write_Redis) 
@@ -846,6 +847,11 @@
     ```
 +   状态查看,通过访问:`http://127.0.0.1/server/status`
     ![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Openresty_lua-resty-upstream-healthcheck.png)
+#### <a name="Openresty_rtmp_share"/> Openresty和Nginx_RTMP 模块共存问题   
++   RTMP 流的状态（stat.xsl）不生效Bug 问题
+    -   1.  修改完nginx.conf 配置文件
+    -   1.  ~~执行：`nginx -s reload` 会不起作用~~
+    -   2.  一定要执行以下命令：杀掉所有nginx进程`sudo killall nginx ` 重启即可`sbin/nignx` 
 ### Redis、Lua、Nginx一起工作事迹
 +   解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
 +   - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
