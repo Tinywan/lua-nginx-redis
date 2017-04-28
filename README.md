@@ -310,7 +310,7 @@
 +   [默认配置信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
 +   开发入门
     + Nginx与Lua的整体目录关系
-        ```Bash
+        ```javascript
         .
         ├── conf
         │   ├── nginx.conf                  -- Nginx 配置文件
@@ -696,7 +696,7 @@
     +   锁的竞争（数据原子性）
 #### <a name="Openresty_lua_resty_upstream_healthcheck"/> lua-resty-upstream-healthcheck使用 
 +   health.txt 在每个upstream 服务器组的root 目录下创建这个文件，目录结构如下所示
-    ```Lua
+    ```javascript
     ├── html
     │   ├── 50x.html
     │   ├── index.html
@@ -980,7 +980,7 @@
 +   案例介绍
     +   通过Redis命令`EVAL`执行一个简单的Lua脚本文件
         + 给Redis添加测试数据(通过有序集合和哈希对应的集合信息)
-            ``` 
+            ```javascript 
             127.0.0.1:6379> ZADD WEB 1 google
             (integer) 1
             127.0.0.1:6379> ZADD WEB 2 apple
