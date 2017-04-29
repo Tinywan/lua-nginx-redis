@@ -12,8 +12,7 @@
     00-RELEASENOTES  BUGS  CONTRIBUTING  COPYING  deps  INSTALL  Makefile  MANIFESTO  README.md  redis.conf  runtest 
      runtest-cluster  runtest-sentinel  sentinel.conf  src  tests  utils
     ```  
-    + 编译完成之后，可以看到解压文件redis-3.0.7 中会有对应的src、conf等文件       
-    + 编译完成之后，可以看到解压文件redis-3.0.7 中会有对应的src、conf等文件       
+    + 编译完成之后，可以看到解压文件redis-3.0.7 中会有对应的src、conf等文件             
     + 这和windows下安装解压的文件一样，大部分安装包都会有对应的类文件、配置文件和一些命令文件。
 + 进入src文件夹，执行make install进行Redis安装
 
@@ -44,7 +43,7 @@
 + 继续进入到`src`目录执行其他文件移动：
    ```javascript
    ~/redis-3.2.8$ cd src/
-   sudo mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli \
+   sudo mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli  
    redis-sentinel redis-server redis-trib.rb /usr/local/redis/bin
    ```
 #### 三、配置和启动redis服务
