@@ -54,20 +54,27 @@
     ```
 +   需要修改的参数  
     ```lua
-    daemonize yes       --后台运行
+    --后台运行
+    daemonize yes
+           
+    --端口号
+    port 63700          
     
-    port 63700          --端口号
-    
-    bind 10.10.101.127  --和哪个网卡绑定，和客户端是什么网段没有关系，这里我绑定的是内网网卡, 
+    --和哪个网卡绑定，和客户端是什么网段没有关系，这里我绑定的是内网网卡,
+    bind 10.10.101.127   
     
     -- AES("https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md") 加密
     -- 结果：b6Pbc42gP8hXPNLzZaDnhREijtn1BSVSIYTkhTXw8SuPGpWZvN5kVpVeEVBdEQDw7M/+EZuDS6FxTOtgD2QrPe6014LPEdv2DY+YSUQZ4cE=
     
-    dbfilename /usr/local/redis/etc/dump63700.rdb
+    requirepass b6Pbc42gP8hXPNLzZaDnhREijtn1BSVSIYTkhTXw8SuPGpWZvN5kVpVeEVBdEQDw7M/+EZuDS6FxTOtgD2QrPe6014LPEdv2DY+YSUQZ4cE=
     
+    -- db文件名
+    dbfilename dump63700.rdb
+    
+    -- log 日志文件路径
     logfile "/usr/local/redis/etc/redis_63700.log"
     
-    -- 安全考虑，添加以下命令
+    -- 安全考虑，rename-command 配置以下命令
     rename-command FLUSHALL "tinywangithubFLUSHALL"
     
     rename-command CONFIG "tinywangithubCONFIG"
@@ -76,71 +83,29 @@
     
     rename-command DEBUG "tinywangithubDEBUG"
     ```
-+ 再次启动redis服务，并指定启动服务配置文件	
-
-    ```
++   启动redis服务，并指定启动服务配置文件，检测运行端口	
+    ```java
     $ sudo /usr/local/redis/bin/redis-server /usr/local/redis/etc/redis63700.conf
     $ ps -aux | grep redis
     root      70764  0.6  0.1  38160      0:00 /usr/local/redis/bin/redis-server 127.0.0.1:63700
     tinywan   70768  0.0  0.0  15984      0:00 grep --color=auto redis
     ```
-+ 3、检测运行端口	
-    ```
-    tinywan@tinywan:/usr/local/redis/etc$ ps -aux | grep redis
-    tinywan   43725  0.1  0.3  38160  6272 ?        Ssl  09:11   0:00 /usr/local/redis/bin/redis-server *:63790
-    tinywan   43730  0.0  0.0  15984  1060 pts/4    S+   09:11   0:00 grep --color=auto redis
-    ```
-+ 4、redis-cli启动
-    ```
-    tinywan@tinywan:/usr/local/redis/etc$ redis-cli -h 127.0.0.1 -p 63790
-    127.0.0.1:63790> set name tinywan
-    OK
-    127.0.0.1:63790> get name
-    "tinywan"
-    127.0.0.1:63790> 
-    ```
-
-#### 五、配置conf文件，设置密码、支持键过期事件
-
-+ 设置密码
-    ```
-    requirepass redis_tinywan  #注意这里的特殊符号没有限制的
-    ```
-+ 指定数据库文件名
-
-    ```
-    dbfilename dump.rdb
-    ```
-+ 指定本地数据库文件名，默认为dump.rdb，我改成dump638989.rdb（表示638989的数据库文件）
-    ```
-    rdbcompression yes   -- 存储本地数据库时是否启用压缩，默认yes
-    ```
-
-+  默认端口 6379 
-
-    ```
-    port 6379898
-    ```
-
-+ redis启动后的进程ID保存文件 
-    ```
-    pidfile /usr/local/redis/etc/redis_63790.pid
-    ```
-
-+ 日志文件指定路径
-
-    ```
-    logfile "/usr/local/redis/etc/redis_63790.log"
-    ```
-
-+ 日志级别
-    ```
-    loglevel verbose
-    ```
-
-+ 版本号查看
-    ```
-    redis-cli -h 127.0.0 .1 -p 63789 -a 123  info | grep 'redis_version'
++   redis-cli启动、检测重置命令是否生效（结果：配置文件已经OK）
+    ```lua
+    $ redis-cli -h 127.0.0.1 -p 63700 -a b6Pbc42gP8hXPNLzZaDnhREijtn1BSVSIYTkhTXw8SuPGpWZvN5kVpVeEVBdEQDw7M/+EZuDS6FxTOtgD2QrPe6014LPEdv2DY+YSUQZ4cE= 
+      127.0.0.1:63700> set username tinywan
+      OK
+      127.0.0.1:63700> get username
+      "tinywan"
+      127.0.0.1:63700> SHUTDOWN
+      (error) ERR unknown command 'SHUTDOWN'
+      127.0.0.1:63700> FLUSHALL
+      (error) ERR unknown command 'FLUSHALL'
+      127.0.0.1:63700> tinywangithubFLUSHALL
+      OK
+      127.0.0.1:63700> get username
+      (nil)
+      127.0.0.1:63700>
     ```
 
 
