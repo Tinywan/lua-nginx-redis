@@ -54,20 +54,20 @@
     -   [ ]   [第六章   复制](#Redis-DevOps-6) 
     -   [ ]   [第七章   Redis 的恶魔 ](#Redis-DevOps-7) 
     -   [ ]   [第八章   理解内存 ](#Redis-DevOps-8)
-### <a name="Nginx_base_knowledge"/>  Nginx基础知识
+## <a name="Nginx_base_knowledge"/>  Nginx基础知识
 +   [NGINX 所有 Modules](https://www.nginx.com/resources/wiki/modules/)
 +   [agentzh的Nginx教程（版本2016.07.21）](https://openresty.org/download/agentzh-nginx-tutorials-en.html#00-foreword01)
 +   [Nginx的11个Phases](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-phases.md)
 +   [Nginx 陷阱和常见错误](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-1-config.md)
 
-### <a name="Redis_base_knowledge"/>    Redis基础知识
+## <a name="Redis_base_knowledge"/>    Redis基础知识
 +   [Redis 简易安装教程](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md)
-### <a name="PHP_base_knowledge"/>    PHP脚本
+## <a name="PHP_base_knowledge"/>    PHP脚本
 +   [PHP7中php.ini/php-fpm/www.conf的配置,Nginx和PHP-FPM的开机自动启动脚本](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/PHP/PHP-FPM/config.md)
-### <a name="Shell_base_knowledge"/>  Shell脚本
+## <a name="Shell_base_knowledge"/>  Shell脚本
 +   [编写快速安全Bash脚本的建议](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Shell/write-shell-suggestions.md) 
 +   [shell脚本实现分日志级别记录日志](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/Shell_Log.sh)   
-### <a name="Lua_base_knowledge"/>  Lua基础知识
+## <a name="Lua_base_knowledge"/>  Lua基础知识
 + 控制结构
     + [if-elseif-end 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/if-else-example.lua)
     + [for 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/for-example.lua)
@@ -75,11 +75,11 @@
 + [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
 + [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
 + [Lua 实现简单封装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/function1.lua)
-### <a name="live_base_knowledge"/>  流媒体视频直播、点播
+## <a name="live_base_knowledge"/>  流媒体视频直播、点播
 + [Nginx配置Rtmp支持Hls的直播和点播功能](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod.md)
 + [HLS视频直播和点播的Nginx的Location的配置信息(成功)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod-locatiuon-config.md)     
  
-### <a name="Nginx_Web_knowledge"/>  Nginx高性能WEB服务器详解
+## <a name="Nginx_Web_knowledge"/>  Nginx高性能WEB服务器详解
 #### <a name="Nginx_Web1_knowledge"/>  第一章   初探
 + [Nginx 编译安装以及参数详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
 + NGINX变量详解
@@ -93,7 +93,7 @@
 +   [完整、标准配置实际示列](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-basic-config.md)
 +   [日志文件配置与切割](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-log-cut.md)
 +   alias 和 root 在location 下的应用
-   - 通过alias 实现别名功能
+    - 通过alias 实现别名功能
        ``` 
        location /live {  
            alias /home/tinywan/HLS/;
@@ -292,7 +292,7 @@
       $2 为正则匹配多个非数字 `(\D+)`    
       $3 为正则匹配的第一个值 `(m3u8|ts)`  
       `.` 需要用转义字符转义`\.`    
-#### <a name="Nginx_Web7_knowledge"/>  第七章   代理服务
+## <a name="Nginx_Web7_knowledge"/>  第七章   代理服务
 +   [正向代理和反向代理的概念](#title)
 +   [正向代理服务](#title)
 +   [反向代理的服务](#title)
@@ -306,16 +306,16 @@
 +   TCP负载均衡   
         - [x] [Module ngx_stream_core_module](http://nginx.org/en/docs/stream/ngx_stream_core_module.html#stream)      
         - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-8-tcp-Proxy.md)      
-#### <a name="Nginx_Web8_knowledge"/>  第八章   缓存机制
+## <a name="Nginx_Web8_knowledge"/>  第八章   缓存机制
 +   测试一
-#### <a name="Nginx_Web9_knowledge"/>  第九章   Nginx初探1
+## <a name="Nginx_Web9_knowledge"/>  第九章   Nginx初探1
 +   测试一
-#### <a name="Nginx_Web10_knowledge"/>  第十章   Nginx初探1
+## <a name="Nginx_Web10_knowledge"/>  第十章   Nginx初探1
 +   测试一     
-### <a name="PHP_Run_Redis"/>  PHP脚本运行Redis]
+## <a name="PHP_Run_Redis"/>  PHP脚本运行Redis]
 +   [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)
 +   单行文本1
-### <a name="Openresty_web_knowledge"/>  Openresty 学习  
+## <a name="Openresty_web_knowledge"/>  Openresty 学习  
 +   <a name="Openresty_install_knowledge"/>[安装信息](http://www.cnblogs.com/tinywan/p/6647587.html)
 +   [默认配置信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/default-config.md)
 +   开发入门
@@ -905,13 +905,13 @@
         同一时间的clients(客户端数)和用户数还是有区别的，当一个用户请求发送一个连接时这两个是相等的，但是当一个用户默认发送多个连接请求的时候，clients数就是用户数*默认发送的连接并发数了。    
         
         
-### Redis、Lua、Nginx一起工作事迹
+## Redis、Lua、Nginx一起工作事迹
 +   解决一个set_by_lua $sum 命令受上下文限制的解决思路，已完美解决
 +   - [x] [API disabled in the context of set_by_lua](https://github.com/openresty/lua-nginx-module/issues/275)
 +   解决2
 +   解决3    
-### Redis执行Lua脚本
-#### Lua 基本语法
+## Redis执行Lua脚本
+## Lua 基本语法
 ---
 +   Hello, Lua!
 
@@ -938,7 +938,7 @@
     * redis.pcall()会将捕获的错误以Lua表的形式返回.
     *  redis.call() 和 redis.pcall() 两个函数的参数可以是任意的 Redis 命令
 +   Lua网络编程    
-#### Lua 脚本
+## Lua 脚本
 +   Lua 实现简单封装
     +   man.lua
         ```Lua
@@ -1149,7 +1149,7 @@
              end
              return  result;
          ```
-### <a name="githubpush"/> Visual Studio Code 向github提交代码不用输入帐号密码    
+## <a name="githubpush"/> Visual Studio Code 向github提交代码不用输入帐号密码    
 +   在命令行输入以下命令
         ```
         git config --global credential.helper store
