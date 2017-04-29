@@ -7,22 +7,38 @@
     cd  redis-3.2.8
     ```
 + make 编译
+    + 编译之前  
+    ```lua
+    00-RELEASENOTES  BUGS  CONTRIBUTING  COPYING  deps  INSTALL  Makefile  MANIFESTO  README.md  redis.conf  runtest 
+     runtest-cluster  runtest-sentinel  sentinel.conf  src  tests  utils
+    ```  
+    + 编译完成之后，可以看到解压文件redis-3.0.7 中会有对应的src、conf等文件       
     + 编译完成之后，可以看到解压文件redis-3.0.7 中会有对应的src、conf等文件       
     + 这和windows下安装解压的文件一样，大部分安装包都会有对应的类文件、配置文件和一些命令文件。
 + 进入src文件夹，执行make install进行Redis安装
-    ```
-    make install
+
+    ```bash
+    tinywan@tinywan:~/redis-3.2.8/src$ sudo make install 
+    [sudo] tinywan 的密码： 
+    
+    Hint: It's a good idea to run 'make test' ;)
+    
+        INSTALL install
+        INSTALL install
+        INSTALL install
+        INSTALL install
+        INSTALL install
     ```		
 #### 二、配置部署
 
 + 首先为了方便管理，将Redis文件中的conf配置文件和常用命令移动到统一文件中			
 + 创建以下文件目录
     ```bash
-    mkdir -p /usr/local/redis/bin
-    mkdir -p /usr/local/redis/etc
+    tinywan@tinywan:~/redis-3.2.8/src$ sudo mkdir -p /usr/local/redis/bin
+    tinywan@tinywan:~/redis-3.2.8/src$ sudo mkdir -p /usr/local/redis/etc
     ```
 + 执行Linux文件移动命令：
-   ```
+   ```javascript
    sudo mv /home/tinywan/redis-3.2.8/redis.conf /usr/local/redis/etc
    cd /home/tinywan/redis-3.2.8/src
    mv mkreleasdhdr.sh redis-benchmark redis-check-aof redis-check-dump redis-cli redis-server /usr/local/redis/bin
