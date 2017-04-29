@@ -44,7 +44,8 @@
     +   [lua-resty-upstream-healthcheck 使用](#Openresty_lua_resty_upstream_healthcheck) 
     +   [Openresty和Nginx_RTMP 模块共存问题](#Openresty_rtmp_share) 
     +   [Openresty配置RTMP模块的多worker直播流](#Openresty_rtmp_more_worker) 
-+   [Ngx_lua 写入Redis数据，通过CURL请求](#Ngx_lua_write_Redis) 
+    +   [Ngx_lua 写入Redis数据，通过CURL请求](#Ngx_lua_write_Redis) 
++   [Redis 开发与运维](#Redis-DevOps)    
 ### <a name="Nginx_base_knowledge"/>  Nginx基础知识
 +   [NGINX 所有 Modules](https://www.nginx.com/resources/wiki/modules/)
 +   [agentzh的Nginx教程（版本2016.07.21）](https://openresty.org/download/agentzh-nginx-tutorials-en.html#00-foreword01)
