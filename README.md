@@ -7,6 +7,7 @@
 +   [Nginx基础知识](#Nginx_base_knowledge) 
 +   [Linux基础知识](#Linux_base_knowledge) 
 +   [Redis基础知识](#Redis_base_knowledge) 
+    +   [Redis 简易安装教程](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md) 
     +   [Redis执行Lua脚本基本用法](#Redis_Run_Lua) 
 +   [PHP脚本](#PHP_base_knowledge) 
     +   [PHP脚本运行Redis](#PHP_Run_Redis)
