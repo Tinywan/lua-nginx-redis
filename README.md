@@ -44,7 +44,7 @@
     +   [lua-resty-upstream-healthcheck 使用](#Openresty_lua_resty_upstream_healthcheck) 
     +   [Openresty和Nginx_RTMP 模块共存问题](#Openresty_rtmp_share) 
     +   [Openresty配置RTMP模块的多worker直播流](#Openresty_rtmp_more_worker) 
-    +   [Openresty配置RTMP模块的推流地址鉴权实例](#Openresty_rtmp_obs_push.md) 
+    +   [Openresty配置RTMP模块的推流地址鉴权实例](#https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/Openresty_rtmp_obs_push.md) 
     +   [Ngx_lua 写入Redis数据，通过CURL请求](#Ngx_lua_write_Redis) 
 +   [Redis 开发与运维](#Redis-DevOps)
     -   [ ]   [第一章   初始Redis ](#Redis-DevOps-1) 
