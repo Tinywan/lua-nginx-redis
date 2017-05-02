@@ -259,6 +259,7 @@
     | $server_name      | localhost  | 服务器名称|
     | $server_port      | 80  |请求到达服务器的端口号 |
     | $uri      | /rewrite_var/1192/index.m3u8  | 不带请求参数的当前URI|
+    | $binary_remote_addr       | 乱码  | 二进制格式的客户端地址|
     
     + uri 介绍 **(Nginx中的URI是相对的URI)**
         + URL：`https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/config.md`
@@ -361,7 +362,7 @@
         >>  [01] `curl -d "name=value&name2=value2" https://github.com/Tinywan `     
             [02] `curl -d a=b&c=d&txt@/tmp/txt https://github.com/Tinywan `     
         >   返回一个包含所有当前请求URL查询参数的Lua表：`local post_args = ngx.req.get_post_args()`      
-            请求案例：`curl -G -d "name=Tinywan&age=24" http://127.0.0.1/lua_request/123/789`      
+            请求案例：`curl -d "name=Tinywan&age=24" http://127.0.0.1/lua_request/123/789`      
             Lua Post 方式获取提交的name参数的值：
         >>  [01]`post_args['name']`   
             [02]`ngx.req.get_post_args()['name']` 
