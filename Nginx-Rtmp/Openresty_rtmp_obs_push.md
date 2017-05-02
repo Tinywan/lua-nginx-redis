@@ -42,3 +42,18 @@ local ok, err = red:hmset("myhash9999:::"..stream_name, "name", app, "field2", a
 --local ok, err = red:hmset("Redis"..stream_name, { stream_name = "123213123" })
 ngx.exit(ngx.HTTP_OK)
 ```
+#### post 请求方式
+```lua
+curl -d "name=CY0000768621&app=live123&call=publish_done_12" http://localhost:8081/rtmp_redirect_lua
+```
+
+#### 状态码查看
+```javascript
+www@ubuntu4:/opt/openresty/nginx/conf/lua$ curl -I http://localhost:8081/rtmp_redirect_lua
+HTTP/1.1 400 Bad Request
+Server: openresty/1.11.2.1
+Date: Tue, 02 May 2017 09:59:42 GMT
+Content-Type: text/html
+Content-Length: 179
+Connection: close
+```
