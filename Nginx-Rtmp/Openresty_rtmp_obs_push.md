@@ -11,7 +11,12 @@
 
 #### rtmp_auth_key.lua 文件
 ```lua
+local cjson = require "cjson"
 local redis = require("resty.redis_iresty")
+local var = ngx.var
+local client_ip = var.remote_addr
+local client_port = var.remote_port
+
 ngx.req.read_body()
 local post_var = ngx.req.get_post_args()
 local stream_name = post_var.name
@@ -20,26 +25,47 @@ local action = post_var.call
 
 local red = redis:new()
 -- 权限验证
-local res,err = red:auth('1111')
+local res,err = red:auth('=123123')
 if not res then
      ngx.say("failed to authenticate: ", err)
      return
 end
 red:select(1)
 
-local res,err = red:sismember('ValidityCheck',stream_name)
---ngx.say(res)
---if not res then
---      ngx.say('failed to sismember ', err)
---      return
---end
-if tonumber(res) ~= 1 then
-        ngx.exit(ngx.HTTP_BAD_REQUEST)
+local res, err = red:sismember('StreamNameValidityCheck',stream_name)
+if not res then
+     ngx.log(ngx.WARN, "warn: failed to sismember: ", res)
+     return
 end
+-- auth flag
+if tonumber(res) ~= 1 then
+    local ok, err = red:multi()
+    if not ok then
+        ngx.log(ngx.ERR, "error: failed to run multi: ", err)
+        return
+    end
 
--- red:hmset(myhash, { field1 = value1, field2 = value2, ... })
-local ok, err = red:hmset("myhash9999:::"..stream_name, "name", app, "field2", action)
---local ok, err = red:hmset("Redis"..stream_name, { stream_name = "123213123" })
+    local ok, err = red:zrem('NonInterfaceStreamName',stream_name)
+    if not ok then
+        ngx.log(ngx.ERR, "error: zrem failed : ", err)
+        return
+    end
+
+    --local ok, err = red:zadd('NonInterfaceStreamName',ngx.time(),client_ip..':'..client_port..'=:'..stream_name)
+    local ok, err = red:zadd('NonInterfaceStreamName',ngx.time(),stream_name)
+    if not ok then
+        ngx.log(ngx.ERR, "error: failed to run multi: ", err)
+        return
+    end
+
+    local ans, err = red:exec()
+    if not ans then
+        ngx.log(ngx.WARN, "warn: failed to sismember: ", res)
+        return
+    end
+    --ngx.log(ngx.ERR, "warn: RTMP to sismember: ",ngx.HTTP_BAD_REQUEST)
+    ngx.exit(ngx.HTTP_BAD_REQUEST)
+end
 ngx.exit(ngx.HTTP_OK)
 ```
 #### post 请求方式
