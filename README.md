@@ -51,6 +51,7 @@
     +   [Openresty配置RTMP模块的多worker直播流](#Openresty_rtmp_more_worker) 
     +   [Openresty配置RTMP模块的推流地址鉴权实例](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/Openresty_rtmp_obs_push.md) 
     +   [Ngx_lua 写入Redis数据，通过CURL请求](#Ngx_lua_write_Redis) 
+    +   [Nginx编写的Lua接口使用URL过期和签名验证机制过滤非法访问接口](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/Openresty_rtmp_obs_push_auth.md) 
 +   [Redis 开发与运维](#Redis-DevOps)
     -   [ ]   [第一章   初始Redis ](#Redis-DevOps-1) 
     -   [ ]   [第二章   API的理解和使用](#Redis-DevOps-2) 
