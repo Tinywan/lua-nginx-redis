@@ -10,7 +10,7 @@ location /stream_address_switch {
 }
 ```
 
-#### rtmp_auth_key.lua 文件
+#### stream_address_switch.lua 文件
 ```lua
 local cjson = require "cjson"
 local redis = require("resty.redis_iresty")
