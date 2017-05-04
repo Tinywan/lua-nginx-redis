@@ -12,6 +12,16 @@ location /stream_address_switch {
 
 #### stream_address_switch.lua 文件
 ```lua
+--[[-----------------------------------------------------------------------      
+* |  Github: https://github.com/Tinywan
+* |  Blog: http://www.cnblogs.com/Tinywan
+* |------------------------------------------------------------------------
+* |  Author: Tinywan
+* |  Date: 2017/1/20
+* |  Time: 16:25
+* |  Mail: Overcome.wan@Gmail.com
+* |------------------------------------------------------------------------
+--]]
 local cjson = require "cjson"
 local redis = require("resty.redis_iresty")
 
