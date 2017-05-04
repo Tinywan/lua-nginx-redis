@@ -13,6 +13,7 @@ location /stream_address_switch {
 #### stream_address_switch.lua 文件
 ```lua
 --[[-----------------------------------------------------------------------      
+* |  Copyright (C) Shaobo Wan (Tinywan)
 * |  Github: https://github.com/Tinywan
 * |  Blog: http://www.cnblogs.com/Tinywan
 * |------------------------------------------------------------------------
