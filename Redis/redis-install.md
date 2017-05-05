@@ -107,7 +107,7 @@
       (nil)
       127.0.0.1:63700>
     ```
-
++   查看远程Redis服务器的版本 `redis-cli -h 192.168.1.3 info | grep 'redis_version'`
 
 
 

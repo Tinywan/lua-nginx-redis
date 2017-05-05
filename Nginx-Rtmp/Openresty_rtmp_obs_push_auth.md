@@ -146,6 +146,79 @@ end
 ngx.exit(ngx.HTTP_OK)
 
 ```
+#### Lua Api 接口修改参数
+```lua
+--[[-----------------------------------------------------------------------      
+* |  Copyright (C) Shaobo Wan (Tinywan)
+* |  Github: https://github.com/Tinywan
+* |  Blog: http://www.cnblogs.com/Tinywan
+* |------------------------------------------------------------------------
+* |  Author: Tinywan
+* |  Date: 2017/4/20
+* |  Time: 16:25
+* |  Mail: Overcome.wan@Gmail.com
+* |------------------------------------------------------------------------
+--]]
+local cjson = require "cjson"
+local redis = require("resty.redis_iresty")
+
+local uri = ngx.var.uri
+ngx.req.read_body()
+local var = ngx.req.get_uri_args()
+
+local switch_type = var.switch_type
+local switch_status = var.switch_status
+local auth_key = var.auth_key
+
+-- expire_time vlidation
+local expire_time = string.sub(auth_key,0,10)
+local res_time = ngx.time()
+if tonumber(expire_time) < tonumber(res_time) then
+     ngx.say(cjson.encode("The request url has expired"))
+     ngx.exit(ngx.HTTP_OK)
+end
+
+local red = redis:new()
+-- auth vlidation
+local res,err = red:auth('+=')
+if not res then
+     ngx.say("failed to authenticate: ", err)
+     ngx.exit(ngx.HTTP_OK)
+end
+red:select(1)
+
+-- get private_key
+local private_key, err = red:get('private_key')
+if not private_key then
+     ngx.say("error: failed to get private_key ")
+     ngx.exit(ngx.HTTP_OK)
+end
+
+-- create res_hash_value
+--local expire_time = string.sub(auth_key,0,10)
+local rand = "0"
+local uid = "0"
+local seq_hash_value = string.sub(auth_key,-32)
+local sstring = uri.."-"..expire_time.."-"..rand.."-"..uid.."-"..private_key
+local res_hash_value = ngx.md5(sstring)
+
+--seq_hash_value vlidation
+if tostring(seq_hash_value) ~= tostring(res_hash_value) then
+	ngx.say("req_hash_value is error")
+	ngx.exit(ngx.HTTP_OK)
+end
+
+-- set address switch status
+local ok, err = red:getset(switch_type,switch_status)
+if not ok then
+     ngx.log(ngx.ERR, "error: failed to set StreamAddressSwitch ", err)
+     ngx.say("failed to set info:",cjson.encode(err))
+     ngx.exit(ngx.HTTP_OK)
+end
+ngx.say("set result: ", cjson.encode(ok))
+ngx.exit(ngx.HTTP_OK)
+
+```
 #### get 浏览器请求方式
 ```lua
 http://127.0.0.1/stream_address_switch?switch_type=StreamAddressSwitch&switch_status=2&auth_key=1493863980-0-0-64f1a882229888aeae8db32b48271c84
