@@ -107,6 +107,13 @@
       (nil)
       127.0.0.1:63700>
     ```
++   远程链接出现的错误：
+    + 错误信息
+    ```lua
+    DENIED Redis is running in protected mode because protected mode is enabled, 
+    no bind address was specified, no authentication password is requested to    clients.......  
+    ```
+    +   修改配置文件：`protected-mode yes` 修改为`protected-mode no `  
 +   查看远程Redis服务器的版本 `redis-cli -h 192.168.1.3 info | grep 'redis_version'`
 
 
