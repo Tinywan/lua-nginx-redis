@@ -18,6 +18,7 @@ TIME=`date '+%Y-%m-%d %H:%M:%S'`
 function LOG(){
 	local log_type=$1
 	local LOG_CONTENT=$2
+	# 这里的写入日志时间修改掉，经过一段时间的测试${TIME} 每次都是一个固定的时间，所以在这里修改为每次写入是自动获取当前时间写入日志
 	logformat="`date '+%Y-%m-%d %H:%M:%S'` \t[${log_type}]\tFunction: ${FUNCNAME[@]}\t[line:`caller 0 | awk '{print$1}'`]\t [log_info: ${LOG_CONTENT}]"
 	{
 	case $log_type in  
