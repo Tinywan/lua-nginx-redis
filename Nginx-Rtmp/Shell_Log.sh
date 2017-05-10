@@ -84,9 +84,9 @@ if [ ! -s "${FULL_NAME}" ]; then
 fi
 
 # 检测视频时长，小于 MIN_DURATION 的文件将被丢弃
-DURATION=`ffmpeg -i ${FULL_NAME} 2>&1 | awk '/Duration/ {split($2,a,":");print a[1]*3600+a[2]*60+a[3]}'`
-if [ $(echo "$duration < $MIN_DURATION"|bc) = 1 ]; then
-	LOG error" Duration too short, FULL_NAME=${FULL_NAME}, DURATION==${DURATION}"
+DURATION=`/usr/bin/ffmpeg -i ${FULL_NAME} 2>&1 | awk '/Duration/ {split($2,a,":");print a[1]*3600+a[2]*60+a[3]}'`
+if [ $(echo "${DURATION} < $MIN_DURATION"|bc) = 1 ]; then
+	LOG error " Duration too short, FULL_NAME=${FULL_NAME}, DURATION==${DURATION}"
 	rm -f ${FULL_NAME}
 	exit 1
 fi
@@ -94,10 +94,14 @@ fi
 #echo "[DEBUG1][$TIME] Video Record :  FULL_NAME=$FULL_NAME, FULL_NAME=${FULL_NAME}, DURATION=${DURATION}" >> $FLOG
 
 # 自动截取封面图片
-/usr/bin/ffmpeg -y -ss 00:00:10 -i ${FULL_NAME} -vframes 1 ${DIR_NAME}/${BASE_NAME}.jpg
+#/usr/bin/ffmpeg -y -ss 00:00:10 -i ${FULL_NAME} -vframes 1 ${DIR_NAME}/${BASE_NAME}.jpg
+FFMPEG_JPG=$(/usr/bin/ffmpeg -y -i ${FULL_NAME} -vcodec copy -acodec copy ${DIR_NAME}/${BASE_NAME}.mp4 && echo "success" || echo "fail")
+LOG info "Screenshot JPG: ${FFMPEG_JPG} "
 
 # 转码成MP4
-/usr/bin/ffmpeg -y -i ${FULL_NAME} -vcodec copy -acodec copy ${DIR_NAME}/${BASE_NAME}.mp4
+#/usr/bin/ffmpeg -y -i ${FULL_NAME} -vcodec copy -acodec copy ${DIR_NAME}/${BASE_NAME}.mp4
+FFMPEG_MP4=$(/usr/bin/ffmpeg -y -i ${FULL_NAME} -vcodec copy -acodec copy ${DIR_NAME}/${BASE_NAME}.mp4 && echo "success" || echo "fail")
+LOG info "Transcoding MP4: ${FFMPEG_MP4} "
 
 # 获取文件大小
 FILE_SIZE=`stat -c "%s" ${DIR_NAME}/${BASE_NAME}.mp4`
