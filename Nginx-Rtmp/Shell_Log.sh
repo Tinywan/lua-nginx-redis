@@ -18,7 +18,7 @@ TIME=`date '+%Y-%m-%d %H:%M:%S'`
 function LOG(){
 	local log_type=$1
 	local LOG_CONTENT=$2
-	logformat="${TIME} \t[${log_type}]\tFunction: ${FUNCNAME[@]}\t[line:`caller 0 | awk '{print$1}'`]\t [log_info: ${LOG_CONTENT}]"
+	logformat="`date '+%Y-%m-%d %H:%M:%S'` \t[${log_type}]\tFunction: ${FUNCNAME[@]}\t[line:`caller 0 | awk '{print$1}'`]\t [log_info: ${LOG_CONTENT}]"
 	{
 	case $log_type in  
                 debug)
@@ -110,18 +110,30 @@ LOG debug "Video: FILE_NAME=${FILE_NAME}, DURATION=${DURATION}, FILESIZE=${FILE_
 URL="http://localhost/recordDone?streamName=${STREAM_NAME}&baseName=${BASE_NAME}&duration=${DURATION}&fileSize=${FILE_SIZE}&fileTime=${FILE_TIME}" 
 RESULT=$(curl ${URL} 2>/dev/null)
 
-if [ "${RESULT}" != "200" ]; then
-	LOG error "recorded rallBakc Error ${STREAM_NAME}"
+RES_STATUS=${RESULT:0:3}
+RES_RESULT=${RESULT:4}
+#RESULT 返回值必须为字符串
+if [ "${RES_STATUS}" == "200" ]; then
+        LOG info "[$(date '+%Y-%m-%d %H:%M:%S')] recorded rallBack OK :${RES_RESULT}"
+elif [ "${RES_STATUS}" == "500" ]
+then
+        LOG error "recorded rallBack Fail :${RES_RESULT}"
 else
-	LOG info "recorded rallBakc OK ${STREAM_NAME}"	
+        LOG error "recorded rallBack Unknown error"
 fi
 
 # auto slice mp4 to m3u8
 mkdir -p ${DIR_NAME}/${BASE_NAME}
+# 添加如果ffmpeg 命令执行错误，则提示切片错误，负责输出正确结果
+FFMPEG_RUN=$(/usr/bin/ffmpeg -i ${FULL_NAME} -flags +global_header -f segment -segment_time 3 -segment_format mpegts -segment_list ${DIR_NAME}/${BASE_NAME}/index.m3u8 -c:a copy -c:v copy -bsf:v h264_mp4toannexb -map 0 ${DIR_NAME}/${BASE_NAME}/%5d.ts && echo "slice success" || echo "slice fail")
+# $? = 0 success, other fail
+if [[ $? -eq 0 ]]; then
+        LOG info "ffmpeg run success :"$(echo $?)
+else
+        LOG error "ffmpeg run error  : "$(echo $?)
+fi
 
-/usr/bin/ffmpeg -i ${FULL_NAME} -flags +global_header -f segment -segment_time 3 -segment_format mpegts -segment_list ${DIR_NAME}/${BASE_NAME}/index.m3u8 -c:a copy -c:v copy -bsf:v h264_mp4toannexb -map 0 ${DIR_NAME}/${BASE_NAME}/%5d.ts
-
-LOG info "slice OK"
+LOG info "FFMPEG_SLICE: ${FFMPEG_RUN} [$(date '+%Y-%m-%d %H:%M:%S')] "
 
 # 查找超出7天前的flv的文件进行删除
 cd ${DIR_NAME}
