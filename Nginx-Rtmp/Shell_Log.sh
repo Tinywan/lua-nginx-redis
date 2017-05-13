@@ -18,7 +18,8 @@ TIME=`date '+%Y-%m-%d %H:%M:%S'`
 function LOG(){
 	local log_type=$1
 	local LOG_CONTENT=$2
-	logformat="${TIME} \t[${log_type}]\tFunction: ${FUNCNAME[@]}\t[line:`caller 0 | awk '{print$1}'`]\t [log_info: ${LOG_CONTENT}]"
+	# 这里的写入日志时间修改掉，经过一段时间的测试${TIME} 每次都是一个固定的时间，所以在这里修改为每次写入是自动获取当前时间写入日志
+	logformat="`date '+%Y-%m-%d %H:%M:%S'` \t[${log_type}]\tFunction: ${FUNCNAME[@]}\t[line:`caller 0 | awk '{print$1}'`]\t [log_info: ${LOG_CONTENT}]"
 	{
 	case $log_type in  
                 debug)
@@ -83,9 +84,9 @@ if [ ! -s "${FULL_NAME}" ]; then
 fi
 
 # 检测视频时长，小于 MIN_DURATION 的文件将被丢弃
-DURATION=`ffmpeg -i ${FULL_NAME} 2>&1 | awk '/Duration/ {split($2,a,":");print a[1]*3600+a[2]*60+a[3]}'`
-if [ $(echo "$duration < $MIN_DURATION"|bc) = 1 ]; then
-	LOG error" Duration too short, FULL_NAME=${FULL_NAME}, DURATION==${DURATION}"
+DURATION=`/usr/bin/ffmpeg -i ${FULL_NAME} 2>&1 | awk '/Duration/ {split($2,a,":");print a[1]*3600+a[2]*60+a[3]}'`
+if [ $(echo "${DURATION} < $MIN_DURATION"|bc) = 1 ]; then
+	LOG error " Duration too short, FULL_NAME=${FULL_NAME}, DURATION==${DURATION}"
 	rm -f ${FULL_NAME}
 	exit 1
 fi
@@ -93,10 +94,14 @@ fi
 #echo "[DEBUG1][$TIME] Video Record :  FULL_NAME=$FULL_NAME, FULL_NAME=${FULL_NAME}, DURATION=${DURATION}" >> $FLOG
 
 # 自动截取封面图片
-/usr/bin/ffmpeg -y -ss 00:00:10 -i ${FULL_NAME} -vframes 1 ${DIR_NAME}/${BASE_NAME}.jpg
+#/usr/bin/ffmpeg -y -ss 00:00:10 -i ${FULL_NAME} -vframes 1 ${DIR_NAME}/${BASE_NAME}.jpg
+FFMPEG_JPG=$(/usr/bin/ffmpeg -y -i ${FULL_NAME} -vcodec copy -acodec copy ${DIR_NAME}/${BASE_NAME}.mp4 && echo "success" || echo "fail")
+LOG info "Screenshot JPG: ${FFMPEG_JPG} "
 
 # 转码成MP4
-/usr/bin/ffmpeg -y -i ${FULL_NAME} -vcodec copy -acodec copy ${DIR_NAME}/${BASE_NAME}.mp4
+#/usr/bin/ffmpeg -y -i ${FULL_NAME} -vcodec copy -acodec copy ${DIR_NAME}/${BASE_NAME}.mp4
+FFMPEG_MP4=$(/usr/bin/ffmpeg -y -i ${FULL_NAME} -vcodec copy -acodec copy ${DIR_NAME}/${BASE_NAME}.mp4 && echo "success" || echo "fail")
+LOG info "Transcoding MP4: ${FFMPEG_MP4} "
 
 # 获取文件大小
 FILE_SIZE=`stat -c "%s" ${DIR_NAME}/${BASE_NAME}.mp4`
@@ -110,18 +115,30 @@ LOG debug "Video: FILE_NAME=${FILE_NAME}, DURATION=${DURATION}, FILESIZE=${FILE_
 URL="http://localhost/recordDone?streamName=${STREAM_NAME}&baseName=${BASE_NAME}&duration=${DURATION}&fileSize=${FILE_SIZE}&fileTime=${FILE_TIME}" 
 RESULT=$(curl ${URL} 2>/dev/null)
 
-if [ "${RESULT}" != "200" ]; then
-	LOG error "recorded rallBakc Error ${STREAM_NAME}"
+RES_STATUS=${RESULT:0:3}
+RES_RESULT=${RESULT:4}
+#RESULT 返回值必须为字符串
+if [ "${RES_STATUS}" == "200" ]; then
+        LOG info "[$(date '+%Y-%m-%d %H:%M:%S')] recorded rallBack OK :${RES_RESULT}"
+elif [ "${RES_STATUS}" == "500" ]
+then
+        LOG error "recorded rallBack Fail :${RES_RESULT}"
 else
-	LOG info "recorded rallBakc OK ${STREAM_NAME}"	
+        LOG error "recorded rallBack Unknown error"
 fi
 
 # auto slice mp4 to m3u8
 mkdir -p ${DIR_NAME}/${BASE_NAME}
+# 添加如果ffmpeg 命令执行错误，则提示切片错误，负责输出正确结果
+FFMPEG_RUN=$(/usr/bin/ffmpeg -i ${FULL_NAME} -flags +global_header -f segment -segment_time 3 -segment_format mpegts -segment_list ${DIR_NAME}/${BASE_NAME}/index.m3u8 -c:a copy -c:v copy -bsf:v h264_mp4toannexb -map 0 ${DIR_NAME}/${BASE_NAME}/%5d.ts && echo "slice success" || echo "slice fail")
+# $? = 0 success, other fail
+if [[ $? -eq 0 ]]; then
+        LOG info "ffmpeg run success :"$(echo $?)
+else
+        LOG error "ffmpeg run error  : "$(echo $?)
+fi
 
-/usr/bin/ffmpeg -i ${FULL_NAME} -flags +global_header -f segment -segment_time 3 -segment_format mpegts -segment_list ${DIR_NAME}/${BASE_NAME}/index.m3u8 -c:a copy -c:v copy -bsf:v h264_mp4toannexb -map 0 ${DIR_NAME}/${BASE_NAME}/%5d.ts
-
-LOG info "slice OK"
+LOG info "FFMPEG_SLICE: ${FFMPEG_RUN} [$(date '+%Y-%m-%d %H:%M:%S')] "
 
 # 查找超出7天前的flv的文件进行删除
 cd ${DIR_NAME}
