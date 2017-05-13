@@ -14,6 +14,11 @@
 +   [Shell脚本](#Shell_base_knowledge) 
 +   [Lua基础知识](#Lua_base_knowledge) 
     +   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
+    +   [Table 操作常用的方法](#Lua_table)
+        - [x] table.concat()
+        - [x] table.insert()
+        - [x] table.maxn()
+        - [x] table.concat()
 +   [流媒体视频直播、点播](#live_base_knowledge) 
 +   [Nginx高性能WEB服务器详解](#Nginx_Web_knowledge) 
     +   [第一章   初探 ](#Nginx_Web1_knowledge) 
@@ -75,13 +80,43 @@
 +   [编写快速安全Bash脚本的建议](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Shell/write-shell-suggestions.md) 
 +   [shell脚本实现分日志级别记录日志](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/Shell_Log.sh)   
 ## <a name="Lua_base_knowledge"/>  Lua基础知识
-+ 控制结构
-    + [if-elseif-end 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/if-else-example.lua)
-    + [for 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/for-example.lua)
-    + [Lua 只有一个容器，那就是table](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/container-table.lua)
-+ [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
-+ [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
-+ [Lua 实现简单封装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/function1.lua)
+####    控制结构
++ [if-elseif-end 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/if-else-example.lua)
++ [for 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/for-example.lua)
++ [Lua 只有一个容器，那就是table](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/container-table.lua)
+####    [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
+####    [Lua 实现简单封装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/function1.lua)
+####    <a name="Lua_table"/> Table 操作常用的方法
++   table.concat (table [, sep [, start [, end]]])
+    +   concat是concatenate(连锁, 连接)的缩写. table.concat()函数列出参数中指定table的数组部分从start位置到end位置的所有元素, 元素间以指定的分隔符(sep)隔开
+    +   demo
+        ```lua
+        fruits = {"banana","orange","apple"}
+        -- 返回 table 连接后的字符串 value = banana orange apple
+        print("连接后的字符串 ",table.concat(fruits))
+        -- 指定连接字符   value = banana, orange, apple
+        print("指定连接字符连接后的字符串 ",table.concat(fruits,", "))
+        ```
++   table.insert (table, [pos,] value):
+    +   在table的数组部分指定位置(pos)插入值为value的一个元素. pos参数可选, 默认为数组部分末尾
+    +   demo
+        ```lua
+        fruits = {"banana","orange","apple"}
+        
+        -- 在末尾插入
+        table.insert(fruits,"Tinywan4")
+        print("索引为 4 的元素为 ",fruits[4]) -- 索引为 4 的元素为 	Tinywan
+        
+        -- 在索引为 2 的键处插入
+        table.insert(fruits,2,'Tinywan2')
+        print("索引为 2 的元素为 ",fruits[2])  -- 索引为 2 的元素为 	Tinywan
+        
+        print("最后一个元素为 ",fruits[5])     -- 最后一个元素为 	Tinywan4
+        table.remove(fruits)
+        print("移除后最后一个元素为 ",fruits[5])  -- 移除后最后一个元素为 	nil
+        ```
++   table.sort (table [, comp])
+    +   对给定的table进行升序排序
 ## <a name="live_base_knowledge"/>  流媒体视频直播、点播
 + [Nginx配置Rtmp支持Hls的直播和点播功能](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod.md)
 + [HLS视频直播和点播的Nginx的Location的配置信息(成功)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod-locatiuon-config.md)     
