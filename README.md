@@ -63,6 +63,7 @@
     -   [ ]   [第六章   复制](#Redis-DevOps-6) 
     -   [ ]   [第七章   Redis 的恶魔 ](#Redis-DevOps-7) 
     -   [ ]   [第八章   理解内存 ](#Redis-DevOps-8)
++   [Copyright and License](#Copyright_and_License)    
 ## 开发过程记录
 +   [解决 Visual Studio Code 向github提交代码不用输入帐号密码](#githubpush)
 +   phase的意义：就是几个MR的一个集合，不定数目的MR job视为一个phase。一个请求经过nginx处理的过程中，会经过一系列的阶段（phases）    
@@ -1417,3 +1418,9 @@ Read usage information and more on [GitHub](//github.com/rexxars/react-markdown)
 ---------------
 
 A component by [VaffelNinja](http://vaffel.ninja) / Espen Hovlandsdal
+
+##  <a name="Linux_base_knowledge"/> Copyright and License
+
+This module is licensed under the BSD license  
+
+Copyright (C) 2017, by Wanshaobo "Tinywan".  
