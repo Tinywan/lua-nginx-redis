@@ -1,8 +1,5 @@
  
 ![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Nginx-Phase.png)
-## 开发过程记录
-+   [解决 Visual Studio Code 向github提交代码不用输入帐号密码](#githubpush)
-+   phase的意义：就是几个MR的一个集合，不定数目的MR job视为一个phase。一个请求经过nginx处理的过程中，会经过一系列的阶段（phases）
 ## <a name="index"/>目录
 +   [Nginx基础知识](#Nginx_base_knowledge) 
 +   [Linux基础知识](#Linux_base_knowledge) 
@@ -66,6 +63,9 @@
     -   [ ]   [第六章   复制](#Redis-DevOps-6) 
     -   [ ]   [第七章   Redis 的恶魔 ](#Redis-DevOps-7) 
     -   [ ]   [第八章   理解内存 ](#Redis-DevOps-8)
+## 开发过程记录
++   [解决 Visual Studio Code 向github提交代码不用输入帐号密码](#githubpush)
++   phase的意义：就是几个MR的一个集合，不定数目的MR job视为一个phase。一个请求经过nginx处理的过程中，会经过一系列的阶段（phases）    
 ## <a name="Nginx_base_knowledge"/>  Nginx基础知识
 +   [NGINX 所有 Modules](https://www.nginx.com/resources/wiki/modules/)
 +   [agentzh的Nginx教程（版本2016.07.21）](https://openresty.org/download/agentzh-nginx-tutorials-en.html#00-foreword01)
@@ -84,7 +84,6 @@
 + [if-elseif-end 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/if-else-example.lua)
 + [for 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/for-example.lua)
 + [Lua 只有一个容器，那就是table](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/container-table.lua)
-####    [引入多个Lua文件,直接引用Lua文件名就可以了](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/more-file/another.lua)
 ####    [Lua 实现简单封装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/function1.lua)
 ####    <a name="Lua_table"/> Table 操作常用的方法
 +   table.concat (table [, sep [, start [, end]]])
