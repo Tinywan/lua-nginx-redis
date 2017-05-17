@@ -9,6 +9,9 @@
 +   [PHP脚本](#PHP_base_knowledge) 
     +   [PHP脚本运行Redis](#PHP_Run_Redis)
 +   [Shell脚本](#Shell_base_knowledge) 
+    - [x]   编写快速安全Bash脚本的建议 
+    - [x]   Shell脚本实现分日志级别记录日志  
+    - [x]   Nginx日志定时备份和删除 
 +   [Lua基础知识](#Lua_base_knowledge) 
     +   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
     +   [Table 操作常用的方法](#Lua_table)
