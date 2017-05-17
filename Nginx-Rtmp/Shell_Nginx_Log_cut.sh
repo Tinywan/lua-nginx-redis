@@ -50,5 +50,7 @@ sudo kill -USR1 $pid
 #delete 7 days ago nginx log files
 find $base_path -mindepth 1 -maxdepth 3 -type f -name "*.log" -mmin +$save_mins | xargs rm -rf
 
-
+#################### crontab edit 每天凌晨 1:55 执行该脚本 #####################
+# 55 1 * * * bash /home/tinywan/shell/nginx_log_cut.sh >/dev/null 2>&1
+##############################################################################
 
