@@ -346,6 +346,11 @@
         # 设置为启动项
         sudo update-rc.d nginx defaults
     ```
++   当然了根据不同的路径要修改的文件的，下面修改为Openresty下的Nginx启动项(Nginx 安装在/opt/openresty/目录下)
+    ```bash
+    sudo vim /etc/init.d/nginx
+    NGINXPATH=${NGINXPATH:-/opt/openresty/nginx}
+    ```
 +   参考文章：    
     +   [linux wget 命令用法详解(附实例说明)](http://www.jb51.net/LINUXjishu/86326.html)     
     +   [理解Linux系统/etc/init.d目录和/etc/rc.local脚本](http://blog.csdn.net/acs713/article/details/7322082)     
