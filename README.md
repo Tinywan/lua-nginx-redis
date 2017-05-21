@@ -1387,6 +1387,9 @@
         + `find . -name '*.phtml' -type f -mmin -30 -ls`  
     + 查找当前目录下，最近1天内修改过的常规文件：`find . -type f -mtime -1`  
     + 查找当前目录下，最近1天前（2天内）修改过的常规文件：`find . -type f -mtime +1`            
+# 掘金爬虫
+
+![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/github_good1.png)
 
 # Live demo
 
