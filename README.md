@@ -19,6 +19,7 @@
         - [x] table.insert()
         - [x] table.maxn()
         - [x] table.concat()
+     +  [Lua 模块与包](#Lua_module_package)   
 +   [流媒体视频直播、点播](#live_base_knowledge) 
 +   [Nginx高性能WEB服务器详解](#Nginx_Web_knowledge) 
     +   [第一章   初探 ](#Nginx_Web1_knowledge) 
@@ -122,6 +123,8 @@
         ```
 +   table.sort (table [, comp])
     +   对给定的table进行升序排序
+####    Lua 模块与包
++   定义：Lua 的模块是由变量、函数等已知元素组成的 table，因此创建一个模块很简单，就是创建一个 table，然后把需要导出的常量、函数放入其中，最后返回这个 table 就行.    
 ## <a name="live_base_knowledge"/>  流媒体视频直播、点播
 + [Nginx配置Rtmp支持Hls的直播和点播功能](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod.md)
 + [HLS视频直播和点播的Nginx的Location的配置信息(成功)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod-locatiuon-config.md)     
