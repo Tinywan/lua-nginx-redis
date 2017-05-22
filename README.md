@@ -38,10 +38,13 @@
     +   [lua-resty-redis 扩展](#Openresty_resty-redis) 
     +   [lua-resty-websocket 扩展](#Openresty_resty-websocket) 
     +   [lua-cjson 扩展](#Openresty_resty-cjson) 
+    +   [lua-dkjson 扩展](https://github.com/Tinywan/lua_project_v0.01) 
     +   [Lua 权限验证](#Openresty_resty-access) 
     +   [lua-resty-string 扩展](#Openresty_resty-string) 
     +   [lua-resty-http 扩展 ](#Openresty_resty-http) 
     +   [lua-resty-mysql 扩展](#Openresty_resty-mysql) 
+    +   [lua-resty-shell 扩展](http://www.cnblogs.com/tinywan/p/6809879.html) 
+    +   [lua-resty-template 扩展](https://github.com/Tinywan/lua_project_v0.01) 
     +   [openresty扫描代码全局变量](#Openresty_all-var) 
     +   [ngx Lua APi 方法和常量](#Openresty_http_status_constants)   
         +   ngx_lua 核心常量 
