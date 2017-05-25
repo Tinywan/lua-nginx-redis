@@ -31,3 +31,11 @@ myshape = Shape:new(nil, 10)
 myshape:printArea()
 
 --setmetatable(table,metatable): 对指定table设置元表(metatable)
+
+function _M.new(self)
+    local sock, err = tcp()
+    if not sock then
+        return nil, err
+    end
+    return setmetatable({ sock = sock }, mt)
+end
