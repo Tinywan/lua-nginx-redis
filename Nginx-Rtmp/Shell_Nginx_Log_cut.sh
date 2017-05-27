@@ -5,11 +5,11 @@
 #   pid = $(cat /var/run/nginx.pid)
 pid=$(ps -aef | grep nginx | grep -v grep | grep master |awk '{print $2}')
 
-# if nginx running  else exit 1
-if [[ $? == 0 && -n $pid ]]
-then
-    exit 1;
-fi
+## if nginx running  else exit 1
+#if [[ $? == 0 && -n $pid ]]
+#then
+#    exit 1;
+#fi
 
 #set the path save nginx log files
 base_path="/home/tinywan/logs"
