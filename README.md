@@ -13,6 +13,7 @@
     - [x]   Shell脚本实现分日志级别记录日志  
     - [x]   Nginx日志定时备份和删除 
 +   [Lua基础知识](#Lua_base_knowledge) 
+    +   [Lua 基础语法](#Lua-base)
     +   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
     +   [Table 操作常用的方法](#Lua_table)
         - [x] table.concat()
@@ -91,6 +92,90 @@
 +   [shell脚本实现分日志级别记录日志](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/Shell_Log.sh)   
 +   [Nginx日志定时备份和删除](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/Shell_Nginx_Log_cut.sh)   
 ## <a name="Lua_base_knowledge"/>  Lua基础知识
+#### Lua 基础语法 <a name="Lua-base"/>
++   删除一个全局变量，只要将变量值赋值为nil：`a = nil`,当且仅当一个变量不为nil 时，这个变量存在
++   Boolean类型：在控制条件中除了false和nil 为假，其他值都为真，所以lua认为0和空字符串也是真 
++   String类型：
+    +   字符串替换：`string.gsub()`
+        ```lua
+        a = 'one HELLO'
+        b = string.gsub(a,'one','two')
+        print(a)    -- one HELLO
+        print(b)    -- two HELLO
+        ```  
+    +   字符串和数字
+        ```lua 
+        print("10" + 1)       -- 11
+        print("10" + "1")     -- 11
+        print("10 + 1")       -- 10 + 1
+        print("hello " .. " world")  -- hello  world
+        --print("hello" + 1)  -- 错误写法
+        ```
+    +   字符串和数字转换
+       ```lua 
+       a = 10
+       print(tostring(a))  -- 10
+       b = "20"
+       print(tonumber(b))  -- "20"
+       
+       print(tostring(10) == "10")  -- true
+       print(10 .. "" == "10")      -- true
+       ```
++   表达式
+    +   如果两个值类型不相等，Lua认为两者不同       
+    +   nil 只和自己相等
+    +   逻辑运算符
+        ```lua 
+        -- a and b          -- 如果a为false，则返回a ,否则返回b
+        -- a or b          --  如果a为true，则返回a ,否则返回b
+        print(4 and 5)      -- 5
+        print(nil and 12 )  -- nill
+        print(false and 12) -- false
+        print(4 or 5)       -- 4
+        print(false or 5)   -- 5
+        ```      
+    +   注意：`and`的优先级比`or`高    
+    +   Lua 三元运算符：`( a and b) or c`  
++   变量    
+    +   赋值语句
+        ```lua 
+        x = 20
+        y = 30
+        x,y = y,x
+        print(x,y) -- 30 20
+        
+        a,b,c = 10,20
+        print(a,b,c) --10 20 nil
+        
+        x,y,z = 10
+        print(x,y,z) -- 10 nil nil
+        ```
+    +   局部变量与代码块
+        +   代码块：指一个控制结构内，一个函数体，或者一个chunk（变量被声明的哪个文件或者文本串）
+        +   ```lua
+            a = 12
+            if a>10 then
+               local i = 19
+                print(i)  -- 19
+            end
+            print(i)      -- nil
+            ```
++   控制语句
+    ```lua 
+    members = { Tom = 10, Jake = 11, Dodo = 12, Jhon = 16 }
+    
+    for k, v in pairs(members) do
+        if v == 10 then
+            print(k, 'is 10 years old')     -- Tom	is 10 years old
+        elseif v == 11 then
+            print(k, 'is 11 years old')     -- Jake	is 11 years old
+        elseif v == 12 then
+            print(k, 'is 12 years old')     -- Dodo	is 12 years old
+        else
+            print(k, "is not 10,11,12 years old")   -- Jhon	is not 10,11,12 years old
+        end
+    end
+    ```  
 ####    控制结构
 + [if-elseif-end 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/if-else-example.lua)
 + [for 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/for-example.lua)
