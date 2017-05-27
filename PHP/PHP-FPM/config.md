@@ -195,145 +195,146 @@
 ### php-fpm开机自动启动Shell脚本
 + [Nginx和PHP-FPM的开机自动启动服务脚本](http://www.jb51.net/article/58796.htm)
 + 在当前目录`(/home/tinywan)`新建一个`php-fpm.sh`文件，粘贴一下测试成功代码
++ [php-fpm.sh](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/PHP/PHP-FPM/php-fpm.sh)
 + 复制到开机就默认开启的服务脚本：`sudo cp php-fpm.sh  /etc/init.d/php-fpm`
 + 给予权限：`sudo chmod +x /etc/init.d/nginx`
 + [安装sysv-rc-conf管理服务](http://blog.csdn.net/gatieme/article/details/45251389)
 + 测试成功代码
     ```
-        #! /bin/sh
-        ### BEGIN INIT INFO
-        # Provides:     php-fpm
-        # Required-Start:  $remote_fs $network
-        # Required-Stop:   $remote_fs $network
-        # Default-Start:   2 3 4 5
-        # Default-Stop:   0 1 6
-        # Short-Description: starts php-fpm
-        # Description:    starts the PHP FastCGI Process Manager daemon
-        ### END INIT INFO
+    #! /bin/sh
+    ### BEGIN INIT INFO
+    # Provides:     php-fpm
+    # Required-Start:  $remote_fs $network
+    # Required-Stop:   $remote_fs $network
+    # Default-Start:   2 3 4 5
+    # Default-Stop:   0 1 6
+    # Short-Description: starts php-fpm
+    # Description:    starts the PHP FastCGI Process Manager daemon
+    ### END INIT INFO
     
-        prefix=/opt/php-7.0.9    # 只需要修改这里就可以里，这里是编译路径
-        exec_prefix=${prefix}
+    prefix=/opt/php-7.0.9    # 只需要修改这里就可以里，这里是编译路径
+    exec_prefix=${prefix}
     
-        php_fpm_BIN=${exec_prefix}/sbin/php-fpm
-        php_fpm_CONF=${prefix}/etc/php-fpm.conf
-        php_fpm_PID=${prefix}/var/run/php-fpm.pid
+    php_fpm_BIN=${exec_prefix}/sbin/php-fpm
+    php_fpm_CONF=${prefix}/etc/php-fpm.conf
+    php_fpm_PID=${prefix}/var/run/php-fpm.pid
     
-        php_opts="--fpm-config $php_fpm_CONF --pid $php_fpm_PID"
+    php_opts="--fpm-config $php_fpm_CONF --pid $php_fpm_PID"
     
-        wait_for_pid () {
-            try=0
+    wait_for_pid () {
+        try=0
     
-            while test $try -lt 35 ; do
+        while test $try -lt 35 ; do
     
-                case "$1" in
-                    'created')
-                    if [ -f "$2" ] ; then
-                        try=''
-                        break
-                    fi
-                    ;;
-    
-                    'removed')
-                    if [ ! -f "$2" ] ; then
-                        try=''
-                        break
-                    fi
-                    ;;
-                esac
-    
-                echo -n .
-                try=`expr $try + 1`
-                sleep 1
-    
-            done
-    
-        }
-        case "$1" in
-            start)
-                echo -n "Starting php-fpm ... "
-    
-                $php_fpm_BIN --daemonize $php_opts
-    
-                if [ "$?" != 0 ] ; then
-                    echo " failed"
-                    exit 1
+            case "$1" in
+                'created')
+                if [ -f "$2" ] ; then
+                    try=''
+                    break
                 fi
+                ;;
     
-                wait_for_pid created $php_fpm_PID
-    
-                if [ -n "$try" ] ; then
-                    echo " failed"
-                    exit 1
-                else
-                    echo "[OK]"
+                'removed')
+                if [ ! -f "$2" ] ; then
+                    try=''
+                    break
                 fi
-            ;;
+                ;;
+            esac
     
-            stop)
-                echo -n "Gracefully shutting down php-fpm "
+            echo -n .
+            try=`expr $try + 1`
+            sleep 1
     
-                if [ ! -r $php_fpm_PID ] ; then
-                    echo "warning, no pid file found - php-fpm is not running ?"
-                    exit 1
-                fi
+        done
     
-                kill -QUIT `cat $php_fpm_PID`
+    }
+    case "$1" in
+        start)
+            echo -n "Starting php-fpm ... "
     
-                wait_for_pid removed $php_fpm_PID
+            $php_fpm_BIN --daemonize $php_opts
     
-                if [ -n "$try" ] ; then
-                    echo " failed. Use force-quit"
-                    exit 1
-                else
-                    echo "[OK]"
-                fi
-            ;;
-            
-            force-quit)
-                echo -n "Terminating php-fpm "
-    
-                if [ ! -r $php_fpm_PID ] ; then
-                    echo "warning, no pid file found - php-fpm is not running ?"
-                    exit 1
-                fi
-    
-                kill -TERM `cat $php_fpm_PID`
-    
-                wait_for_pid removed $php_fpm_PID
-    
-                if [ -n "$try" ] ; then
-                    echo " failed"
-                    exit 1
-                else
-                    echo " [OK]"
-                fi
-            ;;
-    
-            restart)
-                $0 stop
-                $0 start
-            ;;
-    
-            reload)
-    
-                echo -n "Reload service php-fpm "
-    
-                if [ ! -r $php_fpm_PID ] ; then
-                    echo "warning, no pid file found - php-fpm is not running ?"
-                    exit 1
-                fi
-    
-                kill -USR2 `cat $php_fpm_PID`
-    
-                echo "[OK]"
-            ;;
-    
-            *)
-                echo "Usage: $0 {start|stop|force-quit|restart|reload}"
+            if [ "$?" != 0 ] ; then
+                echo " failed"
                 exit 1
-            ;;
+            fi
     
-        esac
+            wait_for_pid created $php_fpm_PID
+    
+            if [ -n "$try" ] ; then
+                echo " failed"
+                exit 1
+            else
+                echo "[OK]"
+            fi
+        ;;
+    
+        stop)
+            echo -n "Gracefully shutting down php-fpm "
+    
+            if [ ! -r $php_fpm_PID ] ; then
+                echo "warning, no pid file found - php-fpm is not running ?"
+                exit 1
+            fi
+    
+            kill -QUIT `cat $php_fpm_PID`
+    
+            wait_for_pid removed $php_fpm_PID
+    
+            if [ -n "$try" ] ; then
+                echo " failed. Use force-quit"
+                exit 1
+            else
+                echo "[OK]"
+            fi
+        ;;
+        
+        force-quit)
+            echo -n "Terminating php-fpm "
+    
+            if [ ! -r $php_fpm_PID ] ; then
+                echo "warning, no pid file found - php-fpm is not running ?"
+                exit 1
+            fi
+    
+            kill -TERM `cat $php_fpm_PID`
+    
+            wait_for_pid removed $php_fpm_PID
+    
+            if [ -n "$try" ] ; then
+                echo " failed"
+                exit 1
+            else
+                echo " [OK]"
+            fi
+        ;;
+    
+        restart)
+            $0 stop
+            $0 start
+        ;;
+    
+        reload)
+    
+            echo -n "Reload service php-fpm "
+    
+            if [ ! -r $php_fpm_PID ] ; then
+                echo "warning, no pid file found - php-fpm is not running ?"
+                exit 1
+            fi
+    
+            kill -USR2 `cat $php_fpm_PID`
+    
+            echo "[OK]"
+        ;;
+    
+        *)
+            echo "Usage: $0 {start|stop|force-quit|restart|reload}"
+            exit 1
+        ;;
+    
+    esac
     ```      
 ####    Nginx 开机自动启动Shell脚本
 +   查看当前nginx是否已经在开机启动项里面: `ls /etc/rc*`
