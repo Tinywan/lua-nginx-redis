@@ -94,8 +94,8 @@
 ## <a name="Lua_base_knowledge"/>  Lua基础知识
 #### Lua 基础语法 <a name="Lua-base"/>
 +   删除一个全局变量，只要将变量值赋值为nil：`a = nil`,当且仅当一个变量不为nil 时，这个变量存在
-+   Boolean类型：在控制条件中除了false和nil 为假，其他值都为真，所以lua认为0和空字符串也是真 
-+   String类型：
++   `Boolean`类型：在控制条件中除了`false`和`nil` 为假，其他值都为真，所以lua认为0和空字符串也是真 
++   `String`类型：
     +   字符串替换：`string.gsub()`
         ```lua
         a = 'one HELLO'
@@ -112,15 +112,15 @@
         --print("hello" + 1)  -- 错误写法
         ```
     +   字符串和数字转换
-       ```lua 
-       a = 10
-       print(tostring(a))  -- 10
-       b = "20"
-       print(tonumber(b))  -- "20"
-       
-       print(tostring(10) == "10")  -- true
-       print(10 .. "" == "10")      -- true
-       ```
+        ```lua 
+        a = 10
+        print(tostring(a))  -- 10
+        b = "20"
+        print(tonumber(b))  -- "20"
+        
+        print(tostring(10) == "10")  -- true
+        print(10 .. "" == "10")      -- true
+        ```
 +   表达式
     +   如果两个值类型不相等，Lua认为两者不同       
     +   nil 只和自己相等
@@ -176,6 +176,47 @@
         end
     end
     ```  
++   函数
+    +   单个返回值
+        ```lua 
+        function max(a,b)
+            if a > b then
+                return a
+            else
+                return b
+            end
+        end
+        print(max(10,20)) -- 20
+        ```
+    +   多个返回值
+        ```lua 
+        function more()
+            return 10 , 20 ,30
+        end
+        a , b , c = more()
+        print(a,b,c) -- 10 20 30
+        ```   
+    +   可变数目的参数
+        ```lua
+        function more()
+            return 10 , 20 ,30
+        end
+        -- 当函数位于最后一位的时候，返回全部值，否则值返回一个数值
+        a , b , c ,d = 100, more()
+        print(a,b,c,d) -- 100 10 20 30
+        ``` 
++   table 使用
+    +   Lua table 第一个索引为1
+    +   简单
+        ```lua 
+        a = {}
+        a.x = 100
+        a.y = 200
+        a["z"] = 300 -- a.z = 300
+        print(a.x) -- 100
+        print(a.y) -- 200
+        print(a.z) -- 300
+        ```    
 ####    控制结构
 + [if-elseif-end 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/if-else-example.lua)
 + [for 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/for-example.lua)

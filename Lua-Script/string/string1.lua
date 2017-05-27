@@ -48,19 +48,35 @@
 --end
 --print(i)      -- nil
 
-members = { Tom = 10, Jake = 11, Dodo = 12, Jhon = 16 }
+--members = { Tom = 10, Jake = 11, Dodo = 12, Jhon = 16 }
+--
+--for k, v in pairs(members) do
+--    if v == 10 then
+--        print(k, 'is 10 years old')
+--    elseif v == 11 then
+--        print(k, 'is 11 years old')
+--    elseif v == 12 then
+--        print(k, 'is 12 years old')
+--    else
+--        print(k, "is not 10,11,12 years old")
+--    end
+--end
 
-for k, v in pairs(members) do
-    if v == 10 then
-        print(k, 'is 10 years old')
-    elseif v == 11 then
-        print(k, 'is 11 years old')
-    elseif v == 12 then
-        print(k, 'is 12 years old')
-    else
-        print(k, "is not 10,11,12 years old")
-    end
-end
+--function more()
+--    return 10 , 20 ,30
+--end
+---- 当函数位于最后一位的时候，返回全部值，否则值返回一个数值
+--a , b , c ,d = 100, more()
+--print(a,b,c,d) -- 100 10 20 30
+a = {}
+a.x = 100
+a.y = 200
+a["z"] = 300 -- a.z = 300
+print(a.x) -- 100
+print(a.y) -- 200
+print(a.z) -- 300
+
+
 
 
 
