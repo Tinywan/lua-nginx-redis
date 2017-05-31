@@ -205,6 +205,35 @@
         a , b , c ,d = 100, more()
         print(a,b,c,d) -- 100 10 20 30
         ``` 
+    +   闭合函数
+        ```lua
+        function count()
+            -- i属于一个非局部变量，因为它既不是全局变量，也不是单纯的局部变量（因为另外一个函数可以访问到它）
+            local i = 0
+            return function()
+                i =i +1
+                return i
+            end
+        end
+        -- 以上 count()函数里的那个函数，加上一个非全局变量i,就构成一个闭合函数
+        -- 所以每次调用闭合函数，非局部变量的值都不会被重置
+        local func = count()
+        print(func())   -- 1
+        print(func())   -- 2
+        ```
+    +   非全局函数，在定义函数的使用要注意定义函数的顺序
+        ```lua
+        local eat
+        local drink
+        eat = function()
+            print("eat")
+            return drink() -- 这里的drink()属于尾调用
+        end
+        drink = function()
+            print("drink")
+        end
+        eat()
+        ```
 +   table 使用
     +   Lua table 第一个索引为1
     +   简单
@@ -278,6 +307,31 @@
             print(k,v)   -- 1   Tinywan
         end
         ```
++   编译执行与错误
+    +   error 错误     
+        ```lua
+        local name = "Lua1"
+        if name ~= "Lua"
+        then
+            error("this is not Lua  ");
+        end
+        ```
+    +   assert 错误：`assert(name~="Lua"," this is not Lua")`       
+    +   pcall 捕获错误代码
+        ```lua
+        function test()
+            print(a[1])
+        end
+        -- pcall 除了会返回true或者false外，还能返回函数的错误信息。
+        -- 如果没有错误信息，err 会返回一个nil
+        local status,err = pcall(test)
+        if status then
+            print('success')
+        else
+            print('函数执行出错了')
+            print('错误信息：',err)
+        end
+        ```    
 ####    控制结构
 + [if-elseif-end 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/if-else-example.lua)
 + [for 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/for-example.lua)
