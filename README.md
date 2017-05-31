@@ -216,7 +216,68 @@
         print(a.x) -- 100
         print(a.y) -- 200
         print(a.z) -- 300
-        ```    
+        ``` 
++   泛型迭代器
+    +  标准库迭代器包括：
+        +   迭代文件每行：`io.lines`
+        +   迭代table元素：`pairs`
+            - [x] 可以遍历表中的所有key
+            - [x] 并且除了迭代器本身以及遍历表本身，还可以返回nil
+        +   迭代数组元素：`ipairs`
+            - [x] ipairs不能返回nil，只能返回数字0，如果遇到nil则退出
+            - [x] 只能遍历表中出现的第一个不是整数的key
+    +   泛型迭代器
+        ```lua
+        config = {host = '127.0.0.1',port = '3306', dbname = 'LuaDB' }
+        config.redis_host = "192.168.1.1"
+        config.redis_port = "6379"
+        config.redis_db = "12"
+        print(config['redis_host'])     -- 192.168.1.1
+        print(config.redis_port)        -- 6379
+        print(config.dbname)            -- LuaDB
+        
+        for k, v in pairs(config) do
+            print(k,v)
+        end
+        
+        --[[
+        host    127.0.0.1
+        dbname	LuaDB
+        redis_host	192.168.1.1
+        redis_db	12
+        redis_port	6379
+        port	3306
+        -- ]]
+        ```       
+    +   迭代table元素
+        ```lua
+        arr = {}
+        for var = 1,100 do      -- for 循环
+            table.insert(arr,1,var)
+        end
+        
+        for k, v in pairs(arr) do   -- 遍历表
+            print(k,v)
+        end
+        --[[ 打印结果
+        1	100
+        2	99
+        ... ...
+        99	2
+        100	1
+        
+        -- ]]
+        print(table.maxn(arr))  -- table长度 100
+        print(#arr)     -- table长度（快捷方式） 100
+        ```
+    +   迭代数组元素：`ipairs`
+        ```lua
+        arr = {host = '127.0.0.1',port = '3306','Tinywan'}
+        -- 如果没有找到下标为整数的则直接退出，是整数的则直接输出，如上面的'Tinywan'
+        for k, v in ipairs(arr) do  -- 只能遍历key 为整数的下标
+            print(k,v)   -- 1   Tinywan
+        end
+        ```
 ####    控制结构
 + [if-elseif-end 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/if-else-example.lua)
 + [for 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/for-example.lua)
