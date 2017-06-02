@@ -309,7 +309,11 @@
         ```
     +   循环迭代table元素（如：lua-resty-mysql 扩展查询的数据）
         +   查询 ：`res, err, errcode, sqlstate = db:query("select * from tb_ngx_test order by id asc", 10)`
-        +   结果集2条记录：`result: [{"age":"24123","name":"tinywan123","address":"China","id":"1"},{"age":"24","name":"tinywan","address":"China","id":"2"}]`
+        +   转换成JSON结果集输出2条记录：
+            ```lua
+                ngx.say("result: ", cjson.encode(res))
+                result: [{"age":"24123","name":"tinywan123","address":"China","id":"1"},{"age":"24","name":"tinywan","address":"China","id":"2"}]
+            ```
         +   遍历该结果集：
             ```lua
             res, err, errcode, sqlstate = db:query("select * from tb_ngx_test order by id asc", 10)
