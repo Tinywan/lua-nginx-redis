@@ -1,5 +1,3 @@
- 
-![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Nginx-Phase.png)
 ## <a name="index"/>目录
 +   [Nginx基础知识](#Nginx_base_knowledge) 
 +   [Linux基础知识](#Linux_base_knowledge) 
@@ -1798,6 +1796,8 @@
 
 ![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/github_good1.png)
 
+# Lua-Ngx
+![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Nginx-Phase.png)
 # Live demo
 
 Changes are automatically rendered as you type.
