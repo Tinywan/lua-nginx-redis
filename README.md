@@ -540,7 +540,8 @@
     - [x] [nginx变量使用方法详解笔记(3)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
 + Nginx指令执行顺序
     - [x] [Nginx指令执行命令（01）](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-01.md)
-#### <a name="Nginx_Web2_knowledge"/>  第二章   安装部署   
+#### <a name="Nginx_Web2_knowledge"/>  第二章   安装部署 
++   启动错误：`Nginx [emerg]: bind() to 0.0.0.0:80 failed (98: Address already in use)`,执行：`sudo fuser -k 80/tcp`  
 +   [基于域名、IP的虚拟主机配置](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-all-config.md)
 +   [完整、标准配置实际示列](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-basic-config.md)
 +   [日志文件配置与切割](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-log-cut.md)
@@ -759,6 +760,48 @@
 +   TCP负载均衡   
         - [x] [Module ngx_stream_core_module](http://nginx.org/en/docs/stream/ngx_stream_core_module.html#stream)      
         - [x] [负载均衡](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-8-tcp-Proxy.md)      
++   proxy_pass 代理的URL总结
+    +   在nginx中配置proxy_pass时，当在后面的url加上了/，相当于是绝对根路径，则nginx不会把location中匹配的路径部分代理走;如果没有/，则会把匹配的路径部分也给代理走。
+    +   将url中以/wap/开头的请求转发到后台对应的某台server上,注意最后的?$args，表明把原始url最后的get参数也给代理到后台
+        ```bash 
+        location ~* /wap/(\d+)/(.+)
+        {
+            proxy_pass http://mx$1.test.com:6601/$2?$args;
+        }
+        ```
+    +   第一种配置,访问:`http://127.0.0.1/proxy/index.html` 会被代理到:`http://127.0.0.1:8000/index.html`
+        ```bash
+        location /proxy/ {
+                proxy_pass   http://127.0.0.1:8000/;
+        }
+        ```
+    +   第二种配置,访问:`http://127.0.0.1/proxy/index.html` 会被代理到:`http://127.0.0.1:8000/proxy/index.html`
+        ```bash
+        location /proxy/ {
+                proxy_pass   http://127.0.0.1:8000;
+        }
+        ```
+    +   第三种配置,访问:`http://127.0.0.1/proxy/index.html` 会被代理到:`http://127.0.0.1:8000/video/index.html`
+        ```bash
+        location /proxy/ {
+                proxy_pass   http://127.0.0.1:8000/video/;
+        }
+        ```
+    +   第四种配置,访问:`http://127.0.0.1/proxy/index.html` 会被代理到:`http://127.0.0.1:8000/videoindex.html`
+        ```bash
+        location /proxy/ {
+                proxy_pass   http://127.0.0.1:8000/video;
+        }
+        ```
++   location 直接访问：
+    +   以下配置，当访问：`http://127.0.0.1:8000/proxy/index.html` 会被匹配到：`/usr/local/nginx/html/proxy/index.html`
+        ```bash
+        location /proxy/ {
+            root /usr/local/nginx/html;
+            index  index.html index.htm;
+        }
+        ```   
+            
 ## <a name="Nginx_Web8_knowledge"/>  第八章   缓存机制
 +   测试一
 ## <a name="Nginx_Web9_knowledge"/>  第九章   Nginx初探1
