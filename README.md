@@ -45,6 +45,7 @@
     +   [lua-resty-mysql 扩展](#Openresty_resty-mysql) 
     +   [lua-resty-shell 扩展](http://www.cnblogs.com/tinywan/p/6809879.html) 
     +   [lua-resty-template 扩展](https://github.com/Tinywan/lua_project_v0.01) 
+    +   [lua-resty-template 扩展](https://github.com/Tinywan/lua_project_v0.01) 
     +   [openresty扫描代码全局变量](#Openresty_all-var) 
     +   [ngx Lua APi 方法和常量](#Openresty_http_status_constants)   
         +   ngx_lua 核心常量 
@@ -368,6 +369,25 @@
                 id = 2 
             ]]
             ```
+    +   json 和 lua table 转换
+        +   [1] 将 json 转换成 lua table  
+            ```lua
+            local json_str = '{"is_male":"nan","name":"zhangsan","id":1}'
+            local t = json.decode(json_str)
+            ngx.say(format_table(t))
+            ```      
+        +   [2] 将 lua table 转换成 json 字符串
+            ```lua
+            local t = [[{key="table key",value="table value"}]]
+            local json_str = json.encode(t)
+            ngx.say(json_str) -- "{key=\"table key\",value=\"table value\"}"
+            ```   
+        +   [3] 将lua table转换成 json 数组 (lua 两个大括号表示一个数组)  
+             ```lua
+            local t = {keys={"list1","list2","list3"},num=1}
+            local str = json.encode(t)
+            ngx.say(str)  -- {"keys":["list1","list2","list3"],"num":1}
+             ```   
 +   编译执行与错误
     +   error 错误     
         ```lua
