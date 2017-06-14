@@ -35,6 +35,31 @@
     * soft nofile 65535
     * hard nofile 65535
     ```
+##   PHP7优化
++   [让PHP7达到最高性能的几个Tips](http://www.laruence.com/2015/12/04/3086.html)
++   [Nginx+PHP7 安装及配置](http://tchuairen.blog.51cto.com/3848118/1771597/)
++   启用Zend Opcache
+    ```bash
+    zend_extension=opcache.so
+    opcache.enable=1
+    opcache.enable_cli=1
+    ```
++   使用新的编译器,使用新一点的编译器, 推荐GCC 4.8以上, 因为只有GCC 4.8以上PHP才会开启Global Register for opline and execute_data支持, 这个会带来5%左右的性能提升
++   开启HugePages,然后开启Opcache的huge_code_pages
+    +   sfd  `sudo sysctl vm.nr_hugepages=512`
+    +   分配512个预留的大页内存
+        ```bash 
+        $ cat /proc/meminfo  | grep Huge
+        AnonHugePages:    106496 kB
+        HugePages_Total:     512
+        HugePages_Free:      504
+        HugePages_Rsvd:       27
+        HugePages_Surp:        0
+        Hugepagesize:       2048 kB
+        ```
+    +   然后在php.ini中加入，`opcache.huge_code_pages=1`
++   开启Opcache File Cache,`opcache.file_cache=/tmp`   
++   启用Zend Opcache
 ##   PHP-FPM优化
 +   rlimit_files    
 +   rlimit_files    

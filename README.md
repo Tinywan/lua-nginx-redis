@@ -488,7 +488,33 @@
         ```                        
     +   Lua面向对象1          
     +   Lua面向对象1          
-    +   Lua面向对象3 更新中...          
+    +   Lua面向对象3 更新中...  
++   Lua 排序算法
+    +   [Lua 排序算法 - 选择排序](https://www.openresty.com.cn/ms2008-select-sort.html#section-1)
+    +   选择排序
+        ```lua
+        local function selectionSort(arr)
+            for i = 1,#arr-1 do
+                local idx = i
+                -- 迭代剩下的元素，寻找最小的元素
+                for j = i+1,#arr do
+                    if arr[j] < arr[idx] then
+                        idx = j
+                    end
+                end
+                -- 
+                arr[i],arr[idx]= arr[idx],arr[i]
+            end
+        end
+        
+        local list = {
+            -81, -93, -36.85, -53, -31, 79, 45.94, 36, 94, -95.03, 11, 56, 23, -39,
+            14, 1, -20.1, -21, 91, 31, 91, -23, 36.5, 44, 82, -30, 51, 96, 64, -41
+        }
+        
+        selectionSort(list)
+        print(table.concat( list, ", "))
+        ```        
 ####    控制结构
 + [if-elseif-end 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/if-else-example.lua)
 + [for 语句](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/chapter-one/for-example.lua)
