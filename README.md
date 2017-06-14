@@ -45,6 +45,7 @@
     +   [lua-resty-mysql 扩展](#Openresty_resty-mysql) 
     +   [lua-resty-shell 扩展](http://www.cnblogs.com/tinywan/p/6809879.html) 
     +   [lua-resty-template 扩展](https://github.com/Tinywan/lua_project_v0.01) 
+    +   [lua-resty-template 扩展](https://github.com/Tinywan/lua_project_v0.01) 
     +   [openresty扫描代码全局变量](#Openresty_all-var) 
     +   [ngx Lua APi 方法和常量](#Openresty_http_status_constants)   
         +   ngx_lua 核心常量 
@@ -77,7 +78,33 @@
 +   phase的意义：就是几个MR的一个集合，不定数目的MR job视为一个phase。一个请求经过nginx处理的过程中，会经过一系列的阶段（phases）    
 ## <a name="Nginx_base_knowledge"/>  Nginx基础知识
 +   [NGINX 所有 Modules](https://www.nginx.com/resources/wiki/modules/)
-+   [agentzh的Nginx教程（版本2016.07.21）](https://openresty.org/download/agentzh-nginx-tutorials-en.html#00-foreword01)
+####    agentzh的Nginx教程（版本2016.07.21）
++   [agentzh的Nginx教程地址](https://openresty.org/download/agentzh-nginx-tutorials-zhcn.html)
++   Nginx 变量漫谈（一）
+    +   Nginx 变量的值只有一种类型，那就是字符串
+    +   Nginx “变量插值”
+        ```bash
+        location /test {
+            set $first "hello ";
+            echo "${first}world";
+        }
+        ```
+    +   set 指令（以及前面提到的 geo 指令）不仅有赋值的功能，它还有创建 Nginx 变量的副作用，即当作为赋值对象的变量尚不存在时    
+    +   Nginx 变量一旦创建，其变量名的可见范围就是整个 Nginx 配置，甚至可以跨越不同虚拟主机的 server 配置块
+    +   Nginx 变量的生命期是不可能跨越请求边界的
++   Nginx 变量漫谈（二）
+    +   跳转
+        +   内部跳转：就是在处理请求的过程中，于服务器内部，从一个 location 跳转到另一个 location 的过程。         
+        +   外部跳转： HTTP 状态码 301 和 302 所进行的“外部跳转”
+    +   标准 ngx_rewrite 模块的 rewrite 配置指令其实也可以发起“内部跳转”
+    +   Nginx 核心和各个 Nginx 模块提供的“预定义变量”         
+    +   Nginx 会在匹配参数名之前，自动把原始请求中的参数名调整为全部小写的形式         
+    +   如果你尝试改写另外一些只读的内建变量，比如 $arg_XXX 变量，在某些 Nginx 的版本中甚至可能导致进程崩溃。
++   Nginx 变量漫谈（四）
+    +    map 指令：用于定义两个 Nginx 变量之间的映射关系，或者说是函数关系            
+    +    map 指令只能在 http 块中使用           
+    +    map 配置指令的工作原理是为用户变量注册 “取处理程序”，并且实际的映射计算是在“取处理程序”中完成的，而“取处理程序”只有在该用户变量被实际读取时才会执行（当然，因为缓存的存在，只在请求生命期中的第一次读取中才被执行），所以对于那些根本没有用到相关变量的请求来说，就根本不会执行任何的无用计算。           
++   Nginx 变量漫谈（四）
 +   [Nginx的11个Phases](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-phases.md)
 +   [Nginx 陷阱和常见错误](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-1-config.md)
 +   [Nginx 高并发系统内核优化](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-parameter-config.md)
@@ -342,6 +369,25 @@
                 id = 2 
             ]]
             ```
+    +   json 和 lua table 转换
+        +   [1] 将 json 转换成 lua table  
+            ```lua
+            local json_str = '{"is_male":"nan","name":"zhangsan","id":1}'
+            local t = json.decode(json_str)
+            ngx.say(format_table(t))
+            ```      
+        +   [2] 将 lua table 转换成 json 字符串
+            ```lua
+            local t = [[{key="table key",value="table value"}]]
+            local json_str = json.encode(t)
+            ngx.say(json_str) -- "{key=\"table key\",value=\"table value\"}"
+            ```   
+        +   [3] 将lua table转换成 json 数组 (lua 两个大括号表示一个数组)  
+             ```lua
+            local t = {keys={"list1","list2","list3"},num=1}
+            local str = json.encode(t)
+            ngx.say(str)  -- {"keys":["list1","list2","list3"],"num":1}
+             ```   
 +   编译执行与错误
     +   error 错误     
         ```lua
