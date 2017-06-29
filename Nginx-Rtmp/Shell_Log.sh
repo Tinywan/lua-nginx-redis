@@ -1,4 +1,13 @@
 #!/bin/bash
+#######################################################
+# $Name:         Shell_Log.sh
+# $Version:      v1.0
+# $Function:     Log Script
+# $Author:       ShaoBo Wan (Tinywan)
+# $organization: https://github.com/Tinywan
+# $Create Date:  2017-06-29
+# $Description:  Mysql 自动备份脚本安全加锁机制
+#######################################################
 :<<tinywan
         [1]author:Tinywan
         [2]log_format:

@@ -1,6 +1,14 @@
 #!/bin/bash
-#This is mysql mysqldaiybak scripts
-#2015-05-01
+#######################################################
+# $Name:         mysql_backup.sh
+# $Version:      v1.0
+# $Function:     Backup MySQL Databases Script
+# $Author:       ShaoBo Wan (Tinywan)
+# $organization: https://github.com/Tinywan
+# $Create Date:  2017-06-29
+# $Description:  Mysql 自动备份脚本安全加锁机制
+#######################################################
+
 database=weblive
 databak_dir=/home/www/database_back
 logs_dir=/home/www/database_back/logs
