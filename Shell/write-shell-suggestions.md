@@ -1,4 +1,5 @@
 ### 编写快速安全Bash脚本的建议
++   [编写快速安全 Bash 脚本的建议 ](https://www.oschina.net/translate/bash-scripting-quirks-safety-tips)
 + 变量赋值
     + Bash变量并不要求全部大写，但是通常是大写的
     + 变量赋值不要在`=`运算符的两边放置空格符

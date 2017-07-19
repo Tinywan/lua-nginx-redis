@@ -10,6 +10,8 @@
     - [x]   编写快速安全Bash脚本的建议 
     - [x]   Shell脚本实现分日志级别记录日志  
     - [x]   Nginx日志定时备份和删除 
+    - [x]   SHELL脚本小技巧 
+    - [x]   Mysql 自动备份脚本安全加锁机制 
 +   [Lua基础知识](#Lua_base_knowledge) 
     +   [Lua 基础语法](#Lua-base)
     +   [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
@@ -118,6 +120,8 @@
 +   [编写快速安全Bash脚本的建议](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Shell/write-shell-suggestions.md) 
 +   [shell脚本实现分日志级别记录日志](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/Shell_Log.sh)   
 +   [Nginx日志定时备份和删除](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/Shell_Nginx_Log_cut.sh)   
++   [SHELL脚本小技巧](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/Shell_script.md)   
++   [Mysql 自动备份脚本安全加锁机制](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/backup_mysql.sh)   
 ## <a name="Lua_base_knowledge"/>  Lua基础知识
 #### Lua 基础语法 <a name="Lua-base"/>
 +   删除一个全局变量，只要将变量值赋值为nil：`a = nil`,当且仅当一个变量不为nil 时，这个变量存在
@@ -524,7 +528,7 @@
         
         local t1 = {}
         local t2 = {}
-        local mt = { __index = smartMan } -- __index 可以是一个函数，也可以是一个函数
+        local mt = { __index = smartMan } -- __index 可以是一个表，也可以是一个函数
         setmetatable(t1, mt)
         setmetatable(t2, mt)
         print(t1.money)

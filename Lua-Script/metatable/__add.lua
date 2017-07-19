@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+--
+-- Created by IntelliJ IDEA.
+-- User: Administrator
+-- Date: 2017/6/6
+-- Time: 8:57
+-- To change this template use File | Settings | File Templates.
+--
+>>>>>>> 05e5321a6a0cc4d269c9c15fb03540a680c2a801
 --在 Lua 5.1 语言中，元表 (metatable) 的表现行为类似于 C++ 语言中的操作符重载，例如我们可以重载 "__add" 元方法 (metamethod)，来计算两个 Lua 数组的并集；或者重载 "__index" 方法，来定义我们自己的 Hash 函数。Lua 提供了两个十分重要的用来处理元表的方法，如下：
 --setmetatable(table, metatable)：此方法用于为一个表设置元表。
 --getmetatable(table)：此方法用于获取表的元表对象
@@ -23,4 +33,8 @@ setmetatable(set1, {__add = union}) -- 重载 set1 表的 __add 元方法
 local set3 = set1 + set2
 for _, j in pairs(set3) do
     io.write(j.." ")               -->output：30 50 20 40 10
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> 05e5321a6a0cc4d269c9c15fb03540a680c2a801
