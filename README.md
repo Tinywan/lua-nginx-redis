@@ -80,7 +80,7 @@
 +   phase的意义：就是几个MR的一个集合，不定数目的MR job视为一个phase。一个请求经过nginx处理的过程中，会经过一系列的阶段（phases）    
 ## <a name="Nginx_base_knowledge"/>  Nginx基础知识
 +   [NGINX 所有 Modules](https://www.nginx.com/resources/wiki/modules/)
-+   [Nginx 配置文件 nginx.conf 详解](https://www.nginx.com/resources/wiki/modules/)
++   [Nginx 配置文件 nginx.conf 详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-base-config.md)
 ####    agentzh的Nginx教程（版本2016.07.21）
 +   [agentzh的Nginx教程地址](https://openresty.org/download/agentzh-nginx-tutorials-zhcn.html)
 +   Nginx 变量漫谈（一）
