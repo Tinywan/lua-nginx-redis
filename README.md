@@ -4,10 +4,10 @@
     +   [Nginx高性能WEB服务器详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-high-basic.md) 
     +   [nginx 并发数问题思考](#Nginx_base_knowledge)
 +   Lua 教程    
-        +  [Lua 基础语法](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/lua-basic.md)
-        +  [Lua 模块与包](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/openresty-resty-module.md) 
-        +  [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
-        +  [lua中self.__index = self 详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/oop/self__index.md)      
+    +  [Lua 基础语法](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/lua-basic.md)
+    +  [Lua 模块与包](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/openresty-resty-module.md) 
+    +  [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
+    +  [lua中self.__index = self 详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/oop/self__index.md)      
 +   Redis 教程    
     +   [Redis基础知识](#Redis_base_knowledge) 
     +   [Redis 简易安装教程](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md) 
