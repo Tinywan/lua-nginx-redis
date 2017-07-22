@@ -484,3 +484,27 @@
     - [x] table.insert()
     - [x] table.maxn()
     - [x] table.concat()
++   Lua 实现简单封装
+    +   man.lua
+        ```Lua
+            local _name = "Tinywan"
+            local man = {}
+    
+            function man.GetName()
+                return _name
+            end
+    
+            function man.SetName(name)
+                _name = name    
+            end
+    
+            return man 
+        ```
+    +   测试封装,test.lua   
+
+        ```Lua
+            local man = require('man')
+            print("The man name is "..man.GetName())
+            man.SetName("Phalcon")
+            print("The man name is "..man.GetName())
+        ```      
