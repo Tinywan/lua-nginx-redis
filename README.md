@@ -39,36 +39,26 @@
 ## 开发过程记录
 ## <a name="githubpush"/> Visual Studio Code 向github提交代码不用输入帐号密码    
 +   在命令行输入以下命令
-        ```
-        git config --global credential.helper store
-        ```
-
+    ```
+    git config --global credential.helper store
+    ```
     > 这一步会在用户目录下的.gitconfig文件最后添加:
-
-        ```
-        [credential]
-        helper = store
-        ```
+    ```
+    [credential]
+    helper = store
+    ```
 +   push 代码
-
     > push你的代码 (git push), 这时会让你输入用户名和密码, 这一步输入的用户名密码会被记住, 下次再push代码时就不用输入用户名密码!这一步会在用户目录下生成文件.git-credential记录用户名密码的信息。
-
 +   Markdown 的超级链接技术
-
     > 【1】需要链接的地址：
-
-        ```
-        [解决向github提交代码不用输入帐号密码](#githubpush)  
-        ```
-
+    ```
+    [解决向github提交代码不用输入帐号密码](#githubpush)  
+    ```
     > 【2】要链接到的地方：
-
-        ``` 
-        <a name="githubpush"/> 解决向github提交代码不用输入帐号密码
-        ```
-        
+    ``` 
+    <a name="githubpush"/> 解决向github提交代码不用输入帐号密码
+    ```
     > 通过【1】和【2】可以很完美的实现一个连接哦！
-
 # 掘金爬虫
 
 ![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/github_good1.png)
