@@ -19,11 +19,11 @@
 ####    从源代码构建NGINX
 +   1、NGINX是用C编写的程序，所以我们需要安装C编译器（GCC）。
 
-    sudo apt install build-essential -y
+        sudo apt install build-essential -y
     
 +   2、下载最新版本的NGINX源代码并解压缩：
 
-    wget https://nginx.org/download/nginx-1.13.1.tar.gz && tar zxvf nginx-1.13.1.tar.gz
+        wget https://nginx.org/download/nginx-1.13.1.tar.gz && tar zxvf nginx-1.13.1.tar.gz
     
 +   3、下载NGINX依赖项的源代码并解压缩
     > NGINX依赖于3个库：PCRE，zlib和OpenSSL：
