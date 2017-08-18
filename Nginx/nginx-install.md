@@ -1,7 +1,6 @@
 ##  在Ubuntu 16.04中如何从源代码编译Nginx
 +   NGINX可用作HTTP / HTTPS服务器，反向代理服务器，邮件代理服务器，负载均衡器，TLS终结器或缓存服务器。它是相当模块化的设计。它具有由社区创建的本机模块和第三方模块。以C编程语言编写，它是一个非常快速和轻便的软件。
-##  从源头构建NGINX的要求
-####    强制性要求：
+####    从源头构建NGINX的要求,强制性要求：
 +   OpenSSL库版本介于1.0.2 - 1.1.0之间
 +   Zlib库版本介于1.1.3 - 1.2.11之间
 +   PCRE库版本在4.4 - 8.40之间
@@ -9,19 +8,23 @@
 ####    可选要求：
 +   PERL
 +   LIBATOMIC_OPS
-+   的libgd
++   LibFD
 +   MaxMind GeoIP
 +   libxml2的
-+   的libxslt
++   libxslt
 ####    开始之前
 +   创建普通用户`sudo`访问。
 +   切换到新用户：`su - <username>`
 +   更新系统：`sudo apt update && sudo apt upgrade -y`
 ####    从源代码构建NGINX
 +   1、NGINX是用C编写的程序，所以我们需要安装C编译器（GCC）。
-    `sudo apt install build-essential -y`
+    ```bash
+    sudo apt install build-essential -y
+    ```
 +   2、下载最新版本的NGINX源代码并解压缩：
-    `wget https://nginx.org/download/nginx-1.13.1.tar.gz && tar zxvf nginx-1.13.1.tar.gz`
+    ```bash
+    wget https://nginx.org/download/nginx-1.13.1.tar.gz && tar zxvf nginx-1.13.1.tar.gz
+    ```
 +   3、下载NGINX依赖项的源代码并解压缩
     > NGINX依赖于3个库：PCRE，zlib和OpenSSL：
     ```bash
@@ -34,9 +37,18 @@
     # OpenSSL version 1.0.2 - 1.1.0
     wget https://www.openssl.org/source/openssl-1.1.0f.tar.gz && tar xzvf openssl-1.1.0f.tar.gz
     ```
-+   4、删除所有.tar.gz文件。我们不再需要它们了，`rm -rf *.tar.gz`
-+   5、转到NGINX源目录：`cd ~/nginx-1.13.1`
-+   6、有关帮助，您可以通过运行以下列出可用的配置开关：`./configure --help`
++   4、删除所有.tar.gz文件。我们不再需要了
+    ```bash
+    wget https://nginx.org/download/nginx-1.13.1.tar.gz && tar zxvf nginx-1.13.1.tar.gz
+    ```
++   5、转到NGINX源目录：``
+    ```bash
+    cd ~/nginx-1.13.1
+    ```
++   6、有关帮助，您可以通过运行以下列出可用的配置开关
+    ```bash
+    ./configure --help
+    ```
 +   7、配置，编译和安装NGINX：
     ```bash
     ./configure --prefix=/usr/share/nginx \
@@ -88,7 +100,8 @@
                 --with-stream_ssl_module \
                 --with-stream_ssl_preread_module \
                 --with-debug \
-                --with-cc-opt='-g -O2 -fPIE -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2' \
+                --with-cc-opt='-g -O2 -fPIE -fstack-protector-strong -Wformat -Werror=format-security 
+                -Wdate-time -D_FORTIFY_SOURCE=2' \
                 --with-ld-opt='-Wl,-Bsymbolic-functions -fPIE -pie -Wl,-z,relro -Wl,-z,now'
     make 
     sudo make install
@@ -156,8 +169,14 @@
     ps aux | grep nginx
     curl -I 127.0.0.1
     ```
-+   16、重新启动Ubuntu VPS以验证NGINX是否自动启动：`sudo shutdown -r now`
-+   17、创建UFW NGINX应用程序配置文件：`sudo vim /etc/ufw/applications.d/nginx`    
++   16、重新启动Ubuntu VPS以验证NGINX是否自动启动：
+    ```bash
+    sudo shutdown -r now
+    ```
++   17、创建UFW NGINX应用程序配置文件： 
+    ```bash
+    sudo vim /etc/ufw/applications.d/nginx
+    ```
 +   18、复制/粘贴以下内容：
     ```bash
     [Nginx HTTP]
