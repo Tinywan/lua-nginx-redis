@@ -18,16 +18,16 @@
 +   更新系统：`sudo apt update && sudo apt upgrade -y`
 ####    从源代码构建NGINX
 +   1、NGINX是用C编写的程序，所以我们需要安装C编译器（GCC）。
-    ```bash
+
     sudo apt install build-essential -y
-    ```
+    
 +   2、下载最新版本的NGINX源代码并解压缩：
-    ```bash
+
     wget https://nginx.org/download/nginx-1.13.1.tar.gz && tar zxvf nginx-1.13.1.tar.gz
-    ```
+    
 +   3、下载NGINX依赖项的源代码并解压缩
     > NGINX依赖于3个库：PCRE，zlib和OpenSSL：
-    ```bash
+    
     # PCRE version 4.4 - 8.40
     wget https://ftp.pcre.org/pub/pcre/pcre-8.40.tar.gz && tar xzvf pcre-8.40.tar.gz
     
@@ -36,21 +36,21 @@
     
     # OpenSSL version 1.0.2 - 1.1.0
     wget https://www.openssl.org/source/openssl-1.1.0f.tar.gz && tar xzvf openssl-1.1.0f.tar.gz
-    ```
+    
 +   4、删除所有.tar.gz文件。我们不再需要了
-    ```bash
+
     wget https://nginx.org/download/nginx-1.13.1.tar.gz && tar zxvf nginx-1.13.1.tar.gz
-    ```
+
 +   5、转到NGINX源目录：``
-    ```bash
+
     cd ~/nginx-1.13.1
-    ```
+
 +   6、有关帮助，您可以通过运行以下列出可用的配置开关
-    ```bash
+
     ./configure --help
-    ```
+
 +   7、配置，编译和安装NGINX：
-    ```bash
+
     ./configure --prefix=/usr/share/nginx \
                 --sbin-path=/usr/sbin/nginx \
                 --modules-path=/usr/lib/nginx/modules \
@@ -105,12 +105,12 @@
                 --with-ld-opt='-Wl,-Bsymbolic-functions -fPIE -pie -Wl,-z,relro -Wl,-z,now'
     make 
     sudo make install
-    ```
+    
 +   8、从主目录中删除所有下载的文件，在这种情况下/home/username：
-    ```bash
+
      cd ~
      rm -r nginx-1.13.1/ openssl-1.1.0f/ pcre-8.40/ zlib-1.2.11/
-    ```
+
 +   9、检查NGINX版本和编译时间选项：
     ```bash
      sudo nginx -v && sudo nginx -V
@@ -173,11 +173,11 @@
     ```bash
     sudo shutdown -r now
     ```
-+   17、创建UFW NGINX应用程序配置文件： 
++   17、创建UFW NGINX应用程序配置文件：    
     ```bash
     sudo vim /etc/ufw/applications.d/nginx
     ```
-+   18、复制/粘贴以下内容：
++   18、复制/粘贴以下内容：   
     ```bash
     [Nginx HTTP]
     title=Web Server (Nginx, HTTP)
@@ -204,3 +204,10 @@
       # Nginx HTTPS
       # OpenSSH
     ```
+### Build
+
+cd to NGINX source directory & run this:
+
+    ./configure --add-module=/path/to/nginx-rtmp-module
+    make
+    make install    
