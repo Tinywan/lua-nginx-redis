@@ -1,5 +1,6 @@
 ## <a name="index"/>目录
 +   Nginx 教程 
+    +   [Nginx安装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-install.md)
     +   [Nginx基础知识](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-basic.md)
     +   [Nginx高性能WEB服务器详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-high-basic.md) 
     +   [nginx 并发数问题思考](#Nginx_base_knowledge)
