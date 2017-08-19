@@ -1,20 +1,18 @@
 ##  服务启动、停止和重启脚本
 +   [PHP-FPM](#PHP-FPM)
 +   [Nginx](#Nginx)
-#### PHP-FPM
+#### <a name="PHP-FPM"/> PHP-FPM
 + 下载文件[php-fpm.sh](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/PHP/PHP-FPM/php-fpm.sh)
 + CP到默认开启的服务脚本：
 
     ```
     sudo cp php-fpm.sh  /etc/init.d/php-fpm
-    ```
-    
+    ``` 
 + 给予权限：
 
     ```
     sudo chmod +x /etc/init.d/nginx
     ```
-    
 + 使用`sysv-rc-conf`安装，[如何安装sysv-rc-conf管理服务](http://blog.csdn.net/gatieme/article/details/45251389)
 + `php-fpm.sh`代码
 
@@ -154,16 +152,14 @@
     
     esac
     ```      
-    
 +   运行效果
 
     ```bash
     www@tinywan:~$ sudo service php-fpm restart
-    Stopping PHP-FPM Server ... .				[OK]
-    Starting PHP-FPM Server ...                 [OK]
+    Stopping PHP-FPM Server ...             [OK]
+    Starting PHP-FPM Server ...             [OK]
     ```
-    
-####  Nginx
+####  <a name="Nginx"/> Nginx
 +   查看当前nginx是否已经在开机启动项里面: 
 
     ```bash
@@ -563,14 +559,12 @@
      * Stopping Nginx Server...      [ OK ] 
      * Starting Nginx Server...      [ OK ]
     ```
-    
 +   根据自己环境，配置文件路径，下面修改为Openresty下的Nginx启动项(Nginx 安装在/opt/openresty/目录下)
   
     ```bash
     sudo vim /etc/init.d/nginx
     NGINXPATH=${NGINXPATH:-/opt/openresty/nginx}
     ```
-    
 +   参考文章：    
     +   [linux wget 命令用法详解(附实例说明)](http://www.jb51.net/LINUXjishu/86326.html)     
     +   [理解Linux系统/etc/init.d目录和/etc/rc.local脚本](http://blog.csdn.net/acs713/article/details/7322082)     
