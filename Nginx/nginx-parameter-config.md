@@ -1,5 +1,16 @@
-# Nginx 高并发系统内核优化
-## socket 优化
+## 高并发系统内核优化
++   [Socket优化](#Socket)
+    +   Nginx
+    +   系统内核
++   [文件优化](#file)
+    +   Nginx
+    +   系统内核    
++   [配置文件优化](#config-file)
+    +   Nginx配置文件
+    +   内核配置文件      
+    +   PHP7配置文件      
+    +   PHP-FPM配置文件      
+###  <a name="Socket"/> Socket优化
 #### Nginx 
 +   子进程允许打开的连接数：`worker_connections`
 #### 系统内核 
@@ -22,9 +33,8 @@
         net.ipv4.tcp_fin_timeout = 1
         net.ipv4.tcp_keepalive_time = 30
         ```
-        
     +   执行命令使之生效：`/sbin/sysctl -p`       
-## 文件优化
+###   <a name="file"/> 文件优化
 #### Nginx 
 +   指当一个nginx进程打开的最多文件描述符数目：`worker_rlimit_nofile 100000;`
 #### 系统内核 
@@ -38,9 +48,8 @@
     * soft nofile 65535
     * hard nofile 65535
     ```       
-    
-## 优化配置文件
-+   nginx优化配置文件
+###  <a name="config-file"/> 配置文件优化
++   Nginx配置文件
 
     ```lua
     user  www www;
@@ -134,7 +143,6 @@
       }
     } 
     ```
-    
 +   完整的内核优化配置
 
     ```lua
@@ -171,8 +179,7 @@
     net.ipv4.tcp_keepalive_time = 30
     net.ipv4.ip_local_port_range = 1024    65000
     ```    
-    
-####   PHP7优化
+####   PHP7配置文件
 +   [让PHP7达到最高性能的几个Tips](http://www.laruence.com/2015/12/04/3086.html)
 +   [Nginx+PHP7 安装及配置](http://tchuairen.blog.51cto.com/3848118/1771597/)
 +   启用Zend Opcache
@@ -182,7 +189,6 @@
     opcache.enable=1
     opcache.enable_cli=1
     ```
-    
 +   使用新的编译器,使用新一点的编译器, 推荐GCC 4.8以上, 因为只有GCC 4.8以上PHP才会开启Global Register for opline and execute_data支持, 这个会带来5%左右的性能提升
 +   开启HugePages,然后开启Opcache的huge_code_pages
     +   sfd  `sudo sysctl vm.nr_hugepages=512`
@@ -210,7 +216,6 @@
                 |
                 +---> www.conf  进程服务扩展配置文件
     ```
-
 +   `php.ini`
 
     ```php
