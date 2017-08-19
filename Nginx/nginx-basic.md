@@ -2,7 +2,6 @@
 ## Nginx 基础知识
 ---
 +   [NGINX 所有 Modules](https://www.nginx.com/resources/wiki/modules/)
-+   [Nginx 配置文件 nginx.conf 详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-base-config.md)
 ####    agentzh的Nginx教程（版本2016.07.21）
 +   [agentzh的Nginx教程地址](https://openresty.org/download/agentzh-nginx-tutorials-zhcn.html)
 +   Nginx 变量漫谈（一）
