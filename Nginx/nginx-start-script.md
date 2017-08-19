@@ -1,4 +1,7 @@
-#### php-fpm服务启动、停止和重启脚本
+##  服务启动、停止和重启脚本
++   [PHP-FPM](#PHP-FPM)
++   [Nginx](#Nginx)
+#### PHP-FPM
 + 下载文件[php-fpm.sh](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/PHP/PHP-FPM/php-fpm.sh)
 + CP到默认开启的服务脚本：
 
@@ -160,17 +163,21 @@
     Starting PHP-FPM Server ...                 [OK]
     ```
     
-####  Nginx服务启动、停止和重启脚本
-+   查看当前nginx是否已经在开机启动项里面: `ls /etc/rc*`
+####  Nginx
++   查看当前nginx是否已经在开机启动项里面: 
+
+    ```bash
+    ls /etc/rc*
+    ```
 +   第一种安装方式，下载文件安装
 
     ```bash
-        #使用wget -O 下载并以不同的文件名保存 
-        sudo wget https://raw.github.com/JasonGiedymin/nginx-init-ubuntu/master/nginx -O /etc/init.d/nginx
-        # 给与权限   
-        sudo chmod +x /etc/init.d/nginx
-        # 设置为启动项
-        sudo update-rc.d nginx defaults
+    #使用wget -O 下载并以不同的文件名保存 
+    sudo wget https://raw.github.com/JasonGiedymin/nginx-init-ubuntu/master/nginx -O /etc/init.d/nginx
+    # 给与权限   
+    sudo chmod +x /etc/init.d/nginx
+    # 设置为启动项
+    sudo update-rc.d nginx defaults
     ```
 +   第二种安装方式，和PHP-FPM一样，`nginx.sh`代码
 
