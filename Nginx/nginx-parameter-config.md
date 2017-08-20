@@ -104,33 +104,69 @@
       open_file_cache_valid 30s;
       tcp_nodelay on;
     
+      #gzip  on;
       gzip on;
-      gzip_min_length  1k;
-      gzip_buffers     4 16k;
-      gzip_http_version 1.0;
-      gzip_comp_level 2;
-      gzip_types       text/plain application/x-javascript text/css application/xml;
+      gzip_min_length 1k;
+      gzip_buffes 16 64k;
+      gzip_http_version 1.1;
+      gzip_comp_level 6;
+      gzip_types text/plain application/x-javascript text/css application/javascript text/javascript image/jpeg image/gif image/png application/xml application/json;
       gzip_vary on;
+      gzip_disable "MSIE [1-6].(?!.*SV1)";
+      
+      index  index.php index.html index.htm;
       
       server
       {
           listen       8080;
           server_name  backup.aiju.com;
-          index index.php index.htm;
           root  /www/html/;  #这里的位置很重要，不要写在其它指令里面，我曾经就调试了好久才发现这个问题的
     
           location /status
           {
             stub_status on;
           }
-    
-          location ~ .*\.(php|php5)?$
-          {
-            fastcgi_pass 127.0.0.1:9000;
-            fastcgi_index index.php;
-            include fcgi.conf;
+      
+          location ~ .*\.(html|htm|gif|jpg|jpeg|bmp|png|ico|txt|js|css)$ {
+                  #root /home/www/sansan-web/public;
+                  expires      3d;
           }
-    
+  
+          location ~ ^/(status|ping)$
+          {
+                  include fastcgi_params;
+                  fastcgi_pass unix:/var/run/php7.0.22-fpm.sock;
+                  fastcgi_param SCRIPT_FILENAME $fastcgi_script_name;
+          }
+  
+          location = /favicon.ico {
+              access_log off;
+          }
+  
+          error_page  400 401 402 403 404  /40x.html;
+          #location = /40x.html {
+          #        root   html;
+          #}
+  
+          error_page   500 501 502 503 504  /50x.html;
+          location = /50x.html {
+                  root   html;
+          }
+      
+          # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+          location ~ \.php$ {
+                fastcgi_pass   unix:/var/run/php7.0.22-fpm.sock;
+                fastcgi_index  index.php;
+                fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+                include        fastcgi_params;
+                fastcgi_buffer_size 128k;
+                fastcgi_buffers 4 256k;
+                fastcgi_busy_buffers_size 256k;
+                fastcgi_connect_timeout 300;
+                fastcgi_send_timeout 300;
+                fastcgi_read_timeout 300;
+           }
+
           location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|js|css)$
           {
             expires      30d;
@@ -179,10 +215,8 @@
     net.ipv4.tcp_keepalive_time = 30
     net.ipv4.ip_local_port_range = 1024    65000
     ```    
-####   PHP7配置文件
-+   [让PHP7达到最高性能的几个Tips](http://www.laruence.com/2015/12/04/3086.html)
-+   [Nginx+PHP7 安装及配置](http://tchuairen.blog.51cto.com/3848118/1771597/)
-+   启用Zend Opcache
+####   PHP.ini配置文件优化(PHP7)
++   启用Zend Opcache,php.ini配置文件中加入
 
     ```bash
     zend_extension=opcache.so
@@ -191,9 +225,14 @@
     ```
 +   使用新的编译器,使用新一点的编译器, 推荐GCC 4.8以上, 因为只有GCC 4.8以上PHP才会开启Global Register for opline and execute_data支持, 这个会带来5%左右的性能提升
 +   开启HugePages,然后开启Opcache的huge_code_pages
-    +   sfd  `sudo sysctl vm.nr_hugepages=512`
+    +   系统中开启HugePages  
+    
+        ```bash
+        sudo sysctl vm.nr_hugepages=512
+        ```
     +   分配512个预留的大页内存
-        ```bash 
+    
+        ```bash
         $ cat /proc/meminfo  | grep Huge
         AnonHugePages:    106496 kB
         HugePages_Total:     512
@@ -280,8 +319,8 @@
     # 设置工作进程数(根据实际情况设置)
     pm.max_children = 50
     
-    # 这里需要注意,pm.start_servers 不能小于 pm.min_spare_servers
-    pm.start_servers = 5
+    # pm.start_servers不能小于pm.min_spare_servers,推荐为最大的pm.max_children的%10
+    pm.start_servers = 8
     pm.min_spare_servers = 5
     pm.max_spare_servers = 10
     pm.max_requests = 10240
@@ -358,4 +397,5 @@
     +   [php-fpm - 启动参数及重要配置详解](http://www.4wei.cn/archives/1002061)        
     +   [php-fpm backlog参数潜在问题](http://blog.csdn.net/willas/article/details/11634825)        
     +   [Adjusting child processes for PHP-FPM (Nginx)](https://myshell.co.uk/blog/2012/07/adjusting-child-processes-for-php-fpm-nginx/)     
+    +   [Nginx的worker_processes优化](http://blog.chinaunix.net/uid-26000296-id-3987521.html)
     

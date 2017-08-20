@@ -1,3 +1,4 @@
+## [Ubuntu14.04 从安装软件到卸载软件，删除安装包](Ubuntu-basic.md)
 ## <a name="Linux_base_knowledge"/> Linux 基础知识
 +   检查网卡是否正确工作
     1.  检查系统路由表信息是否正确

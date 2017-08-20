@@ -52,14 +52,14 @@ fastcgi_busy_buffers_size 128k;
 fastcgi_temp_file_write_size 128k;
 
 #gzip模块设置
-gzip on; #开启gzip压缩输出
+gzip on;        #开启gzip压缩输出
 gzip_min_length 1k; #最小压缩文件大小
 gzip_buffers 4 16k; #压缩缓冲区
-gzip_http_version 1.0; #压缩版本（默认1.1，前端如果是squid2.5请使用1.0）
-gzip_comp_level 2; #压缩等级
+gzip_http_version 1.0; #压缩版本（默认1.1，前端如果是squid2.5请使用1.0）开始压缩的http协议版本(可以不设置,目前几乎全是1.1协议)
+gzip_comp_level 2;   #推荐6压缩级别(级别越高,压的越小,越浪费CPU计算资源)
 gzip_types text/plain application/x-javascript text/css application/xml;
 #压缩类型，默认就已经包含text/html，所以下面就不用再写了，写上去也不会有问题，但是会有一个warn。
-gzip_vary on;
+gzip_vary on;   # 是否传输gzip压缩标志
 #limit_zone crawler $binary_remote_addr 10m; #开启限制IP连接数的时候需要使用
 
 upstream blog.ha97.com {
