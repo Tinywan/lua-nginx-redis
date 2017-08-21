@@ -1,6 +1,7 @@
 ## Redis 简易安装教程
 #### 一、编译安装
-+ 下载、解压   		
++ 下载、解压   	
+	
     ```javascript
     wget http://download.redis.io/releases/redis-3.2.8.tar.gz
     tar -zxvf redis-3.2.8.tar.gz
@@ -8,6 +9,7 @@
     ```
 + make 编译
     + 编译之前  
+    
     ```lua
     00-RELEASENOTES  BUGS  CONTRIBUTING  COPYING  deps  INSTALL  Makefile  MANIFESTO  README.md  redis.conf  runtest 
      runtest-cluster  runtest-sentinel  sentinel.conf  src  tests  utils
@@ -31,16 +33,19 @@
 #### 二、部署文件结构
 + 首先为了方便管理，将Redis文件中的conf配置文件和常用命令移动到统一文件中			
 + 创建以下文件目录
+
     ```bash
     ~/redis-3.2.8/src$ sudo mkdir -p /usr/local/redis/bin
     ~/redis-3.2.8/src$ sudo mkdir -p /usr/local/redis/etc
     ```
 + 切换到`redis-3.2.8`目录,移动`redis.conf`配置文件：
+
    ```javascript
    ~/redis-3.2.8/src$ cd ..
    ~/redis-3.2.8$ sudo mv /home/tinywan/redis-3.2.8/redis.conf /usr/local/redis/etc
    ```
 + 继续进入到`src`目录执行其他文件移动：
+
    ```javascript
    ~/redis-3.2.8$ cd src/
    sudo mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli  
@@ -48,11 +53,13 @@
    ```
 #### 三、配置和启动redis服务
 +   编辑`redis.conf`
+
     ```
     cd /usr/local/redis/etc
     vi redis.conf
     ```
 +   需要修改的参数  
+
     ```lua
     --后台运行
     daemonize yes
@@ -109,6 +116,7 @@
     ```
 +   远程链接出现的错误：
     + 错误信息
+    
     ```lua
     DENIED Redis is running in protected mode because protected mode is enabled, 
     no bind address was specified, no authentication password is requested to    clients.......  

@@ -12,8 +12,9 @@
     +  [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
     +  [lua中self.__index = self 详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/oop/self__index.md)      
 +   Redis 教程    
-    +   [Redis基础知识](#Redis_base_knowledge) 
-    +   [Redis 简易安装教程](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md) 
+    +   [Redis 安装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md) 
+    +   [Redis 配置详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-config.md) 
+    +   [Redis 基础知识](#Redis_base_knowledge) 
     +   [Redis 开发与运维](#Redis-DevOps)
     +   [Redis执行Lua脚本基本用法](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-lua.md)    
 +   Openresty 教程
