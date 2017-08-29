@@ -3,6 +3,9 @@
 +   [Nginx](#Nginx)
 #### <a name="PHP-FPM"/> PHP-FPM
 + 下载文件[php-fpm.sh](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/PHP/PHP-FPM/php-fpm.sh)
++ 注意配置文件：`sudo vim /usr/local/php-7.2/etc/php-fpm.conf`
+    +   务必开启配置文件的pid路径：`pid = run/php-fpm.pid`
+    +   否则会报错：`no pid file found - php-fpm is not running ?` 
 + CP到默认开启的服务脚本：
 
     ```
@@ -11,7 +14,7 @@
 + 给予权限：
 
     ```
-    sudo chmod +x /etc/init.d/nginx
+    sudo chmod +x /etc/init.d/php-fpm
     ```
 + 使用`sysv-rc-conf`安装，[如何安装sysv-rc-conf管理服务](http://blog.csdn.net/gatieme/article/details/45251389)
 + `php-fpm.sh`代码
