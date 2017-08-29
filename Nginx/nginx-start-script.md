@@ -177,8 +177,13 @@
     sudo chmod +x /etc/init.d/nginx
     # 设置为启动项
     sudo update-rc.d nginx defaults
-    ```
-+   第二种安装方式，和PHP-FPM一样，`nginx.sh`代码
+    ```
++   需要修改的地方：
+    +   1、`NGINXPATH=${NGINXPATH:-/opt/openresty/nginx}` 修改为自己的路径
+    +   2、`PIDSPATH=${PIDSPATH:-$NGINXPATH/logs}`
+        > 如果在配置文件修改为：`pid /run/nginx.pid;`
+          PIDSPATH=${PIDSPATH:-$NGINXPATH/logs} 修改为：PIDSPATH="/run"
++   第二种安装方式，和PHP-FPM一样，`nginx.sh`代码
 
     ```bash
     #! /bin/sh
@@ -237,7 +242,7 @@
     
     PIDNAME=${PIDNAME:-"nginx"}                   # lets you do $PS-slave
     PIDFILE=${PIDFILE:-$PIDNAME.pid}              # pid file
-    PIDSPATH=${PIDSPATH:-$NGINXPATH/logs}         # default pid location, you should change it
+    PIDSPATH=${PIDSPATH:-$NGINXPATH/logs}         # default pid location, you should change it // 注意这里的Pid文件路径var/run
     RUNAS=${RUNAS:-root}                          # user to run as
     
     SCRIPT_OK=0           # ala error codes
