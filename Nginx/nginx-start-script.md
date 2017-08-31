@@ -4,8 +4,8 @@
 #### <a name="PHP-FPM"/> PHP-FPM
 + 下载文件[php-fpm.sh](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/PHP/PHP-FPM/php-fpm.sh)
 + 注意配置文件：`sudo vim /usr/local/php-7.2/etc/php-fpm.conf`
-    +   务必开启配置文件的pid路径：`pid = run/php-fpm.pid`
-    +   否则会报错：`no pid file found - php-fpm is not running ?` 
+  > 务必开启配置文件的pid路径：`pid = run/php-fpm.pid`
+    否则会报错：`no pid file found - php-fpm is not running ?` 
 + CP到默认开启的服务脚本：
 
     ```
@@ -17,6 +17,7 @@
     sudo chmod +x /etc/init.d/php-fpm
     ```
 + 使用`sysv-rc-conf`安装，[如何安装sysv-rc-conf管理服务](http://blog.csdn.net/gatieme/article/details/45251389)
+
 ![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/nginx_start_script.png)
 + `php-fpm.sh`代码
 
@@ -182,8 +183,8 @@
 +   需要修改的地方：  
     +   1、`NGINXPATH=${NGINXPATH:-/opt/openresty/nginx}` 修改为自己的路径   
     +   2、`PIDSPATH=${PIDSPATH:-$NGINXPATH/logs}`  pid文件路径
-        > 如果在配置文件修改为：`pid /run/nginx.pid;`
-        PIDSPATH=${PIDSPATH:-$NGINXPATH/logs}修改为：PIDSPATH="/run"
+        > 如果在配置文件修改为：`pid /run/nginx.pid;`  
+          PIDSPATH=${PIDSPATH:-$NGINXPATH/logs}修改为：PIDSPATH="/run"
 +   第二种安装方式，和PHP-FPM一样，`nginx.sh`代码
 
     ```bash
