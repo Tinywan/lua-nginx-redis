@@ -8,7 +8,6 @@
     +   [Nginx和PHP-FPM启动脚本](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-start-script.md)
 +   Lua 教程    
     +  [Lua 基础语法](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/lua-basic.md)
-    +  [Lua 模块与包](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/openresty-resty-module.md) 
     +  [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
     +  [lua中self.__index = self 详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/oop/self__index.md)      
 +   Redis 教程    

@@ -17,6 +17,7 @@
     sudo chmod +x /etc/init.d/php-fpm
     ```
 + 使用`sysv-rc-conf`安装，[如何安装sysv-rc-conf管理服务](http://blog.csdn.net/gatieme/article/details/45251389)
+![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/nginx_start_script.png)
 + `php-fpm.sh`代码
 
     ```
@@ -169,7 +170,7 @@
     ls /etc/rc*
     ```
 +   第一种安装方式，下载文件安装
-
+    
     ```bash
     #使用wget -O 下载并以不同的文件名保存 
     sudo wget https://raw.github.com/JasonGiedymin/nginx-init-ubuntu/master/nginx -O /etc/init.d/nginx
@@ -177,12 +178,12 @@
     sudo chmod +x /etc/init.d/nginx
     # 设置为启动项
     sudo update-rc.d nginx defaults
-    ```
-+   需要修改的地方：
-    +   1、`NGINXPATH=${NGINXPATH:-/opt/openresty/nginx}` 修改为自己的路径
-    +   2、`PIDSPATH=${PIDSPATH:-$NGINXPATH/logs}`
+    ```
++   需要修改的地方：  
+    +   1、`NGINXPATH=${NGINXPATH:-/opt/openresty/nginx}` 修改为自己的路径   
+    +   2、`PIDSPATH=${PIDSPATH:-$NGINXPATH/logs}`  pid文件路径
         > 如果在配置文件修改为：`pid /run/nginx.pid;`
-          PIDSPATH=${PIDSPATH:-$NGINXPATH/logs} 修改为：PIDSPATH="/run"
+        PIDSPATH=${PIDSPATH:-$NGINXPATH/logs}修改为：PIDSPATH="/run"
 +   第二种安装方式，和PHP-FPM一样，`nginx.sh`代码
 
     ```bash
@@ -239,12 +240,10 @@
     NGINXPATH=${NGINXPATH:-/opt/openresty/nginx}      # root path where installed
     DAEMON=${DAEMON:-$NGINXPATH/sbin/nginx}       # path to daemon binary
     NGINX_CONF_FILE=${NGINX_CONF_FILE:-$NGINXPATH/conf/nginx.conf} # config file path
-    
     PIDNAME=${PIDNAME:-"nginx"}                   # lets you do $PS-slave
     PIDFILE=${PIDFILE:-$PIDNAME.pid}              # pid file
-    PIDSPATH=${PIDSPATH:-$NGINXPATH/logs}         # default pid location, you should change it // 注意这里的Pid文件路径var/run
+    PIDSPATH=${PIDSPATH:-$NGINXPATH/logs}         # default pid location, you should change it
     RUNAS=${RUNAS:-root}                          # user to run as
-    
     SCRIPT_OK=0           # ala error codes
     SCRIPT_ERROR=1        # ala error codes
     TRUE=1                # boolean
