@@ -573,6 +573,45 @@
     sudo vim /etc/init.d/nginx
     NGINXPATH=${NGINXPATH:-/opt/openresty/nginx}
     ```
++   `Ubuntu 16.04.2 LTS` 启动脚本`nginx_16.05.sh`,[Nginx官方参考](https://www.nginx.com/resources/wiki/start/topics/tutorials/solaris_11/#startup-script)
+    
+    ```bash
+    #!/bin/sh
+    unalias stop
+    NGINX_CMD="/opt/nginx/sbin/nginx"
+    NGINX_CONF="/opt/nginx/conf/nginx.conf"
+    RETVAL=0
+    start() {
+       echo "Starting NGINX Web Server: \c"
+       $NGINX_CMD -c $NGINX_CONF &
+       RETVAL=$?
+       [ $RETVAL -eq 0 ] && echo "ok" || echo "failed"
+       return $RETVAL
+    }
+    stop() {
+       echo "Stopping NGINX Web Server: \c"
+       $NGINX_CMD -s quit
+       RETVAL=$?
+       [ $RETVAL -eq 0 ] && echo "ok" || echo "failed"
+       return $RETVAL
+    }
+    case "$1" in
+       start)
+          start
+          ;;
+       stop)
+          stop
+          ;;
+       restart)
+          stop
+          start
+          ;;
+       *)
+          echo "Usage: $0 {start|stop|restart}"
+          exit 1
+    esac
+    exit $RETVAL
+    ```
 +   参考文章：    
     +   [linux wget 命令用法详解(附实例说明)](http://www.jb51.net/LINUXjishu/86326.html)     
     +   [理解Linux系统/etc/init.d目录和/etc/rc.local脚本](http://blog.csdn.net/acs713/article/details/7322082)     
