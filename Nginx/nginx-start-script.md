@@ -18,7 +18,7 @@
     ```
 + 使用`sysv-rc-conf`安装，[如何安装sysv-rc-conf管理服务](http://blog.csdn.net/gatieme/article/details/45251389)
 
-![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/nginx_start_script.png)
+  ![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/nginx_start_script.png)
 + `php-fpm.sh`代码
 
     ```
