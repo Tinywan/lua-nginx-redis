@@ -182,6 +182,7 @@
             ;;
     esac    
     ```
++   注册事件，开机启动：`update-rc.d redis defaults`
 +   启动服务：`sudo systemctl start redis`
 +   停止服务：`sudo systemctl stop redis`
 +   查看服务是否启动：
