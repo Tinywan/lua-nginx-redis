@@ -124,8 +124,74 @@
     +   修改配置文件：`protected-mode yes` 修改为`protected-mode no `  
 +   查看远程Redis服务器的版本 `redis-cli -h 192.168.1.3 info | grep 'redis_version'`
 
+#### 四、Redis开机启动的方法
++   [Linux中设置Redis开机启动的方法](http://www.jb51.net/article/110286.htm)
++   环境：`Ubuntu 16.04.2 LTS`
++   编辑脚本：`vim /etc/init.d/redis `
 
+    ```javascript
+    #!/bin/sh
+    #
+    # Simple Redis init.d script conceived to work on Linux systems
+    # as it does use of the /proc filesystem.
+    ### BEGIN INIT INFO
+    # Provides:   redis6379
+    # Required-Start: $local_fs $network
+    # Required-Stop:  $local_fs
+    # Default-Start:  2 3 4 5
+    # Default-Stop:  0 1 6
+    # Short-Description: redis6379
+    # Description:  penavico redis 6379
+    ### END INIT INFO
+    
+    REDISPORT=6379  # 【1】修改一
+    EXEC=/usr/local/bin/redis-server
+    CLIEXEC=/usr/local/bin/redis-cli
+    
+    PIDFILE=/var/run/redis_${REDISPORT}.pid
+    CONF="/usr/local/redis/etc/redis_6379.conf"  # 【2】修改二
+    
+    case "$1" in
+        start)
+            if [ -f $PIDFILE ]
+            then
+                    echo "$PIDFILE exists, process is already running or crashed"
+            else
+                    echo "Starting Redis server..."
+                    $EXEC $CONF
+            fi
+            ;;
+        stop)
+            if [ ! -f $PIDFILE ]
+            then
+                    echo "$PIDFILE does not exist, process is not running"
+            else
+                    PID=$(cat $PIDFILE)
+                    echo "Stopping ..."
+                    $CLIEXEC -p $REDISPORT shutdown
+                    while [ -x /proc/${PID} ]
+                    do
+                        echo "Waiting for Redis to shutdown ..."
+                        sleep 1
+                    done
+                    echo "Redis stopped"
+            fi
+            ;;
+        *)
+            echo "Please use start or stop as first argument"
+            ;;
+    esac    
+    ```
++   启动服务：`sudo systemctl start redis`
++   停止服务：`sudo systemctl stop redis`
++   查看服务是否启动：
 
+    ```javascript
+    www@Tinywan:~/redis-4.0.0/utils$ ps -aux | grep redis
+    root      1722  0.0  0.8  44752  8300 ?        Ssl  13:08   0:00 /usr/local/bin/redis-server 127.0.0.1:6379
+    www       1730  0.0  0.1  14224  1024 pts/0    S+   13:08   0:00 grep --color=auto redis
+    
+    ```
 
 
 
