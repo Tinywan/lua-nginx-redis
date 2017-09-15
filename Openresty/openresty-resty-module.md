@@ -12,13 +12,6 @@
 +   [lua-resty-template 扩展](https://github.com/Tinywan/lua_project_v0.01) 
 +   [lua-resty-template 扩展](https://github.com/Tinywan/lua_project_v0.01) 
 +   [openresty扫描代码全局变量](#Openresty_all-var) 
-+   [ngx Lua APi 方法和常量](#Openresty_http_status_constants)   
-    +   ngx_lua 核心常量 
-    +   ngx_lua 方法 
-    +   Lua HTTP状态常量
-    +   错误日志级别常量
-    +   API中的常用方法
-+   [ngx Lua APi 介绍使用](#Openresty_ngx_api_used) 
 +   [连接数据库](#Openresty_connent_redis) 
 +   [OpenResty缓存](#Openresty_connent_cache) 
 +   [lua-resty-upstream-healthcheck 使用](#Openresty_lua_resty_upstream_healthcheck) 

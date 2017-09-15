@@ -18,8 +18,8 @@
     +   [Redis执行Lua脚本基本用法](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-lua.md)    
 +   Openresty 教程
     +   [安装默认配置信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/openresty-basic.md) 
-    +   [扩展模块学习](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/openresty-resty-module.md) 
-    +   [ngx_lua APi 方法和常量](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/openresty-resty-module.md) 
+    +   [ngx_lua APi 方法和常量](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/openresty-api.md) 
+    +   [ngx_lua 扩展模块学习](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/openresty-resty-module.md) 
     +   [lua-resty-upstream-healthcheck使用](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-upstream-healthcheck.md) 
     +   [Openresty与Nginx_RTMP](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/openresty-rtmp.md) 
 +   PHP 教程
