@@ -22,6 +22,7 @@
     +   [ngx_lua 扩展模块学习](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/openresty-resty-module.md) 
     +   [lua-resty-upstream-healthcheck使用](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/lua-resty-upstream-healthcheck.md) 
     +   [Openresty与Nginx_RTMP](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/openresty-rtmp.md) 
+    +   [自己写的一个简单项目lua_project_v0.01](https://github.com/Tinywan/lua_project_v0.01) 
 +   PHP 教程
     +   [PHP脚本](#PHP_base_knowledge) 
          +   [PHP脚本运行Redis](#PHP_Run_Redis)
