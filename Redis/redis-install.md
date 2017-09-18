@@ -90,12 +90,13 @@
     
     rename-command DEBUG "tinywangithubDEBUG"
     ```
-+   启动redis服务，并指定启动服务配置文件，检测运行端口	
++   启动redis服务，并指定启动服务配置文件，检测运行端口，为了安全，请不要使用root用户去启动	
     ```java
-    $ sudo /usr/local/redis/bin/redis-server /usr/local/redis/etc/redis63700.conf
+    $ sudo chown -R www:www  /usr/local/redis/    //赋予指定该用户组，而非root账号
+    $ /usr/local/redis/bin/redis-server /usr/local/redis/etc/redis63700.conf
     $ ps -aux | grep redis
-    root      70764  0.6  0.1  38160      0:00 /usr/local/redis/bin/redis-server 127.0.0.1:63700
-    tinywan   70768  0.0  0.0  15984      0:00 grep --color=auto redis
+    www      70764  0.6  0.1  38160      0:00 /usr/local/redis/bin/redis-server 127.0.0.1:63700
+    www   70768  0.0  0.0  15984      0:00 grep --color=auto redis
     ```
 +   redis-cli启动、检测重置命令是否生效（结果：配置文件已经OK）
     ```lua
@@ -194,8 +195,18 @@
     
     ```
 
+#### 五、Redis数据迁移
++   查找RDB文件：
 
-
+    ```sudo find / -name dump.rdb```
++   进行远程拷贝备份文件：
+    
+    ```scp ./dump.rdb www@192.168.1.18:/home/www/redis/```
++   数据迁移步骤如下
+    +   （1）关闭目标Redis服务；    
+    +   （2）将相应的RDB文件或者AOF文件复制过去；    
+    +   （3）设置REDIS的DIR或者开启AOF功能；   
+    +   （4）启动目标REDIS服务；
 
 
 
