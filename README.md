@@ -7,7 +7,7 @@
     +   [Nginx高并发系统内核优化和PHP7配置文件优化](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-parameter-config.md)
     +   [Nginx和PHP-FPM启动脚本](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-start-script.md)
     +   项目案例
-        +   [Nginx单IP多域名配置](Nginx单IP多域名配置)
+        +   [Nginx 同一个IP上配置多个HTTPS主机](https://github.com/Tinywan/lua-nginx-redis/blob/master/Nginx/more-domain-config.md)
 +   Lua 教程    
     +  [Lua 基础语法](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/lua-basic.md)
     +  [luajit 执行文件默认安装路径](#Nginx_base_knowledge) 
