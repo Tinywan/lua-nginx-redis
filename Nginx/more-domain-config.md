@@ -2,12 +2,12 @@
 +   [Nginx 同一个IP上配置多个HTTPS主机](http://www.ttlsa.com/web/multiple-https-host-nginx-with-a-ip-configuration/)
 +   域名列表
 
-    | 序号 | 域名  | HTTPS主机 | 
-    | :------------ |:---------------:| :-----| 
-    | 1  | www.tinywan.com | https://www.tinywan.com/ | 
-    | 2   | live.tinywan.com | https://live.tinywan.com/ |
-    | 3    | vod.tinywan.com | https://vod.tinywan.com/ |
-    | 4    | doc.tinywan.com | https://doc.tinywan.com/ |
+    | 序号 | 名称 | 域名  | HTTPS主机 | 
+    | :--: |:--: |:---------------:| :-----| 
+    | 1  | 官方域名 | www.tinywan.com | https://www.tinywan.com/ | 
+    | 2  | 直播域名 | live.tinywan.com | https://live.tinywan.com/ |
+    | 3  | 点播域名 | vod.tinywan.com | https://vod.tinywan.com/ |
+    | 4  | 文档域名 | doc.tinywan.com | https://doc.tinywan.com/ |
 
 +   Openresty 编译
     
