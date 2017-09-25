@@ -56,7 +56,7 @@ shell_unlock(){
 mysql_zip(){
     cd $SHELL_DIR
     /bin/bzip2 $BACKUP_NAME
-    find ./ -mindepth 1 -maxdepth 3 -type f -name *.bz2 -mmin +43200 | xargs rm -rf
+    find ./ -mindepth 1 -maxdepth 3 -type f -name '*.bz2' -mmin +43200 | xargs rm -rf #进行查找资料，多文件的查找的时候需要增加单引号
     find ./ -mindepth 1 -maxdepth 3 -type f -name *.sql -mmin +1440 | xargs rm -rf
     find ./ -mindepth 1 -maxdepth 3 -type f -name *.log -mmin +1440 | xargs rm -rf
 }
