@@ -1,6 +1,7 @@
 ##  服务启动、停止和重启脚本
 +   [PHP-FPM](#PHP-FPM)
 +   [Nginx](#Nginx)
+##  Ubuntu 14.04.2 LTS 启动脚本
 #### <a name="PHP-FPM"/> PHP-FPM
 + 下载文件[php-fpm.sh](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/PHP/PHP-FPM/php-fpm.sh)
 + 注意配置文件：`sudo vim /usr/local/php-7.2/etc/php-fpm.conf`
@@ -565,7 +566,7 @@
     sudo vim /etc/init.d/nginx
     NGINXPATH=${NGINXPATH:-/opt/openresty/nginx}
     ```
-+   `Ubuntu 14.04.2 LTS `开启服务
++   开启服务
 
     ```bash
     www@tinywan:~$ sudo service nginx restart
@@ -573,13 +574,80 @@
      * Stopping Nginx Server...      [ OK ] 
      * Starting Nginx Server...      [ OK ]
     ```    
-+   `Ubuntu 16.04.2 LTS` 开启服务
+##  Ubuntu 16.04.2 LTS  启动脚本
+#### <a name="PHP-FPM-16"/> PHP-FPM
++   `php-fpm.sh`代码 同上
++   注意，需要重新加载服务：
+
+    ```
+    sudo systemctl daemon-reload
+    ```
++   开启服务
+
+    ```bash
+    www@TinywanAliYun:~/build$ sudo systemctl start php-fpm.service
+    ```    
+####  <a name="Nginx-16"/> Nginx 
++   `nginx.sh`代码：
+
+    ```javascript
+    #!/bin/sh
+    unalias stop
+    NGINX_CMD="/opt/nginx/sbin/nginx"
+    NGINX_CONF="/opt/nginx/conf/nginx.conf"
+    RETVAL=0
+    start() {
+       echo "Starting NGINX Web Server: \c"
+       $NGINX_CMD -c $NGINX_CONF &
+       RETVAL=$?
+       [ $RETVAL -eq 0 ] && echo "ok" || echo "failed"
+       return $RETVAL
+    }
+    stop() {
+       echo "Stopping NGINX Web Server: \c"
+       $NGINX_CMD -s quit
+       RETVAL=$?
+       [ $RETVAL -eq 0 ] && echo "ok" || echo "failed"
+       return $RETVAL
+    }
+    case "$1" in
+       start)
+          start
+          ;;
+       stop)
+          stop
+          ;;
+       restart)
+          stop
+          start
+          ;;
+       *)
+          echo "Usage: $0 {start|stop|restart}"
+          exit 1
+    esac
+    exit $RETVAL
+    ```  
++ CP到默认开启的服务脚本：
+
+    ```
+    sudo cp nginx.sh  /etc/init.d/nginx
+    ``` 
++ 给予权限：
+
+    ```
+    sudo chmod +x /etc/init.d/nginx
+    ```    
++   加载服务：
+
+    ```
+    sudo systemctl daemon-reload
+    ```    
++   开启服务
 
     ```javascript
     sudo systemctl start nginx
     ```
 +   [辅助]`Ubuntu 16.04.2 LTS` 启动脚本`nginx_16.05.sh`,[Nginx官方参考](https://www.nginx.com/resources/wiki/start/topics/tutorials/solaris_11/#startup-script)
-
 +   参考文章：    
     +   [linux wget 命令用法详解(附实例说明)](http://www.jb51.net/LINUXjishu/86326.html)     
     +   [理解Linux系统/etc/init.d目录和/etc/rc.local脚本](http://blog.csdn.net/acs713/article/details/7322082)     
