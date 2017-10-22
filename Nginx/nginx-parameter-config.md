@@ -219,11 +219,35 @@
 +   启用Zend Opcache,php.ini配置文件中加入
 
     ```bash
-    zend_extension=opcache.so
     opcache.enable=1
+    zend_extension=opcache.so
+    opcache.memory_consumption=128
+    opcache.interned_strings_buffer=8
+    opcache.max_accelerated_files=4000
+    opcache.revalidate_freq=60
+    opcache.fast_shutdown=1
     opcache.enable_cli=1
+    opcache.huge_code_pages=1
+    opcache.file_cache=/tmp
     ```
-+   使用新的编译器,使用新一点的编译器, 推荐GCC 4.8以上, 因为只有GCC 4.8以上PHP才会开启Global Register for opline and execute_data支持, 这个会带来5%左右的性能提升
++  缓存文件记录
+
+    ```bash
+    www@TinywanAliYun:/tmp$ tree -L 6
+    .
+    ├── 8fc9c56d14b6542c6ff7147207730f6b
+    │   └── home
+    │       └── www
+    │           └── web
+    │               └── go-study-line
+    │                   ├── application
+    │                   ├── config
+    │                   ├── public
+    │                   ├── runtime
+    │                   ├── thinkphp
+    │                   └── vendor
+    ```
++  使用新的编译器,使用新一点的编译器, 推荐GCC 4.8以上, 因为只有GCC 4.8以上PHP才会开启Global Register for opline and execute_data支持, 这个会带来5%左右的性能提升
 +   开启HugePages,然后开启Opcache的huge_code_pages
     +   系统中开启HugePages  
     
