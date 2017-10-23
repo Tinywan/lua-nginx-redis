@@ -588,16 +588,46 @@
 +   开启服务
 
     ```bash
-    www@TinywanAliYun:~/build$ sudo systemctl start php-fpm.service
-    ```    
+    sudo systemctl start php-fpm.service
+    ```   
++   停止服务
+
+    ```javascript
+    sudo systemctl stop php-fpm.service
+    ```
++   重启服务
+
+    ```javascript
+    sudo systemctl restart php-fpm.service
+    ```        
++   服务状态
+
+    ```bash
+    sudo systemctl status php-fpm.service
+    ● php-fpm.service - LSB: starts php-fpm
+       Loaded: loaded (/etc/init.d/php-fpm; bad; vendor preset: enabled)
+       Active: active (running) since Sun 2017-10-22 11:16:06 CST; 1 day 5h ago
+         Docs: man:systemd-sysv-generator(8)
+       CGroup: /system.slice/php-fpm.service
+               ├─ 7670 php-fpm: pool www                                                                                                                              
+               ├─ 7711 php-fpm: pool www                                                                                                                              
+               ├─ 7752 php-fpm: pool www                                                                                                                              
+               └─18244 php-fpm: master process (/usr/local/php-7.1.8/etc/php-fpm.conf)                                                                                
+    
+    Oct 22 11:16:06 TinywanAliYun php-fpm[18232]: Stopping PHP-FPM Server ... .                          [OK]
+    Oct 22 11:16:06 TinywanAliYun systemd[1]: Stopped LSB: starts php-fpm.
+    Oct 22 11:16:06 TinywanAliYun systemd[1]: Starting LSB: starts php-fpm...
+    Oct 22 11:16:06 TinywanAliYun php-fpm[18239]: Starting PHP-FPM Server ... [OK]
+    Oct 22 11:16:06 TinywanAliYun systemd[1]: Started LSB: starts php-fpm.
+    ```        
 ###  <a name="Nginx-16"/> Nginx 服务
 +   `nginx.sh`代码：
 
     ```javascript
     #!/bin/sh
     unalias stop
-    NGINX_CMD="/opt/nginx/sbin/nginx"
-    NGINX_CONF="/opt/nginx/conf/nginx.conf"
+    NGINX_CMD="/usr/local/openresty/nginx/sbin/nginx"
+    NGINX_CONF="/usr/local/openresty/nginx/conf/nginx.conf"
     RETVAL=0
     start() {
        echo "Starting NGINX Web Server: \c"
@@ -630,17 +660,17 @@
     esac
     exit $RETVAL
     ```  
-+ CP到默认开启的服务脚本：
++   CP到默认开启的服务脚本：
 
     ```
     sudo cp nginx.sh  /etc/init.d/nginx
     ``` 
-+ 给予权限：
++   给予权限：
 
     ```
     sudo chmod +x /etc/init.d/nginx
     ```    
-+   加载服务：
++   重新加载服务：
 
     ```
     sudo systemctl daemon-reload
@@ -648,10 +678,39 @@
 +   开启服务
 
     ```javascript
-    sudo systemctl start nginx
+    sudo systemctl start nginx.service
     ```
-+   [辅助]`Ubuntu 16.04.2 LTS` 启动脚本`nginx_16.05.sh`,[Nginx官方参考](https://www.nginx.com/resources/wiki/start/topics/tutorials/solaris_11/#startup-script)
-+   参考文章：    
++   停止服务
+
+    ```javascript
+    sudo systemctl stop nginx.service
+    ```
++   重启服务
+
+    ```javascript
+    sudo systemctl restart nginx.service
+    ```        
++   服务状态
+
+    ```bash
+    sudo systemctl status nginx.service 
+    ● nginx.service
+       Loaded: loaded (/etc/init.d/nginx; bad; vendor preset: enabled)
+       Active: active (running) since Mon 2017-10-23 16:48:24 CST; 1min 28s ago
+         Docs: man:systemd-sysv-generator(8)
+      Process: 19089 ExecStop=/etc/init.d/nginx stop (code=exited, status=0/SUCCESS)
+      Process: 19138 ExecStart=/etc/init.d/nginx start (code=exited, status=0/SUCCESS)
+       CGroup: /system.slice/nginx.service
+               ├─19142 nginx: master process /usr/local/openresty/nginx/sbin/nginx -c /usr/local/openresty/nginx/conf/nginx.con
+               ├─19143 nginx: worker process                                                              
+               └─19144 nginx: cache manager process                                                       
+    
+    Oct 23 16:48:24 TinywanAliYun systemd[1]: Starting nginx.service...
+    Oct 23 16:48:24 TinywanAliYun nginx[19138]: Starting NGINX Web Server: ok
+    Oct 23 16:48:24 TinywanAliYun systemd[1]: Started nginx.service.
+    ```  
++   参考文章：   
+    +   [Nginx官方参考](https://www.nginx.com/resources/wiki/start/topics/tutorials/solaris_11/#startup-script) 
     +   [linux wget 命令用法详解(附实例说明)](http://www.jb51.net/LINUXjishu/86326.html)     
     +   [理解Linux系统/etc/init.d目录和/etc/rc.local脚本](http://blog.csdn.net/acs713/article/details/7322082)     
     +   [Ubuntu启动项设置——之update-rc.d 命令使用](http://blog.csdn.net/typ2004/article/details/38712887)   
