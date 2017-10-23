@@ -670,6 +670,11 @@
     ```
     sudo chmod +x /etc/init.d/nginx
     ```    
++   设置为开机启动项：
+
+    ```
+    sudo update-rc.d nginx defaults
+    ```       
 +   重新加载服务：
 
     ```
