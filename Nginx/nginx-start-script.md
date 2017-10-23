@@ -1,8 +1,12 @@
 ##  服务启动、停止和重启脚本
-+   [PHP-FPM](#PHP-FPM)
-+   [Nginx](#Nginx)
-##  Ubuntu 14.04.2 LTS 启动脚本
-### <a name="PHP-FPM"/> PHP-FPM 服务
++   [Ubuntu 14.04.2 LTS 启动脚本](#Ubuntu14)
+    +  PHP-FPM 服务
+    +  Nginx 服务
++   [Ubuntu 16.04.2 LTS 启动脚本](#Ubuntu16)
+    +  PHP-FPM 服务
+    +  Nginx 服务
+##  <a name="Ubuntu14"/>  Ubuntu 14.04.2 LTS 启动脚本
+### PHP-FPM 服务
 + 下载文件[php-fpm.sh](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/PHP/PHP-FPM/php-fpm.sh)
 + 注意配置文件：`sudo vim /usr/local/php-7.2/etc/php-fpm.conf`
   > 务必开启配置文件的pid路径：`pid = run/php-fpm.pid`
@@ -572,13 +576,13 @@
 +   开启服务
 
     ```bash
-    www@tinywan:~$ sudo service nginx restart
+    sudo service nginx restart
     [sudo] password for www: 
      * Stopping Nginx Server...      [ OK ] 
      * Starting Nginx Server...      [ OK ]
     ```    
-##  Ubuntu 16.04.2 LTS  启动脚本
-### <a name="PHP-FPM-16"/> PHP-FPM 服务
+##  <a name="Ubuntu16"/>   Ubuntu 16.04.2 LTS  启动脚本
+### PHP-FPM 服务
 +   `php-fpm.sh`脚本代码 同上
 +   注意，需要重新加载服务：
 
