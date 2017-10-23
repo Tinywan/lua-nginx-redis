@@ -167,7 +167,7 @@
     ```
 ###  <a name="Nginx"/> Nginx 服务
 
-+   **第一种安装方式**
++   第一种安装方式
     +   查看当前nginx是否已经在开机启动项里面: 
     
         ```bash
@@ -578,7 +578,7 @@
      * Starting Nginx Server...      [ OK ]
     ```    
 ##  Ubuntu 16.04.2 LTS  启动脚本
-#### <a name="PHP-FPM-16"/> PHP-FPM
+### <a name="PHP-FPM-16"/> PHP-FPM 服务
 +   `php-fpm.sh`脚本代码 同上
 +   注意，需要重新加载服务：
 
@@ -590,7 +590,7 @@
     ```bash
     www@TinywanAliYun:~/build$ sudo systemctl start php-fpm.service
     ```    
-####  <a name="Nginx-16"/> Nginx 服务
+###  <a name="Nginx-16"/> Nginx 服务
 +   `nginx.sh`代码：
 
     ```javascript
