@@ -111,6 +111,47 @@
         }
     }
     ```
++   配置测试
+    +   打印响应头
+        ```bash
+        www@TinywanAliYun:$ curl -I http://127.0.0.1:8087/
+        HTTP/1.1 200 OK
+        Server: openresty/1.11.2.5
+        Date: Sat, 18 Nov 2017 15:46:55 GMT
+        Content-Type: text/html; charset=utf-8
+        Connection: keep-alive
+        Keep-Alive: timeout=20
+        Vary: Accept-Encoding
+        Expires: Sun, 19 Nov 2017 15:46:55 GMT
+        Cache-Control: max-age=86400
+        Pragma: no-cache
+        Nginx-Cache: HIT
+        ```
+    +   缓存目录
+        ```bash
+        www@TinywanAliYun:~/data/nginx/cache-test$ tree -L 4
+        .
+        ├── 0
+        │   └── 49
+        │       └── 51ab3cb31fd7929a0346796693d53490
+        └── 9
+            └── f4
+                └── 3a020dc16513d3abee9ba74688d53f49
+        
+        4 directories, 2 files
+        www@TinywanAliYun:~/data/nginx/cache-test$ cat 0/49/51ab3cb31fd7929a0346796693d53490 
+        ³QZݵǘ£CZC°(±"58c8b5dd-423e"
+        KEY: 127.0.0.1/favicon.ico // 代理服务IP地址
+        HTTP/1.1 200 OK
+        Server: nginx/1.6.0       // 被代理服务器信息
+        Date: Sat, 18 Nov 2017 14:28:51 GMT
+        Content-Type: image/x-icon
+        Content-Length: 16958
+        Last-Modified: Wed, 15 Mar 2017 03:32:45 GMT
+        Connection: close
+        ETag: "58c8b5dd-423e"
+        Accept-Ranges: bytes
+        ```
 +   `$upstream_cache_status` 包含以下几种状态 
 
     ```bash
