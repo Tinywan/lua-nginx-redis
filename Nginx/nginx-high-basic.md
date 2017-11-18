@@ -270,7 +270,7 @@
         ```   
             
 ## <a name="Nginx_Web8_knowledge"/>  第八章   缓存机制
-+   测试一
++   [Proxy Cache 缓存机制](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-8-proxy_cache.md)
 ## <a name="Nginx_Web9_knowledge"/>  第九章   Nginx初探1
 +   测试一
 ## <a name="Nginx_Web10_knowledge"/>  第十章   Nginx初探1
