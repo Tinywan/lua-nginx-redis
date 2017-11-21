@@ -629,40 +629,67 @@
 
     ```javascript
     #!/bin/sh
-    unalias stop
-    NGINX_CMD="/usr/local/openresty/nginx/sbin/nginx"
-    NGINX_CONF="/usr/local/openresty/nginx/conf/nginx.conf"
-    RETVAL=0
-    start() {
-       echo "Starting NGINX Web Server: \c"
-       $NGINX_CMD -c $NGINX_CONF &
-       RETVAL=$?
-       [ $RETVAL -eq 0 ] && echo "ok" || echo "failed"
-       return $RETVAL
-    }
-    stop() {
-       echo "Stopping NGINX Web Server: \c"
-       $NGINX_CMD -s quit
-       RETVAL=$?
-       [ $RETVAL -eq 0 ] && echo "ok" || echo "failed"
-       return $RETVAL
-    }
+     
+    ### BEGIN INIT INFO
+    # Provides:          nginx
+    # Required-Start:    $all
+    # Required-Stop:     $all
+    # Default-Start:     2 3 4 5
+    # Default-Stop:      0 1 6
+    # Short-Description: starts the nginx web server
+    # Description:       starts nginx using start-stop-daemon
+    ### END INIT INFO
+     
+    PATH=/opt/bin:/opt/sbin:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+    DAEMON=/usr/local/openresty/nginx/sbin/nginx
+    NAME=nginx
+    DESC=nginx
+     
+    test -x $DAEMON || exit 0
+     
+    # Include nginx defaults if available
+    if [ -f /etc/default/nginx ] ; then
+            . /etc/default/nginx
+    fi
+     
+    set -e
+     
     case "$1" in
-       start)
-          start
+      start)
+            echo -n "Starting $DESC: "
+            start-stop-daemon --start --quiet --pidfile /var/run/nginx.pid \
+                    --exec $DAEMON -- $DAEMON_OPTS
+            echo "$NAME."
+            ;;
+      stop)
+            echo -n "Stopping $DESC: "
+            start-stop-daemon --stop --quiet --pidfile /var/run/nginx.pid \
+                    --exec $DAEMON
+            echo "$NAME."
+            ;;
+      restart|force-reload)
+            echo -n "Restarting $DESC: "
+            start-stop-daemon --stop --quiet --pidfile \
+                    /var/run/nginx.pid --exec $DAEMON
+            sleep 1
+            start-stop-daemon --start --quiet --pidfile \
+                    /var/run/nginx.pid --exec $DAEMON -- $DAEMON_OPTS
+            echo "$NAME."
+            ;;
+      reload)
+          echo -n "Reloading $DESC configuration: "
+          start-stop-daemon --stop --signal HUP --quiet --pidfile /var/run/nginx.pid \
+              --exec $DAEMON
+          echo "$NAME."
           ;;
-       stop)
-          stop
-          ;;
-       restart)
-          stop
-          start
-          ;;
-       *)
-          echo "Usage: $0 {start|stop|restart}"
-          exit 1
+      *)
+            N=/etc/init.d/$NAME
+            echo "Usage: $N {start|stop|restart|force-reload}" >&2
+            exit 1
+            ;;
     esac
-    exit $RETVAL
+     
+    exit 0
     ```  
 +   CP到默认开启的服务脚本：
 
