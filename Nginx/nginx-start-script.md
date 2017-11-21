@@ -625,6 +625,7 @@
     Oct 22 11:16:06 TinywanAliYun systemd[1]: Started LSB: starts php-fpm.
     ```        
 ###  <a name="Nginx-16"/> Nginx 服务
++   [Debian/Ubuntu Nginx init Script](http://kbeezie.com/debian-ubuntu-nginx-init-script/)
 +   `nginx.sh`代码：
 
     ```javascript
