@@ -625,7 +625,11 @@
     Oct 22 11:16:06 TinywanAliYun systemd[1]: Started LSB: starts php-fpm.
     ```        
 ###  <a name="Nginx-16"/> Nginx 服务
-+   [Debian/Ubuntu Nginx init Script](http://kbeezie.com/debian-ubuntu-nginx-init-script/)
++   [Debian/Ubuntu Nginx init Script](http://kbeezie.com/debian-ubuntu-nginx-init-script/)  
+
+    > [1]通常情况下，如果你从存储库安装Nginx，这个初始化脚本已经包含在内。但是，如果您从源代码安装，或者没有使用标准路径，您可能需要这个。  
+      [2]如果发现停止/重新启动等不起作用，则您的pid文件位置可能不正确。您可以将其设置在nginx.conf中，也可以在此处更改init脚本以指向正确的pid位置
+    
 +   `nginx.sh`代码：
 
     ```javascript
