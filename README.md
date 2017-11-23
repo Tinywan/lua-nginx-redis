@@ -1,16 +1,16 @@
 ## <a name="index"/>目录
-+   Nginx 教程(Nginx tutorial) 
++   Nginx 教程 （Nginx tutorial） 
     +   [Nginx编译安装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-install.md)
     +   [Nginx.conf详解和配置](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-base-config.md)
     +   [Nginx基础知识](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-basic.md)
     +   [Nginx高性能WEB服务器详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-high-basic.md) 
     +   [Nginx高并发系统内核优化和PHP7配置文件优化](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-parameter-config.md)
     +   [Nginx和PHP-FPM启动脚本](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-start-script.md)
-    +   项目案例(Project notes)
+    +   项目案例 （Project notes）
         +   [Nginx 同一个IP上配置多个HTTPS主机](https://github.com/Tinywan/lua-nginx-redis/blob/master/Nginx/more-domain-config.md)
-        +   [如何配置一个安全的HTTPS网站服务器](http://www.cnblogs.com/tinywan/p/7542629.html)
-        +   [Web 服务启用 HTTP/2](http://www.cnblogs.com/tinywan/p/7860774.html)
-    +   扩展模块(Third-party module)
+        +   [Nginx 如何配置一个安全的HTTPS网站服务器](http://www.cnblogs.com/tinywan/p/7542629.html)
+        +   [Nginx 配置启用 HTTP/2](http://www.cnblogs.com/tinywan/p/7860774.html)
+    +   扩展模块 （Third-party module）
         +   [nginx-vod-module](http://www.cnblogs.com/tinywan/p/7879559.html)    
         +   [nginx-module-vts](http://www.cnblogs.com/tinywan/p/7872366.html)    
         +   [ngx_cache_purge](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-8-proxy_cache.md)    
