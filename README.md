@@ -13,7 +13,7 @@
     +   扩展模块(Third-party module)
         +   [nginx-vod-module](http://www.cnblogs.com/tinywan/p/7879559.html)    
         +   [nginx-module-vts](http://www.cnblogs.com/tinywan/p/7872366.html)    
-        +   [ngx_cache_purge](http://www.cnblogs.com/tinywan/p/7864935.html)    
+        +   [ngx_cache_purge](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-8-proxy_cache.md)    
         +   [lua-nginx-module](http://www.cnblogs.com/tinywan/p/6538006.html)    
         +   [nginx-rtmp-module](http://www.cnblogs.com/tinywan/p/6639360.html)    
 +   Lua 教程    
