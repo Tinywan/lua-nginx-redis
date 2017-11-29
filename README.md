@@ -50,73 +50,12 @@
 +   流媒体教程         
     + [Nginx配置Rtmp支持Hls的直播和点播功能](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod.md)
     + [HLS视频直播和点播的Nginx的Location的配置信息(成功)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/HLS-live-vod-locatiuon-config.md)     
-## 开发过程记录
-## <a name="githubpush"/> Visual Studio Code 向github提交代码不用输入帐号密码    
-+   在命令行输入以下命令
-    ```
-    git config --global credential.helper store
-    ```
-    > 这一步会在用户目录下的.gitconfig文件最后添加:
-    ```
-    [credential]
-    helper = store
-    ```
-+   push 代码
-    > push你的代码 (git push), 这时会让你输入用户名和密码, 这一步输入的用户名密码会被记住, 下次再push代码时就不用输入用户名密码!这一步会在用户目录下生成文件.git-credential记录用户名密码的信息。
-+   Markdown 的超级链接技术
-    > 【1】需要链接的地址：
-    ```
-    [解决向github提交代码不用输入帐号密码](#githubpush)  
-    ```
-    > 【2】要链接到的地方：
-    ``` 
-    <a name="githubpush"/> 解决向github提交代码不用输入帐号密码
-    ```
-    > 通过【1】和【2】可以很完美的实现一个连接哦！
-# 掘金爬虫
 
-![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/github_good1.png)
-
-# Lua-Ngx
+## Lua-Ngx
 ![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Nginx-Phase.png)
-# Live demo
 
-Changes are automatically rendered as you type.
+## 随意打赏我  
 
-* Follows the [CommonMark](http://commonmark.org/) spec
-* Renders actual, "native" React DOM elements
-* Allows you to escape or skip HTML (try toggling the checkboxes above)
-* If you escape or skip the HTML, no `dangerouslySetInnerHTML` is used! Yay!
-
-## HTML block below
-
-<blockquote>
-    This blockquote will change based on the HTML settings above.
-</blockquote>
-
-## How about some code?
-```js
-var React = require('react');
-var Markdown = require('react-markdown');
-
-React.render(
-    <Markdown source="# Your markdown here" />,
-    document.getElementById('content')
-);
-```
-
-Pretty neat, eh?
-
-## More info?
-
-Read usage information and more on [GitHub](//github.com/rexxars/react-markdown)
-
----------------
-
-A component by [VaffelNinja](http://vaffel.ninja) / Espen Hovlandsdal
-
-##  <a name="Linux_base_knowledge"/> Copyright and License
-
-This module is licensed under the BSD license  
-
-Copyright (C) 2017, by Wanshaobo "Tinywan".  
+|支付宝打赏|微信打赏|
+|:----:|:----:|
+|![image](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/alipay.png)|![image](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/wechat.png)|
