@@ -1,3 +1,6 @@
+![Author](https://img.shields.io/badge/Author-Tinywan-green.svg)
+[![Conda](https://img.shields.io/conda/pn/conda-forge/python.svg)]()
+[![GitHub license](https://img.shields.io/github/license/Tinywan/tinywan-react-app.svg)](https://github.com/Tinywan/tinywan-react-app/blob/master/LICENSE)
 ## <a name="index"/>目录
 +   Nginx 教程 （Nginx tutorial） 
     +   [Nginx编译安装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-install.md)
