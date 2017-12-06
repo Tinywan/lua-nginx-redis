@@ -1,5 +1,5 @@
 #   在Ubuntu 16.04中如何从源代码编译Nginx
-+   NGINX可用作HTTP / HTTPS服务器，反向代理服务器，邮件代理服务器，负载均衡器，TLS终结器或缓存服务器。它是相当模块化的设计。它具有由社区创建的本机模块和第三方模块。以C编程语言编写，它是一个非常快速和轻便的软件。
+NGINX可用作HTTP/HTTPS服务器，反向代理服务器，邮件代理服务器，负载均衡器，TLS终结器或缓存服务器。它是相当模块化的设计。它具有由社区创建的本机模块和第三方模块。以C编程语言编写，它是一个非常快速和轻便的软件。
 
 ##  从源头构建NGINX的要求,强制性要求：
 +   OpenSSL库版本介于1.0.2 - 1.1.0之间
@@ -21,17 +21,17 @@
 +   更新系统：`sudo apt update && sudo apt upgrade -y`
 
 ##  从源代码构建NGINX
-+   1、NGINX是用C编写的程序，所以我们需要安装C编译器（GCC）。
++   NGINX是用C编写的程序，所以我们需要安装C编译器（GCC）。
 
     ```bash
     sudo apt install build-essential -y
     ```
-+   2、下载最新版本的NGINX源代码并解压缩：
++   下载最新版本的NGINX源代码并解压缩：
 
      ```bash
      wget https://nginx.org/download/nginx-1.13.1.tar.gz && tar zxvf nginx-1.13.1.tar.gz
      ```
-+   3、下载NGINX依赖项的源代码并解压缩
++   下载NGINX依赖项的源代码并解压缩
     > NGINX依赖于3个库：PCRE，zlib和OpenSSL：
     
     ```bash
@@ -45,21 +45,21 @@
     wget https://www.openssl.org/source/openssl-1.1.0f.tar.gz && tar xzvf openssl-1.1.0f.tar.gz
     ```
     
-+   4、删除所有.tar.gz文件。我们不再需要了
++   删除所有.tar.gz文件。我们不再需要了
 
     ```bash
     wget https://nginx.org/download/nginx-1.13.1.tar.gz && tar zxvf nginx-1.13.1.tar.gz
     ```
 
-+   5、转到NGINX源目录：``
++   转到NGINX源目录：``
 
         cd ~/nginx-1.13.1
 
-+   6、有关帮助，您可以通过运行以下列出可用的配置开关
++   有关帮助，您可以通过运行以下列出可用的配置开关
 
         ./configure --help
 
-+   7、配置，编译和安装NGINX：
++   配置，编译和安装NGINX：
 
         ./configure --prefix=/usr/share/nginx \
                     --sbin-path=/usr/sbin/nginx \
@@ -116,12 +116,12 @@
         make 
         sudo make install
     
-+   8、从主目录中删除所有下载的文件，在这种情况下/home/username：
++   从主目录中删除所有下载的文件，在这种情况下/home/username：
 
          cd ~
          rm -r nginx-1.13.1/ openssl-1.1.0f/ pcre-8.40/ zlib-1.2.11/
 
-+   9、检查NGINX版本和编译时间选项：
++   检查NGINX版本和编译时间选项：
 
          sudo nginx -v && sudo nginx -V
          
@@ -133,18 +133,18 @@
          # . . .
          # . . .  
          
-+   10、检查语法和潜在错误：
++   检查语法和潜在错误：
 
         sudo nginx -t
         # Will throw this error nginx: [emerg] mkdir() "/var/lib/nginx/body" failed (2: No such file or directory)
         # Just create directory
         mkdir -p /var/lib/nginx && sudo nginx -t
         
-+   11、为NGINX创建systemd单元文件：
++   为NGINX创建systemd单元文件：
 
         sudo vim /etc/systemd/system/nginx.service
     
-+   12、复制/粘贴以下内容：
++   复制/粘贴以下内容：
     > 注意：根据NGINX的编译方式，PID文件和NGINX二进制文件的位置可能不同。
     
         [Unit]
@@ -164,30 +164,30 @@
         [Install]
         WantedBy=multi-user.target
         
-+   13、启动并启用NGINX服务：
++   启动并启用NGINX服务：
 
         sudo systemctl start nginx.service && sudo systemctl enable nginx.service
         
-+   14、检查NGINX是否在重启后启动：
++   检查NGINX是否在重启后启动：
 
         sudo systemctl is-enabled nginx.service
         # enabled
         
-+   15、检查NGINX是否正在运行：
++   检查NGINX是否正在运行：
 
         sudo systemctl status nginx.service
         ps aux | grep nginx
         curl -I 127.0.0.1
     
-+   16、重新启动Ubuntu VPS以验证NGINX是否自动启动：
++   重新启动Ubuntu VPS以验证NGINX是否自动启动：
 
         sudo shutdown -r now
         
-+   17、创建UFW NGINX应用程序配置文件：    
++   创建UFW NGINX应用程序配置文件：    
 
         sudo vim /etc/ufw/applications.d/nginx
         
-+   18、复制/粘贴以下内容：   
++   复制/粘贴以下内容：   
 
         [Nginx HTTP]
         title=Web Server (Nginx, HTTP)
@@ -204,7 +204,7 @@
         description=Small, but very powerful and efficient web server
         ports=80,443/tcp
     
-+   19、现在，验证UFW应用配置文件是否被创建和识别：
++   现在，验证UFW应用配置文件是否被创建和识别：
         sudo ufw app list
         
         # Available applications:
