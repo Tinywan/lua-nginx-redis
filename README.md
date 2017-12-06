@@ -3,7 +3,7 @@
 [![GitHub license](https://img.shields.io/github/license/Tinywan/tinywan-react-app.svg)](https://github.com/Tinywan/tinywan-react-app/blob/master/LICENSE)
 ## <a name="index"/>目录
 +   Nginx 教程 （Nginx tutorial） 
-    +   [Nginx编译安装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-install.md)
+    +   [Nginx编译安装](/Nginx/nginx-install.md)
     +   [Nginx.conf详解和配置](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-base-config.md)
     +   [Nginx基础知识](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-basic.md)
     +   [Nginx高性能WEB服务器详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-high-basic.md) 
