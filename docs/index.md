@@ -37,7 +37,7 @@
     
     * [nginx-rtmp-module](http://www.cnblogs.com/tinywan/p/6639360.html)    
     
-####  Lua 教程    
+####  Lua 教程 （Lua tutorial）    
 
 * [Lua 基础语法](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/lua-basic.md)
 
@@ -45,7 +45,7 @@
 
 * [lua中self.__index = self 详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Lua-Script/oop/self__index.md)   
    
-####  Redis 教程    
+####  Redis 教程 （Redis tutorial）    
 
 * [Redis 安装](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-install.md) 
 
@@ -57,7 +57,7 @@
 
 * [Redis执行Lua脚本基本用法](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis/redis-lua.md)    
 
-####  Openresty 教程
+####  Openresty 教程 （Openresty tutorial）
 
 +   [安装默认配置信息](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Openresty/openresty-basic.md)
  
@@ -71,7 +71,7 @@
 
 +   [自己写的一个简单项目lua_project_v0.01](https://github.com/Tinywan/lua_project_v0.01) 
 
-####  PHP7 教程
+####  PHP7 教程 （PHP7 tutorial）
 
 +   [PHP脚本运行Redis](#PHP_Run_Redis)
 
@@ -79,11 +79,11 @@
 
 +   [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)
      
-####  Linux 教程
+####  Linux 教程 （Linux tutorial）
 
 +   [Linux 基础知识](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Linux/linux-basic.md)    
 
-####  Shell 教程    
+####  Shell 教程 （Shell tutorial）    
 
 +   [编写快速安全Bash脚本的建议](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Shell/write-shell-suggestions.md) 
 
