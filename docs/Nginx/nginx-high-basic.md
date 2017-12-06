@@ -1,31 +1,34 @@
-## <a name="Nginx_Web_knowledge"/>  Nginx高性能WEB服务器详解
-#### <a name="Nginx_Web1_knowledge"/>  第一章   初探
+# <a name="Nginx_Web_knowledge"/>  Nginx高性能WEB服务器详解
+## <a name="Nginx_Web1_knowledge"/>  第一章   初探
 + [Nginx 编译安装以及参数详解](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
 + NGINX变量详解
-    - [x] [nginx变量使用方法详解笔记(1)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/notes-1.md)
-    - [x] [nginx变量使用方法详解笔记(2)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/notes-2.md)
-    - [x] [nginx变量使用方法详解笔记(3)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
+    * [nginx变量使用方法详解笔记(1)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/notes-1.md)
+    * [nginx变量使用方法详解笔记(2)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/notes-2.md)
+    * [nginx变量使用方法详解笔记(3)](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-2-config.md)
 + Nginx指令执行顺序
-    - [x] [Nginx指令执行命令（01）](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-01.md)
-#### <a name="Nginx_Web2_knowledge"/>  第二章   安装部署 
+  * [Nginx指令执行命令（01）](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Develop/command-order-01.md)
+    
+## <a name="Nginx_Web2_knowledge"/>  第二章   安装部署 
 +   启动错误：`Nginx [emerg]: bind() to 0.0.0.0:80 failed (98: Address already in use)`,执行：`sudo fuser -k 80/tcp`  
 +   [基于域名、IP的虚拟主机配置](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-all-config.md)
 +   [完整、标准配置实际示列](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-basic-config.md)
 +   [日志文件配置与切割](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-log-cut.md)
-+   alias 和 root 在location 下的应用
-    - 通过alias 实现别名功能
-       ``` 
-       location /live {  
++   alias 和 root 在location 下的应用  
+    +   通过alias 实现别名功能
+
+        ```bash
+        location /live {  
            alias /home/tinywan/HLS/;
-       }
-       ```
-   - curl 请求结果
-       ``` 
-      tinywan@tinywan:~/HLS$ cat index.html 
-      alias /home/tinywan/HLS/index.html
-      tinywan@tinywan:~/HLS$ curl http://127.0.0.1/live/index.html
-      alias /home/tinywan/HLS/index.html
-       ```
+        }
+        ```
+    +   curl 请求结果
+   
+        ```bash
+        tinywan@tinywan:~/HLS$ cat index.html 
+        alias /home/tinywan/HLS/index.html
+        tinywan@tinywan:~/HLS$ curl http://127.0.0.1/live/index.html
+        alias /home/tinywan/HLS/index.html
+        ```
    - 结论：
        1. cul 请求 `/live/index.html`,那么Nginx将会在服务器上查找`/home/tinywan/HLS/index.html` 文件
        1. 请求的`url` 中的`location`后面的部分会被追加到`alias `指定的目录后面，而`location`后面的`/live`路径将会别自动抛弃 
