@@ -42,12 +42,13 @@
 +   [自己写的一个简单项目lua_project_v0.01](https://github.com/Tinywan/lua_project_v0.01) 
 
 ####  PHP7 教程
-+   [PHP脚本](#PHP_base_knowledge) 
-     +   [PHP脚本运行Redis](#PHP_Run_Redis)
-     +   [PHP7中php.ini/php-fpm/www.conf的配置,Nginx和PHP-FPM的开机自动启动脚本](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/PHP/PHP-FPM/config.md)  
-     +   [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)
++   [PHP脚本运行Redis](#PHP_Run_Redis)
++   [PHP7中php.ini/php-fpm/www.conf的配置,Nginx和PHP-FPM的开机自动启动脚本](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/PHP/PHP-FPM/config.md)  
++   [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)
+     
 ####  Linux 教程
 +   [Linux 基础知识](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Linux/linux-basic.md)    
+
 ####  Shell 教程    
 +   [编写快速安全Bash脚本的建议](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Shell/write-shell-suggestions.md) 
 +   [shell脚本实现分日志级别记录日志](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx-Rtmp/Shell_Log.sh)   

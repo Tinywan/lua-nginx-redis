@@ -1,4 +1,4 @@
-#  [在线文档](http://github.tinywan.com/lua-nginx-redis/)
+#  [在线文档（Online documentation）](http://github.tinywan.com/lua-nginx-redis/)
 ![Author](https://img.shields.io/badge/Author-Tinywan-green.svg)
 [![Conda](https://img.shields.io/conda/pn/conda-forge/python.svg)]()
 [![GitHub license](https://img.shields.io/github/license/Tinywan/tinywan-react-app.svg)](https://github.com/Tinywan/tinywan-react-app/blob/master/LICENSE)
