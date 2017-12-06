@@ -19,27 +19,33 @@
 ####    从源代码构建NGINX
 +   1、NGINX是用C编写的程序，所以我们需要安装C编译器（GCC）。
 
-        sudo apt install build-essential -y
-    
+    ```bash
+    sudo apt install build-essential -y
+    ```
 +   2、下载最新版本的NGINX源代码并解压缩：
 
-        wget https://nginx.org/download/nginx-1.13.1.tar.gz && tar zxvf nginx-1.13.1.tar.gz
-    
+     ```bash
+     wget https://nginx.org/download/nginx-1.13.1.tar.gz && tar zxvf nginx-1.13.1.tar.gz
+     ```
 +   3、下载NGINX依赖项的源代码并解压缩
     > NGINX依赖于3个库：PCRE，zlib和OpenSSL：
     
-        # PCRE version 4.4 - 8.40
-        wget https://ftp.pcre.org/pub/pcre/pcre-8.40.tar.gz && tar xzvf pcre-8.40.tar.gz
-        
-        # zlib version 1.1.3 - 1.2.11
-        wget http://www.zlib.net/zlib-1.2.11.tar.gz && tar xzvf zlib-1.2.11.tar.gz
-        
-        # OpenSSL version 1.0.2 - 1.1.0
-        wget https://www.openssl.org/source/openssl-1.1.0f.tar.gz && tar xzvf openssl-1.1.0f.tar.gz
+    ```bash
+    # PCRE version 4.4 - 8.40
+    wget https://ftp.pcre.org/pub/pcre/pcre-8.40.tar.gz && tar xzvf pcre-8.40.tar.gz
+    
+    # zlib version 1.1.3 - 1.2.11
+    wget http://www.zlib.net/zlib-1.2.11.tar.gz && tar xzvf zlib-1.2.11.tar.gz
+    
+    # OpenSSL version 1.0.2 - 1.1.0
+    wget https://www.openssl.org/source/openssl-1.1.0f.tar.gz && tar xzvf openssl-1.1.0f.tar.gz
+    ```
     
 +   4、删除所有.tar.gz文件。我们不再需要了
 
-        wget https://nginx.org/download/nginx-1.13.1.tar.gz && tar zxvf nginx-1.13.1.tar.gz
+    ```bash
+    wget https://nginx.org/download/nginx-1.13.1.tar.gz && tar zxvf nginx-1.13.1.tar.gz
+    ```
 
 +   5、转到NGINX源目录：``
 
