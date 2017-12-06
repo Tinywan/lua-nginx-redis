@@ -1,20 +1,38 @@
-## 高并发系统内核优化
-+   [Socket优化](#Socket)
-    +   Nginx
-    +   系统内核
-+   [文件优化](#file)
-    +   Nginx
-    +   系统内核    
-+   [配置文件优化](#config-file)
-    +   Nginx配置文件
-    +   内核配置文件      
-    +   PHP7配置文件      
-    +   PHP-FPM配置文件      
-###  <a name="Socket"/> Socket优化
-#### Nginx 
-+   子进程允许打开的连接数：`worker_connections`
-#### 系统内核 
-+   [内核参数的优化](http://blog.csdn.net/moxiaomomo/article/details/19442737)  
+# 高并发系统内核优化
+---
+##  [Socket优化](#Socket)
+
+* Nginx
+
+* 系统内核
+
+##  [文件优化](#file)
+
+* Nginx
+
+* 系统内核    
+
+##  [配置文件优化](#config-file)
+
+* Nginx配置文件
+
+* 内核配置文件      
+
+* PHP7配置文件   
+   
+* PHP-FPM配置文件  
+    
+#  <a name="Socket"/> Socket优化
+## Nginx 
+
+####  子进程允许打开的连接数：
+
+```bash
+worker_connections
+```
+## 系统内核 
+####  [内核参数的优化](http://blog.csdn.net/moxiaomomo/article/details/19442737)  
+
 +   实践优化配置
     +  编辑： `vim /etc/sysctl.conf`
     +  配置结果
@@ -34,11 +52,16 @@
         net.ipv4.tcp_keepalive_time = 30
         ```
     +   执行命令使之生效：`/sbin/sysctl -p`       
-###   <a name="file"/> 文件优化
-#### Nginx 
-+   指当一个nginx进程打开的最多文件描述符数目：`worker_rlimit_nofile 100000;`
-#### 系统内核 
+#   <a name="file"/> 文件优化
+
+## Nginx 
+
+* 指当一个nginx进程打开的最多文件描述符数目：`worker_rlimit_nofile 100000;`
+
+## 系统内核 
+
 +   系统限制其最大进程数：`ulimit -n`
+
 +   编辑文件：`/etc/security/limits.conf`
 
     ```conf
@@ -48,7 +71,8 @@
     * soft nofile 65535
     * hard nofile 65535
     ```       
-###  <a name="config-file"/> 配置文件优化
+##  <a name="config-file"/> 配置文件优化
+
 +   Nginx配置文件
 
     ```lua
@@ -215,7 +239,8 @@
     net.ipv4.tcp_keepalive_time = 30
     net.ipv4.ip_local_port_range = 1024    65000
     ```    
-####   PHP.ini配置文件优化(PHP7)
+##   PHP.ini配置文件优化(PHP7)
+
 +   启用Zend Opcache,php.ini配置文件中加入
 
     ```bash
@@ -248,7 +273,9 @@
     │                   └── vendor
     ```
 +  使用新的编译器,使用新一点的编译器, 推荐GCC 4.8以上, 因为只有GCC 4.8以上PHP才会开启Global Register for opline and execute_data支持, 这个会带来5%左右的性能提升
+
 +   开启HugePages,然后开启Opcache的huge_code_pages
+
     +   系统中开启HugePages  
     
         ```bash
@@ -266,9 +293,13 @@
         Hugepagesize:       2048 kB
         ```
     +   然后在php.ini中加入，`opcache.huge_code_pages=1`
-+   开启Opcache File Cache,`opcache.file_cache=/tmp`   
-+   启用Zend Opcache
-####   PHP-FPM优化
+
+    +   开启Opcache File Cache,`opcache.file_cache=/tmp`
+   
+    +   启用Zend Opcache
+    +   
+##   PHP-FPM优化
+
 +   结构
 
     ```bash
@@ -378,7 +409,8 @@
         ```
         
     +   以下命令将帮助我们确定每个（PHP-FPM）子进程使用的内存：
-        > RSS列显示PHP-FPM进程的未交换的物理内存使用量，单位为千字节
+
+        > RSS列显示PHP-FPM进程的未交换的物理内存使用量，单位为千字节  
         > 平均每个PHP-FPM进程在我的机器上占用大约75MB的RAM
             
         ```php
@@ -392,6 +424,7 @@
         ```
         
     +   在我的情况下是56MB,服务器有16GB的RAM，所以：    
+
         >我留下了一些记忆，让系统呼吸。在计算内存使用情况时，您需要考虑计算机上运行的任何其他服务。
         
         ```php
@@ -417,9 +450,11 @@
         ps --no-headers -o "rss,cmd" -C php-fpm | awk '{ sum+=$1 } END { printf ("%d%s\n", sum/NR/1024,"M") }'
         ```
      
-+   HELP
-    +   [php-fpm - 启动参数及重要配置详解](http://www.4wei.cn/archives/1002061)        
-    +   [php-fpm backlog参数潜在问题](http://blog.csdn.net/willas/article/details/11634825)        
-    +   [Adjusting child processes for PHP-FPM (Nginx)](https://myshell.co.uk/blog/2012/07/adjusting-child-processes-for-php-fpm-nginx/)     
-    +   [Nginx的worker_processes优化](http://blog.chinaunix.net/uid-26000296-id-3987521.html)
+##  HELP
+
++   [php-fpm - 启动参数及重要配置详解](http://www.4wei.cn/archives/1002061)        
++   [php-fpm backlog参数潜在问题](http://blog.csdn.net/willas/article/details/11634825)        
++   [Adjusting child processes for PHP-FPM (Nginx)](https://myshell.co.uk/blog/2012/07/adjusting-child-processes-for-php-fpm-nginx/)  
+    
++   [Nginx的worker_processes优化](http://blog.chinaunix.net/uid-26000296-id-3987521.html)
     
