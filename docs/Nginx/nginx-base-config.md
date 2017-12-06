@@ -1,5 +1,4 @@
-####    [参考地址](https://mp.weixin.qq.com/s/Crj2Xo8-EJpbq40kXronug)
-####    Nginx 配置文件 nginx.conf 详解
+##  Nginx 配置文件 nginx.conf 详解
 
 ```bash
 #定义Nginx运行的用户和用户组

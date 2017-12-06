@@ -2,36 +2,52 @@
 NGINX可用作HTTP/HTTPS服务器，反向代理服务器，邮件代理服务器，负载均衡器，TLS终结器或缓存服务器。它是相当模块化的设计。它具有由社区创建的本机模块和第三方模块。以C编程语言编写，它是一个非常快速和轻便的软件。
 
 ##  从源头构建NGINX的要求,强制性要求：
+
 +   OpenSSL库版本介于1.0.2 - 1.1.0之间
+
 +   Zlib库版本介于1.1.3 - 1.2.11之间
+
 +   PCRE库版本在4.4 - 8.40之间
+
 +   GCC编译器
 
 ##  可选要求：
+
 +   PERL
+
 +   LIBATOMIC_OPS
+
 +   LibFD
+
 +   MaxMind GeoIP
-+   libxml2的
+
++   libxml2
+
 +   libxslt
 
 ##  开始之前
+
 +   创建普通用户`sudo`访问。
+
 +   切换到新用户：`su - <username>`
+
 +   更新系统：`sudo apt update && sudo apt upgrade -y`
 
 ##  从源代码构建NGINX
+
 +   NGINX是用C编写的程序，所以我们需要安装C编译器（GCC）。
 
     ```bash
     sudo apt install build-essential -y
     ```
+    
 +   下载最新版本的NGINX源代码并解压缩：
 
      ```bash
      wget https://nginx.org/download/nginx-1.13.1.tar.gz && tar zxvf nginx-1.13.1.tar.gz
      ```
 +   下载NGINX依赖项的源代码并解压缩
+
     > NGINX依赖于3个库：PCRE，zlib和OpenSSL：
     
     ```bash

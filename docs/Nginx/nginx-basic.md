@@ -1,13 +1,17 @@
 
 # Nginx 基础知识
 ---
+
 +   [NGINX 所有 Modules](https://www.nginx.com/resources/wiki/modules/)
+
 +   [agentzh的Nginx教程地址](https://openresty.org/download/agentzh-nginx-tutorials-zhcn.html)
 
 ##  agentzh的Nginx教程笔记（版本2016.07.21）
 
 ####  Nginx 变量漫谈（一）
+
 * Nginx 变量的值只有一种类型，那就是字符串
+
 * Nginx “变量插值”
 
     ```bash
@@ -16,6 +20,7 @@
         echo "${first}world";
     }
     ```
+    
 * `set` 指令（以及前面提到的 geo 指令）不仅有赋值的功能，它还有创建 Nginx 变量的副作用，即当作为赋值对象的变量尚不存在时   
  
 * Nginx 变量一旦创建，其变量名的可见范围就是整个 Nginx 配置，甚至可以跨越不同虚拟主机的 server 配置块
@@ -23,6 +28,7 @@
 * Nginx 变量的生命期是不可能跨越请求边界的
 
 ####  Nginx 变量漫谈（二）
+
 +   跳转
 
     +   内部跳转：就是在处理请求的过程中，于服务器内部，从一个 location 跳转到另一个 location 的过程。  
@@ -38,6 +44,7 @@
 +   如果你尝试改写另外一些只读的内建变量，比如 $arg_XXX 变量，在某些 Nginx 的版本中甚至可能导致进程崩溃。
 
 ####  Nginx 变量漫谈（三）
+
 +    map 指令：用于定义两个 Nginx 变量之间的映射关系，或者说是函数关系        
     
 +    map 指令只能在 http 块中使用           
@@ -51,18 +58,22 @@
 ####  [Nginx 高并发系统内核优化](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/nginx-parameter-config.md)
 
 ####  [nginx 并发数问题思考：worker_connections,worker_processes与 max clients](http://liuqunying.blog.51cto.com/3984207/1420556?utm_source=tuicool)
+
 +   从用户的角度，http 1.1协议下，由于浏览器默认使用两个并发连接,因此计算方法：
+
     1. nginx作为http服务器的时候：
       
     ```bash
     max_clients = worker_processes * worker_connections/2
     ```
+    
     1. nginx作为反向代理服务器的时候：
       
     ```bash
     max_clients = worker_processes * worker_connections/4
     ```
 +   从一般建立连接的角度,客户并发连接为1：
+
     1. nginx作为http服务器的时候：  
     
     ```bash
@@ -74,5 +85,6 @@
     max_clients = worker_processes * worker_connections/2
     ```    
 +   nginx做反向代理时，和客户端之间保持一个连接，和后端服务器保持一个连接
+
 +   clients与用户数
     > 同一时间的clients(客户端数)和用户数还是有区别的，当一个用户请求发送一个连接时这两个是相等的，但是当一个用户默认发送多个连接请求的时候，clients数就是用户数*默认发送的连接并发数了。    
