@@ -58,7 +58,7 @@
 ## Lua-Ngx
 ![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Nginx-Phase.png)
 
-## 随意打赏我  
+## 随意打赏  
 
 |支付宝打赏|微信打赏|
 |:----:|:----:|
