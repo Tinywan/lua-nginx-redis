@@ -2,10 +2,9 @@
 # Nginx 基础知识
 ---
 +   [NGINX 所有 Modules](https://www.nginx.com/resources/wiki/modules/)
++   [agentzh的Nginx教程地址](https://openresty.org/download/agentzh-nginx-tutorials-zhcn.html)
 
-##  agentzh的Nginx教程（版本2016.07.21）
-
-####  [agentzh的Nginx教程地址](https://openresty.org/download/agentzh-nginx-tutorials-zhcn.html)
+##  agentzh的Nginx教程笔记（版本2016.07.21）
 
 ####  Nginx 变量漫谈（一）
 * Nginx 变量的值只有一种类型，那就是字符串
@@ -23,7 +22,7 @@
 
 * Nginx 变量的生命期是不可能跨越请求边界的
 
-#####  Nginx 变量漫谈（二）
+####  Nginx 变量漫谈（二）
 +   跳转
     +   内部跳转：就是在处理请求的过程中，于服务器内部，从一个 location 跳转到另一个 location 的过程。         
     +   外部跳转： HTTP 状态码 301 和 302 所进行的“外部跳转”
