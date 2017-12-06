@@ -1,7 +1,7 @@
 ####    [参考地址](https://mp.weixin.qq.com/s/Crj2Xo8-EJpbq40kXronug)
 ####    Nginx 配置文件 nginx.conf 详解
 
-```javascript
+```bash
 #定义Nginx运行的用户和用户组
 user www www;
 
@@ -159,7 +159,7 @@ server
 ```            
 ####    常用配置案例
 
-```html
+```bash
 user  nginx nginx;
 worker_processes  1;
 
