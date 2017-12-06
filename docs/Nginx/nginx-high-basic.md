@@ -18,7 +18,9 @@
     
 ## <a name="Nginx_Web2_knowledge"/>  第二章   安装部署 
 
-+   启动错误：`Nginx [emerg]: bind() to 0.0.0.0:80 failed (98: Address already in use)`,执行：`sudo fuser -k 80/tcp`
++   启动错误：
+> `Nginx [emerg]: bind() to 0.0.0.0:80 failed (98: Address already in use)`  
+ 执行：`sudo fuser -k 80/tcp`
   
 +   [基于域名、IP的虚拟主机配置](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Nginx/Nginx-Web/Nginx-2-4-all-config.md)
 
