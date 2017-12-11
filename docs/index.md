@@ -9,6 +9,8 @@
 
 * [Nginx.conf详解和配置](/Nginx/nginx-base-config.md)
 
+* [location 详解](/Nginx/location-detail.md)
+
 * [Nginx基础知识](/Nginx/nginx-basic.md)
 
 * [Nginx高性能WEB服务器详解](/Nginx/nginx-high-basic.md) 
