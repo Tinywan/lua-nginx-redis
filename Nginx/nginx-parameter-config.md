@@ -333,11 +333,12 @@
     listen.mode = 0660
     
     # 开启慢日志
-    slowlog = /var/log/php-fpm/php-slow.log
-    request_slowlog_timeout = 10s
-    # 如果客户端请求出现502请修改以下配置参数，默认值：0，如果执行shell脚本，建议默认就可以
-    # request_terminate_timeout = 30
+    slowlog = /var/log/php-fpm/php-slow.log  
+    request_slowlog_timeout = 10s  
 
+    # 如果客户端请求出现502请修改以下配置参数,默认值：0,如果执行shell脚本,建议默认就可以。
+    request_terminate_timeout = 30   
+    
     #对于专用服务器，pm可以设置为static。
     pm = dynamic 
     
