@@ -541,7 +541,7 @@
      ```
 +   二、php对子进程的三种管理方式
 
-    ```bash
+    ```php
     tatic:
     表示在php-fpm运行时直接fork出 pm.max_chindren个子进程
     dynamic:
@@ -552,7 +552,7 @@
     
 +   三、重要参数的理解与设置
 
-    ```ini
+    ```php
     【重要一】
     request_terminate_timeout = 120
     #表示等待120秒后，结束那些没有自动结束的php脚本，以释放占用的资源。
@@ -601,8 +601,9 @@
     ```
         
 ##  HELP
-    +   [php-fpm - 启动参数及重要配置详解](http://www.4wei.cn/archives/1002061)        
-    +   [php-fpm backlog参数潜在问题](http://blog.csdn.net/willas/article/details/11634825)        
-    +   [Adjusting child processes for PHP-FPM (Nginx)](https://myshell.co.uk/blog/2012/07/adjusting-child-processes-for-php-fpm-nginx/)     
-    +   [Nginx的worker_processes优化](http://blog.chinaunix.net/uid-26000296-id-3987521.html)
++   [php-fpm - 启动参数及重要配置详解](http://www.4wei.cn/archives/1002061)        
++   [php-fpm backlog参数潜在问题](http://blog.csdn.net/willas/article/details/11634825)        
++   [Adjusting child processes for PHP-FPM (Nginx)](https://myshell.co.uk/blog/2012/07/adjusting-child-processes-for-php-fpm-nginx/)     
++   [Nginx的worker_processes优化](http://blog.chinaunix.net/uid-26000296-id-3987521.html)
++   [php-fpm.conf重要参数详解](http://blog.csdn.net/sinat_22991367/article/details/73431269)
     
