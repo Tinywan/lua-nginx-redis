@@ -45,6 +45,10 @@
          +   [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)
 +   Linux 教程
     +   [Linux 基础知识](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Linux/linux-basic.md)    
+    +   Systemd 入门教程    
+        +   [命令篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)      
+        +   [实战篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)      
+        +   [定时器教程](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)      
 +   Shell 教程    
     +   Shell脚本 
         +   [编写快速安全Bash脚本的建议](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Shell/write-shell-suggestions.md) 
