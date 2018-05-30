@@ -5,17 +5,24 @@
 ## <a name="index"/>目录
 #### Nginx 教程 （Nginx tutorial）  
 * [Nginx编译安装](/Nginx/nginx-install.md)  
-* [Nginx.conf详解和配置](/Nginx/nginx-base-config.md)  
-* [Location 详解和配置](/docs/Nginx/location-detail.md)  
+* [Nginx.conf详解](/Nginx/nginx-base-config.md)  
+* [Location 详解](/docs/Nginx/location-detail.md)  
 * [Nginx基础知识](/Nginx/nginx-basic.md)  
 * [Nginx高性能WEB服务器详解](/Nginx/nginx-high-basic.md)   
 * [Nginx高并发系统内核优化和PHP7配置文件优化](/Nginx/nginx-parameter-config.md)   
 * [Nginx和PHP-FPM启动脚本](/Nginx/nginx-start-script.md)  
+* [Nginx的11个Phases](/Nginx/nginx-phases.md)  
+* [agentzh 的 Nginx 教程](https://openresty.org/download/agentzh-nginx-tutorials-zhcn.html)  
+* [Nginx 陷阱和常见错误](h/Nginx/nginx-1-config.md)  
+* [TCP和UDP负载平衡官方参考文档](https://www.cnblogs.com/tinywan/p/6586053.html)  
+* [Nginx 高并发系统内核优化](/Nginx/nginx-parameter-config.md)  
+* [nginx 并发数问题思考：worker_connections,worker_processes与 max clients](http://liuqunying.blog.51cto.com/3984207/1420556?utm_source=tuicool)
 * [如何在工作中提高Ngixn服务器性能?达到高效](https://juejin.im/post/5adb45e96fb9a07ab773c767?utm_source=gold_browser_extension)   
 * 项目案例 （Project notes）  
-  * [Nginx 同一个IP上配置多个HTTPS主机](https://github.com/Tinywan/lua-nginx-redis/blob/master/Nginx/more-domain-config.md)  
+  * [Nginx 同一个IP上配置多个HTTPS主机](/Nginx/more-domain-config.md)  
   * [Nginx 如何配置一个安全的HTTPS网站服务器](http://www.cnblogs.com/tinywan/p/7542629.html)  
   * [Nginx 配置启用 HTTP/2](http://www.cnblogs.com/tinywan/p/7860774.html)  
+  * [申请Let's Encrypt通配符HTTPS证书](https://www.cnblogs.com/tinywan/p/8573169.html)   
 * 扩展模块 （Third-party module）  
   * [nginx-vod-module](http://www.cnblogs.com/tinywan/p/7879559.html)    
   * [nginx-module-vts](http://www.cnblogs.com/tinywan/p/7872366.html)    
