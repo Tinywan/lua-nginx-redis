@@ -14,7 +14,7 @@
 * [如何在工作中提高Ngixn服务器性能?达到高效](https://juejin.im/post/5adb45e96fb9a07ab773c767?utm_source=gold_browser_extension)   
 * 项目案例 （Project notes）  
   * [Nginx 同一个IP上配置多个HTTPS主机](https://github.com/Tinywan/lua-nginx-redis/blob/master/Nginx/more-domain-config.md)  
-  * [Nginx 如何配置一个安全的HTTPS网站服务器]  (http://www.cnblogs.com/tinywan/p/7542629.html)  
+  * [Nginx 如何配置一个安全的HTTPS网站服务器](http://www.cnblogs.com/tinywan/p/7542629.html)  
   * [Nginx 配置启用 HTTP/2](http://www.cnblogs.com/tinywan/p/7860774.html)  
 * 扩展模块 （Third-party module）  
   * [nginx-vod-module](http://www.cnblogs.com/tinywan/p/7879559.html)    
@@ -43,7 +43,7 @@
 * [ngx_lua 扩展模块学习](/Openresty/openresty-resty-module.md)   
 * [lua-resty-upstream-healthcheck使用](/Openresty/lua-resty-upstream-healthcheck.md)   
 * [Openresty与Nginx_RTMP](/Openresty/openresty-rtmp.md)   
-* [自己写的一个简单项目lua_project_v0.01]  (https://github.com/Tinywan/lua_project_v0.01)   
+* [自己写的一个简单项目lua_project_v0.01](https://github.com/Tinywan/lua_project_v0.01)   
 
 ####  PHP 相关   
 * [PHP脚本运行Redis](#PHP_Run_Redis)
