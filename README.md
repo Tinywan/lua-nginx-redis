@@ -56,6 +56,7 @@
 * [PHP脚本运行Redis](#PHP_Run_Redis)
 * [PHP7中php.ini/php-fpm/www.conf的配置,Nginx和PHP-FPM的开机自动启动脚本](/PHP/PHP-FPM/config.md)  
 * [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)  
+* [PHP和Shell 脚本如何很好的搭配](/PHP/php-shell_run.md)  
 
 #### Linux 教程  
 * [Linux 基础知识](/Linux/linux-basic.md)    
@@ -64,7 +65,8 @@
   * [实战篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)      
   * [定时器教程](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)      
 #### Shell 教程    
-* [编写快速安全Bash脚本的建议](/Shell/write-shell-suggestions.md) 
+* [编写快速安全Bash脚本的建议](https://www.oschina.net/translate/bash-scripting-quirks-safety-tips)  
+* [写好shell脚本的13个技巧](https://mp.weixin.qq.com/s/f3xDHZ7dCQr7sHJ9KDvuyQ)  
 * [shell脚本实现分日志级别记录日志](/Nginx-Rtmp/Shell_Log.sh)   
 * [Nginx日志定时备份和删除](/Nginx-Rtmp/Shell_Nginx_Log_cut.sh)   
 * [SHELL脚本小技巧](/Nginx-Rtmp/Shell_script.md)   
