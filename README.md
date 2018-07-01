@@ -29,6 +29,9 @@
   * [ngx_cache_purge](/Nginx/Nginx-Web/Nginx-8-proxy_cache.md)    
   * [lua-nginx-module](http://www.cnblogs.com/tinywan/p/6538006.html)    
   * [nginx-rtmp-module](http://www.cnblogs.com/tinywan/p/6639360.html)    
+* PHP 相关  
+	* [PHP7中php.ini/php-fpm/www.conf的配置,Nginx和PHP-FPM的开机自动启动脚本](/PHP/PHP-FPM/config.md)  
+	* 
 
 #### Lua 教程    
 * [Lua 基础语法](/Lua-Script/lua-basic.md)  
@@ -40,8 +43,14 @@
 * [Redis 配置详解](/Redis/redis-config.md)   
 * [Redis 基础知识](#Redis_base_knowledge)   
 * [Redis 开发与运维](#Redis-DevOps)  
-* [Redis执行Lua脚本基本用法](/Redis/redis-lua.md)    
-* [Redis漏洞如何防止被黑客攻击](/Redis/redis-safety.md)    
+* [Redis 执行Lua脚本基本用法](/Redis/redis-lua.md)    
+* [Redis 漏洞如何防止被黑客攻击](/Redis/redis-safety.md)   
+* 与 PHP 相关   
+	* [PHP脚本运行Redis](#PHP_Run_Redis)   
+	* [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)   
+* [阿里云Redis开发规范](https://yq.aliyun.com/articles/531067)   
+* [高可用Redis服务架构分析与搭建](https://mp.weixin.qq.com/s/DA4uhPULaXI-KDKwvLzb8Q)  
+* [如何轻松搭建电商秒杀系统](https://yq.aliyun.com/articles/277885)  
 
 ####  Openresty 教程  
 * [安装默认配置信息](/Openresty/openresty-basic.md)   
@@ -52,18 +61,12 @@
 * [Openresty与Nginx_RTMP](/Openresty/openresty-rtmp.md)   
 * [自己写的一个简单项目lua_project_v0.01](https://github.com/Tinywan/lua_project_v0.01)   
 
-####  PHP 相关   
-* [PHP脚本运行Redis](#PHP_Run_Redis)
-* [PHP7中php.ini/php-fpm/www.conf的配置,Nginx和PHP-FPM的开机自动启动脚本](/PHP/PHP-FPM/config.md)  
-* [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)  
-* [PHP和Shell 脚本如何很好的搭配](/PHP/php-shell_run.md)  
-
 #### Linux 教程  
 * [Linux 基础知识](/Linux/linux-basic.md)    
 * Systemd 入门教程    
   * [命令篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)   
-  * [实战篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)      
-  * [定时器教程](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)      
+  * [实战篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)   
+  * [定时器教程](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)   
 #### Shell 教程    
 * [编写快速安全Bash脚本的建议](https://www.oschina.net/translate/bash-scripting-quirks-safety-tips)  
 * [写好shell脚本的13个技巧](https://mp.weixin.qq.com/s/f3xDHZ7dCQr7sHJ9KDvuyQ)  
@@ -71,6 +74,8 @@
 * [Nginx日志定时备份和删除](/Nginx-Rtmp/Shell_Nginx_Log_cut.sh)   
 * [SHELL脚本小技巧](/Nginx-Rtmp/Shell_script.md)   
 * [Mysql 自动备份脚本安全加锁机制](/Nginx-Rtmp/backup_mysql.sh)   
+* PHP 相关  
+	* [PHP和Shell 脚本如何很好的搭配](/PHP/php-shell_run.md)  
 
 #### 流媒体教程  
 * [Nginx配置Rtmp支持Hls的直播和点播功能](/Nginx-Rtmp/HLS-live-vod.md)
