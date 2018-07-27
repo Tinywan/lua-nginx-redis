@@ -46,6 +46,9 @@
 * [Redis 开发与运维](#Redis-DevOps)  
 * [Redis 执行Lua脚本基本用法](/Redis/redis-lua.md)    
 * [Redis 漏洞如何防止被黑客攻击](/Redis/redis-safety.md)   
+* [Redis配置文件详解(生产可用)](http://www.ywnds.com/?p=5721)  
+* [Redis如何快速删除1.2亿指定前缀Key](http://www.ywnds.com/?p=13210)  
+* [教你如何利用Redis黑进目标系统？](http://www.ywnds.com/?p=8507)  
 ###### PHP 相关   
 * [PHP脚本运行Redis](#PHP_Run_Redis)   
 * [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)   
