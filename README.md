@@ -27,12 +27,16 @@
 * [Nginx 如何配置一个安全的HTTPS网站服务器](http://www.cnblogs.com/tinywan/p/7542629.html)  
 * [Nginx 配置启用 HTTP/2](http://www.cnblogs.com/tinywan/p/7860774.html)  
 * [申请Let's Encrypt通配符HTTPS证书](https://www.cnblogs.com/tinywan/p/8573169.html)   
+* [如何配置proxy_cache模块](/Nginx/Nginx-Web/Nginx-8-proxy_cache.md)  
+* [负载均衡五个配置实例](/Nginx/Nginx-Web/Nginx-7-Proxy.md)  
+
 ######  模块   
 * [nginx-vod-module](http://www.cnblogs.com/tinywan/p/7879559.html)    
 * [nginx-module-vts](http://www.cnblogs.com/tinywan/p/7872366.html)    
 * [ngx_cache_purge](/Nginx/Nginx-Web/Nginx-8-proxy_cache.md)    
 * [lua-nginx-module](http://www.cnblogs.com/tinywan/p/6538006.html)    
 * [nginx-rtmp-module](http://www.cnblogs.com/tinywan/p/6639360.html)    
+* [ngx_http_proxy_module和ngx_http_upstream_module](/Nginx/Nginx-Web/ngx_http_upstream_module.md)  
 
 ######  好文  
 * [Nginx入门到实战（1）基础篇](https://segmentfault.com/a/1190000014893012)  
@@ -43,6 +47,7 @@
 * [关于一些对location认识的误区](http://www.cnblogs.com/lidabo/p/4169396.html)  
 * [location总结及rewrite规则写法](https://segmentfault.com/a/1190000002797606)  
 * [How to Compile Nginx From Source on Ubuntu 16.04](https://www.vultr.com/docs/how-to-compile-nginx-from-source-on-ubuntu-16-04)  
+* [详解：Nginx 反向代理、后端检测模块](https://mp.weixin.qq.com/s/wGOQkAPif3buhezOQhbx5A)  
 
 ######  流媒体   
 * [Setup Nginx on Ubuntu to Stream Live HLS Video](https://www.vultr.com/docs/setup-nginx-on-ubuntu-to-stream-live-hls-video)  
@@ -96,6 +101,8 @@
 * [openresty 专栏](https://blog.csdn.net/qq362228416/article/category/6558114)  
 * [openresty 视频](http://i.youku.com/i/UMTM2NTgyMDEyMA==/videos?q=openresty)  
 * [模仿京东使用Openresty+Redis做读服务](https://my.oschina.net/zjzhai/blog/759719)  
+* [Openresty-Lua动态修改upstream后端服务](Nginx/Nginx-Web/openresty-nginx-lua-Proxy.md)  
+* 
 
 ## Linux 教程  
 * [Linux 基础知识](/Linux/linux-basic.md)    
