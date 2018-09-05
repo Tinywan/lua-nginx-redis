@@ -1,10 +1,4 @@
-#  [在线文档（Online documentation）](http://github.tinywan.com/lua-nginx-redis/)
-![Author](https://img.shields.io/badge/Author-Tinywan-green.svg)
-[![Conda](https://img.shields.io/conda/pn/conda-forge/python.svg)]()
-[![GitHub license](https://img.shields.io/github/license/Tinywan/tinywan-react-app.svg)](https://github.com/Tinywan/tinywan-react-app/blob/master/LICENSE)
-<a name="index"/>目录  
-======
-## Nginx 教程 （Nginx tutorial）  
+#### Nginx 教程   
 
 ###### 基础  
 * [Nginx编译安装](/Nginx/nginx-install.md)  
@@ -62,12 +56,12 @@
 * [php-fpm/www.conf 的配置 ](/PHP/PHP-FPM/config.md)   
 * [深入剖析 Web 服务器与 PHP 应用的通信机制 - 掌握 CGI 和 FastCGI 协议的运行原理](https://mp.weixin.qq.com/s/6Kyfvc_N7PhBtFPstgt3MA)  
 
-## Lua 教程    
+#### Lua 教程    
 * [Lua 基础语法](/Lua-Script/lua-basic.md)  
 * [luajit 执行文件默认安装路径](#Nginx_base_knowledge)   
 * [lua中self_indes详解](/Lua-Script/oop/self__index.md)   
 
-## Redis 教程  
+#### Redis 教程  
 
 ###### 基础   
 * [Redis 安装](/Redis/redis-install.md)   
@@ -84,7 +78,7 @@
 * [高可用Redis服务架构分析与搭建](https://mp.weixin.qq.com/s/DA4uhPULaXI-KDKwvLzb8Q)  
 * [如何轻松搭建电商秒杀系统](https://yq.aliyun.com/articles/277885)  
 
-##  Openresty 教程  
+####  Openresty 教程  
 
 ###### 基础   
 * [安装默认配置信息](/Openresty/openresty-basic.md)   
@@ -102,17 +96,15 @@
 * [openresty 视频](http://i.youku.com/i/UMTM2NTgyMDEyMA==/videos?q=openresty)  
 * [模仿京东使用Openresty+Redis做读服务](https://my.oschina.net/zjzhai/blog/759719)  
 * [Openresty-Lua动态修改upstream后端服务](Nginx/Nginx-Web/openresty-nginx-lua-Proxy.md)  
-* 
 
-## Linux 教程  
-* [Linux 基础知识](/Linux/linux-basic.md)    
+#### Linux 教程   
 
 ###### Systemd 入门教程    
 * [命令篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)   
 * [实战篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)   
-* [定时器教程](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)   
+* [定时器教程](http://www.ruanyifeng.com/blog/2018/03/systemd-timer.html)   
 
-## Shell 教程    
+#### Shell 教程    
 * [编写快速安全Bash脚本的建议](https://www.oschina.net/translate/bash-scripting-quirks-safety-tips)  
 * [写好shell脚本的13个技巧](https://mp.weixin.qq.com/s/f3xDHZ7dCQr7sHJ9KDvuyQ)  
 * [shell脚本实现分日志级别记录日志](/Nginx-Rtmp/Shell_Log.sh)   
@@ -123,6 +115,6 @@
 ###### PHP 相关  
 * [PHP和Shell 脚本如何很好的搭配](/PHP/php-shell_run.md)  
 
-## Lua-Ngx
+#### Lua-Ngx
 ![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Nginx-Phase.png)
 
