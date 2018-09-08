@@ -61,18 +61,19 @@
 * [luajit 执行文件默认安装路径](#Nginx_base_knowledge)   
 * [lua中self_indes详解](/Lua-Script/oop/self__index.md)   
 
-#### Redis 教程  
-
-###### 基础   
+#### Redis 教程     
 * [Redis 安装](/Redis/redis-install.md)   
 * [Redis 配置详解](/Redis/redis-config.md)   
 * [Redis 基础知识](#Redis_base_knowledge)   
 * [Redis 开发与运维](#Redis-DevOps)  
 * [Redis 执行Lua脚本基本用法](/Redis/redis-lua.md)    
 * [Redis 漏洞如何防止被黑客攻击](/Redis/redis-safety.md)   
+* [如何在Ubuntu 16.04上安装和配置Redis](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04)  
+* [Redis协议规范（译文）](http://www.hchstudio.cn/article/2018/e687/)  
+* [负载均衡中使用Redis实现共享Session](https://segmentfault.com/a/1190000011558000)  
+* [Redis 设计与实现](https://github.com/huangz1990/redis-3.0-annotated)  
 
 ###### PHP 相关   
-* [PHP脚本运行Redis](#PHP_Run_Redis)   
 * [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)   
 * [阿里云Redis开发规范](https://yq.aliyun.com/articles/531067)   
 * [高可用Redis服务架构分析与搭建](https://mp.weixin.qq.com/s/DA4uhPULaXI-KDKwvLzb8Q)  
