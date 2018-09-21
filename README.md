@@ -51,7 +51,7 @@
 * [Nginx配置Rtmp支持Hls的直播和点播功能](/Nginx-Rtmp/HLS-live-vod.md)  
 * [HLS视频直播和点播的Nginx的Location的配置信息(成功)](/Nginx-Rtmp/HLS-live-vod-locatiuon-config.md)   
 
-###### PHP 相关   
+###### 其他   
 * [Nginx和PHP-FPM的开机自动启动脚本](/PHP/PHP-FPM/config.md)  
 * [php-fpm/www.conf 的配置 ](/PHP/PHP-FPM/config.md)   
 * [深入剖析 Web 服务器与 PHP 应用的通信机制 - 掌握 CGI 和 FastCGI 协议的运行原理](https://mp.weixin.qq.com/s/6Kyfvc_N7PhBtFPstgt3MA)  
@@ -72,8 +72,8 @@
 * [Redis协议规范（译文）](http://www.hchstudio.cn/article/2018/e687/)  
 * [负载均衡中使用Redis实现共享Session](https://segmentfault.com/a/1190000011558000)  
 * [Redis 设计与实现](https://github.com/huangz1990/redis-3.0-annotated)  
-
-###### PHP 相关   
+* [为什么分布式一定要有Redis？](https://mp.weixin.qq.com/s/8uii1BzfVfChbH_t5Gk_8Q)  
+* [使用Lua脚本实现分布式锁](https://www.cnblogs.com/tinywan/p/9643022.html)  
 * [PHP 脚本执行一个Redis 订阅功能，用于监听键过期事件，返回一个回调，API接受改事件](/Redis-PHP/Php-Run-Redis-psubscribe/nohupRedisNotify.php)   
 * [阿里云Redis开发规范](https://yq.aliyun.com/articles/531067)   
 * [高可用Redis服务架构分析与搭建](https://mp.weixin.qq.com/s/DA4uhPULaXI-KDKwvLzb8Q)  
@@ -81,7 +81,6 @@
 
 ####  Openresty 教程  
 
-###### 基础   
 * [安装默认配置信息](/Openresty/openresty-basic.md)   
 * [OpenResty 最佳实践](https://moonbingbing.gitbooks.io/openresty-best-practices/content/index.html)  
 * [如何编译一个高性能 OpenResty](https://yq.aliyun.com/articles/228399) 
@@ -100,7 +99,6 @@
 
 #### Linux 教程   
 
-###### Systemd 入门教程    
 * [命令篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)   
 * [实战篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)   
 * [定时器教程](http://www.ruanyifeng.com/blog/2018/03/systemd-timer.html)   
@@ -112,10 +110,5 @@
 * [Nginx日志定时备份和删除](/Nginx-Rtmp/Shell_Nginx_Log_cut.sh)   
 * [SHELL脚本小技巧](/Nginx-Rtmp/Shell_script.md)   
 * [Mysql 自动备份脚本安全加锁机制](/Nginx-Rtmp/backup_mysql.sh)   
-
-###### PHP 相关  
 * [PHP和Shell 脚本如何很好的搭配](/PHP/php-shell_run.md)  
-
-#### Lua-Ngx
-![Markdown](https://github.com/Tinywan/Lua-Nginx-Redis/blob/master/Images/Nginx-Phase.png)
 
