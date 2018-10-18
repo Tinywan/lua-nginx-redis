@@ -15,6 +15,8 @@
 * [Nginx 高并发系统内核优化](/Nginx/nginx-parameter-config.md)  
 * [nginx 并发数问题思考：worker_connections,worker_processes与 max clients](http://liuqunying.blog.51cto.com/3984207/1420556?utm_source=tuicool)
 * [如何在工作中提高Ngixn服务器性能?达到高效](https://juejin.im/post/5adb45e96fb9a07ab773c767?utm_source=gold_browser_extension)   
+* [并发 = 同步/异步/阻塞/非阻塞/进程/线程](https://juejin.im/post/5bc69ecee51d45395d4f4072)  
+* 
 
 ###### 案例   
 * [Nginx 同一个IP上配置多个HTTPS主机](/Nginx/more-domain-config.md)  
@@ -102,6 +104,7 @@
 * [命令篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)   
 * [实战篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)   
 * [定时器教程](http://www.ruanyifeng.com/blog/2018/03/systemd-timer.html)   
+* [linux 进程间通信之管道](https://juejin.im/post/5bc735d85188255c57216d7e)  
 
 #### Shell 教程    
 * [编写快速安全Bash脚本的建议](https://www.oschina.net/translate/bash-scripting-quirks-safety-tips)  
