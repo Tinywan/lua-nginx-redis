@@ -13,7 +13,7 @@
     ```lua
     00-RELEASENOTES  BUGS  CONTRIBUTING  COPYING  deps  INSTALL  Makefile  MANIFESTO  README.md  redis.conf  runtest 
      runtest-cluster  runtest-sentinel  sentinel.conf  src  tests  utils
-    ```  
+    ```
     + 编译完成之后，可以看到解压文件redis-3.0.7 中会有对应的src、conf等文件             
     + 这和windows下安装解压的文件一样，大部分安装包都会有对应的类文件、配置文件和一些命令文件。
 + 进入src文件夹，执行make install进行Redis安装
@@ -29,7 +29,7 @@
         INSTALL install
         INSTALL install
         INSTALL install
-    ```		
+    ```
 #### 二、部署文件结构
 + 首先为了方便管理，将Redis文件中的conf配置文件和常用命令移动到统一文件中			
 + 创建以下文件目录
@@ -90,7 +90,7 @@
     
     rename-command DEBUG "tinywangithubDEBUG"
     ```
-+   启动redis服务，并指定启动服务配置文件，检测运行端口，为了安全，请不要使用root用户去启动	
+	   启动redis服务，并指定启动服务配置文件，检测运行端口，为了安全，请不要使用root用户去启动	
     ```java
     $ sudo chown -R www:www  /usr/local/redis/    //赋予指定该用户组，而非root账号
     $ /usr/local/redis/bin/redis-server /usr/local/redis/etc/redis63700.conf
@@ -194,8 +194,18 @@
     www       1730  0.0  0.1  14224  1024 pts/0    S+   13:08   0:00 grep --color=auto redis
     
     ```
-
-#### 五、Redis数据迁移
+#### 五、Redis关闭  
+* 命令方式关闭  
+  ```
+  $ redis-cli -h 127.0.0.1 -p 6379
+  127.0.0.1:6379> shutdown
+  ```
+* 进程号杀掉redis
+  ```
+  ps -ef | grep redis
+  kill -9 XXX
+  ```
+#### 六、Redis数据迁移  
 +   查找RDB文件：
 
     ```sudo find / -name dump.rdb```
