@@ -80,6 +80,7 @@
 * [阿里云Redis开发规范](https://yq.aliyun.com/articles/531067)   
 * [高可用Redis服务架构分析与搭建](https://mp.weixin.qq.com/s/DA4uhPULaXI-KDKwvLzb8Q)  
 * [如何轻松搭建电商秒杀系统](https://yq.aliyun.com/articles/277885)  
+* [如何在Ubuntu 16.04上安装和配置Redis（推荐）](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04)  
 
 ####  Openresty 教程  
 
