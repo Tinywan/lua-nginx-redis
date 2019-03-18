@@ -57,6 +57,7 @@
 * [Nginx和PHP-FPM的开机自动启动脚本](/PHP/PHP-FPM/config.md)  
 * [php-fpm/www.conf 的配置 ](/PHP/PHP-FPM/config.md)   
 * [深入剖析 Web 服务器与 PHP 应用的通信机制 - 掌握 CGI 和 FastCGI 协议的运行原理](https://mp.weixin.qq.com/s/6Kyfvc_N7PhBtFPstgt3MA)  
+* [PHP-FPM 与 Nginx 的通信机制总结](https://mp.weixin.qq.com/s?__biz=MjM5NTEwMTAwNg==&mid=2650215933&idx=1&sn=abf562ed47ce8a9224412e17e234f786&chksm=befe15dc89899cca1e674d2949e826adb5b59d04e62c15f9da140f7bf8bff51d89d8c5f8c951&xtrack=1&scene=0&subscene=131&clicktime=1552870541&ascene=7&devicetype=android-26&version=2700033b&nettype=cmnet&abtest_cookie=BAABAAoACwASABMABQAjlx4AVpkeAMqZHgDamR4A3JkeAAAA&lang=zh_CN&pass_ticket=VT9NzDEQU%2F7GX70AMBZdrlFD8yhVF%2Bjy2dHx%2FtwbSfA5GAv99foDkdqRYzs2L7FL&wx_header=1)  
 
 #### Lua 教程    
 * [Lua 基础语法](/Lua-Script/lua-basic.md)  
