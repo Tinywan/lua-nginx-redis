@@ -43,7 +43,8 @@
 * [关于一些对location认识的误区](http://www.cnblogs.com/lidabo/p/4169396.html)  
 * [location总结及rewrite规则写法](https://segmentfault.com/a/1190000002797606)  
 * [How to Compile Nginx From Source on Ubuntu 16.04](https://www.vultr.com/docs/how-to-compile-nginx-from-source-on-ubuntu-16-04)  
-* [详解：Nginx 反向代理、后端检测模块](https://mp.weixin.qq.com/s/wGOQkAPif3buhezOQhbx5A)  
+* [详解：Nginx 反向代理、后端检测模块](https://mp.weixin.qq.com/s/wGOQkAPif3buhezOQhbx5A) 
+* [Nginx的负载均衡 - 加权轮询 (Weighted Round Robin)](https://blog.csdn.net/zhangskd/article/details/50194069)
 
 ######  流媒体   
 * [Setup Nginx on Ubuntu to Stream Live HLS Video](https://www.vultr.com/docs/setup-nginx-on-ubuntu-to-stream-live-hls-video)  
@@ -57,7 +58,7 @@
 * [Nginx和PHP-FPM的开机自动启动脚本](/PHP/PHP-FPM/config.md)  
 * [php-fpm/www.conf 的配置 ](/PHP/PHP-FPM/config.md)   
 * [深入剖析 Web 服务器与 PHP 应用的通信机制 - 掌握 CGI 和 FastCGI 协议的运行原理](https://mp.weixin.qq.com/s/6Kyfvc_N7PhBtFPstgt3MA)  
-* [PHP-FPM 与 Nginx 的通信机制总结](https://mp.weixin.qq.com/s?__biz=MjM5NTEwMTAwNg==&mid=2650215933&idx=1&sn=abf562ed47ce8a9224412e17e234f786&chksm=befe15dc89899cca1e674d2949e826adb5b59d04e62c15f9da140f7bf8bff51d89d8c5f8c951&xtrack=1&scene=0&subscene=131&clicktime=1552870541&ascene=7&devicetype=android-26&version=2700033b&nettype=cmnet&abtest_cookie=BAABAAoACwASABMABQAjlx4AVpkeAMqZHgDamR4A3JkeAAAA&lang=zh_CN&pass_ticket=VT9NzDEQU%2F7GX70AMBZdrlFD8yhVF%2Bjy2dHx%2FtwbSfA5GAv99foDkdqRYzs2L7FL&wx_header=1)  
+* [PHP-FPM 与 Nginx 的通信机制总结](https://segmentfault.com/a/1190000018464303)  
 
 #### Lua 教程    
 * [Lua 基础语法](/Lua-Script/lua-basic.md)  
