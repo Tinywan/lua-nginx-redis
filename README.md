@@ -84,6 +84,8 @@
 * [高可用Redis服务架构分析与搭建](https://mp.weixin.qq.com/s/DA4uhPULaXI-KDKwvLzb8Q)  
 * [如何轻松搭建电商秒杀系统](https://yq.aliyun.com/articles/277885)  
 * [如何在Ubuntu 16.04上安装和配置Redis（推荐）](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04)  
+* [Codis集群演化与Redis异步迁移](/Redis/Codis集群演化与Redis异步迁移.pdf)  
+* [如何利用Redisson分布式化传统Web项目](/Redis/如何利用Redisson分布式化传统Web项目.pdf)  
 
 ####  Openresty 教程  
 
