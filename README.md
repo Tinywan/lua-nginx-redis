@@ -86,6 +86,7 @@
 * [如何在Ubuntu 16.04上安装和配置Redis（推荐）](https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04)  
 * [Codis集群演化与Redis异步迁移](/Redis/Codis集群演化与Redis异步迁移.pdf)  
 * [如何利用Redisson分布式化传统Web项目](/Redis/如何利用Redisson分布式化传统Web项目.pdf)  
+* [redis设计与实现(第二版).pdf](/Redis/redis设计与实现(第二版).pdf)
 
 ####  Openresty 教程  
 
@@ -104,6 +105,7 @@
 * [openresty 视频](http://i.youku.com/i/UMTM2NTgyMDEyMA==/videos?q=openresty)  
 * [模仿京东使用Openresty+Redis做读服务](https://my.oschina.net/zjzhai/blog/759719)  
 * [Openresty-Lua动态修改upstream后端服务](Nginx/Nginx-Web/openresty-nginx-lua-Proxy.md)  
+* [Openresty编程.pdf](/OpenrestyOpenresty编程.pdf)
 
 #### Linux 教程   
 
@@ -111,6 +113,8 @@
 * [实战篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)   
 * [定时器教程](http://www.ruanyifeng.com/blog/2018/03/systemd-timer.html)   
 * [linux 进程间通信之管道](https://juejin.im/post/5bc735d85188255c57216d7e)  
+* [鸟哥的Linux私房菜服务器架设篇(第三版).pdf](Linux/鸟哥的Linux私房菜服务器架设篇(第三版).pdf)
+* [鸟哥的Linux私房菜-基础学习篇(第四版).pdf](Linux/鸟哥的Linux私房菜-基础学习篇(第四版).pdf)
 
 #### Shell 教程    
 * [编写快速安全Bash脚本的建议](https://www.oschina.net/translate/bash-scripting-quirks-safety-tips)  
