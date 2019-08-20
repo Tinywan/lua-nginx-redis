@@ -105,7 +105,7 @@
 * [openresty 视频](http://i.youku.com/i/UMTM2NTgyMDEyMA==/videos?q=openresty)  
 * [模仿京东使用Openresty+Redis做读服务](https://my.oschina.net/zjzhai/blog/759719)  
 * [Openresty-Lua动态修改upstream后端服务](Nginx/Nginx-Web/openresty-nginx-lua-Proxy.md)  
-* [Openresty编程.pdf](/OpenrestyOpenresty编程.pdf)
+* [Openresty编程.pdf](/Openresty/Openresty编程.pdf)
 
 #### Linux 教程   
 
