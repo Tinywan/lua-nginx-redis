@@ -1,4 +1,9 @@
 [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+
+Nginx与Lua编写脚本的基本构建块是指令执行顺序的图
+
+![Nginx编译安装](Images/Nginx-Phase.png) 
+
 #### Nginx 教程   
 
 ###### 基础  
