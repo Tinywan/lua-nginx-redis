@@ -93,6 +93,7 @@ Nginx与Lua编写脚本的基本构建块是指令执行顺序的图
 * [如何利用Redisson分布式化传统Web项目](/Redis/如何利用Redisson分布式化传统Web项目.pdf)  
 * [redis设计与实现(第二版).pdf](/Redis/redis设计与实现(第二版).pdf)  
 * [深入剖析 Redis5.0 全新数据结构 Streams（消息队列的新选择）](http://www.vlambda.com/wz_wNrPVgCQ43.html)  
+* [Redis5 配置及优化总结](/Redis/redis5-config.md)  
 
 ##  Openresty 教程  
 
