@@ -2,12 +2,12 @@
 
 Nginx与Lua编写脚本的基本构建块是指令执行顺序的图
 
-![Nginx编译安装](Images/Nginx-Phase.png) 
+![Nginx编译安装](Images/Nginx-Phase.png)
 
 ## Nginx 教程   
 
 #### 基础  
-* [Nginx编译安装](/Nginx/nginx-install.md)  
+* [Nginx编译安装](/Nginx/nginx-install.md)
 * [Nginx.conf详解](/Nginx/nginx-base-config.md)  
 * [Location 详解](/docs/Nginx/location-detail.md)  
 * [Nginx基础知识](/Nginx/nginx-basic.md)  
@@ -23,6 +23,7 @@ Nginx与Lua编写脚本的基本构建块是指令执行顺序的图
 * [如何在工作中提高Ngixn服务器性能?达到高效](https://juejin.im/post/5adb45e96fb9a07ab773c767?utm_source=gold_browser_extension)   
 * [并发 = 同步/异步/阻塞/非阻塞/进程/线程](https://juejin.im/post/5bc69ecee51d45395d4f4072)  
 * [The Complete NGINX Cookbook](docs/Complete-NGINX-Cookbook-2019.pdf)
+* [如何改进 NGINX 配置文件节省带宽？](/Nginx/nginx-config-bandwidth.md)
 
 #### 案例   
 * [Nginx 同一个IP上配置多个HTTPS主机](/Nginx/more-domain-config.md)  
@@ -132,3 +133,6 @@ Nginx与Lua编写脚本的基本构建块是指令执行顺序的图
 * [Mysql 自动备份脚本安全加锁机制](/Nginx-Rtmp/backup_mysql.sh)   
 * [PHP和Shell 脚本如何很好的搭配](/PHP/php-shell_run.md)  
 
+## 微信公众号
+
+![Nginx编译安装](Images/tinywan-wechat.jpg)
