@@ -132,6 +132,7 @@ Nginx与Lua编写脚本的基本构建块是指令执行顺序的图
 * [SHELL脚本小技巧](/Nginx-Rtmp/Shell_script.md)   
 * [Mysql 自动备份脚本安全加锁机制](/Nginx-Rtmp/backup_mysql.sh)   
 * [PHP和Shell 脚本如何很好的搭配](/PHP/php-shell_run.md)  
+* [通过FTP备份MySQL数据库](/Shell/Backup-MySQL-FTP.md)  
 
 ## 微信公众号
 
