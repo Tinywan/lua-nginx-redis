@@ -24,6 +24,8 @@ Nginx与Lua编写脚本的基本构建块是指令执行顺序的图
 * [并发 = 同步/异步/阻塞/非阻塞/进程/线程](https://juejin.im/post/5bc69ecee51d45395d4f4072)  
 * [The Complete NGINX Cookbook](docs/Complete-NGINX-Cookbook-2019.pdf)
 * [如何改进 NGINX 配置文件节省带宽？](/Nginx/nginx-config-bandwidth.md)
+* [Nginx官方文档中文版](https://www.bookstack.cn/read/nginx-official-doc)
+* [一个能够快速验证 Nginx 配置的在线演示工具](https://nginx-playground.wizardzines.com/)
 
 #### 案例   
 * [Nginx 同一个IP上配置多个HTTPS主机](/Nginx/more-domain-config.md)  
